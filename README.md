@@ -50,7 +50,7 @@ Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore
 
 ![badge](https://img.shields.io/badge/Made%20With-Flutter-blue?style=for-the-badge)
 
-## (Move this from here later)
+## (Move this to wiki later)
 ### Getting user location
 #### iOS
 
