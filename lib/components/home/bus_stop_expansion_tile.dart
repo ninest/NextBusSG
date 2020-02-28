@@ -57,12 +57,10 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       BusArrival ba;
       try {
         ba = busArrivalList.firstWhere((b) => b.service == service);
-        busServiceTileList.add(BusServiceTile(
-            code: widget.code, service: service, busArrival: ba));
+        busServiceTileList.add(BusServiceTile(code: widget.code, service: service, busArrival: ba));
       } catch (e) {
         // make sure we don't add doubles
-        if (!timingsNotAvailable.contains(service))
-          timingsNotAvailable.add(service);
+        if (!timingsNotAvailable.contains(service)) timingsNotAvailable.add(service);
       }
     }
 

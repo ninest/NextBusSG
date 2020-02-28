@@ -17,12 +17,12 @@
   - [x] Add ability to view all favorites in a ~~popup~~ page
   - [x] Show message prompting user to add a favorite if there are no favorites
   - [ ] Custom names for favorites
-- [ ] Ability to search for bus services, routes, and stops (Search page)
+- [x] Ability to search for bus services, routes, and stops (Search page)
   - [ ] See information for each of the above
 - [ ] Onboarding (introduction) pages to show how to use the app
 - [ ] Third page (settings/options page, should also show tutorial on how to use the app)
-- [ ] Theme customization 
-  - [ ] Light/dark theme
+- [x] Theme customization 
+  - [x] Light/dark theme
   - [ ] Accent color (unplanned)
   - [ ] Change font size (unplanned)
 

@@ -1,4 +1,3 @@
-
 import 'package:nextbussg/services/provider/favorites.dart';
 import 'package:nextbussg/services/provider/search.dart';
 import 'package:nextbussg/styles/theme.dart';
@@ -7,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/tabbed_app.dart';
+import 'package:bot_toast/bot_toast.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -15,7 +15,7 @@ void main() async {
 
   // transparent status bar Android
   // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    // statusBarColor: Colors.white,
+  // statusBarColor: Colors.white,
   // ));
 
   runApp(MyApp());
@@ -43,11 +43,14 @@ class MainApp extends StatelessWidget {
       // to change theme
       valueListenable: Hive.box('settings').listenable(),
       builder: (context, box, widget) {
-        // let theme =
+        var theme = box.get('theme', defaultValue: 'light');
 
-        return MaterialApp(
-          theme: appLightTheme,
-          home: TabbedApp(),
+        return BotToastInit(
+          child: MaterialApp(
+            theme: theme == 'dark' ? appDarkTheme : appLightTheme,
+            home: TabbedApp(),
+            navigatorObservers: [BotToastNavigatorObserver()],
+          ),
         );
       },
     );

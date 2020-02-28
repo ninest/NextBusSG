@@ -20,4 +20,4 @@
 
 
 ## Issues
-- I do not know the default vertical and horizontal padding for the `ExpansionPanel` widget, so I had to "eyball" it to make the placeholder loading widget (`LoadingBusStopTile`). The values provided for padding look fine when the default font size is 19, but may look weird for different sizes.
+- I do not know the default vertical and horizontal padding for the `ExpansionPanel` widget, so I had to "eyeball" it to make the placeholder loading widget (`LoadingBusStopTile`). The values provided for padding look fine when the default font size is 19, but may look weird for different sizes.

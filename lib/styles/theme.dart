@@ -95,6 +95,7 @@ ThemeData _buildLightTheme() {
     accentColor: secondaryColor,
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
+    toggleableActiveColor: primaryColor,
 
     // TODO: set status bar color
   );
@@ -119,6 +120,7 @@ ThemeData _buildDarkTheme() {
     accentColor: secondaryColor,
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
+    toggleableActiveColor: primaryColor,
 
     // TODO: set status bar color
   );

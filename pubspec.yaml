@@ -24,6 +24,7 @@ dependencies:
   font_awesome_flutter: ^8.7.0
   flutter_markdown: ^0.3.3
   google_fonts: ^0.3.9
+  bot_toast: ^2.2.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

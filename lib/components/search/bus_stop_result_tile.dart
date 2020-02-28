@@ -24,7 +24,6 @@ class BusStopSearchResultTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: <Widget>[
         Row(
@@ -33,7 +32,15 @@ class BusStopSearchResultTile extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(name, style: Theme.of(context).textTheme.display1),
+                // make sure not to get the overflow error
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.65,
+                  child: Text(
+                    name,
+                    style: Theme.of(context).textTheme.display1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
                 if (!(mrtStations == null)) MRTStations(stations: mrtStations)
               ],
             ),

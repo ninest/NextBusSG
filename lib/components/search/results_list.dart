@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/services/bus.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/components/home/loading/loading_bus_stop_tile.dart';
 import 'package:nextbussg/components/search/bus_stop_result_tile.dart';
@@ -11,11 +12,8 @@ class SearchResultsList extends StatelessWidget {
 
     List searchResults = searchProvider.getSearchResults();
 
-    if (searchResults.isEmpty) {
-      // setting value when list empty
-      // this gets the nearest bus stops
-      searchProvider.searchFor("");
-    }
+    // show nearest stops if no search term
+    if (searchResults.isEmpty) searchProvider.getNearestBusStopSearchResults();
 
     return Column(
       children: <Widget>[
