@@ -18,7 +18,7 @@
   - [x] Show message prompting user to add a favorite if there are no favorites
   - [ ] Custom names for favorites
 - [x] Ability to search for bus services, routes, and stops (Search page)
-  - [ ] See information for each of the above
+  - [ ] See information for each of the above (done all except for bus routes)
 - [ ] Onboarding (introduction) pages to show how to use the app
 - [ ] Third page (settings/options page, should also show tutorial on how to use the app)
 - [x] Theme customization 
@@ -42,7 +42,8 @@ Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore
 - styled_widget
 - division
 - flutter_markdown
-- flutter_toast
+- bot_toast
+- url_launcher
 
 ## Other information
 - [Data](https://github.com/themindstorm/singapore-bus) collection start date: February 11, 2020
