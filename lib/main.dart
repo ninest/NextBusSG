@@ -46,7 +46,7 @@ class MainApp extends StatelessWidget {
         // let theme =
 
         return MaterialApp(
-          theme: appLightTheme,
+          theme: appDarkTheme,
           home: TabbedApp(),
         );
       },

@@ -18,7 +18,8 @@ class PageTemplate extends StatelessWidget {
           ...children,
 
           // allow for some overscroll
-          SliverSpacing(height: 80),
+          // this is a feature, not a bug
+          SliverSpacing(height: 140),
         ],
       ).padding(horizontal: 18),
     );

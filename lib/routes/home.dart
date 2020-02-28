@@ -10,14 +10,12 @@ class HomePage extends StatelessWidget {
   // if there are no favorites (in simlified favorites view), the favorites heading should come below near me
   // if there are in SFV, put favorites at the top
   Future order(BuildContext context) async {
-    Widget nearMe = BusStopList(title: 'NEAR ME', iconData: FontAwesomeIcons.locationArrow);
-    Widget favoritesComponent = FavoritesBusStopList(
-      title: 'FAVORITES',
-      iconData: FontAwesomeIcons.heart,
-      simplified: true,
-    );
+    Widget nearMe =
+        BusStopList(title: 'NEAR ME', iconData: FontAwesomeIcons.locationArrow);
+    Widget favoritesComponent({int favoritesNotShown=0}) => FavoritesBusStopList(
+        title: 'FAVORITES', iconData: FontAwesomeIcons.heart, simplified: true, favoritesNotShown: favoritesNotShown);
     List<Widget> widgetOrder = [
-      favoritesComponent,
+      favoritesComponent(),
       SliverSpacing(height: 40),
       nearMe
     ];
@@ -25,7 +23,19 @@ class HomePage extends StatelessWidget {
     // if there are no favorites, swap the position of favorites and near me
     List favorites = await FavoritesProvider.getFavorites(simplified: true);
     if (favorites.isEmpty) {
-      widgetOrder = [nearMe, SliverSpacing(height: 40), favoritesComponent];
+      // even if the SF list is empty, there may be bus stops which are not near us. That's why 
+      // we check if the list is empty, then check the ACTUAL amount of favorites
+      // if it's more than 0, it means that it's not showing
+
+      // so just to make it clear to the user, display a message:
+      // You have 3 favorites, which are not near you.
+
+      var noFavorites = (await FavoritesProvider.getFavorites(simplified: false)).length;
+      // if (noFavorites > 0) {
+      //   print("There are more than 1 favorites not showing");
+        widgetOrder = [nearMe, SliverSpacing(height: 40), favoritesComponent(favoritesNotShown: 2)];
+      // } else
+      // widgetOrder = [nearMe, SliverSpacing(height: 40), favoritesComponent()];
     }
 
     return widgetOrder;

@@ -17,7 +17,10 @@ class FavoritesBusStopList extends StatelessWidget {
   final String title;
   final IconData iconData;
   final bool simplified;
-  FavoritesBusStopList({this.title, this.iconData, this.simplified});
+  final int favoritesNotShown;
+  // this is to show if there are favorites NOT showing in the SFV
+  FavoritesBusStopList(
+      {this.title, this.iconData, this.simplified, this.favoritesNotShown});
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +31,22 @@ class FavoritesBusStopList extends StatelessWidget {
     return FutureBuilder(
       future: FavoritesProvider.getFavorites(simplified: simplified),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
+        print('favs not shown: $favoritesNotShown');
+        String noFavoritesText =
+            "No favorites near here. **Long press** or **double tap** a bus number to add it to you favorites.";
+        if (favoritesNotShown > 0) {
+          // make sure not to pluralize if it's 1
+          String pluralize = "s"; String verb = "are";
+          if (favoritesNotShown == 1) {pluralize = ""; verb = "is";}
+          noFavoritesText +=
+              "\n\nYou have **$favoritesNotShown** favorite$pluralize that $verb not being displayed as you are not near them.";
+        }
+
         List<Widget> children = [
           if (!snapshot.hasData)
             Text("Loading")
           else if (snapshot.data.isEmpty)
-            MarkdownBody(
-                data:
-                    "No favorites near here. **Long press** or **double tap** a bus number to add it to you favorites.")
+            MarkdownBody(data: noFavoritesText)
           else
             for (var busStop in snapshot.data)
               BusStopExpansionPanel(

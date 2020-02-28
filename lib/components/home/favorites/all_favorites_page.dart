@@ -17,6 +17,9 @@ class AllFavoritesPage extends StatelessWidget {
             title: "ALL FAVORITES",
             iconData: FontAwesomeIcons.heart,
             simplified: false,
+
+            // not required here, just set it to 0
+            favoritesNotShown: 0,
           ),
         ],
       ),

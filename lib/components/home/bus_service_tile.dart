@@ -1,4 +1,5 @@
 import 'package:nextbussg/components/home/confirmation/confirmation_bottom_sheet.dart';
+import 'package:nextbussg/styles/border_color.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,7 @@ class BusServiceTile extends StatelessWidget {
         // .backgroundColor(Theme.of(context).primaryColor)
         .border(
           all: 2,
-          color: Colors.black45,
+          color: BorderColors.busStopExpansionPanel(context),
           style: BorderStyle.solid,
         )
         .borderRadius(all: Values.borderRadius * 0.8)

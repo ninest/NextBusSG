@@ -1,4 +1,5 @@
 import 'package:nextbussg/components/home/timings_not_available.dart';
+import 'package:nextbussg/styles/border_color.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:nextbussg/components/home/bus_service_tile.dart';
@@ -96,7 +97,8 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
         // .padding(top: 10)
         .border(
           all: 3,
-          color: Colors.black54,
+          // check if dank mode
+          color: BorderColors.busStopExpansionPanel(context),
           style: BorderStyle.solid,
         )
         .borderRadius(all: Values.borderRadius)

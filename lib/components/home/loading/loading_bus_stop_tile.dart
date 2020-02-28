@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/styles/border_color.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:styled_widget/styled_widget.dart';
 
@@ -43,7 +44,7 @@ class LoadingBusStopTile extends StatelessWidget {
       )
           .border(
             all: 3,
-            color: Colors.black54,
+            color: BorderColors.busStopExpansionPanel(context),
             style: BorderStyle.solid,
           )
           .borderRadius(all: Values.borderRadius)
