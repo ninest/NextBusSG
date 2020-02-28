@@ -31,11 +31,7 @@ class HomePage extends StatelessWidget {
       // You have 3 favorites, which are not near you.
 
       var noFavorites = (await FavoritesProvider.getFavorites(simplified: false)).length;
-      // if (noFavorites > 0) {
-      //   print("There are more than 1 favorites not showing");
-        widgetOrder = [nearMe, SliverSpacing(height: 40), favoritesComponent(favoritesNotShown: 2)];
-      // } else
-      // widgetOrder = [nearMe, SliverSpacing(height: 40), favoritesComponent()];
+      widgetOrder = [nearMe, SliverSpacing(height: 40), favoritesComponent(favoritesNotShown: noFavorites)];
     }
 
     return widgetOrder;
