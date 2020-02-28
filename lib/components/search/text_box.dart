@@ -1,5 +1,6 @@
 import 'package:division/division.dart';
 import 'package:flutter/material.dart';
+import 'package:nextbussg/styles/text_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/services/provider/search.dart';
 import 'package:nextbussg/styles/values.dart';
@@ -41,18 +42,18 @@ class _SearchTextBoxState extends State<SearchTextBox> {
             searchProvider.searchFor(searchText);
           })
       ..margin(top: Values.marginBelowTitle)
-      ..textColor(Colors.black)
+      ..textColor(TextFieldStyles.textColor(context))
       ..textAlign.left()
       ..fontSize(Values.em)
       ..bold()
       ..padding(all: 15)
       ..borderRadius(all: Values.borderRadius)
       ..alignment.center()
-      ..background.color(Colors.grey[200])
+      ..background.color(TextFieldStyles.backgroundColor(context))
       ..border(
         all: _editing ? 4 : 0,
         style: _editing ? BorderStyle.solid : BorderStyle.none,
-        color: _editing ? Theme.of(context).primaryColor : Colors.black54,
+        color: _editing ? TextFieldStyles.onFocusedBorderColor(context) : Colors.black54,
       );
 
     return Row(

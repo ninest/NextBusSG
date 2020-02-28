@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-class AppColors {
+class TransitColors {
   static final Color green = Colors.green;
   static final Color yellow = Colors.orange;
   static final Color red = Colors.red;

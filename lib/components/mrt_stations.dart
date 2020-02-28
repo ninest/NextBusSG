@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nextbussg/styles/colors.dart';
+import 'package:nextbussg/styles/transit_colors.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 class MRTStations extends StatelessWidget {
@@ -24,7 +24,7 @@ class MRTStations extends StatelessWidget {
           String lineID = code.substring(0, 2);
 
           // getting the appropriate mrt line color
-          Color color = AppColors.mrtLineColors[lineID];
+          Color color = TransitColors.mrtLineColors[lineID];
 
           children.add(
             Text(

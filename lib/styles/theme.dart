@@ -22,7 +22,8 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark=false})
         fontWeight: FontWeight.w700,
         fontSize: 1.8 * em,
         letterSpacing: 0.7,
-        color: dark ? Colors.white : Colors.black,
+        // color for lighter white so that it's not too hard on the eyes
+        color: dark ? Color(0xccFFFFFF) : Colors.black,
       ),
     ),
 
@@ -66,12 +67,14 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark=false})
     body2: base.body2.copyWith(
       fontSize: em,
       fontWeight: FontWeight.w500,
+      color: dark ? Colors.white70 : Colors.black87,
     ),
 
     // default font
     body1: base.body1.copyWith(
       fontSize: em,
       fontWeight: FontWeight.w400,
+      color: dark ? Colors.white70 : Colors.black87,
     ),
   );
 }
