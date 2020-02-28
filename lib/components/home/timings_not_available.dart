@@ -50,7 +50,7 @@ class TimingsNotAvailable extends StatelessWidget {
                             text: "Okay",
                             color: Theme.of(context).primaryColor,
                             onTap: () => closeBottomSheet(context),
-                          ).width(100).alignment(Alignment.bottomRight)
+                          ).width(120).alignment(Alignment.bottomRight)
                         ],
                       ),
                     ),

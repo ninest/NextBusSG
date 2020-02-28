@@ -25,4 +25,8 @@ class PageTemplate extends StatelessWidget {
       ).padding(horizontal: 18),
     );
   }
+
+  Widget scaffold() {
+    return Scaffold(body: this);
+  }
 }

@@ -10,7 +10,15 @@ class TitleText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Text(title, style: Theme.of(context).textTheme.title),
+        Flexible(
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.title,
+            textAlign: TextAlign.justify,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
 
         // icon does not have to be provided
         Icon(
@@ -22,9 +30,7 @@ class TitleText extends StatelessWidget {
     );
   }
 
-  Widget sliverToBoxAdapter() {
-    return SliverToBoxAdapter(
-      child: this
-    );
-  }
+  // Widget sliverToBoxAdapter() {
+  //   return SliverToBoxAdapter(child: this);
+  // }
 }
