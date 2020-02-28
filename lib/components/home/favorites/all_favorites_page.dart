@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/widgets/page_template.dart';
-import 'package:nextbussg/widgets/sliver_space.dart';
+import 'package:nextbussg/widgets/space.dart';
 
 import 'favorites_list.dart';
 
@@ -12,7 +12,7 @@ class AllFavoritesPage extends StatelessWidget {
     return Scaffold(
       body: PageTemplate(
         children: [
-          SliverSpacing(height: Values.marginBelowTitle),
+          Spacing(height: Values.marginBelowTitle).sliver(),
           FavoritesBusStopList(
             title: "ALL FAVORITES",
             iconData: FontAwesomeIcons.heart,

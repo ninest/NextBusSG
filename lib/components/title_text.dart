@@ -21,4 +21,10 @@ class TitleText extends StatelessWidget {
       ],
     );
   }
+
+  Widget sliverToBoxAdapter() {
+    return SliverToBoxAdapter(
+      child: this
+    );
+  }
 }

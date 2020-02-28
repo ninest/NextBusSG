@@ -4,7 +4,7 @@ import 'package:nextbussg/components/home/bus_stop_list.dart';
 import 'package:nextbussg/components/home/favorites/favorites_list.dart';
 import 'package:nextbussg/services/provider/favorites.dart';
 import 'package:nextbussg/widgets/page_template.dart';
-import 'package:nextbussg/widgets/sliver_space.dart';
+import 'package:nextbussg/widgets/space.dart';
 
 class HomePage extends StatelessWidget {
   // if there are no favorites (in simlified favorites view), the favorites heading should come below near me
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
         title: 'FAVORITES', iconData: FontAwesomeIcons.heart, simplified: true, favoritesNotShown: favoritesNotShown);
     List<Widget> widgetOrder = [
       favoritesComponent(),
-      SliverSpacing(height: 40),
+      Spacing(height: 40).sliver(),
       nearMe
     ];
 
@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
       // You have 3 favorites, which are not near you.
 
       var noFavorites = (await FavoritesProvider.getFavorites(simplified: false)).length;
-      widgetOrder = [nearMe, SliverSpacing(height: 40), favoritesComponent(favoritesNotShown: noFavorites)];
+      widgetOrder = [nearMe, Spacing(height: 40).sliver(), favoritesComponent(favoritesNotShown: noFavorites)];
     }
 
     return widgetOrder;

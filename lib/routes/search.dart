@@ -11,9 +11,7 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageTemplate(
       children: [
-        SliverToBoxAdapter(
-          child: TitleText(title: "SEARCH", iconData: FontAwesomeIcons.search),
-        ),
+        TitleText(title: "SEARCH", iconData: FontAwesomeIcons.search).sliverToBoxAdapter(),
         SliverPersistentHeader(
           pinned: false,
           floating: true,

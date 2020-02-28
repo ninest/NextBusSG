@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/fa_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/routes/home.dart';
 import 'package:nextbussg/routes/search.dart';
+import 'package:nextbussg/routes/settings.dart';
 
 class TabbedApp extends StatefulWidget {
   @override
@@ -10,11 +11,11 @@ class TabbedApp extends StatefulWidget {
 }
 
 class TabbedAppState extends State<TabbedApp> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
   static List<Widget> _tabViews = <Widget>[
     HomePage(),
     SearchPage(),
-    Text('Last'),
+    SettingsPage(),
   ];
   static const List<BottomNavigationBarItem> _tabs = <BottomNavigationBarItem>[
     BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.compass), title: Text('Main')),

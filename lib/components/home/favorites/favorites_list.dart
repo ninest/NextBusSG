@@ -31,7 +31,7 @@ class FavoritesBusStopList extends StatelessWidget {
     return FutureBuilder(
       future: FavoritesProvider.getFavorites(simplified: simplified),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        print('favs not shown: $favoritesNotShown');
+        // print('favs not shown: $favoritesNotShown');
         String noFavoritesText =
             "No favorites near here. **Long press** or **double tap** a bus number to add it to you favorites.";
         if (favoritesNotShown > 0) {
