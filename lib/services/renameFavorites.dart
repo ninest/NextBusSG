@@ -1,7 +1,9 @@
+import 'package:bot_toast/bot_toast.dart';
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 class RenameFavoritesService {
-  static rename(String code, String newName) {
+  static rename(BuildContext context, String code, String newName) {
     var settingsBox = Hive.box('settings');
     var prevRenamedFavorites = settingsBox.get('renamed_favorites', defaultValue: {});
     // first remove the previ
@@ -16,6 +18,7 @@ class RenameFavoritesService {
 
     settingsBox.put('renamed_favorites', prevRenamedFavorites);
     print('Renamed $code to $newName');
+    BotToast.showText(text: "Renamed to $newName.", contentColor: Theme.of(context).primaryColor);
   }
 
   static getName(String code) {
@@ -32,5 +35,19 @@ class RenameFavoritesService {
         return null;
       }
     }
+  }
+
+  static deleteRename(String code) {
+    // removing the rename (setting it to the default)
+    // need to delete key in renamed_favorites of settingsBox
+    var settingsBox = Hive.box('settings');
+    var renamedFavorites = settingsBox.get('renamed_favorites', defaultValue: {});
+    try {
+      renamedFavorites.remove(code);
+      settingsBox.put('renamed_favorites', renamedFavorites);
+    } catch (e) {
+      print("Error in deleting rename");
+    }
+    BotToast.showText(text: "Rename removed.", contentColor: Colors.red);
   }
 }

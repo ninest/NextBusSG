@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nextbussg/components/more/faq/faq_page.dart';
 import 'package:nextbussg/components/more/mrt_map_page.dart';
 import 'package:nextbussg/components/more/tile_button.dart';
 
@@ -14,6 +15,13 @@ class OtherList extends StatelessWidget {
             icon: FontAwesomeIcons.train,
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => MRTMapPage()));
+            },
+          ),
+          TileButton(
+            text: "FAQ",
+            icon: FontAwesomeIcons.question,
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => FAQPage()));
             },
           ),
         ],

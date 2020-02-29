@@ -1,4 +1,5 @@
 import 'package:nextbussg/components/home/timings_not_available.dart';
+import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/styles/border_color.dart';
 import 'package:styled_widget/styled_widget.dart';
@@ -86,8 +87,8 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
           Text(name,
               style: hasBeenRenamed
                   ? Theme.of(context).textTheme.display1.copyWith(
-                    fontStyle: FontStyle.italic,
-                  )
+                        fontStyle: FontStyle.italic,
+                      )
                   : Theme.of(context).textTheme.display1),
 
           // TODO: display mrt station here
@@ -97,7 +98,11 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
         ],
       ),
       // the text below is replacing the default arrow in ExpansionPanel
-      trailing: Text(widget.code, style: Theme.of(context).textTheme.display2),
+      // when it's clicked, open bus stop
+      trailing: GestureDetector(
+        child: Text(widget.code, style: Theme.of(context).textTheme.display2),
+        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => StopOverviewPage(code: widget.code,))),
+      ),
 
       // get bus timings only when panel has been opened
       onExpansionChanged: (bool value) => value ? _getBusTimings() : null,

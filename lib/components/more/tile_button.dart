@@ -31,7 +31,8 @@ class TileButton extends StatelessWidget {
     );
 
     return Padding(
-      padding: EdgeInsets.only(bottom:Values.marginBelowTitle),
+      // these seem to need more padding, not entirely sure why
+      padding: EdgeInsets.only(bottom:Values.marginBelowTitle*1.7),
       child: GestureDetector(
         child: child,
         onTap: () => onTap(),
