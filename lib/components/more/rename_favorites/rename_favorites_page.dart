@@ -6,6 +6,7 @@ import 'package:nextbussg/components/title_text.dart';
 import 'package:nextbussg/extensions.dart';
 import 'package:nextbussg/services/provider/favorites.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
+import 'package:nextbussg/strings.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/widgets/bottom_sheet_template.dart';
 import 'package:nextbussg/widgets/page_template.dart';
@@ -27,7 +28,7 @@ class RenameFavorites extends StatelessWidget {
                 ).sliverToBoxAdapter(),
                 Spacing(height: 10).sliver(),
                 MarkdownBody(
-                  data: "Tap any of the bus stop names below to change their display name:",
+                  data: Strings.renameFavoritesPrompt,
                 ).sliverToBoxAdapter(),
                 Spacing(height: 10).sliver(),
 

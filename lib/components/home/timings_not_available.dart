@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nextbussg/strings.dart';
 import 'package:nextbussg/widgets/bottom_sheet_template.dart';
 import 'package:nextbussg/components/buttons/button.dart';
 import 'package:nextbussg/components/buttons/icon_button.dart';
@@ -41,10 +42,8 @@ class TimingsNotAvailable extends StatelessWidget {
                     SliverToBoxAdapter(
                       child: Column(
                         children: [
-                          MarkdownBody(
-                              data:
-                                  "Either these buses are not currently in operation, or the API is under maintainance. Please contact the LTA for further information"),
-                                  Spacing(height: 20),
+                          MarkdownBody(data: Strings.timingsNotAvailableInfo),
+                          Spacing(height: 20),
                           Button(
                             iconData: FontAwesomeIcons.check,
                             text: "Okay",

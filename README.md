@@ -45,6 +45,16 @@ Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore
 - bot_toast
 - url_launcher
 
+## FAQs
+1. How do I add or remove favorites?
+   - **Double tap** or **Long press** on any bus service tile, and a prompt should appear asking if you want to add or remove that bus service from your favorites list.
+2. Why aren't all my favorites showing?
+   - on the home page, only favorites that are **near** will be shown. To see all your favorites, click on the **"See all"** button.
+3. How do I rename a bus stop?
+    - There are two ways:
+      1. Add the stop to your favorites, then go the "More" page (the third tab on the bottom bar), then tap **"Rename favorites"**
+      2. Search for the bus stop in the search page (second tab), and press the **"Rename"** button.
+
 ## Other information
 - [Data](https://github.com/themindstorm/singapore-bus) collection start date: February 11, 2020
 - Project start date: February 13, 2020 

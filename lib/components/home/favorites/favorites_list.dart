@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
+import 'package:nextbussg/strings.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/components/buttons/button.dart';
 import 'package:nextbussg/components/home/bus_service_tile.dart';
@@ -32,7 +33,7 @@ class FavoritesBusStopList extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         // print('favs not shown: $favoritesNotShown');
         String noFavoritesText =
-            "No favorites near here. **Long press** or **double tap** a bus number to add it to you favorites.";
+            Strings.noFavorites;
         if (favoritesNotShown > 0) {
           // make sure not to pluralize if it's 1
           String pluralize = "s";
