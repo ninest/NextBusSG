@@ -31,12 +31,11 @@ class FavoritesBusStopList extends StatelessWidget {
     return FutureBuilder(
       future: FavoritesProvider.getFavorites(simplified: simplified),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        // print('favs not shown: $favoritesNotShown');
-        String noFavoritesText =
-            Strings.noFavorites;
+        String noFavoritesText = Strings.noFavorites;
         if (favoritesNotShown > 0) {
           // make sure not to pluralize if it's 1
           String pluralize = "s";
+          // also change the verb if it's singular
           String verb = "are";
           if (favoritesNotShown == 1) {
             pluralize = "";

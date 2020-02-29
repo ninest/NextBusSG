@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/extensions.dart';
 import 'package:nextbussg/components/home/loading/loading_bus_stop_tile.dart';
+import 'package:nextbussg/strings.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:nextbussg/components/home/bus_stop_expansion_tile.dart';
 import 'package:nextbussg/components/title_text.dart';
@@ -45,7 +46,7 @@ class BusStopList extends StatelessWidget {
             else
               // no stops near me
               Text(
-                "No bus stops nearby",
+                Strings.noStopsNearby,
                 style: Theme.of(context).textTheme.body1.copyWith(color: Colors.red),
               )
           else

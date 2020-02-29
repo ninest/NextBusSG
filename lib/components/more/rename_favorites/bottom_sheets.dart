@@ -11,7 +11,6 @@ import 'package:nextbussg/widgets/space.dart';
 class RenameFavoritesBottomSheets {
   static bs(context, code, name) {
     String currentName = RenameFavoritesService.getName(code);
-    print("CURRENT NAME: $currentName");
     // if there area already is a current name, keep that here
     TextEditingController controller = TextEditingController(text: currentName == null ? "" : currentName);
     return bottomSheetTemplate(

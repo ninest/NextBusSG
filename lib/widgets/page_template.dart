@@ -15,6 +15,7 @@ class PageTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      bottom: false,
       child: CustomScrollView(
         slivers: <Widget>[
           if (showBackButton) AppBackButton().sliverToBoxAdapter(),

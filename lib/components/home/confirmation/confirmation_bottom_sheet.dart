@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nextbussg/strings.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/widgets/bottom_sheet_template.dart';
 import 'package:nextbussg/components/buttons/button.dart';
 import 'package:nextbussg/services/provider/favorites.dart';
 import 'package:nextbussg/widgets/space.dart';
 import 'package:styled_widget/styled_widget.dart';
-
-
 
 class ConfirmationBottomSheets {
   static confirmAction(BuildContext context, String code, String service) {
@@ -22,8 +21,7 @@ class ConfirmationBottomSheets {
     2. Proceed with the action using FavoritesProvider
     */
 
-    bool isAlreadyFavorite =
-        FavoritesProvider.alreadyInFavorites(code, service);
+    bool isAlreadyFavorite = FavoritesProvider.alreadyInFavorites(code, service);
 
     if (isAlreadyFavorite) {
       print("Already in favorites, show conf to remove");
@@ -41,7 +39,8 @@ class ConfirmationBottomSheets {
   static final double sheetHeight = 170;
 
   static template(BuildContext context, String code, String service, String text) {
-    final FavoritesProvider favoritesProvider =Provider.of<FavoritesProvider>(context, listen: false);
+    final FavoritesProvider favoritesProvider =
+        Provider.of<FavoritesProvider>(context, listen: false);
 
     bottomSheetTemplate(context, sheetHeight, [
       SliverToBoxAdapter(
@@ -84,14 +83,9 @@ class ConfirmationBottomSheets {
   }
 
   // maybe make one function for the template
-  static addToFavorites(BuildContext context, String code, String service) {
-    template(context, code, service,
-        "Are you sure you want to **_ADD_** Bus **$service** from **$code** to your favorites?");
-  }
+  static addToFavorites(BuildContext context, String code, String service) =>
+      template(context, code, service, Strings.confirmAddToFavorites(service, code));
 
-  static removeFromFavorites(
-      BuildContext context, String code, String service) {
-    template(context, code, service,
-        "Are you sure you want to **_REMOVE_** Bus **$service** from **$code** from your favorites?");
-  }
+  static removeFromFavorites(BuildContext context, String code, String service) =>
+      template(context, code, service, Strings.confirmRemoveFromFavorites(service, code));
 }
