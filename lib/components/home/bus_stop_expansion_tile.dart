@@ -1,4 +1,5 @@
 import 'package:nextbussg/components/home/timings_not_available.dart';
+import 'package:nextbussg/components/mrt_stations.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/styles/border_color.dart';
@@ -79,55 +80,70 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       name = RenameFavoritesService.getName(widget.code);
     }
 
-    return ExpansionTile(
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          // if the stop HAS been renamed, display in italics
-          Text(name,
-              style: hasBeenRenamed
-                  ? Theme.of(context).textTheme.display1.copyWith(
-                        fontStyle: FontStyle.italic,
-                      )
-                  : Theme.of(context).textTheme.display1),
+    return ListTileTheme(
+      // setting padding value if mrt is there
+      // THESE VALUES ARE HARDOCDED because
+      contentPadding: EdgeInsets.only(
+        left: Values.busStopTileHorizontalPadding,
+        right: Values.busStopTileHorizontalPadding,
+        top: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding /2 : 0,
+        bottom: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding /2 : 0,
+      ),
+      child: ExpansionTile(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            // if the stop HAS been renamed, display in italics
+            Text(name,
+                style: hasBeenRenamed
+                    ? Theme.of(context).textTheme.display1.copyWith(
+                          fontStyle: FontStyle.italic,
+                        )
+                    : Theme.of(context).textTheme.display1),
 
-          // TODO: display mrt station here
-          // because of height issues, we'll do it later
-          // if (!(widget.mrtStations == null))
-          //   MRTStations(stations: widget.mrtStations)
+            // TODO: display mrt station here
+            // because of height issues, we'll do it later
+            if (widget.mrtStations.isNotEmpty)
+              MRTStations(stations: widget.mrtStations)
+          ],
+        ),
+        // the text below is replacing the default arrow in ExpansionPanel
+        // when it's clicked, open bus stop
+        trailing: GestureDetector(
+          child: Text(widget.code, style: Theme.of(context).textTheme.display2),
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => StopOverviewPage(
+                        code: widget.code,
+                      ))),
+        ),
+
+        // get bus timings only when panel has been opened
+        onExpansionChanged: (bool value) => value ? _getBusTimings() : null,
+        initiallyExpanded: widget.initialyExpanded,
+        children: [
+          ...busServiceTileList,
+
+          // show that some timings are not available
+          // NOTE: it also could just be that timings are unailable,
+          if (timingsNotAvailable.isNotEmpty)
+            // Text(timingsNotAvailable.toString())
+            TimingsNotAvailable(services: timingsNotAvailable)
         ],
-      ),
-      // the text below is replacing the default arrow in ExpansionPanel
-      // when it's clicked, open bus stop
-      trailing: GestureDetector(
-        child: Text(widget.code, style: Theme.of(context).textTheme.display2),
-        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => StopOverviewPage(code: widget.code,))),
-      ),
-
-      // get bus timings only when panel has been opened
-      onExpansionChanged: (bool value) => value ? _getBusTimings() : null,
-      initiallyExpanded: widget.initialyExpanded,
-      children: [
-        ...busServiceTileList,
-
-        // show that some timings are not available
-        // NOTE: it also could just be that timings are unailable,
-        if (timingsNotAvailable.isNotEmpty)
-          // Text(timingsNotAvailable.toString())
-          TimingsNotAvailable(services: timingsNotAvailable)
-      ],
-    )
-        // .padding(top: 10)
-        .border(
-          all: 3,
-          // check if dank mode
-          color: BorderColors.busStopExpansionPanel(context),
-          style: BorderStyle.solid,
-        )
-        .borderRadius(all: Values.borderRadius)
-        .padding(top: Values.marginBelowTitle)
-        // .height(0)
-        .gestures();
+      )
+          // .padding(top: 10)
+          .border(
+            all: 3,
+            // check if dank mode
+            color: BorderColors.busStopExpansionPanel(context),
+            style: BorderStyle.solid,
+          )
+          .borderRadius(all: Values.borderRadius)
+          .padding(top: Values.marginBelowTitle)
+          // .height(0)
+          .gestures(),
+    );
     // margin(top: Values.marginBelowTitle)
   }
 
