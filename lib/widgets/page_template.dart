@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/widgets/space.dart';
 
 import 'package:styled_widget/styled_widget.dart';
@@ -22,7 +23,7 @@ class PageTemplate extends StatelessWidget {
           // this is a feature, not a bug
           Spacing(height: 140).sliver(),
         ],
-      ).padding(horizontal: 18),
+      ).padding(horizontal: Values.pageHorizontalPadding),
     );
   }
 

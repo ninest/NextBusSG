@@ -19,14 +19,12 @@ class FavoritesBusStopList extends StatelessWidget {
   final bool simplified;
   final int favoritesNotShown;
   // this is to show if there are favorites NOT showing in the SFV
-  FavoritesBusStopList(
-      {this.title, this.iconData, this.simplified, this.favoritesNotShown});
+  FavoritesBusStopList({this.title, this.iconData, this.simplified, this.favoritesNotShown});
 
   @override
   Widget build(BuildContext context) {
     // this needs to be there so that this widget will rebuild itself when a fav is added/removed
-    FavoritesProvider favoritesProvider =
-        Provider.of<FavoritesProvider>(context);
+    FavoritesProvider favoritesProvider = Provider.of<FavoritesProvider>(context);
 
     return FutureBuilder(
       future: FavoritesProvider.getFavorites(simplified: simplified),
@@ -36,8 +34,12 @@ class FavoritesBusStopList extends StatelessWidget {
             "No favorites near here. **Long press** or **double tap** a bus number to add it to you favorites.";
         if (favoritesNotShown > 0) {
           // make sure not to pluralize if it's 1
-          String pluralize = "s"; String verb = "are";
-          if (favoritesNotShown == 1) {pluralize = ""; verb = "is";}
+          String pluralize = "s";
+          String verb = "are";
+          if (favoritesNotShown == 1) {
+            pluralize = "";
+            verb = "is";
+          }
           noFavoritesText +=
               "\n\nYou have **$favoritesNotShown** favorite$pluralize that $verb not being displayed as you are not near them.";
         }
@@ -68,8 +70,7 @@ class FavoritesBusStopList extends StatelessWidget {
             Theme.of(context).primaryColor,
             () {
               print("Opening all favorites page");
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AllFavoritesPage()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => AllFavoritesPage()));
             },
           ));
         // when it's the all favorites page, the button should be for taking users back
@@ -104,7 +105,5 @@ class FavoritesBusStopList extends StatelessWidget {
         onTap: () {
           onTap();
         },
-      )
-          .alignment(Alignment.topRight)
-          .padding(top: Values.marginBelowTitle * 1.5);
+      ).alignment(Alignment.topRight).padding(top: Values.marginBelowTitle * 1.5);
 }

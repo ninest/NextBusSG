@@ -11,7 +11,7 @@ class TabbedApp extends StatefulWidget {
 }
 
 class TabbedAppState extends State<TabbedApp> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 2;
   static List<Widget> _tabViews = <Widget>[
     HomePage(),
     SearchPage(),

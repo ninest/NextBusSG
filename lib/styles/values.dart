@@ -12,6 +12,11 @@ class Values {
   */
   static final double em = 18;
 
+  /*
+  padding for main pageTemplate
+  */
+  static final double pageHorizontalPadding = 18;
+
 
   /* 
   padding values for bus stop tiles
