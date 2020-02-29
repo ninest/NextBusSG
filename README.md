@@ -19,6 +19,7 @@
   - [ ] Custom names for favorites
 - [x] Ability to search for bus services, routes, and stops (Search page)
   - [ ] See information for each of the above (done all except for bus routes)
+- [x] FAQ page to teach users how to use the app
 - [ ] Onboarding (introduction) pages to show how to use the app
 - [ ] Third page (settings/options page, should also show tutorial on how to use the app)
 - [x] Theme customization 
