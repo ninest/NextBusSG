@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/styles/values.dart';
 
 class ToggleTile extends StatefulWidget {
   final String title;
@@ -14,34 +15,37 @@ class ToggleTile extends StatefulWidget {
 class _ToggleTileState extends State<ToggleTile> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Expanded(
-          child: Icon(widget.icon, color: Theme.of(context).textTheme.display1.color),
-          flex: 1,
-        ),
-        Expanded(
-          child: Text(
-            widget.title,
-            style: Theme.of(context).textTheme.display1,
+    return Padding(
+      padding: EdgeInsets.only(bottom: Values.marginBelowTitle),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Expanded(
+            child: Icon(widget.icon, color: Theme.of(context).textTheme.display1.color),
+            flex: 1,
           ),
-          flex: 4,
-        ),
-        Expanded(
-          child: Switch(
-            value: widget.isSwitched,
-            onChanged: (bool value) {
-              setState(() {
-                widget.isSwitched = value;
-              });
-              widget.onChange(value);
-            },
+          Expanded(
+            child: Text(
+              widget.title,
+              style: Theme.of(context).textTheme.display1,
+            ),
+            flex: 4,
           ),
-          flex: 1,
-        ),
-      ],
+          Expanded(
+            child: Switch(
+              value: widget.isSwitched,
+              onChanged: (bool value) {
+                setState(() {
+                  widget.isSwitched = value;
+                });
+                widget.onChange(value);
+              },
+            ),
+            flex: 1,
+          ),
+        ],
+      ),
     );
   }
 }

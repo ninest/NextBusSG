@@ -18,7 +18,6 @@ class SearchResultsList extends StatelessWidget {
     return Column(
       children: <Widget>[
         if (searchResults.isEmpty) LoadingBusStopTile(count: 2),
-        
         for (var busStop in searchResults)
           // Text("A search result will come here.")
           BusStopSearchResultTile(

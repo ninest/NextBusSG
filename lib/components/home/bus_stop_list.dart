@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/extensions.dart';
 import 'package:nextbussg/components/home/loading/loading_bus_stop_tile.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:nextbussg/components/home/bus_stop_expansion_tile.dart';
@@ -32,13 +33,20 @@ class BusStopList extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         List<Widget> children = <Widget>[
           if (snapshot.hasData)
-            for (var busStop in snapshot.data)
-              BusStopExpansionPanel(
-                name: busStop.name,
-                code: busStop.code,
-                services: busStop.services,
-                initialyExpanded: false,
-                mrtStations: busStop.mrtStations,
+            if (snapshot.data.isNotEmpty)
+              for (var busStop in snapshot.data)
+                BusStopExpansionPanel(
+                  name: busStop.name,
+                  code: busStop.code,
+                  services: busStop.services,
+                  initialyExpanded: false,
+                  mrtStations: busStop.mrtStations,
+                )
+            else
+              // no stops near me
+              Text(
+                "No bus stops nearby",
+                style: Theme.of(context).textTheme.body1.copyWith(color: Colors.red),
               )
           else
             // placeholder widgets while stops are loding

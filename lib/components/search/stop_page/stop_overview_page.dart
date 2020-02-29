@@ -38,24 +38,15 @@ class StopOverviewPage extends StatelessWidget {
           print(mrtStations);
 
           return PageTemplate(
+            showBackButton: true,
             children: [
-              // SliverToBoxAdapter(
-              //   child: AppBackButton(),
-              // ),
-              AppBackButton().sliverToBoxAdapter(),
-
-              Spacing(
-                height: Values.marginBelowTitle,
-              ).sliver(),
-
               // name of bus stop
-              // TODO: set overflow issues
               TitleText(
                 title: name,
               ).sliverToBoxAdapter(),
 
               // road and stop code
-              Text("${road} – $code").sliverToBoxAdapter(),
+              Text("$road – $code").sliverToBoxAdapter(),
 
               Spacing(height: Values.marginBelowTitle).sliver(),
 
@@ -64,7 +55,7 @@ class StopOverviewPage extends StatelessWidget {
                   stations: mrtStations,
                 ).sliverToBoxAdapter(),
 
-              Spacing(height: Values.marginBelowTitle*1.5).sliver(),
+              Spacing(height: Values.marginBelowTitle * 1.5).sliver(),
 
               // showing all services
               StopServicesOverview(
@@ -91,7 +82,7 @@ class StopOverviewPage extends StatelessWidget {
                 fill: true,
                 // iconData: FontAwesomeIcons.directions,
                 onTap: () async {
-                  String url = "https://maps.apple.com/?q=${lat},${lon}";
+                  String url = "https://maps.apple.com/?q=$lat,$lon";
                   print(url);
                   if (await canLaunch(url)) {
                     await launch(url);

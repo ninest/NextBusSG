@@ -12,12 +12,9 @@ class AllFavoritesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageTemplate(
+      showBackButton: true,
       children: [
-        AppBackButton().sliverToBoxAdapter(),
-        Spacing(
-          height: 10,
-        ).sliver(),
-        Spacing(height: Values.marginBelowTitle).sliver(),
+        
         FavoritesBusStopList(
           title: "ALL FAVORITES",
           iconData: FontAwesomeIcons.heart,

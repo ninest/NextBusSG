@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/components/buttons/back_button.dart';
+import 'package:nextbussg/extensions.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/widgets/space.dart';
 
@@ -6,16 +8,20 @@ import 'package:styled_widget/styled_widget.dart';
 
 class PageTemplate extends StatelessWidget {
   final List children;
+  final bool showBackButton;
 
-  PageTemplate({this.children});
+  PageTemplate({this.children, this.showBackButton = false});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: CustomScrollView(
         slivers: <Widget>[
-          // SliverSpacing(height: 20),
-          Spacing(height: 20).sliver(),
+          if (showBackButton) AppBackButton().sliverToBoxAdapter(),
+          if (showBackButton)
+            Spacing(height: Values.marginBelowTitle).sliver()
+          else
+            Spacing(height: 20).sliver(),
 
           ...children,
 

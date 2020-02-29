@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive/hive.dart';
+import 'package:nextbussg/components/more/rename_favorites_page.dart';
 import 'package:nextbussg/components/more/settings/toggle_tile.dart';
+import 'package:nextbussg/components/more/tile_button.dart';
 import 'package:nextbussg/services/theme.dart';
 
 class SettingsList extends StatelessWidget {
@@ -21,6 +23,14 @@ class SettingsList extends StatelessWidget {
               ThemeService.toggleTheme();
             },
           ),
+          TileButton(
+            text: "Rename favorites",
+            icon: FontAwesomeIcons.star,
+            onTap: () {
+              // open favorites renaming page
+              Navigator.push(context, MaterialPageRoute(builder: (context) => RenameFavorites()));
+            },
+          )
         ],
       ),
     );

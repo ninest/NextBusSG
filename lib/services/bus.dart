@@ -29,7 +29,7 @@ class BusService extends ChangeNotifier {
 
 
       // add it if bus stop is within 500 meters
-      if (distance < 600) {
+      if (distance < 650) {
         // add to bus stops near me list
         busStopsNear.add(busStop);
       }

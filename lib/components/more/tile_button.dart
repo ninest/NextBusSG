@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/styles/values.dart';
 
-class OtherButton extends StatelessWidget {
+class TileButton extends StatelessWidget {
   final String text;
   final IconData icon;
   final Function onTap;
-  OtherButton({this.text, this.icon, this.onTap});
+  TileButton({this.text, this.icon, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,10 @@ class OtherButton extends StatelessWidget {
     Widget child = Row(
       children: <Widget>[
         Expanded(
-          child: Icon(icon, color: Theme.of(context).textTheme.display1.color,),
+          child: Icon(
+            icon,
+            color: Theme.of(context).textTheme.display1.color,
+          ),
           flex: 1,
         ),
         Expanded(
@@ -26,9 +30,12 @@ class OtherButton extends StatelessWidget {
       ],
     );
 
-    return GestureDetector(
-      child: child,
-      onTap: () => onTap(),
+    return Padding(
+      padding: EdgeInsets.only(bottom:Values.marginBelowTitle),
+      child: GestureDetector(
+        child: child,
+        onTap: () => onTap(),
+      ),
     );
   }
 }

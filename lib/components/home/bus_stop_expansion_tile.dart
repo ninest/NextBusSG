@@ -1,4 +1,5 @@
 import 'package:nextbussg/components/home/timings_not_available.dart';
+import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/styles/border_color.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:flutter/material.dart';
@@ -64,11 +65,30 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       }
     }
 
+    // check if the user has renamed the favorite
+
+    String name;
+    bool hasBeenRenamed;
+    if (RenameFavoritesService.getName(widget.code) == null) {
+      // has not been renamed
+      hasBeenRenamed = false;
+      name = widget.name;
+    } else {
+      hasBeenRenamed = true;
+      name = RenameFavoritesService.getName(widget.code);
+    }
+
     return ExpansionTile(
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(widget.name, style: Theme.of(context).textTheme.display1),
+          // if the stop HAS been renamed, display in italics
+          Text(name,
+              style: hasBeenRenamed
+                  ? Theme.of(context).textTheme.display1.copyWith(
+                    fontStyle: FontStyle.italic,
+                  )
+                  : Theme.of(context).textTheme.display1),
 
           // TODO: display mrt station here
           // because of height issues, we'll do it later
