@@ -1,3 +1,4 @@
+import 'package:nextbussg/onboarding/introduction_screen.dart';
 import 'package:nextbussg/services/provider/favorites.dart';
 import 'package:nextbussg/services/provider/search.dart';
 import 'package:nextbussg/styles/theme.dart';
@@ -27,8 +28,7 @@ class MyApp extends StatelessWidget {
     // return MainApp();
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<FavoritesProvider>(
-            create: (_) => FavoritesProvider()),
+        ChangeNotifierProvider<FavoritesProvider>(create: (_) => FavoritesProvider()),
         ChangeNotifierProvider<SearchProvider>(create: (_) => SearchProvider())
       ],
       child: MainApp(),
@@ -45,10 +45,22 @@ class MainApp extends StatelessWidget {
       builder: (context, box, widget) {
         var theme = box.get('theme', defaultValue: 'light');
 
+        // check if this is the first time using the app
+        var settingsBox = Hive.box('settings');
+        bool firstLaunch = settingsBox.get('first_launch', defaultValue: true);
+        print("This is the first launch? $firstLaunch");
+
+        Widget home = TabbedApp();
+        if (firstLaunch) {
+          // set firstLaunch to false
+          home = OnboardingView();
+        }
+
         return BotToastInit(
           child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             theme: theme == 'dark' ? appDarkTheme : appLightTheme,
-            home: TabbedApp(),
+            home: home,
             navigatorObservers: [BotToastNavigatorObserver()],
           ),
         );

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/components/more/faq/faq_page.dart';
 import 'package:nextbussg/components/more/mrt_map_page.dart';
 import 'package:nextbussg/components/more/tile_button.dart';
+import 'package:nextbussg/onboarding/introduction_screen.dart';
 
 class OtherList extends StatelessWidget {
   @override
@@ -22,6 +23,13 @@ class OtherList extends StatelessWidget {
             icon: FontAwesomeIcons.question,
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => FAQPage()));
+            },
+          ),
+          TileButton(
+            text: "View tutorial",
+            icon: FontAwesomeIcons.guitar,
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardingView()));
             },
           ),
         ],

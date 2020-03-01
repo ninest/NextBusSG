@@ -8,7 +8,7 @@
 - [x] Show the arrival times of buses at stops near the user
   - [x] Show a list of buses not currently in serivce
   - [x] Show if a bus stop is also an MRT station in the search page
-  - [ ] Show which all bus stops around the user are also MRT stations (needs help)
+  - [x] Show which all bus stops around the user are also MRT stations (needs help)
   - [ ] Show timings for college buses (NUS, NTU, SUTD, ...), although still need to collect data for these (check out [this](https://github.com/themindstorm/singapore-bus) repository for updates)
 - [x] Ability to save buses at a particular stop as a favorite
   - [x] Confirm user's action of adding/removing from favorites using bottom sheets
@@ -16,12 +16,12 @@
   - [x] Automatically show the arrival time of favorite buses at stops (if user is at stop)
   - [x] Add ability to view all favorites in a ~~popup~~ page
   - [x] Show message prompting user to add a favorite if there are no favorites
-  - [ ] Custom names for favorites
+  - [x] Custom names for favorites
 - [x] Ability to search for bus services, routes, and stops (Search page)
   - [ ] See information for each of the above (done all except for bus routes)
 - [x] FAQ page to teach users how to use the app
-- [ ] Onboarding (introduction) pages to show how to use the app
-- [ ] Third page (settings/options page, should also show tutorial on how to use the app)
+- [x] Onboarding (introduction) pages to show how to use the app
+- [x] Third page (settings/options page, should also show tutorial/FAQ on how to use the app)
 - [x] Theme customization 
   - [x] Light/dark theme
   - [ ] Accent color (unplanned)
@@ -45,6 +45,7 @@ Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore
 - flutter_markdown
 - bot_toast
 - url_launcher
+- introduction_screen
 
 ## FAQs
 1. How do I add or remove favorites?

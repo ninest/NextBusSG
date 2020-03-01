@@ -38,8 +38,6 @@ class StopOverviewPage extends StatelessWidget {
             double lat = snapshot.data['coords']['lat'];
             double lon = snapshot.data['coords']['lon'];
 
-            print(mrtStations);
-
             return PageTemplate(
               showBackButton: true,
               children: [

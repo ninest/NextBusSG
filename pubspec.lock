@@ -78,6 +78,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.8.7+2"
+  dots_indicator:
+    dependency: transitive
+    description:
+      name: dots_indicator
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   equatable:
     dependency: transitive
     description:
@@ -170,6 +177,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.4"
+  introduction_screen:
+    dependency: "direct main"
+    description:
+      name: introduction_screen
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.8"
   location_permissions:
     dependency: transitive
     description:
