@@ -19,7 +19,10 @@
   - [x] Show message prompting user to add a favorite if there are no favorites
   - [x] Custom names for favorites
 - [x] Ability to search for bus services, routes, and stops (Search page)
-  - [ ] See information for each of the above (done all except for bus routes)
+  - [x] See information for each bus stop
+  - [ ] See information for each bus service
+    - [ ] See a list of routes for each bus service
+  - [ ] See information for each MRT station (unplanned)
 - [x] FAQ page to teach users how to use the app
 - [x] Onboarding (introduction) pages to show how to use the app
 - [x] Third page (settings/options page, should also show tutorial/FAQ on how to use the app)
