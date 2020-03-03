@@ -1,4 +1,4 @@
-import 'package:nextbussg/components/home/confirmation/confirmation_bottom_sheet.dart';
+import 'package:nextbussg/components/home/favorites/confirmation_bottom_sheet.dart';
 import 'package:nextbussg/styles/border_color.dart';
 import 'package:nextbussg/styles/transit_colors.dart';
 import 'package:nextbussg/styles/values.dart';

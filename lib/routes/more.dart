@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nextbussg/components/more/other/other_list.dart';
+import 'package:nextbussg/components/more/more_buttons_list.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/more/settings/settings_list.dart';
 import 'package:nextbussg/components/more/settings/toggle_tile.dart';
@@ -16,7 +16,7 @@ class MorePage extends StatelessWidget {
       SettingsList(),
       Line().sliverToBoxAdapter(),
       Spacing(height: 10).sliver(),
-      OtherList(),
+      MoreButtonsList(),
     ]);
   }
 }
