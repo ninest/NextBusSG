@@ -44,6 +44,9 @@ class RenameFavorites extends StatelessWidget {
                     ),
                     onTap: () => _changeDisplayNameBottomSheet(context, bs.code, bs.name),
                   ).sliverToBoxAdapter(),
+                MarkdownBody(
+                  data: Strings.renameFavoritesPrompt2,
+                ).sliverToBoxAdapter(),
                 // display all favorites
               ],
             );

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:nextbussg/components/buttons/button.dart';
-import 'package:nextbussg/onboarding/page_view_model_template.dart';
-import 'package:nextbussg/tabbed_app.dart';
+import 'package:nextbussg/components/onboarding/page_view_model_template.dart';
 
 class OnboardingView extends StatelessWidget {
   PageViewModel tutorial(BuildContext context) {

@@ -2,6 +2,7 @@ class Strings {
   static final String timingsNotAvailableInfo = "Either these buses are not currently in operation, or the API is under maintainance. Please contact the LTA for further information";
   static final String noFavorites = "No favorites near here. **Long press** or **double tap** a bus number to add it to you favorites.";
   static final String renameFavoritesPrompt = "Tap any of the bus stop names below to change their display name:";
+  static final String renameFavoritesPrompt2 = "Note that you can rename any favorites. Search for them, then press the **Rename** button.";
 
   // confirmation bottom sheets
   static String confirmAddToFavorites(service, code) => "Are you sure you want to **_ADD_** Bus **$service** from **$code** to your favorites?";

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 
 class TransitColors {
-  static final Color green = Colors.green;
-  static final Color yellow = Colors.orange;
-  static final Color red = Colors.red;
+  // load
+  static final Color seats = Colors.green[600];
+  static final Color standing = Colors.orange[600];
+  static final Color limited = Colors.red;
 
   static final Map mrtLineColors = {
     'ew': Colors.green,

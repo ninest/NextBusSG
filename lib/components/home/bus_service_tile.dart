@@ -1,5 +1,6 @@
 import 'package:nextbussg/components/home/confirmation/confirmation_bottom_sheet.dart';
 import 'package:nextbussg/styles/border_color.dart';
+import 'package:nextbussg/styles/transit_colors.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,13 @@ class BusServiceTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
+    // the load can be SEA, SDA, or LSD (green, orange, red)
+    Map loadColors = {
+      "SEA": TransitColors.seats,
+      "SDA": TransitColors.standing,
+      "LSD": TransitColors.limited,
+    };
+
     return Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,13 +40,15 @@ class BusServiceTile extends StatelessWidget {
                 for (var nextBus in busArrival.nextBuses)
                   Text(
                     nextBus.timeInMinutes ?? '-',
-                    style: Theme.of(context).textTheme.display4,
+                    style: Theme.of(context).textTheme.display4.copyWith(
+                          color: loadColors[nextBus.load],
+                        ),
                   )
               ],
             ),
           )
         ],
-      ).padding(all:Values.busServiceTilePadding),
+      ).padding(all: Values.busServiceTilePadding),
     )
         // .backgroundColor(Theme.of(context).primaryColor)
         .border(
@@ -51,16 +60,15 @@ class BusServiceTile extends StatelessWidget {
 
         // margin
         .padding(bottom: 18, horizontal: 18)
-        .gestures(onTap: () {
-
-        },
-        onLongPress: () {
-          // favoritesProvider.addToFavorite(code, service);
-          ConfirmationBottomSheets.confirmAction(context, code, service);
-        },
-        onDoubleTap: () {
-          // favoritesProvider.addToFavorite(code, service);
-          ConfirmationBottomSheets.confirmAction(context, code, service);
-        });
+        .gestures(
+            onTap: () {},
+            onLongPress: () {
+              // favoritesProvider.addToFavorite(code, service);
+              ConfirmationBottomSheets.confirmAction(context, code, service);
+            },
+            onDoubleTap: () {
+              // favoritesProvider.addToFavorite(code, service);
+              ConfirmationBottomSheets.confirmAction(context, code, service);
+            });
   }
 }
