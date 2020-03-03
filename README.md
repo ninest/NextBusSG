@@ -9,6 +9,7 @@
   - [x] Show a list of buses not currently in serivce
   - [x] Show if a bus stop is also an MRT station in the search page
   - [x] Show which all bus stops around the user are also MRT stations (needs help)
+  - [x] Show the load of buses (green for not crowded ...)
   - [ ] Show timings for college buses (NUS, NTU, SUTD, ...), although still need to collect data for these (check out [this](https://github.com/themindstorm/singapore-bus) repository for updates)
 - [x] Ability to save buses at a particular stop as a favorite
   - [x] Confirm user's action of adding/removing from favorites using bottom sheets
@@ -41,6 +42,7 @@ Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore
 - hive
 - hive_flutter
 - geolocator
+- location_permissions
 - styled_widget
 - division
 - flutter_markdown
