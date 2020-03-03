@@ -3,16 +3,17 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nextbussg/components/more/rename_favorites/bottom_sheets.dart';
-import 'package:nextbussg/components/mrt_stations.dart';
-import 'package:nextbussg/extensions.dart';
+import 'package:nextbussg/components/core/mrt_stations.dart';
+import 'package:nextbussg/utils/extensions.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nextbussg/components/buttons/back_button.dart';
-import 'package:nextbussg/components/buttons/button.dart';
+import 'package:nextbussg/components/core/buttons/back_button.dart';
+import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/home/bus_stop_expansion_tile.dart';
 import 'package:nextbussg/components/search/stop_page/stop_servies_overview.dart';
-import 'package:nextbussg/components/title_text.dart';
+import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/styles/values.dart';
+import 'package:nextbussg/utils/url.dart';
 import 'package:nextbussg/widgets/page_template.dart';
 import 'package:nextbussg/widgets/space.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -94,14 +95,9 @@ class StopOverviewPage extends StatelessWidget {
                   text: "Directions to bus stop",
                   fill: true,
                   // iconData: FontAwesomeIcons.directions,
-                  onTap: () async {
+                  onTap: () {
                     String url = "https://maps.apple.com/?q=$lat,$lon";
-                    print(url);
-                    if (await canLaunch(url)) {
-                      await launch(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
+                    openUrl(url);
                   },
                 ).sliverToBoxAdapter()
               ],

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:nextbussg/components/mrt_stations.dart';
+import 'package:nextbussg/components/core/mrt_stations.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
 import 'package:nextbussg/styles/border_color.dart';
 import 'package:nextbussg/styles/values.dart';
+import 'package:nextbussg/utils/route.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 class BusStopSearchResultTile extends StatelessWidget {
@@ -50,14 +51,12 @@ class BusStopSearchResultTile extends StatelessWidget {
           ],
         )
             .padding(
-          horizontal: Values.busStopTileHorizontalPadding,
-          vertical: Values.busStopTileVerticalPadding,
-        )
+              horizontal: Values.busStopTileHorizontalPadding,
+              vertical: Values.busStopTileVerticalPadding,
+            )
             .gestures(
-          onTapDown: (details) {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => StopOverviewPage(code: code,)));
-          },
-        ),
+              onTapDown: (details) => Routing.openRoute(context, StopOverviewPage(code: code)),
+            ),
       ],
     )
         .border(

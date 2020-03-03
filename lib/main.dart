@@ -1,6 +1,6 @@
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
-import 'package:nextbussg/services/provider/favorites.dart';
-import 'package:nextbussg/services/provider/search.dart';
+import 'package:nextbussg/providers/favorites.dart';
+import 'package:nextbussg/providers/search.dart';
 import 'package:nextbussg/styles/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';

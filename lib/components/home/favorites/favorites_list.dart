@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
-import 'package:nextbussg/strings.dart';
+import 'package:nextbussg/utils/route.dart';
+import 'package:nextbussg/utils/strings.dart';
 import 'package:provider/provider.dart';
-import 'package:nextbussg/components/buttons/button.dart';
+import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/home/bus_service_tile.dart';
 import 'package:nextbussg/components/home/favorites/all_favorites_page.dart';
-import 'package:nextbussg/services/provider/favorites.dart';
+import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/widgets/page_template.dart';
 
-import '../../title_text.dart';
+
 import 'package:styled_widget/styled_widget.dart';
 
 import '../bus_stop_expansion_tile.dart';
@@ -71,7 +73,7 @@ class FavoritesBusStopList extends StatelessWidget {
             Theme.of(context).primaryColor,
             () {
               print("Opening all favorites page");
-              Navigator.push(context, MaterialPageRoute(builder: (context) => AllFavoritesPage()));
+              Routing.openRoute(context, AllFavoritesPage());
             },
           ));
         // when it's the all favorites page, the button should be for taking users back
@@ -82,7 +84,7 @@ class FavoritesBusStopList extends StatelessWidget {
             Colors.red,
             () {
               print("Closing favorites page");
-              Navigator.of(context).pop();
+              Routing.closeRoute(context);
             },
           ));
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:nextbussg/styles/text_fields.dart';
 import 'package:nextbussg/widgets/space.dart';
 import 'package:provider/provider.dart';
-import 'package:nextbussg/services/provider/search.dart';
+import 'package:nextbussg/providers/search.dart';
 import 'package:nextbussg/styles/values.dart';
 
 // TODO: change to styled_widget

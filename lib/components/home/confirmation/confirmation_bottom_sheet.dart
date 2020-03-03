@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nextbussg/strings.dart';
+import 'package:nextbussg/utils/strings.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/widgets/bottom_sheet_template.dart';
-import 'package:nextbussg/components/buttons/button.dart';
-import 'package:nextbussg/services/provider/favorites.dart';
+import 'package:nextbussg/components/core/buttons/button.dart';
+import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/widgets/space.dart';
 import 'package:styled_widget/styled_widget.dart';
 

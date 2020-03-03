@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/services/bus.dart';
 import 'package:provider/provider.dart';
-import 'package:nextbussg/components/home/loading/loading_bus_stop_tile.dart';
+import 'package:nextbussg/components/core/loading/loading_bus_stop_tile.dart';
 import 'package:nextbussg/components/search/bus_stop_result_tile.dart';
-import 'package:nextbussg/services/provider/search.dart';
+import 'package:nextbussg/providers/search.dart';
 
 class SearchResultsList extends StatelessWidget {
   @override

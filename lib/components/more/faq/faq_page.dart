@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nextbussg/components/title_text.dart';
-import 'package:nextbussg/extensions.dart';
-import 'package:nextbussg/strings.dart';
+import 'package:nextbussg/components/core/title_text.dart';
+import 'package:nextbussg/utils/extensions.dart';
+import 'package:nextbussg/utils/strings.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/widgets/page_template.dart';
 import 'package:nextbussg/widgets/space.dart';

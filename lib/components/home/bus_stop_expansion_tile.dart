@@ -1,8 +1,9 @@
 import 'package:nextbussg/components/home/timings_not_available.dart';
-import 'package:nextbussg/components/mrt_stations.dart';
+import 'package:nextbussg/components/core/mrt_stations.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/styles/border_color.dart';
+import 'package:nextbussg/utils/route.dart';
 import 'package:styled_widget/styled_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:nextbussg/components/home/bus_service_tile.dart';
@@ -86,8 +87,8 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       contentPadding: EdgeInsets.only(
         left: Values.busStopTileHorizontalPadding,
         right: Values.busStopTileHorizontalPadding,
-        top: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding /2 : 0,
-        bottom: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding /2 : 0,
+        top: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
+        bottom: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
       ),
       child: ExpansionTile(
         title: Column(
@@ -111,12 +112,20 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
         // when it's clicked, open bus stop
         trailing: GestureDetector(
           child: Text(widget.code, style: Theme.of(context).textTheme.display2),
-          onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => StopOverviewPage(
-                        code: widget.code,
-                      ))),
+          onTap: () => Routing.openRoute(
+            context,
+            StopOverviewPage(
+              code: widget.code,
+            ),
+          ),
+          // onTap: () => Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => StopOverviewPage(
+          //       code: widget.code,
+          //     ),
+          //   ),
+          // ),
         ),
 
         // get bus timings only when panel has been opened

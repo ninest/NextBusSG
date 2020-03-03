@@ -6,6 +6,8 @@ import 'package:hive/hive.dart';
 import 'package:nextbussg/models/bus_stop.dart';
 import 'package:nextbussg/services/location.dart';
 
+// TODO: maybe change this to a valuelistenable with Hive rather than ChangeNotifierProvider
+
 class FavoritesProvider extends ChangeNotifier {
   // the favorites list stores the favorites bus stops and their services
   // in the simplified favorites view, only the bus services of each favorite stop are shown

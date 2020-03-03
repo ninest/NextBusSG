@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/components/more/rename_favorites/bottom_sheets.dart';
 import 'package:nextbussg/components/more/tile_button.dart';
-import 'package:nextbussg/components/title_text.dart';
-import 'package:nextbussg/extensions.dart';
-import 'package:nextbussg/services/provider/favorites.dart';
+import 'package:nextbussg/components/core/title_text.dart';
+import 'package:nextbussg/utils/extensions.dart';
+import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
-import 'package:nextbussg/strings.dart';
+import 'package:nextbussg/utils/strings.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/widgets/bottom_sheet_template.dart';
 import 'package:nextbussg/widgets/page_template.dart';
 import 'package:nextbussg/widgets/space.dart';
 
-class RenameFavorites extends StatelessWidget {
+class RenameFavoritesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

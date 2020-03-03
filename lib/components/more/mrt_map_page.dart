@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nextbussg/components/buttons/back_button.dart';
+import 'package:nextbussg/components/core/buttons/back_button.dart';
 import 'package:nextbussg/services/theme.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:photo_view/photo_view.dart';

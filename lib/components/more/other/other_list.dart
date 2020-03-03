@@ -4,6 +4,7 @@ import 'package:nextbussg/components/more/faq/faq_page.dart';
 import 'package:nextbussg/components/more/mrt_map_page.dart';
 import 'package:nextbussg/components/more/tile_button.dart';
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
+import 'package:nextbussg/utils/route.dart';
 
 class OtherList extends StatelessWidget {
   @override
@@ -14,23 +15,17 @@ class OtherList extends StatelessWidget {
           TileButton(
             text: "View MRT map",
             icon: FontAwesomeIcons.train,
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MRTMapPage()));
-            },
+            onTap: () => Routing.openRoute(context, MRTMapPage()),
           ),
           TileButton(
             text: "FAQ",
             icon: FontAwesomeIcons.question,
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => FAQPage()));
-            },
+            onTap: () => Routing.openRoute(context, FAQPage()),
           ),
           TileButton(
             text: "View tutorial",
             icon: FontAwesomeIcons.guitar,
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => OnboardingView()));
-            },
+            onTap: () => Routing.openRoute(context, OnboardingView()),
           ),
         ],
       ),

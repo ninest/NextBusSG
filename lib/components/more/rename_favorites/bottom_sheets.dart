@@ -1,8 +1,8 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nextbussg/components/buttons/button.dart';
-import 'package:nextbussg/extensions.dart';
+import 'package:nextbussg/components/core/buttons/button.dart';
+import 'package:nextbussg/utils/extensions.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/widgets/bottom_sheet_template.dart';
@@ -12,12 +12,15 @@ class RenameFavoritesBottomSheets {
   static bs(context, code, name) {
     String currentName = RenameFavoritesService.getName(code);
     // if there area already is a current name, keep that here
-    TextEditingController controller = TextEditingController(text: currentName == null ? "" : currentName);
+    TextEditingController controller =
+        TextEditingController(text: currentName == null ? "" : currentName);
     return bottomSheetTemplate(
       context,
       210,
       [
-        MarkdownBody(data: "You are renaming **$name** ($code). Enter your custom name: (leave blank to *reset* rename)")
+        MarkdownBody(
+                data:
+                    "You are renaming **$name** ($code). Enter your custom name: (leave blank to *reset* rename)")
             .sliverToBoxAdapter(),
         TextField(
           decoration: InputDecoration(
