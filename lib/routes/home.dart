@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nextbussg/components/core/page_template.dart';
+import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/home/bus_stop_list.dart';
 import 'package:nextbussg/components/home/favorites/favorites_list.dart';
 import 'package:nextbussg/providers/favorites.dart';
-import 'package:nextbussg/widgets/page_template.dart';
-import 'package:nextbussg/widgets/space.dart';
 
 class HomePage extends StatelessWidget {
   // if there are no favorites (in simlified favorites view), the favorites heading should come below near me

@@ -14,8 +14,8 @@ import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/url.dart';
-import 'package:nextbussg/widgets/page_template.dart';
-import 'package:nextbussg/widgets/space.dart';
+import 'package:nextbussg/components/core/page_template.dart';
+import 'package:nextbussg/components/core/space.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class StopOverviewPage extends StatelessWidget {

@@ -5,7 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/components/search/text_box.dart';
 import 'package:nextbussg/components/search/results_list.dart';
 import 'package:nextbussg/components/core/title_text.dart';
-import 'package:nextbussg/widgets/page_template.dart';
+import 'package:nextbussg/components/core/page_template.dart';
 
 class SearchPage extends StatelessWidget {
   @override

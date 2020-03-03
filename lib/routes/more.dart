@@ -4,9 +4,9 @@ import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/more/settings/settings_list.dart';
 import 'package:nextbussg/components/more/settings/toggle_tile.dart';
 import 'package:nextbussg/components/core/title_text.dart';
-import 'package:nextbussg/widgets/line.dart';
-import 'package:nextbussg/widgets/page_template.dart';
-import 'package:nextbussg/widgets/space.dart';
+import 'package:nextbussg/components/core/line.dart';
+import 'package:nextbussg/components/core/page_template.dart';
+import 'package:nextbussg/components/core/space.dart';
 
 class MorePage extends StatelessWidget {
   @override

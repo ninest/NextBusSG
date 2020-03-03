@@ -10,7 +10,7 @@ import 'package:nextbussg/components/home/bus_service_tile.dart';
 import 'package:nextbussg/components/home/favorites/all_favorites_page.dart';
 import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/styles/values.dart';
-import 'package:nextbussg/widgets/page_template.dart';
+import 'package:nextbussg/components/core/page_template.dart';
 
 
 import 'package:styled_widget/styled_widget.dart';

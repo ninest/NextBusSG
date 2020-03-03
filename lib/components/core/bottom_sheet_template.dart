@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:styled_widget/styled_widget.dart';
-import 'package:nextbussg/widgets/page_template.dart';
+import 'package:nextbussg/components/core/page_template.dart';
 
 bottomSheetTemplate(BuildContext context, double height, List children) =>
     showBottomSheet(

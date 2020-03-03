@@ -8,9 +8,9 @@ import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/utils/strings.dart';
 import 'package:nextbussg/styles/values.dart';
-import 'package:nextbussg/widgets/bottom_sheet_template.dart';
-import 'package:nextbussg/widgets/page_template.dart';
-import 'package:nextbussg/widgets/space.dart';
+import 'package:nextbussg/components/core/bottom_sheet_template.dart';
+import 'package:nextbussg/components/core/page_template.dart';
+import 'package:nextbussg/components/core/space.dart';
 
 class RenameFavoritesPage extends StatelessWidget {
   @override

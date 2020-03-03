@@ -24,13 +24,14 @@
 - [x] Third page (settings/options page, should also show tutorial/FAQ on how to use the app)
 - [x] Theme customization 
   - [x] Light/dark theme
-  - [ ] Accent color (unplanned)
-  - [ ] Change font size (unplanned)
+  - [ ] Accent color (unplanned) (might not implement)
+  - [ ] Change font size (unplanned) (might not implement)
 
 ### 🧨 For the future
-- [ ] Tell users how to get to the nearest bus stop (not planned)
-- [ ] Map view to show the nearest bus stops
 - [ ] Graph view for arrival times, rather than just showing numbers (planned, although implementation is difficult)
+- [ ] AR navigation
+- [ ] Tell users how to get to the nearest bus stop (unplanned)
+- [ ] Map view to show the nearest bus stops (unplanned) (might not implement)
 
 ## 🛠 Data
 Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore-bus) for a detailed guide on how the data was scraped. The data is copyrighted by LTA.

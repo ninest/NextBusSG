@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nextbussg/components/core/buttons/back_button.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/styles/values.dart';
-import 'package:nextbussg/widgets/space.dart';
+import 'package:nextbussg/components/core/space.dart';
 
 import 'package:styled_widget/styled_widget.dart';
 

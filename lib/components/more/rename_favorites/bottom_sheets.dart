@@ -5,8 +5,8 @@ import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
-import 'package:nextbussg/widgets/bottom_sheet_template.dart';
-import 'package:nextbussg/widgets/space.dart';
+import 'package:nextbussg/components/core/bottom_sheet_template.dart';
+import 'package:nextbussg/components/core/space.dart';
 
 class RenameFavoritesBottomSheets {
   static bs(context, code, name) {

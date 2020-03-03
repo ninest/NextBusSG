@@ -5,8 +5,8 @@ import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/utils/strings.dart';
 import 'package:nextbussg/styles/values.dart';
-import 'package:nextbussg/widgets/page_template.dart';
-import 'package:nextbussg/widgets/space.dart';
+import 'package:nextbussg/components/core/page_template.dart';
+import 'package:nextbussg/components/core/space.dart';
 
 class FAQPage extends StatelessWidget {
   @override

@@ -18,11 +18,9 @@ class SettingsList extends StatelessWidget {
             title: "Enable dark theme",
             icon: FontAwesomeIcons.moon,
             isSwitched: theme == 'dark' ? true : false,
-            onChange: (bool value) {
-              // even though it is a switch and not a button, we can just toggle because
-              // the isSwitced value is being set accordinly
-              ThemeService.toggleTheme();
-            },
+            // even though it is a switch and not a button, we can just toggle because
+            // the isSwitced value is being set accordinly
+            onChange: (bool value) => ThemeService.toggleTheme(),
           ),
           TileButton(
             text: "Rename favorites",
