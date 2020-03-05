@@ -1,9 +1,9 @@
 
 <h1 align="center"> 
-  🚍 NextBus SG – Bus arrivals and information 
+  🚍 NextBus SG
 </h1>
 
-> An app to show everything bus related in Singapore, including arrival times and a directory, with extra features
+> An app to show everything bus related in Singapore, including **bus arrival times** and a **directory**, with **extra features**
 
 <!-- ![badge](https://img.shields.io/badge/Made%20With-Flutter-blue?style=for-the-badge) -->
 
