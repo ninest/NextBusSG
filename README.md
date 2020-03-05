@@ -9,9 +9,9 @@
 
 ## 🎆 Gallery (WIP)
 
-| UI | Description |
-| - | - |
+<!-- | UI | Description | -->
 | | **Onboarding screen** |
+| - | - |
 | | **Main page**, where users see a list of bus stops near them (and favorites), and see their respective bus arrival timings |
 | | All **favorites page** |
 | | **Search page** |
