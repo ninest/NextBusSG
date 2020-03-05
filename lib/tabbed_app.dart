@@ -12,11 +12,8 @@ class TabbedApp extends StatefulWidget {
 
 class TabbedAppState extends State<TabbedApp> {
   int _selectedIndex = 0;
-  static List<Widget> _tabViews = <Widget>[
-    HomePage(),
-    SearchPage(),
-    MorePage(),
-  ];
+  static List<Widget> _tabViews = <Widget>[HomePage(), SearchPage(), MorePage()];
+
   static const List<BottomNavigationBarItem> _tabs = <BottomNavigationBarItem>[
     BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.compass), title: Text('Main')),
     BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.search), title: Text('Search')),
@@ -24,9 +21,7 @@ class TabbedAppState extends State<TabbedApp> {
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    setState(() => _selectedIndex = index);
   }
 
   @override
@@ -43,7 +38,6 @@ class TabbedAppState extends State<TabbedApp> {
           items: _tabs,
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
-
           unselectedIconTheme: IconThemeData(size: 26),
           selectedIconTheme: IconThemeData(size: 28),
         ),

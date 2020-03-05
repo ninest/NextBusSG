@@ -52,7 +52,7 @@ class MainApp extends StatelessWidget {
 
         Widget home = TabbedApp();
         if (firstLaunch) {
-          // set firstLaunch to false
+          // set firstLaunch to false so that the onboarding view does not show
           home = OnboardingView();
         }
 

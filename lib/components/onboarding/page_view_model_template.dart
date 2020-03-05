@@ -8,7 +8,6 @@ PageViewModel pageViewModelTemplate(
   Color endColor, {
   image,
   bool dark=false,
-  bool freeze=false,
   Widget footer
 }) =>
     PageViewModel(

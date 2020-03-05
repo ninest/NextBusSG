@@ -73,6 +73,7 @@ class OnboardingView extends StatelessWidget {
       onDone: () => _finish(),
       done: Text("Done"),
       skip: Text("Skip"),
+      next: Text("Next"),
       onSkip: () => _finish(),
       freeze: true,
     );
