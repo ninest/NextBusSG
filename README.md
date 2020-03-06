@@ -10,7 +10,7 @@
 ## 🎆 Gallery (WIP)
 
 <!-- | UI | Description | -->
-| | **Onboarding screen** |
+| | **Onboarding screen**, where the user is asked for the location permission |
 | - | - |
 | | **Main page**, where users see a list of bus stops near them (and favorites), and see their respective bus arrival timings |
 | | All **favorites page** |

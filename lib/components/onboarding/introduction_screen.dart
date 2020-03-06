@@ -3,6 +3,9 @@ import 'package:hive/hive.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/onboarding/page_view_model_template.dart';
+import 'package:nextbussg/providers/onboarding.dart';
+import 'package:nextbussg/utils/location_perms.dart';
+import 'package:provider/provider.dart';
 
 class OnboardingView extends StatelessWidget {
   PageViewModel tutorial(BuildContext context) {
@@ -14,8 +17,8 @@ class OnboardingView extends StatelessWidget {
       image: Image.asset('assets/onboard/1.png'),
       footer: Button(
         text: "Grant location access",
-        onTap: () => {}
-      )
+        onTap: () => _requestLocationAccess(context),
+      ),
     );
   }
 
@@ -60,8 +63,24 @@ class OnboardingView extends StatelessWidget {
     );
   }
 
+  _requestLocationAccess(context) async {
+    print('Location button pressed');
+
+    OnboardingProvider onboardingProvider = Provider.of<OnboardingProvider>(context, listen: false);
+    bool perm = await LocationPerms.checkPermissionStatus();
+    // if perm is true, unfreeze the onboarding screen
+    if (perm) {
+      onboardingProvider.freeze = false;
+    } else {
+      // ask for permission
+      perm = await LocationPerms.requestPermission();
+      print(perm);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    OnboardingProvider onboardingProvider = Provider.of<OnboardingProvider>(context, listen: true);
     return IntroductionScreen(
       pages: [
         tutorial(context),
@@ -71,11 +90,15 @@ class OnboardingView extends StatelessWidget {
         more(context),
       ],
       onDone: () => _finish(),
-      done: Text("Done"),
+      done: Container(
+        child: Text("Done"),
+        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 19.0),
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0)),
+      ),
       skip: Text("Skip"),
-      next: Text("Next"),
+      // next: Text("Next"),
       onSkip: () => _finish(),
-      freeze: true,
+      freeze: onboardingProvider.freeze,
     );
   }
 
