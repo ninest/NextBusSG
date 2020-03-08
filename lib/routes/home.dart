@@ -1,56 +1,59 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nextbussg/components/core/location_access_button.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
-import 'package:nextbussg/components/home/bus_stop_list.dart';
-import 'package:nextbussg/components/home/favorites/favorites_list.dart';
-import 'package:nextbussg/providers/favorites.dart';
+import 'package:nextbussg/components/core/title_text.dart';
+import 'package:nextbussg/styles/values.dart';
+import 'package:nextbussg/utils/extensions.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-class HomePage extends StatelessWidget {
-  // if there are no favorites (in simlified favorites view), the favorites heading should come below near me
-  // if there are in SFV, put favorites at the top
-  Future order(BuildContext context) async {
-    Widget nearMe =
-        BusStopList(title: 'NEAR ME', iconData: FontAwesomeIcons.locationArrow);
-    Widget favoritesComponent({int favoritesNotShown=0}) => FavoritesBusStopList(
-        title: 'FAVORITES', iconData: FontAwesomeIcons.heart, simplified: true, favoritesNotShown: favoritesNotShown);
-    List<Widget> widgetOrder = [
-      favoritesComponent(),
-      Spacing(height: 40).sliver(),
-      nearMe
-    ];
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
 
-    // if there are no favorites, swap the position of favorites and near me
-    List favorites = await FavoritesProvider.getFavorites(simplified: true);
-    if (favorites.isEmpty) {
-      // even if the SF list is empty, there may be bus stops which are not near us. That's why 
-      // we check if the list is empty, then check the ACTUAL amount of favorites
-      // if it's more than 0, it means that it's not showing
+class _HomePageState extends State<HomePage> {
+  PermissionStatus _status;
+  List<Widget> _widgetOrder = [Text('Loading ...').sliverToBoxAdapter()];
 
-      // so just to make it clear to the user, display a message:
-      // You have 3 favorites, which are not near you.
-
-      var noFavorites = (await FavoritesProvider.getFavorites(simplified: false)).length;
-      widgetOrder = [nearMe, Spacing(height: 40).sliver(), favoritesComponent(favoritesNotShown: noFavorites)];
-    }
-
-    return widgetOrder;
+  @override
+  void initState() {
+    super.initState();
+    PermissionHandler()
+        .checkPermissionStatus(PermissionGroup.locationWhenInUse)
+        .then(_updateStatus);
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: order(context),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return PageTemplate(
-          children: [
-            if (!snapshot.hasData)
-              SliverToBoxAdapter(child: Text("Loading"))
-            else
-              ...snapshot.data
-          ],
-        );
-      },
-    );
+    return PageTemplate(children: [..._widgetOrder]);
+  }
+
+  Future _updateStatus(PermissionStatus status) {
+    print("Current permission status: $status");
+
+    if (status != PermissionStatus.granted) {
+      // permission not granted or unknwon
+      _widgetOrder = [
+        TitleText(
+          title: "Location permission required ...",
+        ).sliverToBoxAdapter(),
+
+        Spacing(height: Values.marginBelowTitle).sliver(),
+
+        Text("We require your location to find all the bus stops nearby!").sliverToBoxAdapter(),
+
+        Spacing(height: Values.marginBelowTitle).sliver(),
+
+        LocationAccessButton().sliverToBoxAdapter(),
+      ];
+      setState(() {});
+    } else {
+      // permission granted, show UI
+      _widgetOrder = [Text('Thanks for the permission').sliverToBoxAdapter()];
+      setState(() {});
+    }
   }
 }

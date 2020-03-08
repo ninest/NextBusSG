@@ -29,4 +29,7 @@ There are two ways:
   - Either tap the bus service tile's 5-digit code (ex: 84009), or
   - Search for the bus stop in the search page, tap on the results to see more information
   """;
+
+  static final String locationPermissionNotGiven = "Location permissions required to see bus stops nearby.";
+  static final String locationPermissionDenied = "You denied access to location services; Opening settings ...";
 }

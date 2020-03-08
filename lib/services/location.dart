@@ -2,8 +2,7 @@ import 'package:geolocator/geolocator.dart';
 
 class LocationServices {
   static Future<Position> getLocation() async {
-    Position position = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     return position;
   }
 
@@ -14,6 +13,4 @@ class LocationServices {
         point2.latitude,
         point2.longitude,
       );
-  
-  
 }

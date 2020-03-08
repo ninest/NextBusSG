@@ -1,6 +1,5 @@
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
 import 'package:nextbussg/providers/favorites.dart';
-import 'package:nextbussg/providers/onboarding.dart';
 import 'package:nextbussg/providers/search.dart';
 import 'package:nextbussg/styles/theme.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +30,6 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<FavoritesProvider>(create: (_) => FavoritesProvider()),
         ChangeNotifierProvider<SearchProvider>(create: (_) => SearchProvider()),
-        ChangeNotifierProvider<OnboardingProvider>(create: (_) => OnboardingProvider())
       ],
       child: MainApp(),
     );
@@ -42,7 +40,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      // to change theme
+      // to change theme and put away onboarding screen
       valueListenable: Hive.box('settings').listenable(),
       builder: (context, box, widget) {
         var theme = box.get('theme', defaultValue: 'light');
@@ -52,11 +50,14 @@ class MainApp extends StatelessWidget {
         bool firstLaunch = settingsBox.get('first_launch', defaultValue: true);
         print("This is the first launch? $firstLaunch");
 
-        Widget home = TabbedApp();
+        Widget home;
         if (firstLaunch) {
           // set firstLaunch to false so that the onboarding view does not show
           home = OnboardingView();
-        }
+        } else
+          home = TabbedApp();
+        
+        print('Going to show $home');
 
         return BotToastInit(
           child: MaterialApp(

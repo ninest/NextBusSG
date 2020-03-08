@@ -45,6 +45,7 @@
 - [x] Third page (settings/options page, should also show tutorial/FAQ on how to use the app)
 - [x] Theme customization 
   - [x] Light/dark theme
+    - [ ] Change status bar text color depending on theme
   - [ ] Accent color (unplanned) (~~might not implement~~) (only blue, green, and light blue)
   - [ ] Change font size (unplanned) (might not implement)
 
