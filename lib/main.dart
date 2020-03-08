@@ -41,23 +41,20 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       // to change theme and put away onboarding screen
-      valueListenable: Hive.box('settings').listenable(),
+      valueListenable: Hive.box('settings').listenable(keys: ['theme']),
       builder: (context, box, widget) {
         var theme = box.get('theme', defaultValue: 'light');
 
         // check if this is the first time using the app
         var settingsBox = Hive.box('settings');
         bool firstLaunch = settingsBox.get('first_launch', defaultValue: true);
-        print("This is the first launch? $firstLaunch");
 
         Widget home;
-        if (firstLaunch) {
-          // set firstLaunch to false so that the onboarding view does not show
+        // set firstLaunch to false so that the onboarding view does not show
+        if (firstLaunch)
           home = OnboardingView();
-        } else
+        else
           home = TabbedApp();
-        
-        print('Going to show $home');
 
         return BotToastInit(
           child: MaterialApp(

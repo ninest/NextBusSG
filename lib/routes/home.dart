@@ -18,6 +18,13 @@ class _HomePageState extends State<HomePage> {
   PermissionStatus _status;
   List<Widget> _widgetOrder = [Text('Loading ...').sliverToBoxAdapter()];
 
+  // homePage widgetOrder
+  List<Widget> order() {
+    return [
+      Text('Near me, ...').sliverToBoxAdapter(),
+    ];
+  }
+
   @override
   void initState() {
     super.initState();
@@ -36,24 +43,38 @@ class _HomePageState extends State<HomePage> {
 
     if (status != PermissionStatus.granted) {
       // permission not granted or unknwon
-      _widgetOrder = [
-        TitleText(
-          title: "Location permission required ...",
-        ).sliverToBoxAdapter(),
+      setState(() {
+        _widgetOrder = [
+          TitleText(
+            title: "Location permission required ...",
+          ).sliverToBoxAdapter(),
 
-        Spacing(height: Values.marginBelowTitle).sliver(),
+          Spacing(height: Values.marginBelowTitle).sliver(),
 
-        Text("We require your location to find all the bus stops nearby!").sliverToBoxAdapter(),
+          Text("We require your location to find all the bus stops nearby!").sliverToBoxAdapter(),
 
-        Spacing(height: Values.marginBelowTitle).sliver(),
+          Spacing(height: Values.marginBelowTitle).sliver(),
 
-        LocationAccessButton().sliverToBoxAdapter(),
-      ];
-      setState(() {});
+          // LocationAccessButton().sliverToBoxAdapter(),
+          _locationButton(),
+        ];
+      });
     } else {
       // permission granted, show UI
-      _widgetOrder = [Text('Thanks for the permission').sliverToBoxAdapter()];
-      setState(() {});
+      print('permission gratned');
+
+      setState(() {
+        _widgetOrder = [Text('Thanks for the permission').sliverToBoxAdapter()];
+      });
     }
+  }
+
+  Widget _locationButton() {
+    return GestureDetector(
+      child: LocationAccessButton(),
+      onTapDown: (a) {
+        print('test');
+      },
+    ).sliverToBoxAdapter();
   }
 }
