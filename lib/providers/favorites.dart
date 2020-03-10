@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hive/hive.dart';
 import 'package:nextbussg/models/bus_stop.dart';
+import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/services/location.dart';
+import 'package:provider/provider.dart';
 
 // TODO: maybe change this to a valuelistenable with Hive rather than ChangeNotifierProvider
 
@@ -13,7 +15,7 @@ class FavoritesProvider extends ChangeNotifier {
   // in the simplified favorites view, only the bus services of each favorite stop are shown
   // the arrival timings of these buses are shown if the user is near the bus stop
 
-  addToFavorite(String code, String service) {
+  addToFavorite(context, String code, String service) {
     var box = Hive.box('favorites');
 
     List prevFavorites = box.get(code, defaultValue: []);
@@ -27,6 +29,9 @@ class FavoritesProvider extends ChangeNotifier {
       if (prevFavorites.isEmpty) {
         box.delete(code);
         notifyListeners();
+
+        // rebuild home
+        // Provider.of<HomeRebuilderProvider>(context, listen: false).rebuild();
 
         // breaking out
         return;
@@ -49,6 +54,9 @@ class FavoritesProvider extends ChangeNotifier {
 
     // made sure widgets are rebuilt
     notifyListeners();
+
+    // // rebuild home page
+    // Provider.of<HomeRebuilderProvider>(context, listen: false).rebuild();
   }
 
   static bool alreadyInFavorites(String code, String service) {
@@ -81,8 +89,7 @@ class FavoritesProvider extends ChangeNotifier {
         // only add to SFV if bus stop near here.
         Position currentPosition = await LocationServices.getLocation();
         Position busStopPosition = busStop.position;
-        double distance = await LocationServices.distanceBetween(
-            currentPosition, busStopPosition);
+        double distance = await LocationServices.distanceBetween(currentPosition, busStopPosition);
 
         if (distance < 600) {
           // we only want to show the bus service (number) which has been favorited

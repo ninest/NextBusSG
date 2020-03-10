@@ -69,7 +69,7 @@ class ConfirmationBottomSheets {
                   iconData: FontAwesomeIcons.check,
                   color: Colors.indigo,
                   onTap: () {
-                    favoritesProvider.addToFavorite(code, service);
+                    favoritesProvider.addToFavorite(context, code, service);
                     closeBottomSheet(context);
                     // TODO: show toast to show confirmation
                   },

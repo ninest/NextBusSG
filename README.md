@@ -43,6 +43,8 @@
 - [x] FAQ page to teach users how to use the app
 - [x] Onboarding (introduction) pages to show how to use the app
 - [x] Third page (settings/options page, should also show tutorial/FAQ on how to use the app)
+- [x] Request user location permission on app start
+  - [x] Display button to open settings if location permissions denied
 - [x] Theme customization 
   - [x] Light/dark theme
     - [ ] Change status bar text color depending on theme

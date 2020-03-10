@@ -10,6 +10,7 @@ import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/components/home/bus_stop_list.dart';
 import 'package:nextbussg/components/home/favorites/favorites_list.dart';
 import 'package:nextbussg/providers/favorites.dart';
+import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/providers/locationPerms.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/extensions.dart';
@@ -18,7 +19,6 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-
   List<Widget> noLocationAccess(context) {
     final LocationPermissionsProvider locationPermissionsProvider =
         Provider.of<LocationPermissionsProvider>(context, listen: false);
@@ -58,6 +58,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final LocationPermissionsProvider locationPermissionsProvider =
         Provider.of<LocationPermissionsProvider>(context, listen: true);
+    
+    // this is just to rebuild the home page when a favorite is added/removed
+    final HomeRebuilderProvider homeRebuilderProvider =
+        Provider.of<HomeRebuilderProvider>(context, listen: true);
 
     print("Home widget rebuilt.");
 
@@ -108,6 +112,4 @@ class HomePage extends StatelessWidget {
     }
     return widgetOrder;
   }
-
 }
-
