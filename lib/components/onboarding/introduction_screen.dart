@@ -14,7 +14,7 @@ class OnboardingView extends StatelessWidget {
       "Tap on any bus stop to see a list of bus services and timings. To see bus stops around you, location access is required.",
       Colors.white, //Color(0xFF920077),
       image: Image.asset('assets/onboard/1.png'),
-      footer: LocationAccessButton()
+      // footer: LocationAccessButton()
     );
   }
 

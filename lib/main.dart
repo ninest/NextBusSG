@@ -1,5 +1,6 @@
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
 import 'package:nextbussg/providers/favorites.dart';
+import 'package:nextbussg/providers/locationPerms.dart';
 import 'package:nextbussg/providers/search.dart';
 import 'package:nextbussg/styles/theme.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<FavoritesProvider>(create: (_) => FavoritesProvider()),
         ChangeNotifierProvider<SearchProvider>(create: (_) => SearchProvider()),
+        ChangeNotifierProvider<LocationPermissionsProvider>(create: (_) => LocationPermissionsProvider()), 
       ],
       child: MainApp(),
     );
