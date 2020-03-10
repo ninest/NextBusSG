@@ -20,3 +20,19 @@ class LocationAccessButton extends StatelessWidget {
     );
   }
 }
+
+
+class OpenLocationSettingsButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final LocationPermissionsProvider locationPermissionsProvider =
+        Provider.of<LocationPermissionsProvider>(context, listen: false);
+    return Button(
+      text: "Open location settings",
+      color: Theme.of(context).errorColor,
+      onTap: () {
+        locationPermissionsProvider.openLocationSettings();
+      },
+    );
+  }
+}

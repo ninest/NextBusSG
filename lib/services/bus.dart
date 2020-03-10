@@ -63,16 +63,24 @@ class BusService extends ChangeNotifier {
         headers: {'AccountKey': apiKey, 'accept': 'application/json'});
     Map data = json.decode(response.body);
 
+    print("\nAPI HERE:");
+    print(data);
+    print("\n");
+
     List<BusArrival> busArrivalList = [];
     for (var eachService in data['Services']) {
       BusArrival busArrival = BusArrival.fromJson(eachService);
 
       // remove buses that have already arrived and left
-      if (busArrival.nextBuses[0].timeInMinutes.contains('-')) {
+      try {
+        if (busArrival.nextBuses[0].timeInMinutes.contains('-')) {
         // removing the negative time, 
         busArrival.nextBuses.removeAt(0);
         // and adding a placeholder timing (which is empty)
         busArrival.nextBuses.add(NextBus(timeInMinutes: null, load: null, feature: null));
+      }
+      } catch(e) {
+        print("Error in removing buses ($stopCode, $eachService) that have already left: $e");
       }
 
       busArrivalList.add(busArrival);

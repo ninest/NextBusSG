@@ -1,4 +1,6 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:nextbussg/utils/strings.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class LocationPermissionsProvider extends ChangeNotifier {
@@ -25,14 +27,30 @@ class LocationPermissionsProvider extends ChangeNotifier {
     );
   }
 
+  bool _permDenied = false;
+  bool get permDenied => _permDenied;
+
   void requestPermission() {
     PermissionHandler().requestPermissions([PermissionGroup.locationWhenInUse]).then(
       (Map<PermissionGroup, PermissionStatus> statuses) {
         final status = statuses[PermissionGroup.locationWhenInUse];
         print("Requested location perm.");
         print("Result: $status");
+
+        if (status == PermissionStatus.denied) {
+          print("Denied location access, show go to settings button");
+          BotToast.showText(text: Strings.locationPermissionDenied, contentColor: Colors.red);
+
+          _permDenied = true;
+        }
+
         notifyListeners();
       },
     );
+  }
+
+
+  void openLocationSettings() {
+    PermissionHandler().openAppSettings();
   }
 }

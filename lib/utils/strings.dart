@@ -11,6 +11,12 @@ class Strings {
   // bus stops list
   static final String noStopsNearby = "No bus stops nearby";
 
+  // location permissions
+  static final String locationPermissionNotGiven = "Location permissions required to see bus stops nearby.";
+  static final String locationPermissionDenied = "Please open the settings to enable location permission.";
+  static final String cannotShowNearByStops = "Please enable location permissions to see bus stops near by.";
+  static final String afterEnablePermision = 'After enabling location permissions in the settings, tap the "Grant location access" button again.';
+
   static final String faqText = """
 # 1. How do I add or remove favorites?
 - **Double tap** or **Long press** on any bus service tile, 
@@ -29,7 +35,4 @@ There are two ways:
   - Either tap the bus service tile's 5-digit code (ex: 84009), or
   - Search for the bus stop in the search page, tap on the results to see more information
   """;
-
-  static final String locationPermissionNotGiven = "Location permissions required to see bus stops nearby.";
-  static final String locationPermissionDenied = "You denied access to location services; Opening settings ...";
 }

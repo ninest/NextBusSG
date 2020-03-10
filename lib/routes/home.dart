@@ -13,27 +13,43 @@ import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/providers/locationPerms.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/extensions.dart';
+import 'package:nextbussg/utils/strings.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  final List<Widget> noLocationAccess = [
-    TitleText(
-      title: "One more step ...",
-    ).sliverToBoxAdapter(),
-    Spacing(height: Values.marginBelowTitle).sliver(),
-    Text("We require your location to find all the bus stops near you!").sliverToBoxAdapter(),
-    Spacing(height: Values.marginBelowTitle).sliver(),
-    LocationAccessButton().sliverToBoxAdapter()
-  ];
-  // final List<Widget> yesLocationAccess = [
-  //   Text("Thank you!").sliverToBoxAdapter(),
-  // ];
+
+  List<Widget> noLocationAccess(context) {
+    final LocationPermissionsProvider locationPermissionsProvider =
+        Provider.of<LocationPermissionsProvider>(context, listen: false);
+
+    return [
+      TitleText(
+        title: "One more step ...",
+      ).sliverToBoxAdapter(),
+      Spacing(height: Values.marginBelowTitle).sliver(),
+      Text("We require your location to find all the bus stops near you!").sliverToBoxAdapter(),
+      Spacing(height: Values.marginBelowTitle).sliver(),
+      LocationAccessButton().sliverToBoxAdapter(),
+      Spacing(height: Values.marginBelowTitle).sliver(),
+      if (locationPermissionsProvider.permDenied) ...[
+        Text(Strings.locationPermissionDenied).sliverToBoxAdapter(),
+        Spacing(height: Values.marginBelowTitle).sliver(),
+        OpenLocationSettingsButton().sliverToBoxAdapter(),
+        Spacing(height: Values.marginBelowTitle).sliver(),
+        Text(Strings.afterEnablePermision).sliverToBoxAdapter(),
+      ]
+    ];
+  }
+
   Widget yesLocationAccess(context) => FutureBuilder(
         future: order(context),
         builder: (context, snapshot) {
           return PageTemplate(children: [
-            if (!snapshot.hasData) Text("Loading bus stops").sliverToBoxAdapter() else ...snapshot.data,
+            if (!snapshot.hasData)
+              Text("Loading bus stops").sliverToBoxAdapter()
+            else
+              ...snapshot.data,
           ]);
         },
       );
@@ -48,21 +64,10 @@ class HomePage extends StatelessWidget {
     return FutureBuilder(
       future: locationPermissionsProvider.getBoolPermissionStatus,
       builder: (context, snapshot) {
-        // if (snapshot.hasData) {
-        //   if (snapshot.data == true)
-        //     // location access given
-        //     return yesLocationAccess(context);
-        //   else
-        //     // no location access givenƒ
-        //     return Text('no loc');
-        // } else {
-        //   return Text('no data');
-        // }
-        if (snapshot.hasData)
-          if (snapshot.data == true)
-            return yesLocationAccess(context);
-          else
-            return PageTemplate(children: noLocationAccess);
+        if (snapshot.hasData) if (snapshot.data == true)
+          return yesLocationAccess(context);
+        else
+          return PageTemplate(children: noLocationAccess(context));
         else
           return Text("Loading");
       },
@@ -103,84 +108,6 @@ class HomePage extends StatelessWidget {
     }
     return widgetOrder;
   }
+
 }
 
-// class HomePage extends StatefulWidget {
-//   @override
-//   _HomePageState createState() => _HomePageState();
-// }
-
-// class _HomePageState extends State<HomePage> {
-//   PermissionStatus _status;
-//   List<Widget> _widgetOrder = [Text('Loading ...').sliverToBoxAdapter()];
-
-//   // homePage widgetOrder
-//   List<Widget> order() {
-//     return [
-//       Text('Near me, ...').sliverToBoxAdapter(),
-//     ];
-//   }
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _checkStatus();
-//   }
-
-//   void _checkStatus() {
-//     PermissionHandler()
-//         .checkPermissionStatus(PermissionGroup.locationWhenInUse)
-//         .then(_updateStatus);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return PageTemplate(children: [..._widgetOrder]);
-//   }
-
-//   Future _updateStatus(PermissionStatus status) {
-//     print("Current permission status: $status");
-//     // _status = status;
-
-//     if (status != PermissionStatus.granted) {
-//       // permission not granted or unknwon
-//       setState(() {
-//         _widgetOrder = [
-//           TitleText(
-//             title: "Location permission required ...",
-//           ).sliverToBoxAdapter(),
-
-//           Spacing(height: Values.marginBelowTitle).sliver(),
-
-//           Text("We require your location to find all the bus stops nearby!").sliverToBoxAdapter(),
-
-//           Spacing(height: Values.marginBelowTitle).sliver(),
-
-//           // LocationAccessButton().sliverToBoxAdapter(),
-//           _locationButton(),
-//         ];
-//       });
-//     } else {
-//       // permission granted, show UI
-//       print('permission gratned');
-
-//       setState(() {
-//         _widgetOrder = [Text('Thanks for the permission').sliverToBoxAdapter()];
-//       });
-//     }
-//   }
-
-//   Widget _locationButton() {
-//     return GestureDetector(
-//       child: Text('Grant location access'),
-//       onTap: () {
-//         print('acesing loc');
-//         LocationAccessButton().requestLocationAccess(context).then(
-//           setState(() {
-//             _widgetOrder = [Text('butt orese').sliverToBoxAdapter()];
-//           }),
-//         );
-//       },
-//     ).sliverToBoxAdapter();
-//   }
-// }
