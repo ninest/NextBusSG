@@ -53,7 +53,6 @@ class BusServiceTile extends StatelessWidget {
         bottom: 0,
       ),
     )
-        // .backgroundColor(Theme.of(context).primaryColor)
         .border(
           // all: 2,
           // bottom: 2,
@@ -66,14 +65,9 @@ class BusServiceTile extends StatelessWidget {
         // margin
         .padding(bottom: 18, horizontal: 18)
         .gestures(
-            onTap: () {},
-            onLongPress: () {
-              // favoritesProvider.addToFavorite(code, service);
-              ConfirmationBottomSheets.confirmAction(context, code, service);
-            },
-            onDoubleTap: () {
-              // favoritesProvider.addToFavorite(code, service);
-              ConfirmationBottomSheets.confirmAction(context, code, service);
-            });
+          onTap: () => ConfirmationBottomSheets.confirmAction(context, code, service),
+          onLongPress: () => ConfirmationBottomSheets.confirmAction(context, code, service),
+          onDoubleTap: () => ConfirmationBottomSheets.confirmAction(context, code, service),
+        );
   }
 }

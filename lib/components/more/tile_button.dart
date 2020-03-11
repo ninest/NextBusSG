@@ -13,13 +13,6 @@ class TileButton extends StatelessWidget {
     // otherwise show row
     Widget child = Row(
       children: <Widget>[
-        // Expanded(
-        //   child: Icon(
-        //     icon,
-        //     color: Theme.of(context).textTheme.display1.color,
-        //   ),
-        //   flex: 1,
-        // ),
         Padding(
           padding: EdgeInsets.only(right: 15.0),
           child: Icon(
@@ -37,13 +30,18 @@ class TileButton extends StatelessWidget {
       ],
     );
 
-    return Padding(
-      // these seem to need more padding, not entirely sure why
-      padding: EdgeInsets.only(bottom: Values.marginBelowTitle * 1.7),
-      child: GestureDetector(
+    return InkWell(
+      child: Container(
+        // these seem to need more padding, not entirely sure why
+        padding: EdgeInsets.only(
+          top: Values.marginBelowTitle,
+          bottom: Values.marginBelowTitle,
+        ),
         child: child,
-        onTap: () => onTap(),
       ),
+      enableFeedback: true,
+      borderRadius: BorderRadius.circular(Values.borderRadius),
+      onTap: () => onTap(),
     );
   }
 }

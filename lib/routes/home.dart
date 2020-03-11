@@ -79,14 +79,14 @@ class HomePage extends StatelessWidget {
   }
 
   Widget simplifiedFavoritesView({int favoritesNotShown = 0}) => FavoritesBusStopList(
-        title: 'Favorites',
+        title: Strings.simplifiedFavoritesTitle.toUpperCase(),
         iconData: FontAwesomeIcons.heart,
         simplified: true,
         favoritesNotShown: favoritesNotShown,
       );
 
   Future order(context) async {
-    Widget nearMe = BusStopList(title: 'NEAR ME', iconData: FontAwesomeIcons.locationArrow);
+    Widget nearMe = BusStopList(title: Strings.nearMeTitle.toUpperCase(), iconData: FontAwesomeIcons.locationArrow);
 
     // if there are no favorites (in simlified favorites view), the favorites heading should come below near me
     // if there are in SFV, put favorites at the top

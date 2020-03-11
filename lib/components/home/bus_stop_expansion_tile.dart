@@ -163,10 +163,12 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
     // this function also populates the variable "servicesNotInOperation"
     List<BusArrival> newList = await BusService.getBusTimings(widget.code);
 
-    setState(() {
-      // the var servicesNotInOperation is not mentioned here because it is not required (? need better explanation ...)
-      busArrivalList = newList;
-    });
+    // make sure widget not siposed before calling setstate
+    if (mounted)
+      setState(() {
+        // the var servicesNotInOperation is not mentioned here because it is not required (? need better explanation ...)
+        busArrivalList = newList;
+      });
   }
 
   _addToFavorites() {

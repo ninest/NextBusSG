@@ -8,15 +8,20 @@ import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/components/core/line.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
+import 'package:nextbussg/utils/strings.dart';
 
 class MorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageTemplate(children: [
-      TitleText(title: 'MORE').sliverToBoxAdapter(),
+      TitleText(title: Strings.moreTitle.toUpperCase()).sliverToBoxAdapter(),
+      Spacing(height: Values.marginBelowTitle).sliver(),
       SettingsList(),
+
+      Spacing(height: Values.marginBelowTitle).sliver(),
       Line().sliverToBoxAdapter(),
-      Spacing(height: Values.marginBelowTitle * 1.3).sliver(),
+      Spacing(height: Values.marginBelowTitle).sliver(),
+      
       MoreButtonsList(),
     ]);
   }

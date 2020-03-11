@@ -20,6 +20,7 @@ class PageTemplate extends StatelessWidget {
         slivers: <Widget>[
           // if (showBackButton)
           if (showBackButton) ...[
+            Spacing(height: Values.marginBelowTitle).sliver(),
             AppBackButton().sliverToBoxAdapter(),
             Spacing(height: Values.marginBelowTitle).sliver()
           ] else

@@ -15,7 +15,15 @@ class Button extends StatelessWidget {
     // set default color
     color = color ?? Theme.of(context).primaryColor;
 
-    return GestureDetector(
+    return InkWell(
+      borderRadius: BorderRadius.circular(
+        // needed for ripple not to exceed
+        // there should be a way to only set border radius once though
+        Values.borderRadius * 0.5,
+      ),
+
+      // make sure that even when the button is being tapped, it's readable
+      splashColor: color.withOpacity(0.3),
       child: Container(
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
@@ -30,16 +38,16 @@ class Button extends StatelessWidget {
           children: <Widget>[
             if (!(iconData == null))
               Icon(
-                  iconData,
-                  color: fill ? Colors.white : color,
-                ),
-            Text(
-                text,
-                textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.button.copyWith(
-                      color: fill ? Colors.white70 : color,
-                    ),
+                iconData,
+                color: fill ? Colors.white : color,
               ),
+            Text(
+              text,
+              textAlign: TextAlign.left,
+              style: Theme.of(context).textTheme.button.copyWith(
+                    color: fill ? Colors.white70 : color,
+                  ),
+            ),
           ],
         ),
       ),

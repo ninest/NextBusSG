@@ -5,6 +5,7 @@ import 'package:nextbussg/components/core/buttons/back_button.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
+import 'package:nextbussg/utils/strings.dart';
 
 import 'favorites_list.dart';
 
@@ -16,7 +17,7 @@ class AllFavoritesPage extends StatelessWidget {
       children: [
         
         FavoritesBusStopList(
-          title: "ALL FAVORITES",
+          title: Strings.allFavoritesTitle.toUpperCase(),
           iconData: FontAwesomeIcons.heart,
           simplified: false,
 

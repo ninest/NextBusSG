@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/core/location_access_button.dart';
 import 'package:nextbussg/components/onboarding/page_view_model_template.dart';
 import 'package:nextbussg/tabbed_app.dart';
@@ -52,14 +53,22 @@ class OnboardingView extends StatelessWidget {
     return pageViewModelTemplate(
       context,
       "More options ...",
-      "See an MRT map, use the dark theme, ...",
+      "See an MRT map, use the dark theme, rename bus stops ...",
       Colors.grey[900],
       image: Image.asset('assets/onboard/6.png'),
       dark: true,
     );
   }
 
-  
+  TextStyle buttonTextStyle(context) => Theme.of(context).textTheme.body1.copyWith(
+        color: Colors.black87,
+        fontWeight: FontWeight.w700,
+      );
+  TextStyle doneButtonTextStyle(context) => Theme.of(context).textTheme.body1.copyWith(
+        color: Colors.white70,
+        fontWeight: FontWeight.w700,
+      );
+
   @override
   Widget build(BuildContext context) {
     return IntroductionScreen(
@@ -71,13 +80,10 @@ class OnboardingView extends StatelessWidget {
         more(context),
       ],
       onDone: () => _finish(context),
-      done: Container(
-        child: Text("Done"),
-        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 19.0),
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10.0)),
-      ),
-      skip: Text("Skip"),
-      next: Text("Next"),
+      done: Text('Done', style: doneButtonTextStyle(context)),
+      showSkipButton: true,
+      skip: Text("Skip", style: buttonTextStyle(context)),
+      next: Text("Next", style: buttonTextStyle(context)),
       onSkip: () => _finish(context),
       freeze: false,
     );

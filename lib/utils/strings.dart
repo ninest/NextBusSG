@@ -1,4 +1,10 @@
 class Strings {
+  static final String nearMeTitle = "Near me";
+  static final String simplifiedFavoritesTitle = "Favorites";
+  static final String allFavoritesTitle = "All favorites";
+  static final String searchTitle = "Search";
+  static final String moreTitle = "More";
+
   static final String timingsNotAvailableInfo = "Either these buses are not currently in operation, or the API is under maintainance. Please contact the LTA for further information";
   static final String noFavorites = "No favorites near here. **Long press** or **double tap** a bus number to add it to you favorites.";
   static final String renameFavoritesPrompt = "Tap any of the bus stop names below to change their display name:";

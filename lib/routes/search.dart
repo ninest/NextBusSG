@@ -6,13 +6,14 @@ import 'package:nextbussg/components/search/text_box.dart';
 import 'package:nextbussg/components/search/results_list.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/components/core/page_template.dart';
+import 'package:nextbussg/utils/strings.dart';
 
 class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageTemplate(
       children: [
-        TitleText(title: "SEARCH", iconData: FontAwesomeIcons.search).sliverToBoxAdapter(),
+        TitleText(title: Strings.searchTitle.toUpperCase(), iconData: FontAwesomeIcons.search).sliverToBoxAdapter(),
         SliverPersistentHeader(
           pinned: false,
           floating: true,

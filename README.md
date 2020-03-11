@@ -11,15 +11,16 @@
 
 | UI | Description |
 | - | - |
-| | **Onboarding screen**, where the user is asked for the location permission |
-| | **Main page**, where users see a list of bus stops near them (and favorites), and see their respective bus arrival timings |
-| | All **favorites page** |
-| | **Search page** |
-| | Bus stop details page |
-| | Bus service details page |
+| ![onboard view](./readme-images/onboarding.png) | **Onboarding screen**, where the user is asked for the location permission |
+| ![main page](./readme-images/main-page.png) | **Main page**, where users see a list of bus stops near them (and favorites), and see their respective bus arrival timings |
+| ![favorites prompt](./readme-images/favorites-prompt.png) | Users are prompted to confirm |
+| ![favorites view](./readme-images/favorites.png) | **Favorites** that are close to the user are show on the main page |
+| ![search view](./readme-images/search.png) | **Search page** |
+| ![bus stop view](./readme-images/stop-view.png) | **Bus stop details** page |
+| TBD | Bus service details page |
 | ![More page](./readme-images/more-page.png) | **More page**, where users can change settings and see some more features |
-| | 🌙 **Dark theme** |
-| | Bus stops can be renamed (renamed bus stops in italics) |
+| ![dark view](./readme-images/dark-showcase.png) | 🌙 **Dark theme** |
+| ![rename](./readme-images/rename.png) | Bus stops can be renamed (renamed bus stops in italics) |
 
 ## 🚀 Features
 - [x] Show the arrival times of buses at stops near the user
