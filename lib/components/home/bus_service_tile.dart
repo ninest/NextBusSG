@@ -48,15 +48,20 @@ class BusServiceTile extends StatelessWidget {
             ),
           )
         ],
-      ).padding(all: Values.busServiceTilePadding),
+      ).padding(
+        all: Values.busServiceTilePadding,
+        bottom: 0,
+      ),
     )
         // .backgroundColor(Theme.of(context).primaryColor)
         .border(
-          all: 2,
-          color: BorderColors.busStopExpansionPanel(context),
+          // all: 2,
+          // bottom: 2,
+          top: 1,
+          color: BorderColors.busServiceTile(context),
           style: BorderStyle.solid,
         )
-        .borderRadius(all: Values.borderRadius * 0.8)
+        // .borderRadius(all: Values.borderRadius * 0.8)
 
         // margin
         .padding(bottom: 18, horizontal: 18)

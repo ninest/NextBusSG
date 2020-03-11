@@ -63,10 +63,6 @@ class BusService extends ChangeNotifier {
         headers: {'AccountKey': apiKey, 'accept': 'application/json'});
     Map data = json.decode(response.body);
 
-    print("\nAPI HERE:");
-    print(data);
-    print("\n");
-
     List<BusArrival> busArrivalList = [];
     for (var eachService in data['Services']) {
       BusArrival busArrival = BusArrival.fromJson(eachService);

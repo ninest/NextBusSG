@@ -21,9 +21,9 @@ class _ToggleTileState extends State<ToggleTile> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Expanded(
+          Padding(
+            padding: EdgeInsets.only(right: 15.0),
             child: Icon(widget.icon, color: Theme.of(context).textTheme.display1.color),
-            flex: 1,
           ),
           Expanded(
             child: Text(

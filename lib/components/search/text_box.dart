@@ -19,42 +19,46 @@ class SearchTextBox extends StatelessWidget {
       - switch to number keyboard
      */
 
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        Spacing(height: Values.marginBelowTitle),
-        Expanded(
-          flex: 5,
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: "Type a bus or bus stop",
-              filled: true,
-              fillColor: TextFieldStyles.backgroundColor(context),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(Values.borderRadius),
-                borderSide: BorderSide(
-                  color: TextFieldStyles.backgroundColor(context),
-                  width: 0,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
+    return Container(
+      // TODO: make a little bit of the top and bottom of
+      // text box white to make it look like a floating bar rather than
+      // just a floating text box
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Spacing(height: Values.marginBelowTitle),
+          Expanded(
+            flex: 5,
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: "Type a bus or bus stop",
+                filled: true,
+                fillColor: TextFieldStyles.backgroundColor(context),
+                enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(Values.borderRadius),
                   borderSide: BorderSide(
-                    color: Theme.of(context).primaryColor,
-                    width: 4,
-                  )),
+                    color: TextFieldStyles.backgroundColor(context),
+                    width: 0,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(Values.borderRadius),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).primaryColor,
+                      width: 4,
+                    )),
+              ),
+              onChanged: (query) => _onQueryChanged(context, query),
             ),
-            onChanged: (query) => _onQueryChanged(context, query),
           ),
-        ),
-        // TODO: add number keyboard and cross button
-      ],
+          // TODO: add number keyboard and cross button
+        ],
+      ),
     );
   }
 
   _onQueryChanged(BuildContext context, String query) {
-    final SearchProvider searchProvider =
-        Provider.of<SearchProvider>(context, listen: false);
+    final SearchProvider searchProvider = Provider.of<SearchProvider>(context, listen: false);
     if (query.isNotEmpty) {
       // only search if query not empty
       searchProvider.searchFor(query);
