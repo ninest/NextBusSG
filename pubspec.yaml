@@ -67,6 +67,8 @@ flutter:
     - assets/onboard/4.png
     - assets/onboard/5.png
     - assets/onboard/6.png
+
+    - assets/location-icon.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

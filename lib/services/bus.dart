@@ -59,7 +59,7 @@ class BusService extends ChangeNotifier {
     print('Getting arrivals for $stopCode');
 
     var response = await http.get(
-        'http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode=$stopCode',
+        'https://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode=$stopCode',
         headers: {'AccountKey': apiKey, 'accept': 'application/json'});
     Map data = json.decode(response.body);
 

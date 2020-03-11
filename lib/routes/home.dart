@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nextbussg/components/core/loading/finding_location.dart';
 import 'package:nextbussg/components/core/location_access_button.dart';
 // import 'package:nextbussg/components/core/location_access_button.dart';
 import 'package:nextbussg/components/core/page_template.dart';
@@ -45,12 +46,10 @@ class HomePage extends StatelessWidget {
   Widget yesLocationAccess(context) => FutureBuilder(
         future: order(context),
         builder: (context, snapshot) {
-          return PageTemplate(children: [
-            if (!snapshot.hasData)
-              Text("Loading bus stops").sliverToBoxAdapter()
-            else
-              ...snapshot.data,
-          ]);
+          if (snapshot.hasData)
+            return PageTemplate(children: snapshot.data);
+          else
+          return FindingLocation();
         },
       );
 
@@ -58,7 +57,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final LocationPermissionsProvider locationPermissionsProvider =
         Provider.of<LocationPermissionsProvider>(context, listen: true);
-    
+
     // this is just to rebuild the home page when a favorite is added/removed
     final HomeRebuilderProvider homeRebuilderProvider =
         Provider.of<HomeRebuilderProvider>(context, listen: true);
@@ -86,7 +85,8 @@ class HomePage extends StatelessWidget {
       );
 
   Future order(context) async {
-    Widget nearMe = BusStopList(title: Strings.nearMeTitle.toUpperCase(), iconData: FontAwesomeIcons.locationArrow);
+    Widget nearMe = BusStopList(
+        title: Strings.nearMeTitle.toUpperCase(), iconData: FontAwesomeIcons.locationArrow);
 
     // if there are no favorites (in simlified favorites view), the favorites heading should come below near me
     // if there are in SFV, put favorites at the top
