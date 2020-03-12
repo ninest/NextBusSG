@@ -6,6 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:nextbussg/models/bus_stop.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/services/location.dart';
+import 'package:nextbussg/utils/distance.dart';
 import 'package:provider/provider.dart';
 
 // TODO: maybe change this to a valuelistenable with Hive rather than ChangeNotifierProvider
@@ -91,7 +92,7 @@ class FavoritesProvider extends ChangeNotifier {
         Position busStopPosition = busStop.position;
         double distance = await LocationServices.distanceBetween(currentPosition, busStopPosition);
 
-        if (distance < 600) {
+        if (distance < Distance.favoritesNearMe) {
           // we only want to show the bus service (number) which has been favorited
           busStop.services = box.get(stopCode);
           favoritesList.add(busStop);
@@ -105,4 +106,6 @@ class FavoritesProvider extends ChangeNotifier {
     // print(simplifiedFavorites);
     return favoritesList;
   }
+
+  static getNoFavorites() => Hive.box('favorites').length;
 }

@@ -2,9 +2,8 @@ import 'package:nextbussg/components/home/timings_not_available.dart';
 import 'package:nextbussg/components/core/mrt_stations.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
-import 'package:nextbussg/styles/border_color.dart';
+import 'package:nextbussg/styles/tile_color.dart';
 import 'package:nextbussg/utils/route.dart';
-import 'package:styled_widget/styled_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:nextbussg/components/home/bus_service_tile.dart';
 import 'package:nextbussg/models/bus_arrival.dart';
@@ -17,15 +16,12 @@ class BusStopExpansionPanel extends StatefulWidget {
   final List services;
   final bool initialyExpanded;
   final List mrtStations;
-  // even means it is a second, and therefore the background color should be different
-  final bool even;
   BusStopExpansionPanel({
     this.name,
     this.code,
     this.services,
     this.initialyExpanded,
     this.mrtStations,
-    this.even=true,
   });
 
   @override
@@ -50,21 +46,23 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
 
     // if we are in the simplified favorites, it means initiallyExpanded is true
     // in that case, automatically get bus timings
-    // if (widget.initialyExpanded) _getBusTimings();
+    if (widget.initialyExpanded) _getBusTimings();
+  }
 
-    // to make available the value of whether it's expanded or not
-    _panelExpanded = widget.initialyExpanded;
+  @override
+  void deactivate() {
+    super.deactivate();
   }
 
   List<BusArrival> busArrivalList;
   List<String> timingsNotAvailable;
-  bool _panelExpanded;
 
   @override
   Widget build(BuildContext context) {
     List<Widget> busServiceTileList = [];
 
     for (var service in widget.services) {
+      // adding the placeholder for when it's expanded
       BusArrival ba;
       try {
         ba = busArrivalList.firstWhere((b) => b.service == service);
@@ -88,13 +86,13 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       name = RenameFavoritesService.getName(widget.code);
     }
 
-    Color _backgroundColor =
-        widget.even ? Colors.transparent.withOpacity(0.0) : Colors.transparent.withOpacity(0.05);
-    _backgroundColor = Theme.of(context).brightness == Brightness.light ? Colors.transparent.withOpacity(0.05) : Colors.transparent.withOpacity(0.5);
+    // Color _backgroundColor = Theme.of(context).brightness == Brightness.light
+    //     ? Colors.transparent.withOpacity(0.05)
+    //     : Colors.transparent.withOpacity(0.5);
 
     return ListTileTheme(
       // setting padding value if mrt is there
-      // THESE VALUES ARE HARDOCDED because
+      // THESE VALUES ARE HARDOCDED because I don't know how to really change them
       contentPadding: EdgeInsets.only(
         left: Values.busStopTileHorizontalPadding,
         right: Values.busStopTileHorizontalPadding,
@@ -103,77 +101,70 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
         top: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
         bottom: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
       ),
-      child: ExpansionTile(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            // if the stop HAS been renamed, display in italics
-            Text(name,
-                style: hasBeenRenamed
-                    ? Theme.of(context).textTheme.display1.copyWith(
-                          fontStyle: FontStyle.italic,
-                        )
-                    : Theme.of(context).textTheme.display1),
+      child: Container(
+        margin: EdgeInsets.only(top: Values.marginBelowTitle),
+        child: ExpansionTile(
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // if the stop HAS been renamed, display in italics
+              Text(name,
+                  style: hasBeenRenamed
+                      ? Theme.of(context).textTheme.display1.copyWith(
+                            fontStyle: FontStyle.italic,
+                          )
+                      : Theme.of(context).textTheme.display1),
 
-            // TODO: display mrt station here
-            // because of height issues, we'll do it later
-            if (widget.mrtStations.isNotEmpty)
-              MRTStations(stations: widget.mrtStations)
-          ],
-        ),
-        // the text below is replacing the default arrow in ExpansionPanel
-        // when it's clicked, open bus stop
-        trailing: GestureDetector(
-          child: Text(widget.code, style: Theme.of(context).textTheme.display2),
-          onTap: () => Routing.openRoute(
-            context,
-            StopOverviewPage(
-              code: widget.code,
+              if (widget.mrtStations.isNotEmpty)
+                MRTStations(stations: widget.mrtStations)
+            ],
+          ),
+          // the text below is replacing the default arrow in ExpansionPanel
+          // when it's clicked, open bus stop
+          trailing: GestureDetector(
+            child: Text(widget.code, style: Theme.of(context).textTheme.display2),
+            onTap: () => Routing.openRoute(
+              context,
+              StopOverviewPage(
+                code: widget.code,
+              ),
             ),
           ),
-          // onTap: () => Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => StopOverviewPage(
-          //       code: widget.code,
-          //     ),
-          //   ),
-          // ),
+          // get bus timings only when panel has been opened
+          onExpansionChanged: (bool value) {
+            return value ? _getBusTimings() : null;
+          },
+          initiallyExpanded: widget.initialyExpanded,
+          children: [
+            ...busServiceTileList,
+
+            // show that some timings are not available
+            // NOTE: it also could just be that timings are unailable,
+            if (timingsNotAvailable.isNotEmpty)
+              // Text(timingsNotAvailable.toString())
+              TimingsNotAvailable(services: timingsNotAvailable)
+          ],
         ),
-
-        // get bus timings only when panel has been opened
-        onExpansionChanged: (bool value) {
-          setState(() {
-            _panelExpanded = value;
-          });
-          print('Panel expanded: $_panelExpanded');
-          return value ? _getBusTimings() : null;
-        },
-        initiallyExpanded: widget.initialyExpanded,
-        children: [
-          ...busServiceTileList,
-
-          // show that some timings are not available
-          // NOTE: it also could just be that timings are unailable,
-          if (timingsNotAvailable.isNotEmpty)
-            // Text(timingsNotAvailable.toString())
-            TimingsNotAvailable(services: timingsNotAvailable)
-        ],
-      )
-          // .padding(top: 10)
-          .border(
-            all: 0,
-            style: BorderStyle.none,
-            color:Colors.transparent,
-          )
-          .backgroundColor(_backgroundColor)
-          .borderRadius(all: Values.borderRadius)
-          .padding(top: Values.marginBelowTitle)
-          // .height(0)
-          .gestures(),
+        decoration: BoxDecoration(
+          color: TileColors.busStopExpansionTile(context),
+          borderRadius: BorderRadius.circular(Values.borderRadius),
+        ),
+      ),
+      // .padding(top: 10)
+      // .border(
+      //   all: 0,
+      //   style: BorderStyle.none,
+      //   color: Colors.transparent,
+      // )
+      // .backgroundColor(_backgroundColor)
+      // .borderRadius(all: Values.borderRadius)
+      // .padding(top: Values.marginBelowTitle)
     );
     // margin(top: Values.marginBelowTitle)
   }
+
+  // split to here
+  Widget stopTile() {}
 
   _getBusTimings() async {
     // reset services not in opertion:

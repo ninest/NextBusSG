@@ -13,7 +13,6 @@ import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 
-
 import 'package:styled_widget/styled_widget.dart';
 
 import '../bus_stop_expansion_tile.dart';
@@ -64,21 +63,25 @@ class FavoritesBusStopList extends StatelessWidget {
                 // only show expanded tiles on the main page (SFV)
                 // this way, the user an immediately see timings for fav bus service without clicking anywhere
                 initialyExpanded: simplified ? true : false,
-
-                even: true,
               )
         ];
 
         // if it's the simplified favorites, show button to see all favorites
-        if (simplified)
-          children.add(openCloseButton(
-            "See all",
-            Theme.of(context).primaryColor,
-            () {
-              print("Opening all favorites page");
-              Routing.openRoute(context, AllFavoritesPage());
-            },
-          ));
+
+        // there have to be at least some for this to be here
+        if (simplified) if (FavoritesProvider.getNoFavorites() != 0)
+          children.add(
+            openCloseButton(
+              "See all (${FavoritesProvider.getNoFavorites()})",
+              Theme.of(context).primaryColor,
+              () {
+                print("Opening all favorites page");
+                Routing.openRoute(context, AllFavoritesPage());
+              },
+            ),
+          );
+        else
+          ;
         // when it's the all favorites page, the button should be for taking users back
         // to the main page
         else
@@ -96,7 +99,7 @@ class FavoritesBusStopList extends StatelessWidget {
             TitleText(
               title: title,
               iconData: iconData,
-            ).padding(bottom: 10),
+            ),
             // bus stop tile list
             Column(children: children)
           ]),

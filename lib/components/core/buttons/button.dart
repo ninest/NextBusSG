@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/styles/values.dart';
-import 'package:styled_widget/styled_widget.dart';
 
 class Button extends StatelessWidget {
   final IconData iconData;

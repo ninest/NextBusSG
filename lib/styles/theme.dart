@@ -79,23 +79,20 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
   );
 }
 
-// Below changes everything to Rubik
-// textTheme: GoogleFonts.rubikTextTheme(
-//   _buildTextTheme(base.textTheme, primaryColor)
-// )
+Color primaryColor = Colors.indigo;
+
+// so that there are no lines above/below expansiontile
+Color dividerColor = Colors.transparent;
 
 ThemeData _buildLightTheme() {
-  const Color primaryColor = Colors.indigo;
-  const Color secondaryColor = Colors.indigo;
-  const Color scaffoldBackgroundColor = Colors.white;
-
   final ThemeData base = ThemeData(
     brightness: Brightness.light,
     primaryColor: primaryColor,
-    accentColor: secondaryColor,
-    scaffoldBackgroundColor: scaffoldBackgroundColor,
+    accentColor: primaryColor,
+    scaffoldBackgroundColor: Colors.white,
     bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
     toggleableActiveColor: primaryColor,
+    dividerColor: dividerColor,
 
     // TODO: set status bar color
     // appBarTheme: AppBarTheme(
@@ -103,7 +100,6 @@ ThemeData _buildLightTheme() {
     // ),
 
     // required to prevent the lines from appearing on expansionTile
-    dividerColor: Colors.transparent,
   );
 
   return base.copyWith(
@@ -112,25 +108,19 @@ ThemeData _buildLightTheme() {
 }
 
 ThemeData _buildDarkTheme() {
-  const Color primaryColor = Colors.indigo;
-  const Color secondaryColor = Colors.indigo;
-  const Color scaffoldBackgroundColor = Color(0xFF111111);
-
-  // set to dark().copyWith(), can't believe I forgot to add it
   final ThemeData base = ThemeData.dark().copyWith(
     brightness: Brightness.dark,
     primaryColor: primaryColor,
-    accentColor: secondaryColor,
-    scaffoldBackgroundColor: scaffoldBackgroundColor,
+    accentColor: primaryColor,
+    scaffoldBackgroundColor: Color(0xFF111111),
     bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
     toggleableActiveColor: primaryColor,
+    dividerColor: dividerColor,
 
     // TODO: set status bar color
     // appBarTheme: AppBarTheme(
-    //   brightness: Brightness.light,
+    //   brightness: Brightness.dark,
     // ),
-
-    dividerColor: Colors.transparent,
   );
 
   return base.copyWith(

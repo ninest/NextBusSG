@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/components/core/loading/circular_spinner.dart';
 import 'package:nextbussg/services/bus.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/components/core/loading/loading_bus_stop_tile.dart';
@@ -17,7 +18,7 @@ class SearchResultsList extends StatelessWidget {
 
     return Column(
       children: <Widget>[
-        if (searchResults.isEmpty) LoadingBusStopTile(count: 2),
+        if (searchResults.isEmpty) CircularSpinner(),
         for (var busStop in searchResults)
           // Text("A search result will come here.")
           BusStopSearchResultTile(

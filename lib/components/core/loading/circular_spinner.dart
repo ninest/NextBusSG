@@ -9,6 +9,7 @@ class CircularSpinner extends StatelessWidget {
       children: [
         Spacing(height: Values.marginBelowTitle),
         CircularProgressIndicator(),
+        Spacing(height: Values.marginBelowTitle),
       ],
     );
   }

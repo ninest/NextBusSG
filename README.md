@@ -156,3 +156,14 @@ adb uninstall com.themindstorm.nextbussg
 ```
 
 If this does not work, check out this [answer on SO](https://stackoverflow.com/questions/53394504/flutter-stuck-at-installing-build-app-outputs-apk-app-apk).
+
+### Build Android APK and appbundle
+```
+flutter build appbundle
+flutter build apk
+```
+
+Once the APK has been built, install it on a physcally connected Android device:
+```
+flutter install
+```

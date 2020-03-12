@@ -9,6 +9,7 @@ import 'package:nextbussg/models/bus_arrival.dart';
 import 'package:nextbussg/models/bus_stop.dart';
 import 'package:nextbussg/services/location.dart';
 import 'package:http/http.dart' as http;
+import 'package:nextbussg/utils/distance.dart';
 
 class BusService extends ChangeNotifier {
   // Make this use changeNotifier too?
@@ -28,7 +29,7 @@ class BusService extends ChangeNotifier {
       double distance = await LocationServices.distanceBetween(userPosition, busStop.position);
 
       // add it if bus stop is within 500 meters
-      if (distance < 650) {
+      if (distance < Distance.nearMe) {
         // add to bus stops near me list
         busStopsNear.add(busStop);
       }

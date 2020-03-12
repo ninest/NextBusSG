@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/components/core/loading/circular_spinner.dart';
-import 'package:nextbussg/utils/extensions.dart';
-import 'package:nextbussg/components/core/loading/loading_bus_stop_tile.dart';
-import 'package:nextbussg/utils/location_perms.dart';
 import 'package:nextbussg/utils/strings.dart';
-import 'package:styled_widget/styled_widget.dart';
 import 'package:nextbussg/components/home/bus_stop_expansion_tile.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/services/bus.dart';
@@ -44,9 +40,6 @@ class BusStopList extends StatelessWidget {
                   services: busStop.services,
                   initialyExpanded: false,
                   mrtStations: busStop.mrtStations,
-                  // even is true if it's 0, 2, 4, 6, ...
-                  even: snapshot.data.indexOf(busStop) % 2 == 0 ? true : false,
-                  // even: true,
                 )
             else
               // no stops near me
@@ -68,10 +61,11 @@ class BusStopList extends StatelessWidget {
         return SliverList(
           delegate: SliverChildListDelegate([
             // heading (near me/favorites)
+
             TitleText(
               title: title,
               iconData: iconData,
-            ).padding(bottom: 10),
+            ),
             // bus stop tile list
             Column(children: children)
           ]),
