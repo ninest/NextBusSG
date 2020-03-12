@@ -47,7 +47,7 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
 
     // if we are in the simplified favorites, it means initiallyExpanded is true
     // in that case, automatically get bus timings
-    if (widget.initialyExpanded) _getBusTimings();
+    // if (widget.initialyExpanded) _getBusTimings();
   }
 
   List<BusArrival> busArrivalList;

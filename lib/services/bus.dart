@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:nextbussg/keys.dart';
@@ -10,7 +11,6 @@ import 'package:nextbussg/services/location.dart';
 import 'package:http/http.dart' as http;
 
 class BusService extends ChangeNotifier {
-
   // Make this use changeNotifier too?
 
   static Future<List> getNearestStops() async {
@@ -26,7 +26,6 @@ class BusService extends ChangeNotifier {
 
       // calculating distance (meters) between current position and bus stop coords
       double distance = await LocationServices.distanceBetween(userPosition, busStop.position);
-
 
       // add it if bus stop is within 500 meters
       if (distance < 650) {
@@ -49,7 +48,7 @@ class BusService extends ChangeNotifier {
 
     for (var stopCode in data.keys) {
       BusStop busStop = BusStop.fromJson(data[stopCode]);
-        allBusStops.add(busStop);
+      allBusStops.add(busStop);
     }
 
     return allBusStops;
@@ -59,8 +58,12 @@ class BusService extends ChangeNotifier {
     print('Getting arrivals for $stopCode');
 
     var response = await http.get(
-        'https://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode=$stopCode',
+        'http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode=$stopCode',
         headers: {'AccountKey': apiKey, 'accept': 'application/json'});
+    // if (response.statusCode != 200) {
+    //   BotToast.showText(text: "Error in request: ${response.statusCode}", contentColor: Colors.red);
+    //   return [];
+    // }
     Map data = json.decode(response.body);
 
     List<BusArrival> busArrivalList = [];
@@ -70,12 +73,12 @@ class BusService extends ChangeNotifier {
       // remove buses that have already arrived and left
       try {
         if (busArrival.nextBuses[0].timeInMinutes.contains('-')) {
-        // removing the negative time, 
-        busArrival.nextBuses.removeAt(0);
-        // and adding a placeholder timing (which is empty)
-        busArrival.nextBuses.add(NextBus(timeInMinutes: null, load: null, feature: null));
-      }
-      } catch(e) {
+          // removing the negative time,
+          busArrival.nextBuses.removeAt(0);
+          // and adding a placeholder timing (which is empty)
+          busArrival.nextBuses.add(NextBus(timeInMinutes: null, load: null, feature: null));
+        }
+      } catch (e) {
         print("Error in removing buses ($stopCode, $eachService) that have already left: $e");
       }
 
