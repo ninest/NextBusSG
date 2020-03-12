@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/components/core/loading/circular_spinner.dart';
-import 'package:nextbussg/services/bus.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/components/search/bus_stop_result_tile.dart';
 import 'package:nextbussg/providers/search.dart';
