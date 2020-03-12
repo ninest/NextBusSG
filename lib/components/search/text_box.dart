@@ -5,8 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:nextbussg/providers/search.dart';
 import 'package:nextbussg/styles/values.dart';
 
-// TODO: change to styled_widget
-// Still using Division because styled_widget text editable isn't there yet
 
 class SearchTextBox extends StatelessWidget {
   @override

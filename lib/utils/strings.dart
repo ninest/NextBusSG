@@ -1,7 +1,7 @@
 class Strings {
   static final String nearMeTitle = "Near me";
   static final String simplifiedFavoritesTitle = "Favorites";
-  static final String allFavoritesTitle = "All favorites";
+  static final String allFavoritesTitle = "Favorites";
   static final String searchTitle = "Search";
   static final String moreTitle = "More";
 
