@@ -44,5 +44,8 @@
 
   <key>NSLocationWhenInUseUsageDescription</key>
   <string>Next Bus SG requires location access to show you which bus stops are nearby.</string>
+	<key>UIStatusBarHidden</key>
+	<true/>
+
 </dict>
 </plist>

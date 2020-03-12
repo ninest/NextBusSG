@@ -60,10 +60,11 @@ class BusService extends ChangeNotifier {
     var response = await http.get(
         'http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode=$stopCode',
         headers: {'AccountKey': apiKey, 'accept': 'application/json'});
-    // if (response.statusCode != 200) {
-    //   BotToast.showText(text: "Error in request: ${response.statusCode}", contentColor: Colors.red);
-    //   return [];
-    // }
+    if (response.statusCode != 200) {
+      BotToast.showText(text: "Error in request: ${response.statusCode}. Please restart app or check your internet connectivity", contentColor: Colors.red);
+      return [];
+    }
+
     Map data = json.decode(response.body);
 
     List<BusArrival> busArrivalList = [];
