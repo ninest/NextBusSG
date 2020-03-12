@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/components/core/loading/circular_spinner.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/core/loading/loading_bus_stop_tile.dart';
 import 'package:nextbussg/utils/location_perms.dart';
@@ -43,6 +44,9 @@ class BusStopList extends StatelessWidget {
                   services: busStop.services,
                   initialyExpanded: false,
                   mrtStations: busStop.mrtStations,
+                  // even is true if it's 0, 2, 4, 6, ...
+                  even: snapshot.data.indexOf(busStop) % 2 == 0 ? true : false,
+                  // even: true,
                 )
             else
               // no stops near me
@@ -52,9 +56,10 @@ class BusStopList extends StatelessWidget {
               )
           else
             // placeholder widgets while stops are loding
-            LoadingBusStopTile(
-              count: 2,
-            ),
+            // Loadi
+            // Text("Loading stops near me ...")
+            // ...[CircularProgressIndicator()]
+            CircularSpinner()
         ];
 
         // TODO: find a way to put a slight animation

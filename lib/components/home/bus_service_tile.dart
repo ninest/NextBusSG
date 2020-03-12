@@ -10,7 +10,8 @@ class BusServiceTile extends StatelessWidget {
   final String code;
   final String service;
   final BusArrival busArrival;
-  BusServiceTile({this.code, this.service, this.busArrival});
+  final bool even;
+  BusServiceTile({this.code, this.service, this.busArrival, this.even});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,10 @@ class BusServiceTile extends StatelessWidget {
       "SDA": TransitColors.standing,
       "LSD": TransitColors.limited,
     };
+
+    Color _backgroundColor = Theme.of(context).brightness == Brightness.light
+        ? Colors.transparent.withOpacity(0.03)
+        : Colors.transparent.withOpacity(0.8);
 
     return Container(
       child: Row(
@@ -50,17 +55,18 @@ class BusServiceTile extends StatelessWidget {
         ],
       ).padding(
         all: Values.busServiceTilePadding,
-        bottom: 0,
+        // bottom: 0,
       ),
     )
-        .border(
-          // all: 2,
-          // bottom: 2,
-          top: 1,
-          color: BorderColors.busServiceTile(context),
-          style: BorderStyle.solid,
-        )
-        // .borderRadius(all: Values.borderRadius * 0.8)
+        // .border(
+        //   // all: 2,
+        //   // bottom: 2,
+        //   top: 1,
+        //   color: BorderColors.busServiceTile(context),
+        //   style: BorderStyle.solid,
+        // )
+        .borderRadius(all: Values.borderRadius * 0.8)
+        .backgroundColor(_backgroundColor)
 
         // margin
         .padding(bottom: 18, horizontal: 18)

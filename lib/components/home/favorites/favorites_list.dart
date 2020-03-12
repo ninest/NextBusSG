@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:nextbussg/components/core/loading/circular_spinner.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/utils/route.dart';
@@ -49,7 +50,7 @@ class FavoritesBusStopList extends StatelessWidget {
 
         List<Widget> children = [
           if (!snapshot.hasData)
-            Text("Loading")
+            CircularSpinner()
           else if (snapshot.data.isEmpty)
             MarkdownBody(data: noFavoritesText)
           else
@@ -63,6 +64,8 @@ class FavoritesBusStopList extends StatelessWidget {
                 // only show expanded tiles on the main page (SFV)
                 // this way, the user an immediately see timings for fav bus service without clicking anywhere
                 initialyExpanded: simplified ? true : false,
+
+                even: true,
               )
         ];
 

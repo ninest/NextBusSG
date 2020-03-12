@@ -17,12 +17,15 @@ class BusStopExpansionPanel extends StatefulWidget {
   final List services;
   final bool initialyExpanded;
   final List mrtStations;
+  // even means it is a second, and therefore the background color should be different
+  final bool even;
   BusStopExpansionPanel({
     this.name,
     this.code,
     this.services,
     this.initialyExpanded,
     this.mrtStations,
+    this.even=true,
   });
 
   @override
@@ -48,10 +51,14 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
     // if we are in the simplified favorites, it means initiallyExpanded is true
     // in that case, automatically get bus timings
     // if (widget.initialyExpanded) _getBusTimings();
+
+    // to make available the value of whether it's expanded or not
+    _panelExpanded = widget.initialyExpanded;
   }
 
   List<BusArrival> busArrivalList;
   List<String> timingsNotAvailable;
+  bool _panelExpanded;
 
   @override
   Widget build(BuildContext context) {
@@ -81,12 +88,18 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       name = RenameFavoritesService.getName(widget.code);
     }
 
+    Color _backgroundColor =
+        widget.even ? Colors.transparent.withOpacity(0.0) : Colors.transparent.withOpacity(0.05);
+    _backgroundColor = Theme.of(context).brightness == Brightness.light ? Colors.transparent.withOpacity(0.05) : Colors.transparent.withOpacity(0.5);
+
     return ListTileTheme(
       // setting padding value if mrt is there
       // THESE VALUES ARE HARDOCDED because
       contentPadding: EdgeInsets.only(
         left: Values.busStopTileHorizontalPadding,
         right: Values.busStopTileHorizontalPadding,
+        // top: 0,
+        // bottom: 0
         top: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
         bottom: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
       ),
@@ -129,7 +142,13 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
         ),
 
         // get bus timings only when panel has been opened
-        onExpansionChanged: (bool value) => value ? _getBusTimings() : null,
+        onExpansionChanged: (bool value) {
+          setState(() {
+            _panelExpanded = value;
+          });
+          print('Panel expanded: $_panelExpanded');
+          return value ? _getBusTimings() : null;
+        },
         initiallyExpanded: widget.initialyExpanded,
         children: [
           ...busServiceTileList,
@@ -143,11 +162,11 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       )
           // .padding(top: 10)
           .border(
-            all: 3,
-            // check if dank mode
-            color: BorderColors.busStopExpansionPanel(context),
-            style: BorderStyle.solid,
+            all: 0,
+            style: BorderStyle.none,
+            color:Colors.transparent,
           )
+          .backgroundColor(_backgroundColor)
           .borderRadius(all: Values.borderRadius)
           .padding(top: Values.marginBelowTitle)
           // .height(0)

@@ -101,6 +101,9 @@ ThemeData _buildLightTheme() {
     // appBarTheme: AppBarTheme(
     //   brightness: Brightness.dark,
     // ),
+
+    // required to prevent the lines from appearing on expansionTile
+    dividerColor: Colors.transparent,
   );
 
   return base.copyWith(
@@ -111,7 +114,7 @@ ThemeData _buildLightTheme() {
 ThemeData _buildDarkTheme() {
   const Color primaryColor = Colors.indigo;
   const Color secondaryColor = Colors.indigo;
-  const Color scaffoldBackgroundColor = Colors.black;
+  const Color scaffoldBackgroundColor = Color(0xFF111111);
 
   // set to dark().copyWith(), can't believe I forgot to add it
   final ThemeData base = ThemeData.dark().copyWith(
@@ -126,6 +129,8 @@ ThemeData _buildDarkTheme() {
     // appBarTheme: AppBarTheme(
     //   brightness: Brightness.light,
     // ),
+
+    dividerColor: Colors.transparent,
   );
 
   return base.copyWith(
