@@ -5,7 +5,7 @@ import 'package:nextbussg/styles/values.dart';
 final ThemeData appLightTheme = _buildLightTheme();
 final ThemeData appDarkTheme = _buildDarkTheme();
 
-TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark=false}) {
+TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false}) {
   double em = Values.em;
 
   return base.copyWith(
@@ -101,20 +101,17 @@ ThemeData _buildLightTheme() {
   );
 
   return base.copyWith(
-    textTheme: _buildTextTheme(
-      base.textTheme,
-      primaryColor,
-    ),
+    textTheme: _buildTextTheme(base.textTheme, primaryColor),
   );
 }
-
 
 ThemeData _buildDarkTheme() {
   const Color primaryColor = Colors.indigo;
   const Color secondaryColor = Colors.indigo;
   const Color scaffoldBackgroundColor = Colors.black;
 
-  final ThemeData base = ThemeData(
+  // set to dark().copyWith(), can't believe I forgot to add it
+  final ThemeData base = ThemeData.dark().copyWith(
     brightness: Brightness.dark,
     primaryColor: primaryColor,
     accentColor: secondaryColor,
@@ -126,10 +123,6 @@ ThemeData _buildDarkTheme() {
   );
 
   return base.copyWith(
-    textTheme: _buildTextTheme(
-      base.textTheme,
-      primaryColor,
-      dark: true,
-    ),
+    textTheme: _buildTextTheme(base.textTheme, primaryColor, dark: true),
   );
 }

@@ -34,6 +34,7 @@ dependencies:
   geolocator: ^5.2.1
   styled_widget: ^0.1.1
   permission_handler: ^4.4.0
+  page_transition: ^1.1.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -54,6 +55,7 @@ flutter_icons:
 flutter_native_splash:
   image: "icons/splash.png"
   color: "333333"
+  android_disable_fullscreen: true
 
 
 # For information on the generic Dart part of this file, see the

@@ -66,13 +66,15 @@ Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore
 - hive
 - hive_flutter
 - geolocator
-- location_permissions
+- permission_handler
 - styled_widget
-- division
+- ~~division~~
 - flutter_markdown
 - bot_toast
 - url_launcher
 - introduction_screen
+- flutter_launcher_icons
+- flutter_native_splash
 
 ## FAQs
 ### 1. How do I add or remove favorites?
@@ -136,3 +138,14 @@ Go to `android/app/src/main/AndroidManifest.xml`, then add
 ```
 
 as a child of the `<manifest>` tag.
+
+### Stuck at installking debug Android app
+Go to app settings and uninstall your app. The app may not appear in your launcher, but it could still be installed. Go to your settings, find it, and completely uninstall it.
+
+This can also be done using ADB:
+
+```
+adb uninstall com.themindstorm.nextbussg
+```
+
+If this does not work, check out this [answer on SO](https://stackoverflow.com/questions/53394504/flutter-stuck-at-installing-build-app-outputs-apk-app-apk).

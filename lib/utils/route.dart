@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Routing {
   static void openRoute(BuildContext context, Widget page) {
     Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => page),
-    );
+        context,
+        // MaterialPageRoute(builder: (context) => page),
+        PageTransition(
+          type: PageTransitionType.rightToLeft,
+          child: page,
+        ));
   }
 
   // no back allowed
