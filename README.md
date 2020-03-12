@@ -139,6 +139,13 @@ Go to `android/app/src/main/AndroidManifest.xml`, then add
 
 as a child of the `<manifest>` tag.
 
+### Generating icons and splash screens
+```
+flutter pub run flutter_launcher_icons:main
+flutter pub pub run flutter_native_splash:create
+
+```
+
 ### Stuck at installking debug Android app
 Go to app settings and uninstall your app. The app may not appear in your launcher, but it could still be installed. Go to your settings, find it, and completely uninstall it.
 

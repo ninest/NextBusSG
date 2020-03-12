@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
 import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
@@ -17,9 +18,10 @@ void main() async {
   await Hive.openBox('favorites');
 
   // transparent status bar Android
-  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-  // statusBarColor: Colors.white,
-  // ));
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    // statusBarIconBrightness: Brightness.dark,
+  ));
 
   runApp(MyApp());
 }
@@ -32,8 +34,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<FavoritesProvider>(create: (_) => FavoritesProvider()),
         ChangeNotifierProvider<SearchProvider>(create: (_) => SearchProvider()),
-        ChangeNotifierProvider<LocationPermissionsProvider>(create: (_) => LocationPermissionsProvider()), 
-        ChangeNotifierProvider<HomeRebuilderProvider>(create: (_) => HomeRebuilderProvider()), 
+        ChangeNotifierProvider<LocationPermissionsProvider>(
+            create: (_) => LocationPermissionsProvider()),
+        ChangeNotifierProvider<HomeRebuilderProvider>(create: (_) => HomeRebuilderProvider()),
       ],
       child: MainApp(),
     );

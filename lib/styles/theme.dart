@@ -98,6 +98,9 @@ ThemeData _buildLightTheme() {
     toggleableActiveColor: primaryColor,
 
     // TODO: set status bar color
+    // appBarTheme: AppBarTheme(
+    //   brightness: Brightness.dark,
+    // ),
   );
 
   return base.copyWith(
@@ -120,6 +123,9 @@ ThemeData _buildDarkTheme() {
     toggleableActiveColor: primaryColor,
 
     // TODO: set status bar color
+    // appBarTheme: AppBarTheme(
+    //   brightness: Brightness.light,
+    // ),
   );
 
   return base.copyWith(
