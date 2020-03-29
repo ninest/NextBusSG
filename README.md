@@ -22,6 +22,8 @@
 | ![dark view](./readme-images/dark-showcase.png) | 🌙 **Dark theme** |
 | ![rename](./readme-images/rename.png) | Bus stops can be renamed (renamed bus stops in italics) |
 
+[This](https://imgur.com/a/8QOCKBy) and [this](https://imgur.com/a/wXQWfeq) was what the design looked like at first.
+
 ## 🚀 Features
 - [x] Show the arrival times of buses at stops near the user
   - [x] Show a list of buses not currently in serivce
