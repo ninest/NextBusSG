@@ -95,9 +95,10 @@ ThemeData _buildLightTheme() {
     dividerColor: dividerColor,
 
     // TODO: set status bar color
-    // appBarTheme: AppBarTheme(
+    appBarTheme: AppBarTheme(
+      color: Colors.white
     //   brightness: Brightness.dark,
-    // ),
+    ),
 
     // required to prevent the lines from appearing on expansionTile
   );
