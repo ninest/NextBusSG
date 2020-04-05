@@ -142,6 +142,7 @@ Go to `android/app/src/main/AndroidManifest.xml`, then add
 as a child of the `<manifest>` tag.
 
 ### Generating icons and splash screens
+After updating `pubspec.yaml`, run these commands:
 ```
 flutter pub run flutter_launcher_icons:main
 flutter pub pub run flutter_native_splash:create

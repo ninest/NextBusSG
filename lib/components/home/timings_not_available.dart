@@ -23,56 +23,58 @@ class TimingsNotAvailable extends StatelessWidget {
     // remove the last comma and space because AttEntIon tO deTaIL
     displayString = displayString.substring(0, displayString.length - 2);
 
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return GestureDetector(
+      child: Container(
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Timings unavailable",
+                  style: Theme.of(context).textTheme.body2,
+                ).padding(bottom: 5),
+                CustomIconButton(
+                  icon: FontAwesomeIcons.info,
+                  size: Theme.of(context).textTheme.body2.fontSize,
+                  color: Colors.red,
+                )
+              ],
+            ),
+            Text(displayString).alignment(Alignment.topLeft)
+          ],
+        ),
+      )
+          .borderRadius(all: Values.borderRadius * 0.8)
+          .padding(all: Values.busServiceTilePadding)
+          .border(
+            all: 1,
+            color: Colors.red,
+            style: BorderStyle.solid,
+          )
+          .borderRadius(all: Values.borderRadius * 0.8)
+          .padding(
+            bottom: Values.marginBelowTitle,
+            horizontal: Values.busServiceTilePadding,
+          ),
+      onTap: () => showBottomSheet(context),
+    );
+  }
+
+  showBottomSheet(BuildContext context) => bottomSheetTemplate(context, 185, [
+        SliverToBoxAdapter(
+          child: Column(
             children: [
-              Text(
-                "Timings unavailable",
-                style: Theme.of(context).textTheme.body2,
-              ).padding(bottom: 5),
-              CustomIconButton(
-                icon: FontAwesomeIcons.info,
-                size: Theme.of(context).textTheme.body2.fontSize,
-                color: Colors.red,
-                onTap: () {
-                  bottomSheetTemplate(context, 185, [
-                    SliverToBoxAdapter(
-                      child: Column(
-                        children: [
-                          MarkdownBody(data: Strings.timingsNotAvailableInfo),
-                          Spacing(height: 20),
-                          Button(
-                            iconData: FontAwesomeIcons.check,
-                            text: "Okay",
-                            color: Theme.of(context).primaryColor,
-                            onTap: () => closeBottomSheet(context),
-                          ).width(120).alignment(Alignment.bottomRight)
-                        ],
-                      ),
-                    ),
-                  ]);
-                },
-              )
+              MarkdownBody(data: Strings.timingsNotAvailableInfo),
+              Spacing(height: 20),
+              Button(
+                iconData: FontAwesomeIcons.check,
+                text: "Okay",
+                color: Theme.of(context).primaryColor,
+                onTap: () => closeBottomSheet(context),
+              ).width(120).alignment(Alignment.bottomRight)
             ],
           ),
-          Text(displayString).alignment(Alignment.topLeft)
-        ],
-      ),
-    )
-        .borderRadius(all: Values.borderRadius * 0.8)
-        .padding(all: Values.busServiceTilePadding)
-        .border(
-          all: 1,
-          color: Colors.red,
-          style: BorderStyle.solid,
-        )
-        .borderRadius(all: Values.borderRadius * 0.8)
-        .padding(
-          bottom: Values.marginBelowTitle,
-          horizontal: Values.busServiceTilePadding,
-        );
-  }
+        ),
+      ]);
 }

@@ -1,20 +1,21 @@
 import 'package:hive/hive.dart';
+import 'package:nextbussg/utils/theme_enum.dart';
 
 class ThemeService {
   // returns 'dark' or 'light
-  static String getTheme() {
+  static ThemeEnum getTheme() {
     var settingsBox = Hive.box('settings');
-    var theme = settingsBox.get('theme', defaultValue: 'light');
+    var theme = settingsBox.get('theme', defaultValue: ThemeEnum.light);
     return theme;
   }
 
   static toggleTheme() {
     var settingsBox = Hive.box('settings');
-    var theme = settingsBox.get('theme', defaultValue: 'light');
-    if (theme == 'light') {
-      theme = 'dark';
+    var theme = settingsBox.get('theme', defaultValue: ThemeEnum.light);
+    if (theme == ThemeEnum.light) {
+      theme = ThemeEnum.dark;
     } else {
-      theme = 'light';
+      theme = ThemeEnum.light;
     }
     settingsBox.put('theme', theme);
   }

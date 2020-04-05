@@ -63,7 +63,7 @@ class BusServiceTile extends StatelessWidget {
         bottom: Values.pageHorizontalPadding,
       ),
       decoration: BoxDecoration(
-        color: TileColors.busStopExpansionTile(context),
+        color: TileColors.busServiceTile(context),
         borderRadius: BorderRadius.circular(Values.borderRadius * 0.8),
       ),
     );

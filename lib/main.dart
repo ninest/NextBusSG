@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:flutter/services.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
 import 'package:nextbussg/providers/favorites.dart';
@@ -11,14 +8,22 @@ import 'package:nextbussg/styles/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:nextbussg/utils/theme_enum.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:bot_toast/bot_toast.dart';
 
 void main() async {
   await Hive.initFlutter();
+
+  await Hive.registerAdapter(ThemeEnumAdapter());
+  // final appDocumentDir = await getApplicationDocumentsDirectory();
+  // await Hive.init(appDocumentDir.path);
+
   await Hive.openBox('settings');
   await Hive.openBox('favorites');
+
 
   runApp(MyApp());
 }
@@ -60,8 +65,9 @@ class MainApp extends StatelessWidget {
         else
           home = TabbedApp();
 
-        if (theme == 'dark') {
-          FlutterStatusbarcolor.setStatusBarColor(Colors.black);
+        // change status bar color accordingly
+        if (theme == ThemeEnum.dark) {
+          FlutterStatusbarcolor.setStatusBarColor(appDarkTheme.scaffoldBackgroundColor);
           FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
         } else {
           FlutterStatusbarcolor.setStatusBarColor(Colors.white);
@@ -71,7 +77,7 @@ class MainApp extends StatelessWidget {
         return BotToastInit(
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme: theme == 'dark' ? appDarkTheme : appLightTheme,
+            theme: theme == ThemeEnum.dark ? appDarkTheme : appLightTheme,
             home: home,
             navigatorObservers: [BotToastNavigatorObserver()],
           ),

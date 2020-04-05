@@ -17,7 +17,8 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
     // ),
 
     // maybe only change title to Rubik>
-    title: GoogleFonts.rubik(
+    title: 
+    GoogleFonts.rubik(
       textStyle: base.title.copyWith(
         fontWeight: FontWeight.w700,
         fontSize: 1.8 * em,
@@ -54,13 +55,15 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
     ),
 
     // buttons
-    button: GoogleFonts.rubik(
-      textStyle: base.button.copyWith(
+    button: 
+    // GoogleFonts.rubik(
+      // textStyle: 
+      base.button.copyWith(
         color: primaryColor,
-        fontSize: 0.95 * em,
+        fontSize: 0.75 * em,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.5,
-      ),
+      // ),
     ),
 
     // bottom sheet text for confirmations?
@@ -68,6 +71,7 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
       fontSize: em,
       fontWeight: FontWeight.w500,
       color: dark ? Colors.white70 : Colors.black87,
+      
     ),
 
     // default font

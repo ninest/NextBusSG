@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nextbussg/components/core/buttons/back_button.dart';
 import 'package:nextbussg/services/theme.dart';
 import 'package:nextbussg/styles/values.dart';
+import 'package:nextbussg/utils/theme_enum.dart';
 import 'package:photo_view/photo_view.dart';
 
 class MRTMapPage extends StatelessWidget {
@@ -18,7 +19,7 @@ class MRTMapPage extends StatelessWidget {
             backgroundDecoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,
             ),
-            imageProvider: theme == 'dark'
+            imageProvider: theme == ThemeEnum.dark
                 ? AssetImage("assets/mrt/mrt-dark.png")
                 : AssetImage("assets/mrt/mrt-light.png"),
           ),

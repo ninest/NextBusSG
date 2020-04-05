@@ -150,15 +150,7 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
           borderRadius: BorderRadius.circular(Values.borderRadius),
         ),
       ),
-      // .padding(top: 10)
-      // .border(
-      //   all: 0,
-      //   style: BorderStyle.none,
-      //   color: Colors.transparent,
-      // )
-      // .backgroundColor(_backgroundColor)
-      // .borderRadius(all: Values.borderRadius)
-      // .padding(top: Values.marginBelowTitle)
+
     );
     // margin(top: Values.marginBelowTitle)
   }

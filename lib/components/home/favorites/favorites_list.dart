@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/components/core/loading/circular_spinner.dart';
+import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/utils/route.dart';
@@ -39,20 +40,25 @@ class FavoritesBusStopList extends StatelessWidget {
           String pluralize = "s";
           // also change the verb if it's singular
           String verb = "are";
+          String pronoun = "them";
+
           if (favoritesNotShown == 1) {
             pluralize = "";
             verb = "is";
+            pronoun = "it";
           }
-          noFavoritesText +=
-              "\n\nYou have **$favoritesNotShown** favorite$pluralize that $verb not being displayed as you are not near them.";
+
+          noFavoritesText =
+              "\n\nYou have **$favoritesNotShown** favorite$pluralize that $verb not being displayed as you are not near $pronoun.";
         }
 
         List<Widget> children = [
           if (!snapshot.hasData)
             CircularSpinner()
-          else if (snapshot.data.isEmpty)
-            MarkdownBody(data: noFavoritesText)
-          else
+          else if (snapshot.data.isEmpty) ...[
+            Spacing(height: Values.marginBelowTitle),
+            MarkdownBody(data: noFavoritesText),
+          ] else
             for (var busStop in snapshot.data)
               BusStopExpansionPanel(
                 name: busStop.name,

@@ -35,6 +35,9 @@ dependencies:
   permission_handler: ^4.4.0
   page_transition: ^1.1.5
   flutter_statusbarcolor: ^0.2.3
+  build_runner: ^1.8.1
+  hive_generator: ^0.7.0+2
+  path_provider: ^1.6.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -55,7 +58,7 @@ flutter_icons:
 
 flutter_native_splash:
   image: "icons/splash.png"
-  color: "333333"
+  color: "111111"
   android_disable_fullscreen: true
 
 
@@ -73,6 +76,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/bus_stops.json
+    - assets/services.json
     - assets/mrt/mrt-dark.png
     - assets/mrt/mrt-light.png
     - assets/onboard/1.png
