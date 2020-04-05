@@ -40,8 +40,8 @@
   - [x] Custom names for favorites
 - [x] Ability to search for bus services, routes, and stops (Search page)
   - [x] See information for each bus stop
-  - [ ] See information for each bus service
-    - [ ] See a list of routes for each bus service
+  - [x] See information for each bus service
+    - [x] See a list of routes for each bus service
   - [ ] See information for each MRT station (unplanned)
 - [x] FAQ page to teach users how to use the app
 - [x] Onboarding (introduction) pages to show how to use the app
