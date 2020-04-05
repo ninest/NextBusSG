@@ -38,6 +38,7 @@ class StopOverviewPage extends StatelessWidget {
             return PageTemplate(
               showBackButton: true,
               children: [
+                
                 // name of bus stop
                 TitleText(
                   title: name,
