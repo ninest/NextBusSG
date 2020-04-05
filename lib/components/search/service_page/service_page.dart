@@ -99,22 +99,31 @@ class ServicePage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: Values.marginBelowTitle),
       child: InkWell(
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: Values.busStopTileHorizontalPadding,
-            vertical: Values.busStopTileVerticalPadding,
+          borderRadius: BorderRadius.circular(Values.borderRadius),
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: Values.busStopTileHorizontalPadding,
+              vertical: Values.busStopTileVerticalPadding,
+            ),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Values.borderRadius),
+                color: TileColors.busServiceTile(context)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(name),
+                    MRTStations(stations: mrtStations),
+                  ],
+                ),
+                Text(code, style: Theme.of(context).textTheme.display2,),
+              ],
+            ),
           ),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Values.borderRadius),
-              color: TileColors.busServiceTile(context)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[Text(name), MRTStations(stations: mrtStations)],
-          ),
-        ),
-        onTap: () => Routing.openRoute(context, StopOverviewPage(code: code))
-      ),
+          onTap: () => Routing.openRoute(context, StopOverviewPage(code: code))),
     );
   }
 }

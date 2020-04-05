@@ -24,9 +24,13 @@ class MRTStations extends StatelessWidget {
           // getting the appropriate mrt line color
           Color color = TransitColors.mrtLineColors[lineID];
 
+          // gettind index of code.
+          // if it's the first one, don't put margin-left
+          int ind = stationsMap[index].indexOf(code);
+
           children.add(
             Container(
-              margin: EdgeInsets.only(left: 3.0),
+              margin: ind > 0 ? EdgeInsets.only(left: 3.0) : null,
               padding: EdgeInsets.all(3.0),
               decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(5)),
               child: Text(

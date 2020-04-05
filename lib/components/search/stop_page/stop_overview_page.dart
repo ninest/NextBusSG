@@ -38,13 +38,15 @@ class StopOverviewPage extends StatelessWidget {
             return PageTemplate(
               showBackButton: true,
               children: [
-                
+
                 // name of bus stop
                 TitleText(
                   title: name,
                 ).sliverToBoxAdapter(),
 
-                Column(children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
                   // road and stop code
                   Text("$road – $code"),
 
