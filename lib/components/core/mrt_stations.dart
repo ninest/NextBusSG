@@ -26,6 +26,7 @@ class MRTStations extends StatelessWidget {
 
           children.add(
             Container(
+              margin: EdgeInsets.only(left: 3.0),
               padding: EdgeInsets.all(3.0),
               decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(5)),
               child: Text(

@@ -5,18 +5,14 @@ import 'package:flutter/services.dart';
 import 'package:nextbussg/components/more/rename_favorites/bottom_sheets.dart';
 import 'package:nextbussg/components/core/mrt_stations.dart';
 import 'package:nextbussg/utils/extensions.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nextbussg/components/core/buttons/back_button.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/home/bus_stop_expansion_tile.dart';
 import 'package:nextbussg/components/search/stop_page/stop_servies_overview.dart';
 import 'package:nextbussg/components/core/title_text.dart';
-import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/url.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class StopOverviewPage extends StatelessWidget {
   final String code;
@@ -47,59 +43,60 @@ class StopOverviewPage extends StatelessWidget {
                   title: name,
                 ).sliverToBoxAdapter(),
 
-                // road and stop code
-                Text("$road – $code").sliverToBoxAdapter(),
+                Column(children: [
+                  // road and stop code
+                  Text("$road – $code"),
 
-                if (mrtStations.isNotEmpty)
-                  Spacing(height: Values.marginBelowTitle).sliver(),
+                  if (mrtStations.isNotEmpty) ...[
+                    Spacing(height: Values.marginBelowTitle),
+                    MRTStations(
+                      stations: mrtStations,
+                    ),
+                  ],
 
-                if (mrtStations.isNotEmpty)
-                  MRTStations(
-                    stations: mrtStations,
-                  ).sliverToBoxAdapter(),
+                  Spacing(height: Values.marginBelowTitle * 1.5),
 
-                Spacing(height: Values.marginBelowTitle * 1.5).sliver(),
+                  // // showing all services
+                  StopServicesOverview(
+                    services: services,
+                  ),
+                  // // Text('mrt stations').sliverToBoxAdapter(),
 
-                // showing all services
-                StopServicesOverview(
-                  services: services,
-                ).sliverToBoxAdapter(),
-                // Text('mrt stations').sliverToBoxAdapter(),
+                  Spacing(height: Values.marginBelowTitle * 1.5),
 
-                Spacing(height: Values.marginBelowTitle * 1.5).sliver(),
+                  // // timings panel
+                  // Text("Bus arrival timings:"),
+                  BusStopExpansionPanel(
+                    name: name,
+                    code: code,
+                    services: services,
+                    initialyExpanded: false,
+                    mrtStations: [],
+                  ),
 
-                // timings panel
-                Text("Bus arrival timings:").sliverToBoxAdapter(),
-                BusStopExpansionPanel(
-                  name: name,
-                  code: code,
-                  services: services,
-                  initialyExpanded: false,
-                  mrtStations: [],
-                ).sliverToBoxAdapter(),
+                  Spacing(height: Values.marginBelowTitle * 2),
 
-                Spacing(height: Values.marginBelowTitle * 2).sliver(),
+                  // // button to allow rename
+                  Button(
+                    text: "Rename",
+                    // iconData: FontAwesomeIcons.directions,
+                    // onTap: () => RenameFavoritesService.rename(context, code, newName),
+                    onTap: () => RenameFavoritesBottomSheets.bs(context, code, name),
+                  ),
 
-                // button to allow rename
-                Button(
-                  text: "Rename",
-                  // iconData: FontAwesomeIcons.directions,
-                  // onTap: () => RenameFavoritesService.rename(context, code, newName),
-                  onTap: () => RenameFavoritesBottomSheets.bs(context, code, name),
-                ).sliverToBoxAdapter(),
+                  Spacing(height: Values.marginBelowTitle),
 
-                Spacing(height: Values.marginBelowTitle).sliver(),
-
-                // showing directions
-                Button(
-                  text: "Directions to bus stop",
-                  fill: true,
-                  // iconData: FontAwesomeIcons.directions,
-                  onTap: () {
-                    String url = "https://maps.apple.com/?q=$lat,$lon";
-                    openUrl(url);
-                  },
-                ).sliverToBoxAdapter()
+                  // // showing directions
+                  Button(
+                    text: "Directions to bus stop",
+                    fill: true,
+                    // iconData: FontAwesomeIcons.directions,
+                    onTap: () {
+                      String url = "https://maps.apple.com/?q=$lat,$lon";
+                      openUrl(url);
+                    },
+                  )
+                ]).sliverToBoxAdapter()
               ],
             );
           } else {

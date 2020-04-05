@@ -18,7 +18,7 @@ class StopServicesOverview extends StatelessWidget {
 
   Widget serviceContainer(BuildContext context, String stop) => InkWell(
         borderRadius: BorderRadius.circular(5),
-        onTap: () => Routing.openReplacementRoute(context, ServicePage(service: stop,)),
+        onTap: () => Routing.openRoute(context, ServicePage(service: stop,)),
         child: Container(
           padding: EdgeInsets.all(5.0),
           decoration: BoxDecoration(
