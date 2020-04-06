@@ -21,6 +21,7 @@
 | ![More page](./readme-images/more-page.png) | **More page**, where users can change settings and see some more features |
 | ![dark view](./readme-images/dark-showcase.png) | 🌙 **Dark theme** |
 | ![rename](./readme-images/rename.png) | Bus stops can be renamed (renamed bus stops in italics) |
+| ![quick actions](./readme-images/quick-actions.png) | **Quick actions!** These do not seem to be working on iOS at the moment: [#13634](https://github.com/flutter/flutter/issues/13634). |
 
 [This](https://imgur.com/a/8QOCKBy) and [this](https://imgur.com/a/wXQWfeq) was what the design looked like at first.
 
@@ -51,6 +52,7 @@
 - [x] Theme customization 
   - [x] Light/dark theme
     - [ ] Change status bar text color depending on theme
+  - [x ] Add quick actions to go to favorites and MRT map (implemented, but not working on IOS: [#13634](https://github.com/flutter/flutter/issues/13634))
   - [ ] Accent color (unplanned) (~~might not implement~~) (only blue, green, and light blue)
   - [ ] Change font size (unplanned) (might not implement)
   - [ ] **THINK OF A MORE CREATIVE NAME.**

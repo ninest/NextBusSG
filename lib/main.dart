@@ -6,6 +6,7 @@ import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/providers/locationPerms.dart';
 import 'package:nextbussg/providers/search.dart';
+import 'package:nextbussg/quick_actions.dart';
 import 'package:nextbussg/routes/search.dart';
 import 'package:nextbussg/styles/theme.dart';
 import 'package:flutter/material.dart';
@@ -90,36 +91,7 @@ class MainApp extends StatelessWidget {
 
         // quick actions
         final QuickActions quickActions = QuickActions();
-        quickActions.initialize((String shortcutType) {
-          // if (shortcutType == 'mrt_map') {
-          //   Routing.openRoute(context, MRTMapPage());
-          // } else if (shor)
-          switch (shortcutType) {
-            case "mrt_map":
-              {
-                print("MRT MAP");
-                Routing.openRoute(context, MRTMapPage());
-              }
-              break;
-            case "favorites":
-              {
-                Routing.openRoute(context, AllFavoritesPage());
-              }
-              break;
-          }
-        });
-        quickActions.setShortcutItems(<ShortcutItem>[
-          const ShortcutItem(
-            type: 'mrt_map',
-            localizedTitle: "MRT map",
-            icon: 'taskCompleted',
-          ),
-          const ShortcutItem(
-            type: 'favorites',
-            localizedTitle: "All Favorites",
-            icon: 'love',
-          ),
-        ]);
+        setup(context, quickActions);
 
         // //////
 
