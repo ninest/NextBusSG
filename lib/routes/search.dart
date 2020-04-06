@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/components/core/space.dart';
+import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -22,6 +24,7 @@ class SearchPage extends StatelessWidget {
             maxExtent: 70.0,
           ),
         ),
+        Spacing(height: Values.marginBelowTitle).sliver(),
         SliverList(
           delegate: SliverChildListDelegate(
             [

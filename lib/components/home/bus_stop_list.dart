@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/components/core/loading/circular_spinner.dart';
 import 'package:nextbussg/utils/strings.dart';
+import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/home/bus_stop_expansion_tile.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/services/bus.dart';
@@ -49,27 +50,25 @@ class BusStopList extends StatelessWidget {
               )
           else
             // placeholder widgets while stops are loding
-            // Loadi
-            // Text("Loading stops near me ...")
-            // ...[CircularProgressIndicator()]
             CircularSpinner()
         ];
 
         // TODO: find a way to put a slight animation
         // so users can see each bus stop being "added" nicely
+        // heading (near me/favorites)
 
-        return SliverList(
-          delegate: SliverChildListDelegate([
-            // heading (near me/favorites)
+        // bus stop tile list
+        // column needed because otherwise widgets dissapear before being scrolled awau
 
+        return Column(
+          children: [
             TitleText(
               title: title,
               iconData: iconData,
             ),
-            // bus stop tile list
-            Column(children: children)
-          ]),
-        );
+            ...children,
+          ],
+        ).sliverToBoxAdapter();
       },
     );
     // }

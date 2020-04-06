@@ -14,7 +14,7 @@ class MRTMapPage extends StatelessWidget {
       children: <Widget>[
         Container(
           child: PhotoView(
-            minScale: PhotoViewComputedScale.contained * 3.5,
+            minScale: PhotoViewComputedScale.contained * 1.5,
             // maxScale: PhotoViewComputedScale.covered * 1.8,
             backgroundDecoration: BoxDecoration(
               color: Theme.of(context).scaffoldBackgroundColor,

@@ -10,14 +10,18 @@ import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/components/home/bus_stop_list.dart';
 import 'package:nextbussg/components/home/favorites/favorites_list.dart';
+import 'package:nextbussg/components/more/mrt_map_page.dart';
 import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/providers/locationPerms.dart';
+import 'package:nextbussg/routes/search.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/extensions.dart';
+import 'package:nextbussg/utils/route.dart';
 import 'package:nextbussg/utils/strings.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
+import 'package:quick_actions/quick_actions.dart';
 
 class HomePage extends StatelessWidget {
   List<Widget> noLocationAccess(context) {
@@ -49,12 +53,43 @@ class HomePage extends StatelessWidget {
           if (snapshot.hasData)
             return PageTemplate(children: snapshot.data);
           else
-          return FindingLocation();
+            return FindingLocation();
         },
       );
 
   @override
   Widget build(BuildContext context) {
+    // ///////
+
+    // quick actions
+    final QuickActions quickActions = QuickActions();
+    quickActions.initialize((String shortcutType) {
+      // if (shortcutType == 'mrt_map') {
+      //   Routing.openRoute(context, MRTMapPage());
+      // } else if (shor)
+      switch (shortcutType) {
+        case "mrt_map":
+          {
+            Routing.openRoute(context, MRTMapPage());
+          }
+          break;
+      }
+    });
+    quickActions.setShortcutItems(<ShortcutItem>[
+      const ShortcutItem(
+        type: 'mrt_map',
+        localizedTitle: "MRT map",
+        icon: 'plus',
+      ),
+      const ShortcutItem(
+        type: 'search',
+        localizedTitle: "Search",
+        icon: 'plus',
+      )
+    ]);
+
+    // //////
+
     final LocationPermissionsProvider locationPermissionsProvider =
         Provider.of<LocationPermissionsProvider>(context, listen: true);
 

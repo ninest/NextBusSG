@@ -22,7 +22,8 @@ class MRTStations extends StatelessWidget {
           String lineID = code.substring(0, 2);
 
           // getting the appropriate mrt line color
-          Color color = TransitColors.mrtLineColors[lineID];
+          Color textColor = TransitColors.mrtLineColors[lineID];
+          Color backgroundCcolor = TransitColors.mrtLineColors[lineID].withOpacity(0.3);
 
           // gettind index of code.
           // if it's the first one, don't put margin-left
@@ -32,12 +33,13 @@ class MRTStations extends StatelessWidget {
             Container(
               margin: ind > 0 ? EdgeInsets.only(left: 3.0) : null,
               padding: EdgeInsets.all(3.0),
-              decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(5)),
+              decoration: BoxDecoration(color: backgroundCcolor, borderRadius: BorderRadius.circular(5)),
               child: Text(
                 code.toUpperCase(),
                 style: Theme.of(context).textTheme.display3.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white70,
+                      // color: Colors.white70,
+                      color: textColor,
                     ),
               ),
             ),

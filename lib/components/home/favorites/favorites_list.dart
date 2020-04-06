@@ -6,6 +6,7 @@ import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/utils/route.dart';
 import 'package:nextbussg/utils/strings.dart';
+import 'package:nextbussg/utils/extensions.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/home/bus_service_tile.dart';
@@ -100,16 +101,16 @@ class FavoritesBusStopList extends StatelessWidget {
             },
           ));
 
-        return SliverList(
-          delegate: SliverChildListDelegate([
+        return Column(
+          children: <Widget>[
             TitleText(
               title: title,
               iconData: iconData,
             ),
             // bus stop tile list
             Column(children: children)
-          ]),
-        );
+          ],
+        ).sliverToBoxAdapter();
       },
     );
   }

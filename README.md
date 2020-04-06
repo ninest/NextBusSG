@@ -149,7 +149,7 @@ flutter pub pub run flutter_native_splash:create
 
 ```
 
-### Stuck at installking debug Android app
+### Stuck at installing debug Android app
 Go to app settings and uninstall your app. The app may not appear in your launcher, but it could still be installed. Go to your settings, find it, and completely uninstall it.
 
 This can also be done using ADB:
@@ -170,3 +170,4 @@ Once the APK has been built, install it on a physcally connected Android device:
 ```
 flutter install
 ```
+

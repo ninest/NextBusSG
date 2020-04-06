@@ -1,18 +1,22 @@
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:nextbussg/components/more/mrt_map_page.dart';
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
 import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/providers/locationPerms.dart';
 import 'package:nextbussg/providers/search.dart';
+import 'package:nextbussg/routes/search.dart';
 import 'package:nextbussg/styles/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:nextbussg/utils/route.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:quick_actions/quick_actions.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -23,7 +27,6 @@ void main() async {
 
   await Hive.openBox('settings');
   await Hive.openBox('favorites');
-
 
   runApp(MyApp());
 }
@@ -67,14 +70,18 @@ class MainApp extends StatelessWidget {
 
         // change status bar color accordingly
         if (theme == ThemeEnum.dark) {
-          FlutterStatusbarcolor.setStatusBarColor(appDarkTheme.scaffoldBackgroundColor);
+          // FlutterStatusbarcolor.setStatusBarColor(appDarkTheme.scaffoldBackgroundColor);
+          FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
           FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
         } else {
-          FlutterStatusbarcolor.setStatusBarColor(Colors.white);
+          // FlutterStatusbarcolor.setStatusBarColor(Colors.white);
+          FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
           FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
         }
 
         return BotToastInit(
+
+          
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: theme == ThemeEnum.dark ? appDarkTheme : appLightTheme,
