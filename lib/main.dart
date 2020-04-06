@@ -1,4 +1,5 @@
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:nextbussg/components/home/favorites/all_favorites_page.dart';
 import 'package:nextbussg/components/more/mrt_map_page.dart';
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
 import 'package:nextbussg/providers/favorites.dart';
@@ -17,6 +18,7 @@ import 'package:provider/provider.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:quick_actions/quick_actions.dart';
+import 'dart:io' show Platform;
 
 void main() async {
   await Hive.initFlutter();
@@ -55,7 +57,7 @@ class MainApp extends StatelessWidget {
       // to change theme and put away onboarding screen
       valueListenable: Hive.box('settings').listenable(keys: ['theme']),
       builder: (context, box, widget) {
-        var theme = box.get('theme', defaultValue: 'light');
+        var theme = box.get('theme', defaultValue: ThemeEnum.light);
 
         // check if this is the first time using the app
         var settingsBox = Hive.box('settings');
@@ -68,20 +70,60 @@ class MainApp extends StatelessWidget {
         else
           home = TabbedApp();
 
-        // change status bar color accordingly
-        if (theme == ThemeEnum.dark) {
-          // FlutterStatusbarcolor.setStatusBarColor(appDarkTheme.scaffoldBackgroundColor);
-          FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
-          FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
-        } else {
-          // FlutterStatusbarcolor.setStatusBarColor(Colors.white);
-          FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
-          FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+        // change status bar color accordingly, fix for android
+        if (Platform.isAndroid) {
+          if (theme == ThemeEnum.light) {
+            print("SETTING WHITE STS CLR");
+            FlutterStatusbarcolor.setStatusBarColor(Colors.white);
+            FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+          } else {
+            FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
+            FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+          }
+        } else if (Platform.isIOS) {
+          if (theme == ThemeEnum.light) {
+            FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+          } else {
+            FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+          }
         }
 
-        return BotToastInit(
+        // quick actions
+        final QuickActions quickActions = QuickActions();
+        quickActions.initialize((String shortcutType) {
+          // if (shortcutType == 'mrt_map') {
+          //   Routing.openRoute(context, MRTMapPage());
+          // } else if (shor)
+          switch (shortcutType) {
+            case "mrt_map":
+              {
+                print("MRT MAP");
+                Routing.openRoute(context, MRTMapPage());
+              }
+              break;
+            case "favorites":
+              {
+                Routing.openRoute(context, AllFavoritesPage());
+              }
+              break;
+          }
+        });
+        quickActions.setShortcutItems(<ShortcutItem>[
+          const ShortcutItem(
+            type: 'mrt_map',
+            localizedTitle: "MRT map",
+            icon: 'taskCompleted',
+          ),
+          const ShortcutItem(
+            type: 'favorites',
+            localizedTitle: "All Favorites",
+            icon: 'love',
+          ),
+        ]);
 
-          
+        // //////
+
+        return BotToastInit(
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: theme == ThemeEnum.dark ? appDarkTheme : appLightTheme,

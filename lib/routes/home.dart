@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/components/core/loading/finding_location.dart';
@@ -9,6 +9,7 @@ import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/components/home/bus_stop_list.dart';
+import 'package:nextbussg/components/home/favorites/all_favorites_page.dart';
 import 'package:nextbussg/components/home/favorites/favorites_list.dart';
 import 'package:nextbussg/components/more/mrt_map_page.dart';
 import 'package:nextbussg/providers/favorites.dart';
@@ -59,36 +60,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ///////
-
-    // quick actions
-    final QuickActions quickActions = QuickActions();
-    quickActions.initialize((String shortcutType) {
-      // if (shortcutType == 'mrt_map') {
-      //   Routing.openRoute(context, MRTMapPage());
-      // } else if (shor)
-      switch (shortcutType) {
-        case "mrt_map":
-          {
-            Routing.openRoute(context, MRTMapPage());
-          }
-          break;
-      }
-    });
-    quickActions.setShortcutItems(<ShortcutItem>[
-      const ShortcutItem(
-        type: 'mrt_map',
-        localizedTitle: "MRT map",
-        icon: 'plus',
-      ),
-      const ShortcutItem(
-        type: 'search',
-        localizedTitle: "Search",
-        icon: 'plus',
-      )
-    ]);
-
-    // //////
 
     final LocationPermissionsProvider locationPermissionsProvider =
         Provider.of<LocationPermissionsProvider>(context, listen: true);
