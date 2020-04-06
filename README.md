@@ -53,6 +53,7 @@
     - [ ] Change status bar text color depending on theme
   - [ ] Accent color (unplanned) (~~might not implement~~) (only blue, green, and light blue)
   - [ ] Change font size (unplanned) (might not implement)
+  - [ ] **THINK OF A MORE CREATIVE NAME.**
 
 ### 🧨 For the future
 - [ ] Graph view for arrival times, rather than just showing numbers (planned, although implementation is difficult)
