@@ -38,3 +38,6 @@ lib/generated_plugin_registrant.dart
 
 # keys
 */keys.dart
+
+# app key
+**/android/key.properties

@@ -5,28 +5,14 @@ import 'package:page_transition/page_transition.dart';
 
 class Routing {
   static void openRoute(BuildContext context, Widget page) {
-    // if ios, go as per normal
-    // if android, get nicer transitions
-    if (defaultTargetPlatform == TargetPlatform.iOS)
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => ScrollConfiguration(
-                  child: page,
-                  behavior: BounceScrollBehavior(),
-                )),
-      );
-    else
-      Navigator.push(
-        context,
-        PageTransition(
-          type: PageTransitionType.rightToLeft,
-          child: ScrollConfiguration(
-            child: page,
-            behavior: BounceScrollBehavior(),
-          ),
-        ),
-      );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => ScrollConfiguration(
+                child: page,
+                behavior: BounceScrollBehavior(),
+              )),
+    );
   }
 
   // no back allowed

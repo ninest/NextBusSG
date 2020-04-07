@@ -6,16 +6,9 @@ class AppBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        // decoration: BoxDecoration(
-        //   border: Border.all(
-        //     style: BorderStyle.solid,
-        //     width: 1,
-        //   ),
-        // ),
         child: Row(
           children: <Widget>[
-            Icon(FontAwesomeIcons.chevronLeft),
-            // Text("Back", style: Theme.of(context).textTheme.body1,),
+            Icon(FontAwesomeIcons.chevronLeft, size: 30),
           ],
         ),
       ),

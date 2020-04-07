@@ -17,8 +17,7 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
     // ),
 
     // maybe only change title to Rubik>
-    title: 
-    GoogleFonts.rubik(
+    title: GoogleFonts.rubik(
       textStyle: base.title.copyWith(
         fontWeight: FontWeight.w700,
         fontSize: 1.8 * em,
@@ -55,14 +54,14 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
     ),
 
     // buttons
-    button: 
-    // GoogleFonts.rubik(
-      // textStyle: 
-      base.button.copyWith(
-        color: primaryColor,
-        fontSize: 0.75 * em,
-        fontWeight: FontWeight.w600,
-        letterSpacing: 0.5,
+    button:
+        // GoogleFonts.rubik(
+        // textStyle:
+        base.button.copyWith(
+      color: primaryColor,
+      fontSize: 0.75 * em,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 0.5,
       // ),
     ),
 
@@ -71,7 +70,6 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
       fontSize: em,
       fontWeight: FontWeight.w500,
       color: dark ? Colors.white70 : Colors.black87,
-      
     ),
 
     // default font
@@ -88,6 +86,14 @@ Color primaryColor = Colors.indigo;
 // so that there are no lines above/below expansiontile
 Color dividerColor = Colors.transparent;
 
+// for better back transition
+PageTransitionsTheme _pageTransitionsTheme = PageTransitionsTheme(
+  builders: <TargetPlatform, PageTransitionsBuilder>{
+    TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+    TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+  },
+);
+
 ThemeData _buildLightTheme() {
   final ThemeData base = ThemeData(
     brightness: Brightness.light,
@@ -99,16 +105,16 @@ ThemeData _buildLightTheme() {
     dividerColor: dividerColor,
 
     // TODO: set status bar color
-    appBarTheme: AppBarTheme(
-      color: Colors.white
-    //   brightness: Brightness.dark,
-    ),
+    appBarTheme: AppBarTheme(color: Colors.white
+        //   brightness: Brightness.dark,
+        ),
 
     // required to prevent the lines from appearing on expansionTile
   );
 
   return base.copyWith(
     textTheme: _buildTextTheme(base.textTheme, primaryColor),
+    pageTransitionsTheme: _pageTransitionsTheme,
   );
 }
 
@@ -130,5 +136,6 @@ ThemeData _buildDarkTheme() {
 
   return base.copyWith(
     textTheme: _buildTextTheme(base.textTheme, primaryColor, dark: true),
+    pageTransitionsTheme: _pageTransitionsTheme,
   );
 }
