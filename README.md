@@ -63,6 +63,8 @@
 - [ ] Tell users how to get to the nearest bus stop (unplanned)
 - [ ] Map view to show the nearest bus stops (unplanned) (might not implement)
 
+### [Wiki](https://github.com/themindstorm/NextBusSG/wiki)
+
 ## 🛠 Data
 Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore-bus) for a detailed guide on how the data was scraped. The data is copyrighted by LTA.
 
