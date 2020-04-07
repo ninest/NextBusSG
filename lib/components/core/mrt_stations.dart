@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/styles/transit_colors.dart';
+import 'package:nextbussg/styles/values.dart';
 
 class MRTStations extends StatelessWidget {
   final List stations;
@@ -23,15 +24,12 @@ class MRTStations extends StatelessWidget {
 
           // getting the appropriate mrt line color
           Color textColor = TransitColors.mrtLineColors[lineID];
-          Color backgroundCcolor = TransitColors.mrtLineColors[lineID].withOpacity(0.3);
+          Color backgroundCcolor = TransitColors.mrtLineColors[lineID].withOpacity(Values.containerOpacity);
 
-          // gettind index of code.
-          // if it's the first one, don't put margin-left
-          int ind = stationsMap[index].indexOf(code);
 
           children.add(
             Container(
-              margin: ind > 0 ? EdgeInsets.only(left: 3.0) : null,
+              margin: EdgeInsets.only(right: 3.0),
               padding: EdgeInsets.all(3.0),
               decoration: BoxDecoration(color: backgroundCcolor, borderRadius: BorderRadius.circular(5)),
               child: Text(

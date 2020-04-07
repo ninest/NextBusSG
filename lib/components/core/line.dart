@@ -5,7 +5,7 @@ class Line extends StatelessWidget {
   Widget build(BuildContext context) {
     return Divider(
       // nice gray/light white color
-      color: Theme.of(context).textTheme.display2.color,
+      color: Colors.grey,
       thickness: 3.0,
       // height: 30.0,
     );

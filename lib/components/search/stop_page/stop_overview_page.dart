@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -38,15 +39,12 @@ class StopOverviewPage extends StatelessWidget {
             return PageTemplate(
               showBackButton: true,
               children: [
-
                 // name of bus stop
                 TitleText(
                   title: name,
                 ).sliverToBoxAdapter(),
 
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
+                Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
                   // road and stop code
                   Text("$road – $code"),
 
@@ -94,10 +92,7 @@ class StopOverviewPage extends StatelessWidget {
                     text: "Directions to bus stop",
                     fill: true,
                     // iconData: FontAwesomeIcons.directions,
-                    onTap: () {
-                      String url = "https://maps.apple.com/?q=$lat,$lon";
-                      openUrl(url);
-                    },
+                    onTap: () => _openMap(lon, lat),
                   )
                 ]).sliverToBoxAdapter()
               ],
@@ -116,5 +111,14 @@ class StopOverviewPage extends StatelessWidget {
 
     // print(stopData);
     return stopData;
+  }
+
+  _openMap(lon, lat) {
+    String url;
+    if (Platform.isIOS)
+      url = 'https://maps.apple.com/?q=$lat,$lon';
+    else
+      url = 'https://www.google.com/maps?q=$lat,$lon';
+    openUrl(url);
   }
 }

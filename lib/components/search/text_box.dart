@@ -17,10 +17,6 @@ class SearchTextBox extends StatelessWidget {
      */
 
     return Container(
-      // TODO: make a little bit of the top and bottom of
-      // text box white to make it look like a floating bar rather than
-      // just a floating text box
-
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[

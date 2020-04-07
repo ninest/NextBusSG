@@ -14,7 +14,7 @@ class TitleText extends StatelessWidget {
           child: Text(
             title,
             style: Theme.of(context).textTheme.title,
-            textAlign: TextAlign.justify,
+            textAlign: TextAlign.start,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
           ),

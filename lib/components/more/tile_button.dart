@@ -32,11 +32,15 @@ class TileButton extends StatelessWidget {
 
     return InkWell(
       child: Container(
-        // these seem to need more padding, not entirely sure why
-        padding: EdgeInsets.only(
-          top: Values.marginBelowTitle,
-          bottom: Values.marginBelowTitle,
+        margin: EdgeInsets.only(
+          top: Values.marginBelowTitle / 2,
+          bottom: Values.marginBelowTitle / 2,
         ),
+        // these seem to need more padding, not entirely sure why
+        padding: EdgeInsets.all(Values.marginBelowTitle),
+        decoration: BoxDecoration(
+            color: Colors.grey.withOpacity(Values.containerOpacity),
+            borderRadius: BorderRadius.circular(Values.borderRadius)),
         child: child,
       ),
       enableFeedback: true,

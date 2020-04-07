@@ -86,6 +86,9 @@ Color primaryColor = Colors.indigo;
 // so that there are no lines above/below expansiontile
 Color dividerColor = Colors.transparent;
 
+// for timings not available box
+Color errorColor = Colors.red;
+
 // for better back transition
 PageTransitionsTheme _pageTransitionsTheme = PageTransitionsTheme(
   builders: <TargetPlatform, PageTransitionsBuilder>{
@@ -103,13 +106,7 @@ ThemeData _buildLightTheme() {
     bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
     toggleableActiveColor: primaryColor,
     dividerColor: dividerColor,
-
-    // TODO: set status bar color
-    appBarTheme: AppBarTheme(color: Colors.white
-        //   brightness: Brightness.dark,
-        ),
-
-    // required to prevent the lines from appearing on expansionTile
+    errorColor: errorColor,
   );
 
   return base.copyWith(
@@ -127,11 +124,7 @@ ThemeData _buildDarkTheme() {
     bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
     toggleableActiveColor: primaryColor,
     dividerColor: dividerColor,
-
-    // TODO: set status bar color
-    // appBarTheme: AppBarTheme(
-    //   brightness: Brightness.dark,
-    // ),
+    errorColor: errorColor,
   );
 
   return base.copyWith(

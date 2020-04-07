@@ -12,16 +12,14 @@ class SearchProvider extends ChangeNotifier {
   bool _noStopsFound = false;
   bool getNoStopsFoundValue() => _noStopsFound;
 
-  getNearestBusStopSearchResults() async{
+  getNearestBusStopSearchResults() async {
     bool canGetPermission = await LocationPermissionsProvider().getBoolPermissionStatus;
-    // LocationPermissionsProvider().getBoolPermissionStatus.then((bool canGetPermission) async {
-      if (canGetPermission) {
-        _searchResults = await BusService.getNearestStops();
-        notifyListeners();
-      } else {
-        BotToast.showText(text: Strings.cannotShowNearByStops, contentColor: Colors.red);
-      }
-    // });
+    if (canGetPermission) {
+      _searchResults = await BusService.getNearestStops();
+      notifyListeners();
+    } else {
+      BotToast.showText(text: Strings.cannotShowNearByStops, contentColor: Colors.red);
+    }
   }
 
   searchFor(String query) async {
@@ -56,27 +54,4 @@ class SearchProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-
-  // searchFor(String text) async {
-  //   // if the string is empty or null, search results should just display the nearest bus stops (and buses)
-  //   print("searchFor: $text");
-  //   if (text == "" || text == null) {
-  //     print("No query, giving nearest bus stops");
-  //     _searchResults = await BusService.getNearestStops();
-  //     notifyListeners();
-  //   } else {
-  //     print("Search query: $text");
-  //     List allBusStops = await BusService.getAllStops();
-  //     List<BusStop> searchResults = [];
-  //     // TODO: implement search
-  //     for (BusStop bs in allBusStops) {
-  //       // check if any of the search terms are in the bus stop name or number
-  //       if (bs.name.contains(text) || bs.code.contains(text)) {
-  //         searchResults.add(bs);
-  //       }
-  //     }
-  //     _searchResults = searchResults;
-  //     notifyListeners();
-  //   }
-  // }
 }

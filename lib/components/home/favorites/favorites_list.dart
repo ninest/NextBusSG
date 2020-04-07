@@ -85,7 +85,7 @@ class FavoritesBusStopList extends StatelessWidget {
             ),
           );
         else
-          ;
+          null;
         // when it's the all favorites page, the button should be for taking users back
         // to the main page
         else

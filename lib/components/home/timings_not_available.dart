@@ -25,6 +25,19 @@ class TimingsNotAvailable extends StatelessWidget {
 
     return GestureDetector(
       child: Container(
+        margin: EdgeInsets.only(
+          bottom: Values.marginBelowTitle,
+          left: Values.busServiceTilePadding,
+          right: Values.busServiceTilePadding,
+        ),
+        padding: EdgeInsets.all(Values.busServiceTilePadding),
+        decoration: BoxDecoration(
+            // border: Border.all(
+            //   width: 1,
+            //   color: Colors.red,
+            // ),
+            borderRadius: BorderRadius.circular(Values.borderRadius * 0.8),
+            color: Theme.of(context).errorColor.withOpacity(Values.containerOpacity)),
         child: Column(
           children: <Widget>[
             Row(
@@ -32,31 +45,37 @@ class TimingsNotAvailable extends StatelessWidget {
               children: [
                 Text(
                   "Timings unavailable",
-                  style: Theme.of(context).textTheme.body2,
+                  style: Theme.of(context).textTheme.body2.copyWith(
+                        color: Theme.of(context).errorColor,
+                      ),
                 ).padding(bottom: 5),
                 CustomIconButton(
                   icon: FontAwesomeIcons.info,
                   size: Theme.of(context).textTheme.body2.fontSize,
-                  color: Colors.red,
+                  color: Theme.of(context).errorColor,
                 )
               ],
             ),
-            Text(displayString).alignment(Alignment.topLeft)
+            Text(
+              displayString,
+              style: Theme.of(context).textTheme.body1.copyWith(
+                    color: Theme.of(context).errorColor,
+                  ),
+            ).alignment(Alignment.topLeft)
           ],
         ),
-      )
-          .borderRadius(all: Values.borderRadius * 0.8)
-          .padding(all: Values.busServiceTilePadding)
-          .border(
-            all: 1,
-            color: Colors.red,
-            style: BorderStyle.solid,
-          )
-          .borderRadius(all: Values.borderRadius * 0.8)
-          .padding(
-            bottom: Values.marginBelowTitle,
-            horizontal: Values.busServiceTilePadding,
-          ),
+      ),
+      // .padding(all: Values.busServiceTilePadding)
+      // .border(
+      //   all: 1,
+      //   color: Colors.red,
+      //   style: BorderStyle.solid,
+      // )
+      // .borderRadius(all: Values.borderRadius * 0.8)
+      // .padding(
+      //   bottom: Values.marginBelowTitle,
+      //   horizontal: Values.busServiceTilePadding,
+      // ),
       onTap: () => showBottomSheet(context),
     );
   }

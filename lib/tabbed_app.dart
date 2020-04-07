@@ -28,7 +28,6 @@ class TabbedAppState extends State<TabbedApp> {
   Widget build(BuildContext context) {
     // TODO: make nav bar a little transparent so it looks nice
     return Scaffold(
-      // body: _tabViews.elementAt(_selectedIndex),
       body: IndexedStack(
         index: _selectedIndex,
         children: _tabViews,
