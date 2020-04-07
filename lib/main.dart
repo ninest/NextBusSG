@@ -1,4 +1,6 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:nextbussg/bounce_scroll.dart';
 import 'package:nextbussg/components/home/favorites/all_favorites_page.dart';
 import 'package:nextbussg/components/more/mrt_map_page.dart';
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
@@ -75,31 +77,41 @@ class MainApp extends StatelessWidget {
         if (Platform.isAndroid) {
           if (theme == ThemeEnum.light) {
             print("SETTING WHITE STS CLR");
-            FlutterStatusbarcolor.setStatusBarColor(Colors.white);
-            FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+            // FlutterStatusbarcolor.setStatusBarColor(Colors.white);
+            // FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+            SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness: Brightness.dark,
+            ));
           } else {
-            FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
-            FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
-          }
-        } else if (Platform.isIOS) {
-          if (theme == ThemeEnum.light) {
-            FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
-          } else {
-            FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+            // FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
+            // FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+            SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness: Brightness.light,
+            ));
           }
         }
+        // else if (Platform.isIOS) {
+        //   if (theme == ThemeEnum.light) {
+        //     FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+        //   } else {
+        //     FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
+        //   }
+        // }
 
         // quick actions
         final QuickActions quickActions = QuickActions();
         setup(context, quickActions);
 
-        // //////
-
         return BotToastInit(
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: theme == ThemeEnum.dark ? appDarkTheme : appLightTheme,
-            home: home,
+            home: ScrollConfiguration(
+              child: home,
+              behavior: BounceScrollBehavior(),
+            ),
             navigatorObservers: [BotToastNavigatorObserver()],
           ),
         );

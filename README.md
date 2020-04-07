@@ -49,10 +49,10 @@
 - [x] Third page (settings/options page, should also show tutorial/FAQ on how to use the app)
 - [x] Request user location permission on app start
   - [x] Display button to open settings if location permissions denied
+- [ ] Add quick actions to go to favorites and MRT map (implemented, but not working on IOS: [#13634](https://github.com/flutter/flutter/issues/13634))
 - [x] Theme customization 
   - [x] Light/dark theme
     - [ ] Change status bar text color depending on theme
-  - [x ] Add quick actions to go to favorites and MRT map (implemented, but not working on IOS: [#13634](https://github.com/flutter/flutter/issues/13634))
   - [ ] Accent color (unplanned) (~~might not implement~~) (only blue, green, and light blue)
   - [ ] Change font size (unplanned) (might not implement)
   - [ ] **THINK OF A MORE CREATIVE NAME.**
@@ -70,16 +70,17 @@ Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore
 - provider
 - hive
 - hive_flutter
+- hive_generator
 - geolocator
 - permission_handler
 - styled_widget
-- ~~division~~
 - flutter_markdown
 - bot_toast
 - url_launcher
 - introduction_screen
 - flutter_launcher_icons
 - flutter_native_splash
+- quick_actions
 
 ## FAQs
 ### 1. How do I add or remove favorites?
@@ -172,5 +173,17 @@ flutter build apk
 Once the APK has been built, install it on a physcally connected Android device:
 ```
 flutter install
+```
+
+If you have multiple devices, you can view a list of Android devices connected using this command:
+
+```
+adb devices
+```
+
+And to install the app on an Android device, copy the device ID and install the app using
+
+```
+flutter install <devce ID>
 ```
 

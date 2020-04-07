@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:nextbussg/bounce_scroll.dart';
 import 'package:page_transition/page_transition.dart';
 
 class Routing {
@@ -9,14 +10,21 @@ class Routing {
     if (defaultTargetPlatform == TargetPlatform.iOS)
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => page),
+        MaterialPageRoute(
+            builder: (context) => ScrollConfiguration(
+                  child: page,
+                  behavior: BounceScrollBehavior(),
+                )),
       );
     else
       Navigator.push(
         context,
         PageTransition(
           type: PageTransitionType.rightToLeft,
-          child: page,
+          child: ScrollConfiguration(
+            child: page,
+            behavior: BounceScrollBehavior(),
+          ),
         ),
       );
   }
@@ -24,7 +32,11 @@ class Routing {
   // no back allowed
   static void openReplacementRoute(BuildContext context, Widget page) {
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (BuildContext context) => page),
+      MaterialPageRoute(
+          builder: (BuildContext context) => ScrollConfiguration(
+                child: page,
+                behavior: BounceScrollBehavior(),
+              )),
     );
   }
 
