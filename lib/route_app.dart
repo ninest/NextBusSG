@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:hive/hive.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:bot_toast/bot_toast.dart';
@@ -43,6 +44,15 @@ class RouteApp extends StatelessWidget {
               statusBarColor: Colors.transparent,
               statusBarIconBrightness: Brightness.light,
             ));
+          }
+        } else if (Platform.isIOS) {
+          if (theme == ThemeEnum.light) {
+            print("IOS DARK");
+            FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
+            FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
+          } else {
+            FlutterStatusbarcolor.setStatusBarColor(Color(0xFF111111));
+            FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
           }
         }
 
