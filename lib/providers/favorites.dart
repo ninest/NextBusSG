@@ -4,10 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hive/hive.dart';
 import 'package:nextbussg/models/bus_stop.dart';
-import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/services/location.dart';
 import 'package:nextbussg/utils/distance.dart';
-import 'package:provider/provider.dart';
 
 // TODO: maybe change this to a valuelistenable with Hive rather than ChangeNotifierProvider
 

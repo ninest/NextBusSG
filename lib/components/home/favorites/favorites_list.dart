@@ -3,17 +3,14 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/components/core/loading/circular_spinner.dart';
 import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/core/title_text.dart';
-import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/utils/route.dart';
 import 'package:nextbussg/utils/strings.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
-import 'package:nextbussg/components/home/bus_service_tile.dart';
 import 'package:nextbussg/components/home/favorites/all_favorites_page.dart';
 import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/styles/values.dart';
-import 'package:nextbussg/components/core/page_template.dart';
 
 import 'package:styled_widget/styled_widget.dart';
 

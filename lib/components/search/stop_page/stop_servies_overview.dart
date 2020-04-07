@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/components/search/service_page/service_page.dart';
-import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
 import 'package:nextbussg/utils/route.dart';
 
 class StopServicesOverview extends StatelessWidget {

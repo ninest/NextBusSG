@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/components/more/rename_favorites/bottom_sheets.dart';
-import 'package:nextbussg/components/more/tile_button.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/providers/favorites.dart';
-import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/utils/strings.dart';
 import 'package:nextbussg/styles/values.dart';
-import 'package:nextbussg/components/core/bottom_sheet_template.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
 

@@ -156,7 +156,8 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
   }
 
   // split to here
-  Widget stopTile() {}
+  // TODO: maybe put each stop tile in its own function
+  // Widget stopTile() {}
 
   _getBusTimings() async {
     // reset services not in opertion:
@@ -171,10 +172,5 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
         // the var servicesNotInOperation is not mentioned here because it is not required (? need better explanation ...)
         busArrivalList = newList;
       });
-  }
-
-  _addToFavorites() {
-    // show bottom sheet
-    print("Showing bottom sheets");
   }
 }
