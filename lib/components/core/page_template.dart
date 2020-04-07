@@ -21,7 +21,9 @@ class PageTemplate extends StatelessWidget {
             // if (showBackButton)
             if (showBackButton) ...[
               Spacing(height: Values.marginBelowTitle).sliver(),
-              Container(child: AppBackButton()).sliverToBoxAdapter(),
+
+              // Using wrap so it doesn't take 100% width
+              Wrap(children: <Widget>[AppBackButton()],).sliverToBoxAdapter(),
               Spacing(height: Values.marginBelowTitle).sliver()
             ] else
               Spacing(height: 20).sliver(),

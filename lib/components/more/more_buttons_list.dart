@@ -24,7 +24,7 @@ class MoreButtonsList extends StatelessWidget {
           ),
           TileButton(
             text: "View tutorial",
-            icon: FontAwesomeIcons.guitar,
+            icon: FontAwesomeIcons.stickyNote,
             onTap: () => Routing.openReplacementRoute(context, OnboardingView()),
           ),
         ],
