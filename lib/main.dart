@@ -63,36 +63,24 @@ class MainApp extends StatelessWidget {
         // set firstLaunch to false so that the onboarding view does not show
         Widget home;
         if (firstLaunch)
-          home = OnboardingView();
+          home = new OnboardingView();
         else
-          home = TabbedApp();
+          home = new TabbedApp();
 
         // change status bar color accordingly, fix for android
         if (Platform.isAndroid) {
           if (theme == ThemeEnum.light) {
-            print("SETTING WHITE STS CLR");
-            // FlutterStatusbarcolor.setStatusBarColor(Colors.white);
-            // FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
             SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
               statusBarIconBrightness: Brightness.dark,
             ));
           } else {
-            // FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
-            // FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
             SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
               statusBarIconBrightness: Brightness.light,
             ));
           }
         }
-        // else if (Platform.isIOS) {
-        //   if (theme == ThemeEnum.light) {
-        //     FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
-        //   } else {
-        //     FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
-        //   }
-        // }
 
         // quick actions
         final QuickActions quickActions = QuickActions();
