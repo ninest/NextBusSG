@@ -15,6 +15,9 @@ import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/utils/strings.dart';
 import 'package:provider/provider.dart';
+import 'package:quick_actions/quick_actions.dart';
+
+import '../quick_actions.dart';
 
 class HomePage extends StatelessWidget {
   List<Widget> noLocationAccess(context) {
@@ -52,6 +55,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // quick actions
+    final QuickActions quickActions = QuickActions();
+    setup(context, quickActions);
 
     final LocationPermissionsProvider locationPermissionsProvider =
         Provider.of<LocationPermissionsProvider>(context, listen: true);

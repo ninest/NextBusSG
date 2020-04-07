@@ -3,9 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
-import 'package:quick_actions/quick_actions.dart';
 import 'dart:io' show Platform;
-import 'package:nextbussg/quick_actions.dart';
 import 'package:nextbussg/styles/theme.dart';
 import 'package:nextbussg/bounce_scroll.dart';
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
@@ -17,7 +15,6 @@ class RouteApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       // to change theme and put away onboarding screen
-      // valueListenable: Hive.box('settings').listenable(),
       valueListenable: Hive.box('settings').listenable(),
       builder: (context, box, widget) {
         var theme = box.get('theme', defaultValue: ThemeEnum.light);
@@ -32,10 +29,6 @@ class RouteApp extends StatelessWidget {
           home = new OnboardingView();
         else {
           home = new TabbedApp();
-
-          // quick actions
-          final QuickActions quickActions = QuickActions();
-          setup(context, quickActions);
         }
 
         // change status bar color accordingly, fix for android
