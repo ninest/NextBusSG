@@ -28,23 +28,43 @@ class TabbedAppState extends State<TabbedApp> {
   Widget build(BuildContext context) {
     // TODO: make nav bar a little transparent so it looks nice
     return Scaffold(
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _tabViews,
+      body: Stack(
+        children: <Widget>[
+          IndexedStack(
+            index: _selectedIndex,
+            children: _tabViews,
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: BottomNavigationBar(
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+              // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.9),
+              elevation: 0.0,
+              items: _tabs,
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+              unselectedIconTheme: IconThemeData(size: 26),
+              selectedIconTheme: IconThemeData(size: 28),
+            ),
+          )
+        ],
       ),
-      bottomNavigationBar: Container(
-        child: BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          elevation: 0,
-          items: _tabs,
-          currentIndex: _selectedIndex,
-          onTap: _onItemTapped,
-          unselectedIconTheme: IconThemeData(size: 26),
-          selectedIconTheme: IconThemeData(size: 28),
-        ),
-      ),
+      // bottomNavigationBar: Container(
+      //   child: BottomNavigationBar(
+      //     showSelectedLabels: false,
+      //     showUnselectedLabels: false,
+      //     // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      //     backgroundColor: Colors.transparent,
+      //     elevation: 0.0,
+      //     items: _tabs,
+      //     currentIndex: _selectedIndex,
+      //     onTap: _onItemTapped,
+      //     unselectedIconTheme: IconThemeData(size: 26),
+      //     selectedIconTheme: IconThemeData(size: 28),
+      //   ),
+      // ),
     );
   }
 }

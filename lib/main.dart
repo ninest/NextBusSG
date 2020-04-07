@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 void main() async {
   await Hive.initFlutter();
 
-  await Hive.registerAdapter(ThemeEnumAdapter());
+  Hive.registerAdapter(ThemeEnumAdapter());
 
   await Hive.openBox('settings');
   await Hive.openBox('favorites');
@@ -23,7 +23,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // return MainApp();
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<FavoritesProvider>(create: (_) => FavoritesProvider()),

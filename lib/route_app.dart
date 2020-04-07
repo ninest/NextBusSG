@@ -4,7 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
-import 'dart:io' show Platform;
+import 'dart:io';
 import 'package:nextbussg/styles/theme.dart';
 import 'package:nextbussg/bounce_scroll.dart';
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
@@ -25,12 +25,7 @@ class RouteApp extends StatelessWidget {
         bool firstLaunch = settingsBox.get('first_launch', defaultValue: true);
 
         // set firstLaunch to false so that the onboarding view does not show
-        Widget home;
-        if (firstLaunch)
-          home = new OnboardingView();
-        else {
-          home = new TabbedApp();
-        }
+        Widget home = firstLaunch ? OnboardingView() : TabbedApp();
 
         // change status bar color accordingly, fix for android
         if (Platform.isAndroid) {
@@ -60,6 +55,7 @@ class RouteApp extends StatelessWidget {
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: theme == ThemeEnum.dark ? appDarkTheme : appLightTheme,
+            // nice IOS rubber band scrolling
             home: ScrollConfiguration(
               child: home,
               behavior: BounceScrollBehavior(),

@@ -12,20 +12,25 @@ class PageTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return SafeArea(,
       bottom: false,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: Values.pageHorizontalPadding),
         child: CustomScrollView(
           slivers: <Widget>[
-            // if (showBackButton)
-            if (showBackButton) ...[
-              Spacing(height: Values.marginBelowTitle).sliver(),
+            if (showBackButton)
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Spacing(height: Values.marginBelowTitle),
+                  // Using wrap so it doesn't take 100% width
+                  Wrap(children: <Widget>[AppBackButton()]),
 
-              // Using wrap so it doesn't take 100% width
-              Wrap(children: <Widget>[AppBackButton()],).sliverToBoxAdapter(),
-              Spacing(height: Values.marginBelowTitle).sliver()
-            ] else
+                  Spacing(height: Values.marginBelowTitle),
+                ],
+              ).sliverToBoxAdapter()
+            else
               Spacing(height: 20).sliver(),
 
             ...children,
