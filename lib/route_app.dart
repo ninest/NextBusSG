@@ -1,8 +1,7 @@
-import 'package:auto_route/auto_route.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:hive/hive.dart';
-import 'package:nextbussg/router.gr.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
@@ -58,11 +57,10 @@ class RouteApp extends StatelessWidget {
             title: 'Next Bus SG',
             theme: theme == ThemeEnum.dark ? appDarkTheme : appLightTheme,
             // nice IOS rubber band scrolling
-            // home: ScrollConfiguration(
-            //   child: home,
-            //   behavior: BounceScrollBehavior(),
-            // ),
-            builder: ExtendedNavigator<Router>(router: Router()),
+            home: ScrollConfiguration(
+              child: home,
+              behavior: BounceScrollBehavior(),
+            ),
             navigatorObservers: [BotToastNavigatorObserver()],
           ),
         );

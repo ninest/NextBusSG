@@ -6,6 +6,7 @@ class Routing {
     Navigator.push(
       context,
       MaterialPageRoute(
+        maintainState: true,
         builder: (context) => ScrollConfiguration(
           child: page,
           behavior: BounceScrollBehavior(),

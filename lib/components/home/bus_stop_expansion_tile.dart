@@ -1,8 +1,7 @@
-import 'package:auto_route/auto_route.dart';
+
 import 'package:nextbussg/components/home/timings_not_available.dart';
 import 'package:nextbussg/components/core/mrt_stations.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
-import 'package:nextbussg/router.gr.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/styles/tile_color.dart';
 import 'package:nextbussg/utils/route.dart';
@@ -88,9 +87,7 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       name = RenameFavoritesService.getName(widget.code);
     }
 
-    // Color _backgroundColor = Theme.of(context).brightness == Brightness.light
-    //     ? Colors.transparent.withOpacity(0.05)
-    //     : Colors.transparent.withOpacity(0.5);
+
 
     return ListTileTheme(
       // setting padding value if mrt is there
@@ -166,12 +163,11 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
   }
 
   _openStopOverviewPage() {
-    // Routing.openRoute(
-    //   context,
-    //   StopOverviewPage(
-    //     code: widget.code,
-    //   ),
-    // );
-    ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.searchPage);
+    Routing.openRoute(
+      context,
+      StopOverviewPage(
+        code: widget.code,
+      ),
+    );
   }
 }
