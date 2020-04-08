@@ -26,7 +26,7 @@ class AppBackButton extends StatelessWidget {
               Text(
                 "back",
                 style: Theme.of(context).textTheme.body1.copyWith(
-                      fontSize: 19,
+                      fontSize: 16,
                     ),
               ),
             ],

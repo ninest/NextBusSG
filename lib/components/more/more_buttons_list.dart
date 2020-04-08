@@ -9,26 +9,24 @@ import 'package:nextbussg/utils/route.dart';
 class MoreButtonsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildListDelegate(
-        [
-          TileButton(
-            text: "View MRT map",
-            icon: FontAwesomeIcons.train,
-            onTap: () => Routing.openRoute(context, MRTMapPage()),
-          ),
-          TileButton(
-            text: "FAQ",
-            icon: FontAwesomeIcons.question,
-            onTap: () => Routing.openRoute(context, FAQPage()),
-          ),
-          TileButton(
-            text: "View tutorial",
-            icon: FontAwesomeIcons.stickyNote,
-            onTap: () => Routing.openReplacementRoute(context, OnboardingView()),
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        TileButton(
+          text: "View MRT map",
+          icon: FontAwesomeIcons.train,
+          onTap: () => Routing.openRoute(context, MRTMapPage()),
+        ),
+        TileButton(
+          text: "FAQ",
+          icon: FontAwesomeIcons.question,
+          onTap: () => Routing.openRoute(context, FAQPage()),
+        ),
+        TileButton(
+          text: "View tutorial",
+          icon: FontAwesomeIcons.stickyNote,
+          onTap: () => Routing.openReplacementRoute(context, OnboardingView()),
+        ),
+      ],
     );
   }
 }

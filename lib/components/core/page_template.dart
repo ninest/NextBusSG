@@ -7,17 +7,28 @@ import 'package:nextbussg/components/core/space.dart';
 class PageTemplate extends StatelessWidget {
   final List children;
   final bool showBackButton;
+  final bool overscroll;
 
-  PageTemplate({this.children, this.showBackButton = false});
+  PageTemplate({this.children, this.showBackButton = false, this.overscroll = true});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(,
+    double statusBarHeight = MediaQuery.of(context).padding.top;
+
+    print('Status bar height: $statusBarHeight');
+
+    return SafeArea(
+      top: false,
       bottom: false,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: Values.pageHorizontalPadding),
+      child: Container(
+        padding: EdgeInsets.only(
+          // top: statusBarHeight,
+          left: Values.pageHorizontalPadding,
+          right: Values.pageHorizontalPadding,
+        ),
         child: CustomScrollView(
           slivers: <Widget>[
+            Spacing(height: statusBarHeight).sliver(),
             if (showBackButton)
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -37,7 +48,8 @@ class PageTemplate extends StatelessWidget {
 
             // allow for some overscroll
             // this is a feature, not a bug
-            Spacing(height: 140).sliver(),
+            if (overscroll)
+              Spacing(height: 140).sliver(),
           ],
         ),
       ),

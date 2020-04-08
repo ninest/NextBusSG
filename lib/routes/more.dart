@@ -11,14 +11,16 @@ class MorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageTemplate(children: [
-      TitleText(title: Strings.moreTitle.toUpperCase()).sliverToBoxAdapter(),
+      Column(children: [
+        TitleText(title: Strings.moreTitle.toUpperCase()),
 
-      SettingsList(),
+        SettingsList(),
 
-      // divider
-      Line().sliverToBoxAdapter(),
-      
-      MoreButtonsList(),
+        // divider
+        Line(),
+
+        MoreButtonsList(),
+      ]).sliverToBoxAdapter()
     ]);
   }
 }

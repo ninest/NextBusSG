@@ -22,10 +22,14 @@ bottomSheetTemplate(BuildContext context, double height, List children) =>
           this is probably because of the buildContext ...
           */
           height: 100000,
+
+          // margin to ensure bottom sheet is over tab bar
+          margin: EdgeInsets.only(bottom: 60.0),
           child: Container(
             height: height,
             child: PageTemplate(
               children: children,
+              overscroll: false,
             ),
           )
               .borderRadius(

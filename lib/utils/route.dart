@@ -6,21 +6,24 @@ class Routing {
     Navigator.push(
       context,
       MaterialPageRoute(
-          builder: (context) => ScrollConfiguration(
-                child: page,
-                behavior: BounceScrollBehavior(),
-              )),
+        builder: (context) => ScrollConfiguration(
+          child: page,
+          behavior: BounceScrollBehavior(),
+        ),
+      ),
     );
   }
 
-  // no back allowed
+  // no going back allowed
   static void openReplacementRoute(BuildContext context, Widget page) {
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-          builder: (BuildContext context) => ScrollConfiguration(
-                child: page,
-                behavior: BounceScrollBehavior(),
-              )),
+        maintainState: false,
+        builder: (BuildContext context) => ScrollConfiguration(
+          child: page,
+          behavior: BounceScrollBehavior(),
+        ),
+      ),
     );
   }
 

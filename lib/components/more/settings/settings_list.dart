@@ -12,25 +12,23 @@ class SettingsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeEnum theme = ThemeService.getTheme();
-    return SliverList(
-      delegate: SliverChildListDelegate(
-        [
-          ToggleTile(
-            title: "Enable dark theme",
-            icon: FontAwesomeIcons.moon,
-            isSwitched: theme == ThemeEnum.dark ? true : false,
-            // even though it is a switch and not a button, we can just toggle because
-            // the isSwitced value is being set accordinly
-            onChange: (bool value) => ThemeService.toggleTheme(),
-          ),
-          TileButton(
-            text: "Rename favorites",
-            icon: FontAwesomeIcons.star,
-            // open favorites renaming page
-            onTap: () => Routing.openRoute(context, RenameFavoritesPage()),
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        ToggleTile(
+          title: "Enable dark theme",
+          icon: FontAwesomeIcons.moon,
+          isSwitched: theme == ThemeEnum.dark ? true : false,
+          // even though it is a switch and not a button, we can just toggle because
+          // the isSwitced value is being set accordinly
+          onChange: (bool value) => ThemeService.toggleTheme(),
+        ),
+        TileButton(
+          text: "Rename favorites",
+          icon: FontAwesomeIcons.star,
+          // open favorites renaming page
+          onTap: () => Routing.openRoute(context, RenameFavoritesPage()),
+        )
+      ],
     );
   }
 }

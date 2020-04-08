@@ -14,9 +14,14 @@ class TabbedAppState extends State<TabbedApp> {
   int _selectedIndex = 0;
   static List<Widget> _tabViews = <Widget>[HomePage(), SearchPage(), MorePage()];
 
-  static const List<BottomNavigationBarItem> _tabs = <BottomNavigationBarItem>[
+  static List<BottomNavigationBarItem> _tabs = [
     BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.compass), title: Text('Main')),
-    BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.search), title: Text('Search')),
+    BottomNavigationBarItem(
+        icon: GestureDetector(
+          child: FaIcon(FontAwesomeIcons.search),
+          onDoubleTap: () => _focusSearchBar(),
+        ),
+        title: Text('Search')),
     BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.slidersH), title: Text('More')),
   ];
 
@@ -26,13 +31,15 @@ class TabbedAppState extends State<TabbedApp> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: make nav bar a little transparent so it looks nice
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          IndexedStack(
-            index: _selectedIndex,
-            children: _tabViews,
+          Align(
+            alignment: Alignment.topCenter,
+            child: IndexedStack(
+              index: _selectedIndex,
+              children: _tabViews,
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -51,20 +58,10 @@ class TabbedAppState extends State<TabbedApp> {
           )
         ],
       ),
-      // bottomNavigationBar: Container(
-      //   child: BottomNavigationBar(
-      //     showSelectedLabels: false,
-      //     showUnselectedLabels: false,
-      //     // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      //     backgroundColor: Colors.transparent,
-      //     elevation: 0.0,
-      //     items: _tabs,
-      //     currentIndex: _selectedIndex,
-      //     onTap: _onItemTapped,
-      //     unselectedIconTheme: IconThemeData(size: 26),
-      //     selectedIconTheme: IconThemeData(size: 28),
-      //   ),
-      // ),
     );
+  }
+
+  static void _focusSearchBar() {
+    // TODO
   }
 }

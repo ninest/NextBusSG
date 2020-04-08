@@ -15,7 +15,10 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageTemplate(
       children: [
-        TitleText(title: Strings.searchTitle.toUpperCase(), iconData: FontAwesomeIcons.search).sliverToBoxAdapter(),
+        TitleText(title: Strings.searchTitle.toUpperCase(), iconData: FontAwesomeIcons.search)
+            .sliverToBoxAdapter(),
+        
+        // search bar floats on top when you scroll down then scroll back up
         SliverPersistentHeader(
           pinned: false,
           floating: true,
@@ -24,14 +27,17 @@ class SearchPage extends StatelessWidget {
             maxExtent: 70.0,
           ),
         ),
+
         Spacing(height: Values.marginBelowTitle).sliver(),
-        SliverList(
-          delegate: SliverChildListDelegate(
-            [
-              SearchResultsList(),
-            ],
-          ),
-        )
+        
+        SearchResultsList().sliverToBoxAdapter()
+        // SliverList(
+        //   delegate: SliverChildListDelegate(
+        //     [
+        //       SearchResultsList(),
+        //     ],
+        //   ),
+        // )
       ],
     );
   }

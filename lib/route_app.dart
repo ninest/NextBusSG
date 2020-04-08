@@ -31,7 +31,7 @@ class RouteApp extends StatelessWidget {
         if (Platform.isAndroid) {
           if (theme == ThemeEnum.light) {
             SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
+              statusBarColor: Colors.white.withOpacity(0.5),
               statusBarIconBrightness: Brightness.dark,
             ));
           } else {
@@ -42,7 +42,6 @@ class RouteApp extends StatelessWidget {
           }
         } else if (Platform.isIOS) {
           if (theme == ThemeEnum.light) {
-            print("IOS DARK");
             FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
             FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
           } else {
