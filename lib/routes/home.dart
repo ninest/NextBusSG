@@ -13,11 +13,10 @@ import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/providers/locationPerms.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/extensions.dart';
+import 'package:nextbussg/utils/quick_actions.dart';
 import 'package:nextbussg/utils/strings.dart';
 import 'package:provider/provider.dart';
 import 'package:quick_actions/quick_actions.dart';
-
-import '../quick_actions.dart';
 
 class HomePage extends StatelessWidget {
   List<Widget> noLocationAccess(context) {
@@ -47,7 +46,7 @@ class HomePage extends StatelessWidget {
         future: order(context),
         builder: (context, snapshot) {
           if (snapshot.hasData)
-            return PageTemplate(children: snapshot.data);
+            return PageTemplate(children: snapshot.data).scaffold();
           else
             return FindingLocation();
         },

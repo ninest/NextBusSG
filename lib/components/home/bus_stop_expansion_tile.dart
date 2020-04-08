@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:nextbussg/components/home/timings_not_available.dart';
 import 'package:nextbussg/components/core/mrt_stations.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
+import 'package:nextbussg/router.gr.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/styles/tile_color.dart';
 import 'package:nextbussg/utils/route.dart';
@@ -122,14 +124,8 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
           // the text below is replacing the default arrow in ExpansionPanel
           // when it's clicked, open bus stop
           trailing: GestureDetector(
-            child: Text(widget.code, style: Theme.of(context).textTheme.display2),
-            onTap: () => Routing.openRoute(
-              context,
-              StopOverviewPage(
-                code: widget.code,
-              ),
-            ),
-          ),
+              child: Text(widget.code, style: Theme.of(context).textTheme.display2),
+              onTap: () => _openStopOverviewPage()),
           // get bus timings only when panel has been opened
           onExpansionChanged: (bool value) {
             return value ? _getBusTimings() : null;
@@ -150,14 +146,9 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
           borderRadius: BorderRadius.circular(Values.borderRadius),
         ),
       ),
-
     );
     // margin(top: Values.marginBelowTitle)
   }
-
-  // split to here
-  // TODO: maybe put each stop tile in its own function
-  // Widget stopTile() {}
 
   _getBusTimings() async {
     // reset services not in opertion:
@@ -172,5 +163,15 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
         // the var servicesNotInOperation is not mentioned here because it is not required (? need better explanation ...)
         busArrivalList = newList;
       });
+  }
+
+  _openStopOverviewPage() {
+    // Routing.openRoute(
+    //   context,
+    //   StopOverviewPage(
+    //     code: widget.code,
+    //   ),
+    // );
+    ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.searchPage);
   }
 }

@@ -15,7 +15,7 @@ class AppBackButton extends StatelessWidget {
             vertical: 10.0,
           ),
           decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(Values.containerOpacity),
+              color: Colors.grey.withOpacity(Values.containerOpacity - 0.05),
               borderRadius: BorderRadius.circular(1000.0)),
           child: Wrap(
             crossAxisAlignment: WrapCrossAlignment.center,

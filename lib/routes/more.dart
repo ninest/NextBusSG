@@ -21,6 +21,6 @@ class MorePage extends StatelessWidget {
 
         MoreButtonsList(),
       ]).sliverToBoxAdapter()
-    ]);
+    ]).scaffold();
   }
 }

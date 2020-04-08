@@ -39,7 +39,7 @@ class SearchPage extends StatelessWidget {
         //   ),
         // )
       ],
-    );
+    ).scaffold();
   }
 }
 

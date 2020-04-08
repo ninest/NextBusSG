@@ -1,8 +1,8 @@
 import 'package:nextbussg/utils/route.dart';
 import 'package:quick_actions/quick_actions.dart';
 
-import 'components/home/favorites/all_favorites_page.dart';
-import 'components/more/mrt_map_page.dart';
+import 'package:nextbussg/components/home/favorites/all_favorites_page.dart';
+import 'package:nextbussg/components/more/mrt_map_page.dart';
 
 setup(context, QuickActions quickActions) {
   quickActions.initialize((String shortcutType) {

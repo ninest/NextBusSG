@@ -1,12 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:hive/hive.dart';
+import 'package:nextbussg/router.gr.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
 import 'dart:io';
 import 'package:nextbussg/styles/theme.dart';
-import 'package:nextbussg/bounce_scroll.dart';
+import 'package:nextbussg/utils/bounce_scroll.dart';
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -42,10 +44,10 @@ class RouteApp extends StatelessWidget {
           }
         } else if (Platform.isIOS) {
           if (theme == ThemeEnum.light) {
-            FlutterStatusbarcolor.setStatusBarColor(Colors.transparent);
+            FlutterStatusbarcolor.setStatusBarColor(Colors.white.withOpacity(0.5));
             FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
           } else {
-            FlutterStatusbarcolor.setStatusBarColor(Color(0xFF111111));
+            FlutterStatusbarcolor.setStatusBarColor(Color(0xcc111111));
             FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
           }
         }
@@ -53,12 +55,14 @@ class RouteApp extends StatelessWidget {
         return BotToastInit(
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
+            title: 'Next Bus SG',
             theme: theme == ThemeEnum.dark ? appDarkTheme : appLightTheme,
             // nice IOS rubber band scrolling
-            home: ScrollConfiguration(
-              child: home,
-              behavior: BounceScrollBehavior(),
-            ),
+            // home: ScrollConfiguration(
+            //   child: home,
+            //   behavior: BounceScrollBehavior(),
+            // ),
+            builder: ExtendedNavigator<Router>(router: Router()),
             navigatorObservers: [BotToastNavigatorObserver()],
           ),
         );

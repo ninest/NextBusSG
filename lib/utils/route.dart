@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nextbussg/bounce_scroll.dart';
+import 'package:nextbussg/utils/bounce_scroll.dart';
 
 class Routing {
   static void openRoute(BuildContext context, Widget page) {
