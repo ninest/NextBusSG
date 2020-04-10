@@ -5,23 +5,19 @@ import 'package:nextbussg/styles/values.dart';
 class FindingLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Image(
-          image: AssetImage('assets/location-icon.png'),
-          height: 250,
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: Values.pageHorizontalPadding,
         ),
-        Spacing(height: 40),
-        Center(
-            child: Text(
+        child: Text(
           "Finding location ...",
           style: Theme.of(context).textTheme.title.copyWith(
-            fontSize: Values.em * 1.5,
-          ),
-        )),
-      ],
+                fontSize: Values.em * 1.5,
+              ),
+        ),
+      ),
     );
   }
 }
