@@ -1,3 +1,5 @@
+import 'package:bot_toast/bot_toast.dart';
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:nextbussg/providers/location_perms.dart';
 
@@ -10,6 +12,7 @@ class LocationServices {
     } catch (e) {
       // request location
       await LocationPermsProvider.requestPerm();
+      BotToast.showText(text: "Please go to settings to enable location access.", contentColor: Colors.red);
       return LocationServices.getLocation();
     }
   }

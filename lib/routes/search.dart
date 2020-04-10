@@ -31,13 +31,6 @@ class SearchPage extends StatelessWidget {
         Spacing(height: Values.marginBelowTitle).sliver(),
         
         SearchResultsList().sliverToBoxAdapter()
-        // SliverList(
-        //   delegate: SliverChildListDelegate(
-        //     [
-        //       SearchResultsList(),
-        //     ],
-        //   ),
-        // )
       ],
     ).scaffold();
   }

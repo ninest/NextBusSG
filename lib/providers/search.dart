@@ -13,9 +13,7 @@ class SearchProvider extends ChangeNotifier {
   bool getNoStopsFoundValue() => _noStopsFound;
 
   getNearestBusStopSearchResults() async {
-    // bool canGetPermission = await LocationPermissionsProvider().getBoolPermissionStatus;
-    // TODO: fix
-    bool canGetPermission = false;
+    bool canGetPermission = await LocationPermsProvider.getPermStatus();
     if (canGetPermission) {
       _searchResults = await BusService.getNearestStops();
       notifyListeners();
