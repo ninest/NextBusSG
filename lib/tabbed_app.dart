@@ -37,6 +37,8 @@ class TabbedAppState extends State<TabbedApp> {
           Align(
             alignment: Alignment.topCenter,
             child:  _tabViews[_selectedIndex]
+
+            // TODO: try below and check performance
             // IndexedStack(
             //   index: _selectedIndex,
             //   children: _tabViews,
