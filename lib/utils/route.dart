@@ -19,7 +19,7 @@ class Routing {
   static void openReplacementRoute(BuildContext context, Widget page) {
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        maintainState: false,
+        maintainState: true,
         builder: (BuildContext context) => ScrollConfiguration(
           child: page,
           behavior: BounceScrollBehavior(),

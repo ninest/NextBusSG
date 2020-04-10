@@ -8,7 +8,12 @@ class CircularSpinner extends StatelessWidget {
     return Column(
       children: [
         Spacing(height: Values.marginBelowTitle),
-        CircularProgressIndicator(),
+        Text(
+          "Loading ...",
+          style: Theme.of(context).textTheme.title.copyWith(
+                fontSize: Values.em * 1.5,
+              ),
+        ),
         Spacing(height: Values.marginBelowTitle),
       ],
     );

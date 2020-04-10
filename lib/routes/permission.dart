@@ -34,7 +34,7 @@ class _RequestPermissionButton extends StatelessWidget {
       text: "Grant permission",
       onTap: () async {
         var status = await LocationPermsProvider.requestPerm();
-        // print("STATUS: $status");
+
         if (status == PermissionStatus.granted) {
           print("Location permission given");
           final HomeRebuilderProvider homeRebuilderProvider =
