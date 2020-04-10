@@ -31,7 +31,6 @@ class TabbedAppState extends State<TabbedApp> {
 
   @override
   Widget build(BuildContext context) {
-    print("REBUILT TABBEDAPP");
     return Scaffold(
       body: Stack(
         children: <Widget>[

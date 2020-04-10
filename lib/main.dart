@@ -1,6 +1,6 @@
 import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
-import 'package:nextbussg/providers/locationPerms.dart';
+import 'package:nextbussg/providers/location_perms.dart';
 import 'package:nextbussg/providers/search.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<FavoritesProvider>(create: (_) => FavoritesProvider()),
         ChangeNotifierProvider<SearchProvider>(create: (_) => SearchProvider()),
-        ChangeNotifierProvider<LocationPermissionsProvider>(
-            create: (_) => LocationPermissionsProvider()),
+        ChangeNotifierProvider<LocationPermsProvider>(
+            create: (_) => LocationPermsProvider()),
         ChangeNotifierProvider<HomeRebuilderProvider>(create: (_) => HomeRebuilderProvider()),
       ],
       child: RouteApp(),

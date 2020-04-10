@@ -12,7 +12,7 @@ PODS:
     - Flutter
   - path_provider_macos (0.0.1):
     - Flutter
-  - permission_handler (4.4.0):
+  - "permission_handler (5.0.0+hotfix.3)":
     - Flutter
   - quick_actions (0.0.1):
     - Flutter
@@ -71,7 +71,7 @@ SPEC CHECKSUMS:
   location_permissions: 360d12ecd1c94a4cab68585f508be1d5ad944c8b
   path_provider: fb74bd0465e96b594bb3b5088ee4a4e7bb1f2a9d
   path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
-  permission_handler: f615215121f43c1640d2b8500d4ad749512828a8
+  permission_handler: 4a985b5448897c27fdeadde84f7452520c0e6c58
   quick_actions: 5eaa421abc932a71d9804fb86186d173020da63d
   url_launcher: a1c0cc845906122c4784c542523d8cacbded5626
   url_launcher_macos: fd7894421cd39320dce5f292fc99ea9270b2a313

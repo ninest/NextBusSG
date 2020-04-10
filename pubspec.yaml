@@ -32,7 +32,7 @@ dependencies:
   hive_flutter: ^0.3.0+1
   geolocator: ^5.2.1
   styled_widget: ^0.1.1
-  permission_handler: ^4.4.0
+  permission_handler: ^5.0.0
   page_transition: ^1.1.5
   flutter_statusbarcolor: ^0.2.3
   hive_generator: ^0.7.0+2

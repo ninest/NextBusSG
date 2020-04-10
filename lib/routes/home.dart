@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/components/core/loading/finding_location.dart';
+import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/home/bus_stop_list.dart';
 import 'package:nextbussg/components/home/favorites/favorites_list.dart';
 import 'package:nextbussg/providers/favorites.dart';
+import 'package:nextbussg/providers/home_rebuilder.dart';
+import 'package:nextbussg/providers/location_perms.dart';
+import 'package:nextbussg/routes/permission.dart';
 import 'package:nextbussg/utils/strings.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,10 +19,14 @@ class HomePage extends StatelessWidget {
     return FutureBuilder(
       future: getHomeWidgets(context),
       builder: (context, snapshot) {
-        if (snapshot.hasData)
-          return PageTemplate(children: snapshot.data);
-        else
-          return FindingLocation();
+        return PageTemplate(
+          children: [
+            if (snapshot.hasData)
+              ...snapshot.data
+            else
+              Center(child: Text("Loading no data...")).sliverToBoxAdapter()
+          ],
+        ).scaffold();
       },
     );
   }
