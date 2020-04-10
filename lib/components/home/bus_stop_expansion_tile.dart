@@ -55,6 +55,11 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
     super.deactivate();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   List<BusArrival> busArrivalList;
   List<String> timingsNotAvailable;
 

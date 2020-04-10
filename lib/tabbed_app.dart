@@ -31,15 +31,17 @@ class TabbedAppState extends State<TabbedApp> {
 
   @override
   Widget build(BuildContext context) {
+    print("REBUILT TABBEDAPP");
     return Scaffold(
       body: Stack(
         children: <Widget>[
           Align(
             alignment: Alignment.topCenter,
-            child: IndexedStack(
-              index: _selectedIndex,
-              children: _tabViews,
-            ),
+            child:  _tabViews[_selectedIndex]
+            // IndexedStack(
+            //   index: _selectedIndex,
+            //   children: _tabViews,
+            // ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
