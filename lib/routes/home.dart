@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
@@ -94,7 +95,9 @@ class HomePage extends StatelessWidget {
 
   Widget reloadButton(BuildContext context) => Button(
         text: "Reload",
+        iconData: FontAwesomeIcons.redoAlt,
         onTap: () async {
+          BotToast.showText(text: "Reloading ...");
           // reload getting of location and bus stops nearby
           print("Getting new location");
           Provider.of<LocationServicesProvider>(context, listen: false)
@@ -109,6 +112,8 @@ class HomePage extends StatelessWidget {
                   // rebuild home
                   print("Rebuilding home");
                   Provider.of<HomeRebuilderProvider>(context, listen: false).rebuild();
+
+                  BotToast.showText(text: "Reloaded");
                 },
               );
             },
