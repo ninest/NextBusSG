@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/components/core/loading/circular_spinner.dart';
+import 'package:nextbussg/components/core/space.dart';
+import 'package:nextbussg/components/home/no_stops_nearby.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
+import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/route.dart';
 import 'package:nextbussg/utils/strings.dart';
 import 'package:nextbussg/utils/extensions.dart';
@@ -48,10 +51,10 @@ class BusStopList extends StatelessWidget {
                 )
             else
               // no stops near me
-              Text(
-                Strings.noStopsNearby,
-                style: Theme.of(context).textTheme.body1.copyWith(color: Colors.red),
-              )
+              ...[
+              Spacing(height: Values.marginBelowTitle),
+              NoStopsNearBy(),
+            ]
           else
             // placeholder widgets while stops are loding
             CircularSpinner()
@@ -65,6 +68,7 @@ class BusStopList extends StatelessWidget {
         // column needed because otherwise widgets dissapear before being scrolled awau
 
         return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             TitleText(
               title: title,

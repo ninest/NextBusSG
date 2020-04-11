@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nextbussg/components/core/buttons/button.dart';
+import 'package:nextbussg/components/core/line.dart';
 import 'package:nextbussg/components/core/loading/finding_location.dart';
+import 'package:nextbussg/services/bus.dart';
+import 'package:nextbussg/services/location.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
@@ -16,6 +20,12 @@ import 'package:provider/provider.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // this is there to rebuild the home page when required (reloading)
+    final HomeRebuilderProvider homeRebuilderProvider =
+        Provider.of<HomeRebuilderProvider>(context, listen: true);
+
+    print("Home page build");
+
     return FutureBuilder(
       future: getHomeWidgets(context),
       builder: (context, snapshot) {
@@ -45,6 +55,10 @@ class HomePage extends StatelessWidget {
       simplifiedFavoritesView(),
       Spacing(height: 40).sliver(),
       nearMe,
+      Spacing(height: 20).sliver(),
+      Line().sliverToBoxAdapter(),
+      Spacing(height: 20).sliver(),
+      reloadButton(context).sliverToBoxAdapter(),
     ];
 
     // if there are no favorites, swap the position of favorites and near me
@@ -61,7 +75,11 @@ class HomePage extends StatelessWidget {
       widgetOrder = [
         nearMe,
         Spacing(height: 40).sliver(),
-        simplifiedFavoritesView(favoritesNotShown: noFavorites)
+        simplifiedFavoritesView(favoritesNotShown: noFavorites),
+        Spacing(height: 20).sliver(),
+        Line().sliverToBoxAdapter(),
+        Spacing(height: 20).sliver(),
+        reloadButton(context).sliverToBoxAdapter(),
       ];
     }
     return widgetOrder;
@@ -72,5 +90,29 @@ class HomePage extends StatelessWidget {
         iconData: FontAwesomeIcons.heart,
         simplified: true,
         favoritesNotShown: favoritesNotShown,
+      );
+
+  Widget reloadButton(BuildContext context) => Button(
+        text: "Reload",
+        onTap: () async {
+          // reload getting of location and bus stops nearby
+          print("Getting new location");
+          Provider.of<LocationServicesProvider>(context, listen: false)
+              .getLocation(reload: true)
+              .then(
+            (_) {
+              print("Getting new bus stops");
+              Provider.of<BusServiceProvider>(context, listen: false)
+                  .getNearestStops(context, reload: true)
+                  .then(
+                (_) {
+                  // rebuild home
+                  print("Rebuilding home");
+                  Provider.of<HomeRebuilderProvider>(context, listen: false).rebuild();
+                },
+              );
+            },
+          );
+        },
       );
 }

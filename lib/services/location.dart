@@ -7,9 +7,10 @@ class LocationServicesProvider extends ChangeNotifier {
   // converting it to changeNotifier class so location only has to be retreived once
   Position _position = null;
 
-  Future<Position> getLocation() async {
-    if (_position != null) {
-      // Location already there so no need to get it again
+  // reload is to force get a new location
+  Future<Position> getLocation({reload: false}) async {
+    if (_position != null && !reload) {
+      // Location already there so no need to get it again]
       return _position;
     } else {
       // Getting location for the first time.

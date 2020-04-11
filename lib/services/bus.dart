@@ -15,30 +15,39 @@ import 'package:provider/provider.dart';
 class BusServiceProvider extends ChangeNotifier {
   // Make this use changeNotifier too?
 
-  Future<List> getNearestStops(context) async {
-    final LocationServicesProvider locationServicesProvider =
-        Provider.of<LocationServicesProvider>(context, listen: false);
+  List<BusStop> _busStopsNear = null;
 
-    Position userPosition = await locationServicesProvider.getLocation();
-    Map data = await getAllStopsMap();
+  // reload is false by default; it's only true when we need to get new set of nearest bus stops
+  Future<List> getNearestStops(context, {reload: false}) async {
+    if (_busStopsNear != null && !reload) {
+      return _busStopsNear;
+    } else {
+      // this function should only execute once to get bus stops near by
+      final LocationServicesProvider locationServicesProvider =
+          Provider.of<LocationServicesProvider>(context, listen: false);
 
-    List busStopsNear = [];
+      Position userPosition = await locationServicesProvider.getLocation();
+      Map data = await getAllStopsMap();
 
-    for (var stopCode in data.keys) {
-      BusStop busStop = BusStop.fromJson(data[stopCode]);
+      List<BusStop> busStopsNear = [];
 
-      // calculating distance (meters) between current position and bus stop coords
-      double distance =
-          await locationServicesProvider.distanceBetween(userPosition, busStop.position);
+      for (var stopCode in data.keys) {
+        BusStop busStop = BusStop.fromJson(data[stopCode]);
 
-      // add it if bus stop is within 500 meters
-      if (distance < Distance.nearMe) {
-        // add to bus stops near me list
-        busStopsNear.add(busStop);
+        // calculating distance (meters) between current position and bus stop coords
+        double distance =
+            await locationServicesProvider.distanceBetween(userPosition, busStop.position);
+
+        // add it if bus stop is within 500 meters
+        if (distance < Distance.nearMe) {
+          // add to bus stops near me list
+          busStopsNear.add(busStop);
+        }
       }
-    }
 
-    return busStopsNear;
+      _busStopsNear = busStopsNear;
+      return _busStopsNear;
+    }
 
     // use this for testing purposes only
     // return [busStopsNear[0]];
@@ -47,7 +56,7 @@ class BusServiceProvider extends ChangeNotifier {
   Map _allBusStopsMap = null;
   Future<Map> getAllStopsMap() async {
     if (_allBusStopsMap == null) {
-      print("Loading bus stops map - this should only come once");
+      // Loading bus stops map - this should only come once
       String jsonString = await rootBundle.loadString('assets/bus_stops.json');
       _allBusStopsMap = json.decode(jsonString);
     }

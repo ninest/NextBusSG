@@ -48,8 +48,9 @@ class PageTemplate extends StatelessWidget {
 
             // allow for some overscroll
             // this is a feature, not a bug
-            if (overscroll)
-              Spacing(height: 140).sliver(),
+            if (overscroll) ...[
+              Spacing(height: 240).sliver(),
+            ]
           ],
         ),
       ),

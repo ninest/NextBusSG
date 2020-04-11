@@ -32,10 +32,6 @@ class TimingsNotAvailable extends StatelessWidget {
         ),
         padding: EdgeInsets.all(Values.busServiceTilePadding),
         decoration: BoxDecoration(
-            // border: Border.all(
-            //   width: 1,
-            //   color: Colors.red,
-            // ),
             borderRadius: BorderRadius.circular(Values.borderRadius * 0.8),
             color: Theme.of(context).errorColor.withOpacity(Values.containerOpacity)),
         child: Column(
@@ -65,17 +61,6 @@ class TimingsNotAvailable extends StatelessWidget {
           ],
         ),
       ),
-      // .padding(all: Values.busServiceTilePadding)
-      // .border(
-      //   all: 1,
-      //   color: Colors.red,
-      //   style: BorderStyle.solid,
-      // )
-      // .borderRadius(all: Values.borderRadius * 0.8)
-      // .padding(
-      //   bottom: Values.marginBelowTitle,
-      //   horizontal: Values.busServiceTilePadding,
-      // ),
       onTap: () => showBottomSheet(context),
     );
   }

@@ -15,7 +15,7 @@ class Strings {
   static String confirmRemoveFromFavorites(service, code) => "Are you sure you want to **_REMOVE_** Bus **$service** from **$code** from your favorites?";
 
   // bus stops list
-  static final String noStopsNearby = "No bus stops nearby";
+  static final String noStopsNearby = "No bus stops nearby. Please take a flight to Singapore if you are not currently in Singapore.";
 
   // location permissions
   static final String locationPermissionNotGiven = "Location permissions required to see bus stops nearby.";
