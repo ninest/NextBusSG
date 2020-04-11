@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/styles/values.dart';
+import 'package:nextbussg/utils/strings.dart';
 
 class LoadingText extends StatelessWidget {
   final String text;
@@ -20,19 +21,15 @@ class LoadingText extends StatelessWidget {
                   fontSize: Values.em * 1.5,
                 ),
           ),
-          Text(_getRandomJoke()),
+          Text(_getRandomMessage()),
         ],
       ),
     );
   }
 
-  _getRandomJoke() {
-    List<String> jokes = [
-      "What do you call a group of pandas? A pandemic.",
-      "How do you react to a lockdown in Singapore? CB!"
-    ];
-    // get a random joke
-    String randomJoke = (jokes.toList()..shuffle()).first;
-    return randomJoke;
+  _getRandomMessage() {
+    // get a random message from the messages array
+    return (Strings.messages.toList()..shuffle()).first;
+
   }
 }

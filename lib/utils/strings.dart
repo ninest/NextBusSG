@@ -1,29 +1,39 @@
 class Strings {
-  static final String nearMeTitle = "Near me";
-  static final String simplifiedFavoritesTitle = "Favorites";
-  static final String allFavoritesTitle = "Favorites";
-  static final String searchTitle = "Search";
-  static final String moreTitle = "More";
+  static String get nearMeTitle => "Near me";
+  static String get simplifiedFavoritesTitle => "Favorites";
+  static String get allFavoritesTitle => "Favorites";
+  static String get searchTitle => "Search";
+  static String get moreTitle => "More";
 
-  static final String timingsNotAvailableInfo = "Either these buses are not currently in operation, or the API is under maintainance. Please contact the LTA for further information";
-  static final String noFavorites = "**Tap** on a bus number to add it to your favorites.";
-  static final String renameFavoritesPrompt = "Tap any of the bus stop names below to change their display name:";
-  static final String renameFavoritesPrompt2 = "Note that you can rename any favorites. Search for them, then press the **Rename** button.";
+  static String get timingsNotAvailableInfo =>
+      "Either these buses are not currently in operation, or the API is under maintainance. Please contact the LTA for further information";
+  static String get noFavorites => "**Tap** on a bus number to add it to your favorites.";
+  static String get renameFavoritesPrompt =>
+      "Tap any of the bus stop names below to change their display name:";
+  static String get renameFavoritesPrompt2 =>
+      "Note that you can rename any favorites. Search for them, then press the **Rename** button.";
 
   // confirmation bottom sheets
-  static String confirmAddToFavorites(service, code) => "Are you sure you want to **_ADD_** Bus **$service** from **$code** to your favorites?";
-  static String confirmRemoveFromFavorites(service, code) => "Are you sure you want to **_REMOVE_** Bus **$service** from **$code** from your favorites?";
+  static String  confirmAddToFavorites(service, code) =>
+      "Are you sure you want to **_ADD_** Bus **$service** from **$code** to your favorites?";
+  static String  confirmRemoveFromFavorites(service, code) =>
+      "Are you sure you want to **_REMOVE_** Bus **$service** from **$code** from your favorites?";
 
   // bus stops list
-  static final String noStopsNearby = "No bus stops nearby. Please take a flight to Singapore if you are not currently in Singapore.";
+  static String get noStopsNearby =>
+      "No bus stops nearby. Please take a flight to Singapore if you are not currently in Singapore.";
 
   // location permissions
-  static final String locationPermissionNotGiven = "Location permissions required to see bus stops nearby.";
-  static final String locationPermissionDenied = "Please open the settings to enable location permission.";
-  static final String cannotShowNearByStops = "Please enable location permissions to see bus stops near by.";
-  static final String afterEnablePermision = 'After enabling location permissions in the settings, tap the "Grant location access" button again.';
+  static String get locationPermissionNotGiven =>
+      "Location permissions required to see bus stops nearby.";
+  static String get locationPermissionDenied =>
+      "Please open the settings to enable location permission.";
+  static String get cannotShowNearByStops =>
+      "Please enable location permissions to see bus stops near by.";
+  static String get afterEnablePermision =>
+      'After enabling location permissions in the settings, tap the "Grant location access" button again.';
 
-  static final String faqText = """
+  static String get faqText => """
 # 1. How do I add or remove favorites?
 - **Double tap** or **Long press** on any bus service tile, 
 - The prompt to add/remove should appear
@@ -41,4 +51,11 @@ There are two ways:
   - Either tap the bus service tile's 5-digit code (ex: 84009), or
   - Search for the bus stop in the search page, tap on the results to see more information
   """;
+
+  static List<String> get messages => [
+        "What do you call a group of pandas? A pandemic.",
+        "How do you react to a lockdown in Singapore? CB!",
+        "Hope you're enjoying the app!",
+        "Out of the million bus apps, we're glad you chose this one."
+      ];
 }
