@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:nextbussg/components/core/loading/circular_spinner.dart';
+import 'package:nextbussg/components/core/loading/loading_text.dart';
 import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/utils/route.dart';
@@ -53,7 +53,7 @@ class FavoritesBusStopList extends StatelessWidget {
 
         List<Widget> children = [
           if (!snapshot.hasData)
-            CircularSpinner()
+            LoadingText(text: "Getting favorites ...")
           else if (snapshot.data.isEmpty) ...[
             Spacing(height: Values.marginBelowTitle),
             MarkdownBody(data: noFavoritesText),

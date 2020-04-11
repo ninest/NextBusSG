@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nextbussg/components/core/loading/circular_spinner.dart';
+import 'package:nextbussg/components/core/loading/loading_text.dart';
 import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/home/no_stops_nearby.dart';
 import 'package:nextbussg/styles/values.dart';
@@ -54,7 +54,7 @@ class BusStopList extends StatelessWidget {
             ]
           else
             // placeholder widgets while stops are loding
-            CircularSpinner()
+            LoadingText(text: "Getting bus stops ...")
         ];
 
         // TODO: find a way to put a slight animation

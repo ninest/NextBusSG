@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nextbussg/components/core/loading/circular_spinner.dart';
+import 'package:nextbussg/components/core/loading/loading_text.dart';
 import 'package:nextbussg/components/core/mrt_stations.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
@@ -67,7 +67,7 @@ class ServicePage extends StatelessWidget {
             if (snapshot.hasData)
               for (var route in snapshot.data["routes"]) serviceRoute(context, route)
             else
-              CircularSpinner().sliverToBoxAdapter()
+              LoadingText(text: "Getting bus data ...").sliverToBoxAdapter()
           ],
         ).scaffold();
       },

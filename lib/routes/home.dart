@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/core/line.dart';
-import 'package:nextbussg/components/core/loading/finding_location.dart';
+import 'package:nextbussg/components/core/loading/loading_text.dart';
 import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/services/location.dart';
 import 'package:nextbussg/utils/extensions.dart';
@@ -28,15 +28,14 @@ class HomePage extends StatelessWidget {
     return FutureBuilder(
       future: getHomeWidgets(context),
       builder: (context, snapshot) {
-        return PageTemplate(
-          children: [
-            if (snapshot.hasData)
-              ...snapshot.data
-            else
-              // todo: set position to center
-              Center(child: FindingLocation()).sliverToBoxAdapter()
-          ],
-        ).scaffold();
+        if (snapshot.hasData) {
+          return PageTemplate(
+            children: snapshot.data,
+          ).scaffold();
+        } else
+        return Scaffold(
+          body: Center(child: LoadingText(text: "Finding location ...")),
+        );
       },
     );
   }
