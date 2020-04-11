@@ -27,7 +27,6 @@ class BusService extends ChangeNotifier {
     List busStopsNear = [];
 
     for (var stopCode in data.keys) {
-      // for (var stopCode in data.keystoList().sublist(0,5)) {
       BusStop busStop = BusStop.fromJson(data[stopCode]);
 
       // calculating distance (meters) between current position and bus stop coords

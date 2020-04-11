@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
             if (snapshot.hasData)
               ...snapshot.data
             else
-              Center(child: Text("Loading no data...")).sliverToBoxAdapter()
+              FindingLocation().sliverToBoxAdapter()
           ],
         ).scaffold();
       },
