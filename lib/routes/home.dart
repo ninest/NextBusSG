@@ -24,7 +24,8 @@ class HomePage extends StatelessWidget {
             if (snapshot.hasData)
               ...snapshot.data
             else
-              FindingLocation().sliverToBoxAdapter()
+              // todo: set position to center
+              Center(child: FindingLocation()).sliverToBoxAdapter()
           ],
         ).scaffold();
       },
