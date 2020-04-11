@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:nextbussg/providers/location_perms.dart';
 
-class LocationServices extends ChangeNotifier {
+class LocationServicesProvider extends ChangeNotifier {
   // converting it to changeNotifier class so location only has to be retreived once
   Position _position = null;
 
@@ -26,6 +26,6 @@ class LocationServices extends ChangeNotifier {
     }
   }
 
-  static Future<double> distanceBetween(Position point1, Position point2) => Geolocator()
+  Future<double> distanceBetween(Position point1, Position point2) => Geolocator()
       .distanceBetween(point1.latitude, point1.longitude, point2.latitude, point2.longitude);
 }

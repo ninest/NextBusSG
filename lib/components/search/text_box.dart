@@ -55,11 +55,11 @@ class SearchTextBox extends StatelessWidget {
     final SearchProvider searchProvider = Provider.of<SearchProvider>(context, listen: false);
     if (query.isNotEmpty) {
       // only search if query not empty
-      searchProvider.searchFor(query);
+      searchProvider.searchFor(context, query);
     } else {
       // if it is empty, just show the nearest stps
       print('query is empty');
-      searchProvider.getNearestBusStopSearchResults();
+      searchProvider.getNearestBusStopSearchResults(context);
     }
   }
 }

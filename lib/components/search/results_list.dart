@@ -12,7 +12,7 @@ class SearchResultsList extends StatelessWidget {
     List searchResults = searchProvider.getSearchResults();
 
     // show nearest stops if no search term
-    if (searchResults.isEmpty) searchProvider.getNearestBusStopSearchResults();
+    if (searchResults.isEmpty) searchProvider.getNearestBusStopSearchResults(context);
 
     return Column(
       children: <Widget>[

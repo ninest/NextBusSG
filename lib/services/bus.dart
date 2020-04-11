@@ -10,12 +10,17 @@ import 'package:nextbussg/models/bus_stop.dart';
 import 'package:nextbussg/services/location.dart';
 import 'package:http/http.dart' as http;
 import 'package:nextbussg/utils/distance.dart';
+import 'package:provider/provider.dart';
 
 class BusService extends ChangeNotifier {
   // Make this use changeNotifier too?
 
-  static Future<List> getNearestStops() async {
-    Position userPosition = await LocationServices.getLocation();
+  static Future<List> getNearestStops(context) async {
+
+    final LocationServicesProvider locationServicesProvider =
+        Provider.of<LocationServicesProvider>(context, listen: false);
+
+    Position userPosition = await locationServicesProvider.getLocation();
     String jsonString = await rootBundle.loadString('assets/bus_stops.json');
     Map data = json.decode(jsonString);
 
@@ -26,7 +31,7 @@ class BusService extends ChangeNotifier {
       BusStop busStop = BusStop.fromJson(data[stopCode]);
 
       // calculating distance (meters) between current position and bus stop coords
-      double distance = await LocationServices.distanceBetween(userPosition, busStop.position);
+      double distance = await locationServicesProvider.distanceBetween(userPosition, busStop.position);
 
       // add it if bus stop is within 500 meters
       if (distance < Distance.nearMe) {
