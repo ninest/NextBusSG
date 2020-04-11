@@ -14,7 +14,7 @@ class RenameFavoritesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: FavoritesProvider.getFavorites(),
+        future: FavoritesProvider.getFavorites(context),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData)
             return PageTemplate(

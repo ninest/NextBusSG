@@ -6,7 +6,7 @@ class Strings {
   static final String moreTitle = "More";
 
   static final String timingsNotAvailableInfo = "Either these buses are not currently in operation, or the API is under maintainance. Please contact the LTA for further information";
-  static final String noFavorites = "No favorites near here. **Long press** or **double tap** a bus number to add it to you favorites.";
+  static final String noFavorites = "**Tap** on a bus number to add it to your favorites.";
   static final String renameFavoritesPrompt = "Tap any of the bus stop names below to change their display name:";
   static final String renameFavoritesPrompt2 = "Note that you can rename any favorites. Search for them, then press the **Rename** button.";
 

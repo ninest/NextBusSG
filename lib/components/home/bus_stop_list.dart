@@ -31,7 +31,7 @@ class BusStopList extends StatelessWidget {
 
     return FutureBuilder(
       // get stops near me or favorites (change to enum?)
-      future: BusService.getNearestStops(),
+      future: BusService.getNearestStops(context),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         List<Widget> children = <Widget>[
           if (snapshot.hasData)

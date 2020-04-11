@@ -31,7 +31,7 @@ class FavoritesBusStopList extends StatelessWidget {
     FavoritesProvider favoritesProvider = Provider.of<FavoritesProvider>(context);
 
     return FutureBuilder(
-      future: FavoritesProvider.getFavorites(simplified: simplified),
+      future: FavoritesProvider.getFavorites(context, simplified: simplified),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         String noFavoritesText = Strings.noFavorites;
         if (favoritesNotShown > 0) {
