@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:nextbussg/providers/location_perms.dart';
 
-class LocationServices {
+class LocationServices extends ChangeNotifier {
+
+  // converting it to changeNotifier class so location only has to be retreived once
+  Position _position = null;
+
   static Future<Position> getLocation() async {
+
     try {
       Position position =
           await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.lowest);
