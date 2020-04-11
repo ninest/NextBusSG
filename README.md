@@ -84,21 +84,6 @@ Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore
 - flutter_native_splash
 - quick_actions
 
-## FAQs
-### 1. How do I add or remove favorites?
-- **Double tap** or **Long press** on any bus service tile, 
-- The prompt to add/remove should appear
-### 2. Why aren't all my favorites showing?
-on the home page, only favorites that are **near** will be shown. To see all your favorites, click on the **"See all"** button.
-### 3. How do I rename a bus stop?
-There are two ways:
-1. Either add the stop to your favorites, then go the "More" page (the third tab on the bottom bar), then tap **"Rename favorites"**, or
-2. Search for the bus stop in the search page (second tab), and press the **"Rename"** button.
-### 4. How do I see more information on a particular bus stop?
-There are two ways:
-1. Either tap the bus service tile's 5-digit code (ex: 84009), or
-2. Search for the bus stop in the search page, tap on the results to see more information
-
 ## Other information
 - [Data](https://github.com/themindstorm/singapore-bus) collection start date: February 11, 2020
 - Project start date: February 13, 2020 
@@ -122,31 +107,6 @@ Once the key as been set up, the app can be tested with the following commands:
 flutter run
 ```
 
-## Acknowledgements
-This app makes use of data and images (MRT map) from:
-- LTA (Land Transport Authority): https://www.mytransport.sg/content/mytransport/home/dataMall.html
-- LTG (Land Transport Guru): http://landtransportguru.net
-
-## Development things
-### Getting user location
-#### iOS
-
-Go to `ios/Runner/Info.plist`, and add 
-```
-<key>NSLocationWhenInUseUsageDescription</key>
-<string>This app needs access to location when open.</string>
-``` 
-
-as a child to the `<dict>` tag.
-
-#### Android
-Go to `android/app/src/main/AndroidManifest.xml`, then add 
-```
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-```
-
-as a child of the `<manifest>` tag.
-
 ### Generating icons and splash screens
 After updating `pubspec.yaml`, run these commands:
 ```
@@ -155,7 +115,7 @@ flutter pub pub run flutter_native_splash:create
 
 ```
 
-### Stuck at installing debug Android app
+### Stuck at installing debug Android app?
 Go to app settings and uninstall your app. The app may not appear in your launcher, but it could still be installed. Go to your settings, find it, and completely uninstall it.
 
 This can also be done using ADB:
@@ -189,3 +149,11 @@ And to install the app on an Android device, copy the device ID and install the 
 flutter install <devce ID>
 ```
 
+## Acknowledgements
+This app makes use of data and images (MRT map) from:
+- LTA (Land Transport Authority): https://www.mytransport.sg/content/mytransport/home/dataMall.html
+- LTG (Land Transport Guru): http://landtransportguru.net
+
+
+## License
+[MIT](https://github.com/themindstorm/NextBusSG/blob/master/LICENSE)
