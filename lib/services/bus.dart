@@ -15,8 +15,15 @@ import 'package:provider/provider.dart';
 class BusService extends ChangeNotifier {
   // Make this use changeNotifier too?
 
-  static Future<List> getNearestStops(context) async {
+  Future<Map> getAllbusStops(context) async {
+    final LocationServicesProvider locationServicesProvider =
+        Provider.of<LocationServicesProvider>(context, listen: false);
+    String jsonString = await rootBundle.loadString('assets/bus_stops.json');
+    Map data = json.decode(jsonString);
+    return data;
+  }
 
+  static Future<List> getNearestStops(context) async {
     final LocationServicesProvider locationServicesProvider =
         Provider.of<LocationServicesProvider>(context, listen: false);
 
@@ -30,7 +37,8 @@ class BusService extends ChangeNotifier {
       BusStop busStop = BusStop.fromJson(data[stopCode]);
 
       // calculating distance (meters) between current position and bus stop coords
-      double distance = await locationServicesProvider.distanceBetween(userPosition, busStop.position);
+      double distance =
+          await locationServicesProvider.distanceBetween(userPosition, busStop.position);
 
       // add it if bus stop is within 500 meters
       if (distance < Distance.nearMe) {
@@ -66,7 +74,10 @@ class BusService extends ChangeNotifier {
         'http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2?BusStopCode=$stopCode',
         headers: {'AccountKey': apiKey, 'accept': 'application/json'});
     if (response.statusCode != 200) {
-      BotToast.showText(text: "Error in request: ${response.statusCode}. Please restart app or check your internet connectivity", contentColor: Colors.red);
+      BotToast.showText(
+          text:
+              "Error in request: ${response.statusCode}. Please restart app or check your internet connectivity",
+          contentColor: Colors.red);
       return [];
     }
 
