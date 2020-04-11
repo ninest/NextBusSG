@@ -7,10 +7,12 @@ import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
+import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/styles/tile_color.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/utils/route.dart';
+import 'package:provider/provider.dart';
 
 class ServicePage extends StatelessWidget {
   final String service;
@@ -23,11 +25,11 @@ class ServicePage extends StatelessWidget {
   };
 
   // gets the routes for the service provided
-  Future getRoutes() async {
+  Future getRoutes(context) async {
     String servicesJsonString = await rootBundle.loadString('assets/services.json');
-    String stopsJsonString = await rootBundle.loadString('assets/bus_stops.json');
     Map serviceData = json.decode(servicesJsonString)[service];
-    Map stopData = json.decode(stopsJsonString);
+
+    Map stopData = await Provider.of<BusServiceProvider>(context, listen: false).getAllStopsMap();
 
     /* 
     Changing route array from <int>[] to <Map>[]
@@ -52,7 +54,7 @@ class ServicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: getRoutes(),
+      future: getRoutes(context),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return PageTemplate(
           showBackButton: true,
@@ -119,7 +121,10 @@ class ServicePage extends StatelessWidget {
                     MRTStations(stations: mrtStations),
                   ],
                 ),
-                Text(code, style: Theme.of(context).textTheme.display2,),
+                Text(
+                  code,
+                  style: Theme.of(context).textTheme.display2,
+                ),
               ],
             ),
           ),

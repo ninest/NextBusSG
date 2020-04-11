@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hive/hive.dart';
 import 'package:nextbussg/models/bus_stop.dart';
+import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/services/location.dart';
 import 'package:nextbussg/utils/distance.dart';
 import 'package:provider/provider.dart';
@@ -80,8 +81,7 @@ class FavoritesProvider extends ChangeNotifier {
     // print(allFavoriteStopCodes);
 
     // get their respective data
-    String jsonString = await rootBundle.loadString('assets/bus_stops.json');
-    Map data = json.decode(jsonString);
+    Map data = await Provider.of<BusServiceProvider>(context, listen: false).getAllStopsMap();
     for (var stopCode in allFavoriteStopCodes) {
       BusStop busStop = BusStop.fromJson(data[stopCode]);
 
@@ -89,10 +89,11 @@ class FavoritesProvider extends ChangeNotifier {
         // only add to SFV if bus stop near here.
         final LocationServicesProvider locationServicesProvider =
             Provider.of<LocationServicesProvider>(context, listen: false);
-            
+
         Position currentPosition = await locationServicesProvider.getLocation();
         Position busStopPosition = busStop.position;
-        double distance = await locationServicesProvider.distanceBetween(currentPosition, busStopPosition);
+        double distance =
+            await locationServicesProvider.distanceBetween(currentPosition, busStopPosition);
 
         if (distance < Distance.favoritesNearMe) {
           // we only want to show the bus service (number) which has been favorited

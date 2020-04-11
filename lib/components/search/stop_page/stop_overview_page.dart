@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:nextbussg/components/more/rename_favorites/bottom_sheets.dart';
 import 'package:nextbussg/components/core/mrt_stations.dart';
+import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/home/bus_stop_expansion_tile.dart';
@@ -14,6 +15,7 @@ import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/url.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
+import 'package:provider/provider.dart';
 
 class StopOverviewPage extends StatelessWidget {
   final String code;
@@ -26,7 +28,7 @@ class StopOverviewPage extends StatelessWidget {
 
     return Scaffold(
       body: FutureBuilder(
-        future: _getStopData(),
+        future: _getStopData(context),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             String name = snapshot.data['name'];
@@ -105,9 +107,10 @@ class StopOverviewPage extends StatelessWidget {
     );
   }
 
-  _getStopData() async {
-    String jsonString = await rootBundle.loadString('assets/bus_stops.json');
-    Map stopData = json.decode(jsonString)[code];
+  _getStopData(context) async {
+    // String jsonString = await rootBundle.loadString('assets/bus_stops.json');
+    // Map stopData = json.decode(jsonString)[code];
+    Map stopData = await Provider.of<BusServiceProvider>(context, listen: false).getAllStopsMap();
 
     // print(stopData);
     return stopData;
