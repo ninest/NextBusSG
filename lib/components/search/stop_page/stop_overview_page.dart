@@ -110,7 +110,8 @@ class StopOverviewPage extends StatelessWidget {
   _getStopData(context) async {
     // String jsonString = await rootBundle.loadString('assets/bus_stops.json');
     // Map stopData = json.decode(jsonString)[code];
-    Map stopData = await Provider.of<BusServiceProvider>(context, listen: false).getAllStopsMap();
+    Map stopData =
+        (await Provider.of<BusServiceProvider>(context, listen: false).getAllStopsMap())[code];
 
     // print(stopData);
     return stopData;
