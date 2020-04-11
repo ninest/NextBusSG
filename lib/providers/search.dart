@@ -4,6 +4,7 @@ import 'package:nextbussg/models/bus_stop.dart';
 import 'package:nextbussg/providers/location_perms.dart';
 import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/utils/strings.dart';
+import 'package:provider/provider.dart';
 
 class SearchProvider extends ChangeNotifier {
   List _searchResults = [];
@@ -15,7 +16,9 @@ class SearchProvider extends ChangeNotifier {
   getNearestBusStopSearchResults(context) async {
     bool canGetPermission = await LocationPermsProvider.getPermStatus();
     if (canGetPermission) {
-      _searchResults = await BusService.getNearestStops(context);
+      final BusServiceProvider busServiceProvider =
+          Provider.of<BusServiceProvider>(context, listen: false);
+      _searchResults = await busServiceProvider.getNearestStops(context);
       notifyListeners();
     } else {
       BotToast.showText(text: Strings.cannotShowNearByStops, contentColor: Colors.red);
@@ -25,7 +28,17 @@ class SearchProvider extends ChangeNotifier {
   searchFor(context, String query) async {
     print("Query rec: $query");
 
-    List allBusStops = await BusService.getAllStops();
+    final BusServiceProvider busServiceProvider =
+        Provider.of<BusServiceProvider>(context, listen: false);
+    Map allBusStopsMap = await busServiceProvider.getAllStopsMap();
+
+    // can reuse this, add it ti busServiceProvider
+    List allBusStops = [];
+    for (var stopCode in allBusStopsMap.keys) {
+      BusStop busStop = BusStop.fromJson(allBusStopsMap[stopCode]);
+      allBusStops.add(busStop);
+    }
+
     List<BusStop> searchResults = [];
 
     // make sure query is not empty
@@ -50,7 +63,7 @@ class SearchProvider extends ChangeNotifier {
     } else {
       // if empty, just display stops nearby
       print('getting nearest stops');
-      _searchResults = await BusService.getNearestStops(context);
+      _searchResults = await busServiceProvider.getNearestStops(context);
       notifyListeners();
     }
   }

@@ -1,4 +1,3 @@
-
 import 'package:nextbussg/components/home/timings_not_available.dart';
 import 'package:nextbussg/components/core/mrt_stations.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
@@ -10,6 +9,7 @@ import 'package:nextbussg/components/home/bus_service_tile.dart';
 import 'package:nextbussg/models/bus_arrival.dart';
 import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/styles/values.dart';
+import 'package:provider/provider.dart';
 
 class BusStopExpansionPanel extends StatefulWidget {
   final String name;
@@ -47,7 +47,7 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
 
     // if we are in the simplified favorites, it means initiallyExpanded is true
     // in that case, automatically get bus timings
-    if (widget.initialyExpanded) _getBusTimings();
+    if (widget.initialyExpanded) _getBusTimings(context);
   }
 
   @override
@@ -92,8 +92,6 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       name = RenameFavoritesService.getName(widget.code);
     }
 
-
-
     return ListTileTheme(
       // setting padding value if mrt is there
       // THESE VALUES ARE HARDOCDED because I don't know how to really change them
@@ -130,7 +128,7 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
               onTap: () => _openStopOverviewPage()),
           // get bus timings only when panel has been opened
           onExpansionChanged: (bool value) {
-            return value ? _getBusTimings() : null;
+            return value ? _getBusTimings(context) : null;
           },
           initiallyExpanded: widget.initialyExpanded,
           children: [
@@ -152,12 +150,14 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
     // margin(top: Values.marginBelowTitle)
   }
 
-  _getBusTimings() async {
+  _getBusTimings(context) async {
     // reset services not in opertion:
     timingsNotAvailable = [];
 
     // this function also populates the variable "servicesNotInOperation"
-    List<BusArrival> newList = await BusService.getBusTimings(widget.code);
+    final BusServiceProvider busServiceProvider =
+        Provider.of<BusServiceProvider>(context, listen: false);
+    List<BusArrival> newList = await busServiceProvider.getBusTimings(widget.code);
 
     // make sure widget not siposed before calling setstate
     if (mounted)

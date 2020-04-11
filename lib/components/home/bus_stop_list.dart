@@ -7,6 +7,7 @@ import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/home/bus_stop_expansion_tile.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/services/bus.dart';
+import 'package:provider/provider.dart';
 
 class BusStopList extends StatelessWidget {
   final String title;
@@ -31,7 +32,8 @@ class BusStopList extends StatelessWidget {
 
     return FutureBuilder(
       // get stops near me or favorites (change to enum?)
-      future: BusService.getNearestStops(context),
+      // future: BusService.getNearestStops(context),
+      future: Provider.of<BusServiceProvider>(context, listen: false).getNearestStops(context),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         List<Widget> children = <Widget>[
           if (snapshot.hasData)

@@ -49,9 +49,8 @@ class TabbedAppState extends State<TabbedApp> {
             child: BottomNavigationBar(
               showSelectedLabels: false,
               showUnselectedLabels: false,
-              // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.9),
-              elevation: 0.0,
+              elevation: 10.0,
               items: _tabs,
               currentIndex: _selectedIndex,
               onTap: _onItemTapped,

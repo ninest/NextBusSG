@@ -9,10 +9,10 @@ class LocationServicesProvider extends ChangeNotifier {
 
   Future<Position> getLocation() async {
     if (_position != null) {
-      print("Location already there so no need to get it again");
+      // Location already there so no need to get it again
       return _position;
     } else {
-      print("Getting location for the first time.");
+      // Getting location for the first time.
       try {
         _position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.lowest);
         return _position;
@@ -26,6 +26,12 @@ class LocationServicesProvider extends ChangeNotifier {
     }
   }
 
-  Future<double> distanceBetween(Position point1, Position point2) => Geolocator()
-      .distanceBetween(point1.latitude, point1.longitude, point2.latitude, point2.longitude);
+  Future<double> distanceBetween(Position point1, Position point2) {
+    return Geolocator().distanceBetween(
+      point1.latitude,
+      point1.longitude,
+      point2.latitude,
+      point2.longitude,
+    );
+  }
 }

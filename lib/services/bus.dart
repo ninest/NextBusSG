@@ -12,24 +12,15 @@ import 'package:http/http.dart' as http;
 import 'package:nextbussg/utils/distance.dart';
 import 'package:provider/provider.dart';
 
-class BusService extends ChangeNotifier {
+class BusServiceProvider extends ChangeNotifier {
   // Make this use changeNotifier too?
 
-  Future<Map> getAllbusStops(context) async {
-    final LocationServicesProvider locationServicesProvider =
-        Provider.of<LocationServicesProvider>(context, listen: false);
-    String jsonString = await rootBundle.loadString('assets/bus_stops.json');
-    Map data = json.decode(jsonString);
-    return data;
-  }
-
-  static Future<List> getNearestStops(context) async {
+  Future<List> getNearestStops(context) async {
     final LocationServicesProvider locationServicesProvider =
         Provider.of<LocationServicesProvider>(context, listen: false);
 
     Position userPosition = await locationServicesProvider.getLocation();
-    String jsonString = await rootBundle.loadString('assets/bus_stops.json');
-    Map data = json.decode(jsonString);
+    Map data = await getAllStopsMap();
 
     List busStopsNear = [];
 
@@ -53,21 +44,17 @@ class BusService extends ChangeNotifier {
     // return [busStopsNear[0]];
   }
 
-  static Future<List> getAllStops() async {
-    String jsonString = await rootBundle.loadString('assets/bus_stops.json');
-    Map data = json.decode(jsonString);
-
-    List allBusStops = [];
-
-    for (var stopCode in data.keys) {
-      BusStop busStop = BusStop.fromJson(data[stopCode]);
-      allBusStops.add(busStop);
+  Map _allBusStopsMap = null;
+  Future<Map> getAllStopsMap() async {
+    if (_allBusStopsMap == null) {
+      print("Loading bus stops map - this should only come once");
+      String jsonString = await rootBundle.loadString('assets/bus_stops.json');
+      _allBusStopsMap = json.decode(jsonString);
     }
-
-    return allBusStops;
+    return _allBusStopsMap;
   }
 
-  static getBusTimings(String stopCode) async {
+  getBusTimings(String stopCode) async {
     print('Getting arrivals for $stopCode');
 
     var response = await http.get(
