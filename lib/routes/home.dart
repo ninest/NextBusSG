@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
     ];
 
     // if there are no favorites, swap the position of favorites and near me
-    List favorites = await FavoritesProvider.getFavorites(simplified: true);
+    List favorites = await FavoritesProvider.getFavorites(context, simplified: true);
     if (favorites.isEmpty) {
       // even if the SF list is empty, there may be bus stops which are not near us. That's why
       // we check if the list is empty, then check the ACTUAL amount of favorites
@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
       // so just to make it clear to the user, display a message:
       // You have 3 favorites, which are not near you.
 
-      var noFavorites = (await FavoritesProvider.getFavorites(simplified: false)).length;
+      var noFavorites = (await FavoritesProvider.getFavorites(context, simplified: false)).length;
       widgetOrder = [
         nearMe,
         Spacing(height: 40).sliver(),

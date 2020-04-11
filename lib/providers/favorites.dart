@@ -70,7 +70,7 @@ class FavoritesProvider extends ChangeNotifier {
     }
   }
 
-  static getFavorites({bool simplified = false}) async {
+  static getFavorites(context, {bool simplified = false}) async {
     var box = Hive.box('favorites');
 
     List<BusStop> favoritesList = [];
