@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/components/core/space.dart';
+import 'package:nextbussg/styles/tile_color.dart';
 import 'package:nextbussg/styles/values.dart';
 
 class TileButton extends StatelessWidget {
@@ -37,30 +38,40 @@ class TileButton extends StatelessWidget {
       ],
     );
 
-    return InkWell(
-      child: Container(
-        margin: EdgeInsets.only(
-          top: Values.marginBelowTitle / 2,
-          bottom: Values.marginBelowTitle / 2,
-        ),
-        // these seem to need more padding, not entirely sure why
-        padding: EdgeInsets.all(Values.marginBelowTitle),
-        decoration: BoxDecoration(
-            color: Colors.grey.withOpacity(Values.containerOpacity),
-            borderRadius: BorderRadius.circular(Values.borderRadius)),
-        child: Column(
-          children: <Widget>[
-            child,
-            if (children != null) ...[
-              Spacing(height: 15,),
-              ...children,
-            ],
-          ],
-        ),
+    return Container(
+      // wrapping with container just to add margin
+      margin: EdgeInsets.only(
+        top: Values.marginBelowTitle / 2,
+        bottom: Values.marginBelowTitle / 2,
       ),
-      enableFeedback: true,
-      borderRadius: BorderRadius.circular(Values.borderRadius),
-      onTap: () => onTap(),
+      child: InkWell(
+        child: Container(
+          // these seem to need more padding, not entirely sure why
+          padding: EdgeInsets.all(Values.marginBelowTitle),
+          decoration: BoxDecoration(
+              color: TileColors.busStopExpansionTile(context),
+              borderRadius: BorderRadius.circular(Values.borderRadius)),
+          child: Column(
+            children: <Widget>[
+              child,
+              if (children != null) ...[
+                Spacing(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: children,
+                )
+                // ...children,
+              ],
+            ],
+          ),
+        ),
+        enableFeedback: true,
+        borderRadius: BorderRadius.circular(Values.borderRadius),
+        // only set the function if it's given, otherwise execute empty function
+        onTap: () => onTap == null ? {} : onTap,
+      ),
     );
   }
 }

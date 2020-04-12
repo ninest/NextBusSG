@@ -17,6 +17,8 @@ class ThemeEnumAdapter extends TypeAdapter<ThemeEnum> {
         return ThemeEnum.light;
       case 1:
         return ThemeEnum.dark;
+      case 2:
+        return ThemeEnum.system;
       default:
         return null;
     }
@@ -30,6 +32,9 @@ class ThemeEnumAdapter extends TypeAdapter<ThemeEnum> {
         break;
       case ThemeEnum.dark:
         writer.writeByte(1);
+        break;
+      case ThemeEnum.system:
+        writer.writeByte(2);
         break;
     }
   }
