@@ -17,7 +17,7 @@
 | ![favorites view](./readme-images/favorites.png) | **Favorites** that are close to the user are show on the main page |
 | ![search view](./readme-images/search.png) | **Search page** |
 | ![bus stop view](./readme-images/stop-view.png) | **Bus stop details** page |
-| TBD | Bus service details page |
+| ![bus service view](./reeadme-images/../readme-images/bus-service.png) | Bus service details page |
 | ![More page](./readme-images/more-page.png) | **More page**, where users can change settings and see some more features |
 | ![dark view](./readme-images/dark-showcase.png) | 🌙 **Dark theme** |
 | ![rename](./readme-images/rename.png) | Bus stops can be renamed (renamed bus stops in italics) |
