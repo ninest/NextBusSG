@@ -21,7 +21,7 @@ class Strings {
 
   // bus stops list
   static String get noStopsNearby =>
-      "No bus stops nearby. Please take a flight to Singapore if you are not currently in Singapore.";
+      "No bus stops nearby. Are you in Singapore?";
 
   // location permissions
   static String get locationPermissionNotGiven =>

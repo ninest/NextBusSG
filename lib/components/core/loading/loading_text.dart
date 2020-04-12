@@ -26,7 +26,7 @@ class LoadingText extends StatelessWidget {
             text,
             style: Theme.of(context).textTheme.title.copyWith(
                   fontWeight: FontWeight.w500,
-                  fontSize: Values.em * 1.5,
+                  fontSize: Values.em * 1.2,
                 ),
           ),
           Text(_getRandomMessage()),

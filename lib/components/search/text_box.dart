@@ -59,7 +59,7 @@ class SearchTextBox extends StatelessWidget {
     } else {
       // if it is empty, just show the nearest stps
       print('query is empty');
-      searchProvider.getNearestBusStopSearchResults(context);
+      // searchProvider.getNearestBusStopSearchResults(context);
     }
   }
 }

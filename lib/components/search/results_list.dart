@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/components/core/loading/loading_text.dart';
+import 'package:nextbussg/styles/tile_color.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/components/search/bus_stop_result_tile.dart';
 import 'package:nextbussg/providers/search.dart';
@@ -12,11 +13,12 @@ class SearchResultsList extends StatelessWidget {
     List searchResults = searchProvider.getSearchResults();
 
     // show nearest stops if no search term
-    if (searchResults.isEmpty) searchProvider.getNearestBusStopSearchResults(context);
+    // if (searchResults.isEmpty) searchProvider.getNearestBusStopSearchResults(context);
 
     return Column(
       children: <Widget>[
-        if (searchResults.isEmpty) LoadingText(text: "Loading bus stops nearby ..."),
+        // if (searchResults.isEmpty) LoadingText(text: "Start searching ..."),
+        // if (searchResults.isEmpty) nothingSearched(context),
         for (var busStop in searchResults)
           // Text("A search result will come here.")
           BusStopSearchResultTile(
@@ -27,4 +29,11 @@ class SearchResultsList extends StatelessWidget {
       ],
     );
   }
+
+  Widget nothingSearched(BuildContext context) => Container(
+    decoration: BoxDecoration(
+      color: TileColors.busStopExpansionTile(context)
+    ),
+    child: Text("You haven't searched for anything")
+  );
 }

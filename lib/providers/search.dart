@@ -13,17 +13,17 @@ class SearchProvider extends ChangeNotifier {
   bool _noStopsFound = false;
   bool getNoStopsFoundValue() => _noStopsFound;
 
-  getNearestBusStopSearchResults(context) async {
-    bool canGetPermission = await LocationPermsProvider.getPermStatus();
-    if (canGetPermission) {
-      final BusServiceProvider busServiceProvider =
-          Provider.of<BusServiceProvider>(context, listen: false);
-      _searchResults = await busServiceProvider.getNearestStops(context);
-      notifyListeners();
-    } else {
-      BotToast.showText(text: Strings.cannotShowNearByStops, contentColor: Colors.red);
-    }
-  }
+  // getNearestBusStopSearchResults(context) async {
+  //   bool canGetPermission = await LocationPermsProvider.getPermStatus();
+  //   if (canGetPermission) {
+  //     final BusServiceProvider busServiceProvider =
+  //         Provider.of<BusServiceProvider>(context, listen: false);
+  //     _searchResults = await busServiceProvider.getNearestStops(context);
+  //     notifyListeners();
+  //   } else {
+  //     BotToast.showText(text: Strings.cannotShowNearByStops, contentColor: Colors.red);
+  //   }
+  // }
 
   searchFor(context, String query) async {
     print("Query rec: $query");
@@ -62,8 +62,8 @@ class SearchProvider extends ChangeNotifier {
       }
     } else {
       // if empty, just display stops nearby
-      print('getting nearest stops');
-      _searchResults = await busServiceProvider.getNearestStops(context);
+      print('Search results empty');
+      _searchResults = [];
       notifyListeners();
     }
   }
