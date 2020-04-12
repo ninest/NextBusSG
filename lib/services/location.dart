@@ -10,10 +10,10 @@ class LocationServicesProvider extends ChangeNotifier {
   // reload is to force get a new location
   Future<Position> getLocation({reload: false}) async {
     if (_position != null && !reload) {
-      // Location already there so no need to get it again]
+      // Location already there so no need to get it again
       return _position;
     } else {
-      // Getting location for the first time.
+      // Getting location for the first time
       try {
         _position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.lowest);
         return _position;

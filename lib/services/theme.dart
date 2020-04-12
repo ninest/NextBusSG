@@ -19,4 +19,9 @@ class ThemeService {
     }
     settingsBox.put('theme', theme);
   }
+
+  static setTheme(ThemeEnum themeEnum) {
+    var settingsBox = Hive.box('settings');
+    settingsBox.put('theme', themeEnum);
+  }
 }

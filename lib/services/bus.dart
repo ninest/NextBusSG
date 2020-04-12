@@ -13,16 +13,19 @@ import 'package:nextbussg/utils/distance.dart';
 import 'package:provider/provider.dart';
 
 class BusServiceProvider extends ChangeNotifier {
-  // Make this use changeNotifier too?
-
+  
+  // this is there to save nearby bus stops in the state. That way, we only habe to go through all bus stops
+  // and find those nearby once
+  // This will be reset when the reload button is pressed
   List<BusStop> _busStopsNear = null;
 
   // reload is false by default; it's only true when we need to get new set of nearest bus stops
   Future<List> getNearestStops(context, {reload: false}) async {
     if (_busStopsNear != null && !reload) {
+      // if busStopsNear is already saved in state, no need to get it again
       return _busStopsNear;
     } else {
-      // this function should only execute once to get bus stops near by
+      // this function should only execute ONCE to get bus stops near by
       final LocationServicesProvider locationServicesProvider =
           Provider.of<LocationServicesProvider>(context, listen: false);
 

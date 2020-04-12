@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/styles/values.dart';
 
 class TileButton extends StatelessWidget {
   final String text;
   final IconData icon;
   final Function onTap;
-  TileButton({this.text, this.icon, this.onTap});
+  List<Widget> children;
+  TileButton({
+    this.text,
+    this.icon,
+    this.onTap,
+    this.children,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +48,15 @@ class TileButton extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.grey.withOpacity(Values.containerOpacity),
             borderRadius: BorderRadius.circular(Values.borderRadius)),
-        child: child,
+        child: Column(
+          children: <Widget>[
+            child,
+            if (children != null) ...[
+              Spacing(height: 15,),
+              ...children,
+            ],
+          ],
+        ),
       ),
       enableFeedback: true,
       borderRadius: BorderRadius.circular(Values.borderRadius),
