@@ -1,9 +1,7 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:nextbussg/models/bus_stop.dart';
-import 'package:nextbussg/providers/location_perms.dart';
 import 'package:nextbussg/services/bus.dart';
-import 'package:nextbussg/utils/strings.dart';
 import 'package:provider/provider.dart';
 
 class SearchProvider extends ChangeNotifier {
@@ -12,18 +10,6 @@ class SearchProvider extends ChangeNotifier {
 
   bool _noStopsFound = false;
   bool getNoStopsFoundValue() => _noStopsFound;
-
-  // getNearestBusStopSearchResults(context) async {
-  //   bool canGetPermission = await LocationPermsProvider.getPermStatus();
-  //   if (canGetPermission) {
-  //     final BusServiceProvider busServiceProvider =
-  //         Provider.of<BusServiceProvider>(context, listen: false);
-  //     _searchResults = await busServiceProvider.getNearestStops(context);
-  //     notifyListeners();
-  //   } else {
-  //     BotToast.showText(text: Strings.cannotShowNearByStops, contentColor: Colors.red);
-  //   }
-  // }
 
   searchFor(context, String query) async {
     print("Query rec: $query");
