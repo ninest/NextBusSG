@@ -3,14 +3,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/components/more/rename_favorites/rename_favorites_page.dart';
 import 'package:nextbussg/components/more/settings/theme_toggle_list.dart';
 import 'package:nextbussg/components/more/tile_button.dart';
-import 'package:nextbussg/services/theme.dart';
 import 'package:nextbussg/utils/route.dart';
-import 'package:nextbussg/utils/theme_enum.dart';
 
 class SettingsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ThemeEnum theme = ThemeService.getTheme();
     return Column(
       children: [
         ThemeToggleList(),
@@ -23,6 +20,4 @@ class SettingsList extends StatelessWidget {
       ],
     );
   }
-
-  
 }
