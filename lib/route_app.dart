@@ -37,7 +37,7 @@ class RouteApp extends StatelessWidget {
             ));
           } else {
             SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent,
+              statusBarColor: Colors.transparent.withOpacity(0.5),
               statusBarIconBrightness: Brightness.light,
             ));
           }
