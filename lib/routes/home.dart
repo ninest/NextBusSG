@@ -6,6 +6,7 @@ import 'package:nextbussg/components/core/line.dart';
 import 'package:nextbussg/components/core/loading/loading_text.dart';
 import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/services/location.dart';
+import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
@@ -34,7 +35,15 @@ class HomePage extends StatelessWidget {
           ).scaffold();
         } else
         return Scaffold(
-          body: Center(child: LoadingText(text: "Finding location ...")),
+          body: Padding(
+            padding: EdgeInsets.all(Values.pageHorizontalPadding),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                LoadingText(text: "Finding location ..."),
+              ],
+            ),
+          ),
         );
       },
     );

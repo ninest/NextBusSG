@@ -54,7 +54,10 @@ class BusStopList extends StatelessWidget {
             ]
           else
             // placeholder widgets while stops are loding
-            LoadingText(text: "Getting bus stops ...")
+            ...[
+            Spacing(height: Values.marginBelowTitle),
+            LoadingText(text: "Getting bus stops ..."),
+          ]
         ];
 
         // TODO: find a way to put a slight animation
