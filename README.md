@@ -3,7 +3,9 @@
   🚍 NextBus SG
 </h1>
 
-<p align="center"><i>An app to show everything bus related in Singapore, including **bus arrival times** and a **directory**, with **extra features**. Download on the [PlayStore](https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg)</i></p>
+<p align="center"><i>An app to show everything bus related in Singapore, including <b>bus arrival times</b> and a <b>directory</b>, with <b>extra features</b>. Download on the <a href="https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg">PlayStore</a>.</i></p>
+
+<!-- [PlayStore](https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg) -->
 
 ## 🎆 Gallery (WIP)
 
