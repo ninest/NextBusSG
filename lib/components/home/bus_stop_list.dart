@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:nextbussg/components/core/error_container.dart';
 import 'package:nextbussg/components/core/loading/loading_text.dart';
 import 'package:nextbussg/components/core/space.dart';
-import 'package:nextbussg/components/home/no_stops_nearby.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/home/bus_stop_expansion_tile.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/services/bus.dart';
+import 'package:nextbussg/utils/strings.dart';
 import 'package:provider/provider.dart';
 
 class BusStopList extends StatelessWidget {
@@ -50,7 +51,7 @@ class BusStopList extends StatelessWidget {
               // no stops near me
               ...[
               Spacing(height: Values.marginBelowTitle),
-              NoStopsNearBy(),
+              ErrorContainer(text: Strings.noStopsNearby),
             ]
           else
             // placeholder widgets while stops are loding

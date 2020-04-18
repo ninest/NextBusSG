@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:nextbussg/components/core/error_container.dart';
 import 'package:nextbussg/components/more/rename_favorites/bottom_sheets.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/models/bus_stop.dart';
@@ -32,13 +33,16 @@ class RenameFavoritesPage extends StatelessWidget {
                 Spacing(height: 20).sliver(),
 
                 if (snapshot.data.isEmpty) ...[
-                  MarkdownBody(
-                    data: "**Currently no favorites**: ${Strings.noFavorites}",
-                    styleSheet: MarkdownStyleSheet(
-                        p: Theme.of(context).textTheme.body1.copyWith(
-                              color: Theme.of(context).errorColor,
-                              fontSize: Values.em * 1.5,
-                            )),
+                  // MarkdownBody(
+                  //   data: "**Currently no favorites**: ${Strings.noFavorites}",
+                  //   styleSheet: MarkdownStyleSheet(
+                  //       p: Theme.of(context).textTheme.body1.copyWith(
+                  //             color: Theme.of(context).errorColor,
+                  //             fontSize: Values.em * 1.5,
+                  //           )),
+                  // ).sliverToBoxAdapter(),
+                  ErrorContainer(
+                    text: "**Currently no favorites**: ${Strings.noFavorites}",
                   ).sliverToBoxAdapter(),
                   Spacing(height: 10).sliver(),
                 ],

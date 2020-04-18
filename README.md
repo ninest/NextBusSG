@@ -157,3 +157,6 @@ This app makes use of data and images (MRT map) from:
 
 ## License
 [MIT](https://github.com/themindstorm/NextBusSG/blob/master/LICENSE)
+
+## Legal attribution
+Google Play and the Google Play logo are trademarks of Google LLC.
