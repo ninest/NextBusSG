@@ -37,7 +37,8 @@ lib/generated_plugin_registrant.dart
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
 # keys
-*/keys.dart
+# */keys.dart
+# lib/keys.dart
 
 # app key
 **/android/key.properties

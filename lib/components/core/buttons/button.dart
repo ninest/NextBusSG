@@ -33,7 +33,8 @@ class Button extends StatelessWidget {
           border: Border.all(width: fill ? 0.0 : 1.0, color: color),
         ),
         child: Row(
-          mainAxisAlignment: iconData == null ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.spaceBetween,
+          mainAxisAlignment:
+              iconData == null ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.spaceBetween,
           children: <Widget>[
             if (!(iconData == null))
               Icon(
