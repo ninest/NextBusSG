@@ -16,9 +16,7 @@ Click [here](https://github.com/themindstorm/NextBusSG#detailed-images) to see a
 
 <details>
 <summary>
-
-**Click to reveal all features**
-
+<b>Click to reveal all features</b>
 </summary>
 
 - [x] Show the arrival times of buses at stops near the user
@@ -57,9 +55,7 @@ Click [here](https://github.com/themindstorm/NextBusSG#detailed-images) to see a
 
 <details>
 <summary>
-
-**🧨 Click to reveal features for the future**
-
+<b>🧨 Click to reveal features for the future</b>
 </summary>
 
 - [ ] Graph view for arrival times, rather than just showing numbers (planned, although implementation is difficult)
