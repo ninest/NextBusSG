@@ -30,9 +30,16 @@ class SearchProvider extends ChangeNotifier {
     // make sure query is not empty
     if (query.isNotEmpty) {
       for (BusStop bs in allBusStops) {
-        if (bs.name.toLowerCase().contains(query) || bs.code.contains(query)) {
+        if (bs.name.toLowerCase().contains(query.toLowerCase()) || bs.code.contains(query)) {
           searchResults.add(bs);
         }
+
+        // also check if mrt station searched
+        if (bs.mrtStations.isNotEmpty)
+          for (List stationList in bs.mrtStations) {
+            // changing query to upper case because all mrt station refs are upper case
+            if (stationList.contains(query.toUpperCase())) searchResults.add(bs);
+          }
       }
       if (searchResults.isNotEmpty) {
         try {
