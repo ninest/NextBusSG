@@ -30,7 +30,9 @@ class SearchProvider extends ChangeNotifier {
     // make sure query is not empty
     if (query.isNotEmpty) {
       for (BusStop bs in allBusStops) {
-        if (bs.name.toLowerCase().contains(query.toLowerCase()) || bs.code.contains(query)) {
+        if (bs.name.toLowerCase().contains(query.toLowerCase()) ||
+            bs.road.contains(query.toLowerCase()) ||
+            bs.code.contains(query)) {
           searchResults.add(bs);
         }
 

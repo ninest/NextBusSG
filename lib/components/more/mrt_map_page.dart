@@ -10,29 +10,33 @@ class MRTMapPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = ThemeService.getTheme();
 
-    return Stack(
-      children: <Widget>[
-        Container(
-          child: PhotoView(
-            minScale: PhotoViewComputedScale.contained * 1.4,
-            maxScale: PhotoViewComputedScale.covered * 1.8,
-            initialScale: PhotoViewComputedScale.covered * 0.35,
-            enableRotation: true,
-            backgroundDecoration: BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          Container(
+            child: PhotoView(
+              minScale: PhotoViewComputedScale.contained * 1.4,
+              maxScale: PhotoViewComputedScale.covered * 1.8,
+              initialScale: PhotoViewComputedScale.covered * 0.35,
+              enableRotation: true,
+              backgroundDecoration: BoxDecoration(
+                color: theme == ThemeEnum.dark
+                    ? Colors.black
+                    : Theme.of(context).scaffoldBackgroundColor,
+              ),
+              imageProvider: theme == ThemeEnum.dark
+                  ? AssetImage("assets/mrt/mrt-dark.png")
+                  : AssetImage("assets/mrt/mrt-light.png"),
             ),
-            imageProvider: theme == ThemeEnum.dark
-                ? AssetImage("assets/mrt/mrt-dark.png")
-                : AssetImage("assets/mrt/mrt-light.png"),
           ),
-        ),
-        Positioned(
-          // adding safeArea padding
-          top: MediaQuery.of(context).padding.top + Values.pageHorizontalPadding,
-          left: Values.pageHorizontalPadding,
-          child: AppBackButton(),
-        ),
-      ],
+          Positioned(
+            // adding safeArea padding
+            top: MediaQuery.of(context).padding.top + Values.pageHorizontalPadding,
+            left: Values.pageHorizontalPadding,
+            child: AppBackButton(fullScreen: true),
+          ),
+        ],
+      ),
     );
   }
 }

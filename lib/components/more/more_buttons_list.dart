@@ -15,7 +15,7 @@ class MoreButtonsList extends StatelessWidget {
         TileButton(
           text: "View MRT map",
           icon: FontAwesomeIcons.train,
-          onTap: () => Routing.openRoute(context, MRTMapPage()),
+          onTap: () => Routing.openFullScreenDialog(context, MRTMapPage()),
         ),
         TileButton(
           text: "FAQ",

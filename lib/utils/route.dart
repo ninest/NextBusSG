@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nextbussg/utils/bounce_scroll.dart';
 
@@ -7,6 +8,19 @@ class Routing {
       context,
       MaterialPageRoute(
         maintainState: true,
+        builder: (context) => ScrollConfiguration(
+          child: page,
+          behavior: BounceScrollBehavior(),
+        ),
+      ),
+    );
+  }
+
+  static void openFullScreenDialog(BuildContext context, Widget page) {
+    Navigator.push(
+      context,
+      CupertinoPageRoute(
+        fullscreenDialog: true,
         builder: (context) => ScrollConfiguration(
           child: page,
           behavior: BounceScrollBehavior(),
