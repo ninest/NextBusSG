@@ -10,6 +10,8 @@
 ![dark mode](./readme-images/gallery/2.png)
 ![other screens](./readme-images/gallery/3.png)
 
+Click [here](https://github.com/themindstorm/NextBusSG#detailed-images) to see a detailed explanation of each screen.
+
 ## 🚀 Features
 - [x] Show the arrival times of buses at stops near the user
   - [x] Show a list of buses not currently in serivce
