@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nextbussg/components/core/loading/loading_text.dart';
 import 'package:nextbussg/styles/tile_color.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/components/search/bus_stop_result_tile.dart';
@@ -31,9 +30,6 @@ class SearchResultsList extends StatelessWidget {
   }
 
   Widget nothingSearched(BuildContext context) => Container(
-    decoration: BoxDecoration(
-      color: TileColors.busStopExpansionTile(context)
-    ),
-    child: Text("You haven't searched for anything")
-  );
+      decoration: BoxDecoration(color: TileColors.busStopExpansionTile(context)),
+      child: Text("You haven't searched for anything"));
 }

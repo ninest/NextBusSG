@@ -16,6 +16,7 @@ import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/utils/strings.dart';
 import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -26,25 +27,31 @@ class HomePage extends StatelessWidget {
 
     print("Home page build");
 
+    // slide to refresh
+    // RefreshController _refreshController = RefreshController(initialRefresh: false);
+    // TODO: implement pull to refresh
+
     return FutureBuilder(
       future: getHomeWidgets(context),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return PageTemplate(
-            children: snapshot.data,
-          ).scaffold();
-        } else
-        return Scaffold(
-          body: Padding(
-            padding: EdgeInsets.all(Values.pageHorizontalPadding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                LoadingText(text: "Finding location ..."),
-              ],
+          return Scaffold(
+            body: PageTemplate(
+              children: snapshot.data,
             ),
-          ),
-        );
+          );
+        } else
+          return Scaffold(
+            body: Padding(
+              padding: EdgeInsets.all(Values.pageHorizontalPadding),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  LoadingText(text: "Finding location ..."),
+                ],
+              ),
+            ),
+          );
       },
     );
   }
@@ -100,7 +107,7 @@ class HomePage extends StatelessWidget {
       );
 
   Widget reloadButton(BuildContext context) => Button(
-        text: "Reload",
+        text: "Refresh",
         iconData: FontAwesomeIcons.redoAlt,
         onTap: () async {
           BotToast.showText(text: "Reloading ...");
