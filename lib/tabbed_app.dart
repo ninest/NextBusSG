@@ -36,13 +36,15 @@ class TabbedAppState extends State<TabbedApp> {
         children: <Widget>[
           Align(
             alignment: Alignment.topCenter,
-            child:  _tabViews[_selectedIndex]
+            child:
+                // use below to not save state between tab state
+                // _tabViews[_selectedIndex]
 
-            // TODO: try below and check performance
-            // IndexedStack(
-            //   index: _selectedIndex,
-            //   children: _tabViews,
-            // ),
+                // use below to save state between tab switch
+                IndexedStack(
+              index: _selectedIndex,
+              children: _tabViews,
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
