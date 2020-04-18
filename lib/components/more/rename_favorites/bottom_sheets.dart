@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
+import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/services/renameFavorites.dart';
 import 'package:nextbussg/components/core/bottom_sheet_template.dart';
 import 'package:nextbussg/components/core/space.dart';
+import 'package:provider/provider.dart';
 
 class RenameFavoritesBottomSheets {
   static bs(context, code, name) {
@@ -50,7 +52,10 @@ class RenameFavoritesBottomSheets {
                   print("Empty string provided, reseting rename");
                   RenameFavoritesService.deleteRename(code);
                 }
+
+                // rebuild stop overview page to reflect rename
                 closeBottomSheet(context);
+                Provider.of<HomeRebuilderProvider>(context, listen: false).rebuild();
               },
             ),
           ],

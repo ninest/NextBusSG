@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:nextbussg/components/more/rename_favorites/bottom_sheets.dart';
 import 'package:nextbussg/components/core/mrt_stations.dart';
+import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
@@ -20,8 +21,9 @@ class StopOverviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var data =
-    // final String name =
+    // here just to rebuil page on stop rename
+    final HomeRebuilderProvider homeRebuilderProvider =
+        Provider.of<HomeRebuilderProvider>(context, listen: true);
 
     return Scaffold(
       body: FutureBuilder(
