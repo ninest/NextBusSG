@@ -1,5 +1,5 @@
 
-<h1 align="center"> 🚍 NextBus SG</h1>
+<h1 align="center"> <img height='25' alt='icon' src='./icons/icon-android.png'/>  NextBus SG</h1>
 
 <p align="center">An app to show everything bus related in Singapore, including <b>bus arrival times</b> and a <b>directory</b>, with <b>extra features</b>.</p>
 
