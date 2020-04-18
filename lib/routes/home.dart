@@ -105,31 +105,37 @@ class HomePage extends StatelessWidget {
         favoritesNotShown: favoritesNotShown,
       );
 
-  Widget reloadButton(BuildContext context) => Button(
-        text: "Refresh",
-        iconData: FontAwesomeIcons.redoAlt,
-        onTap: () async {
-          BotToast.showText(text: "Reloading ...");
-          // reload getting of location and bus stops nearby
-          print("Getting new location");
-          Provider.of<LocationServicesProvider>(context, listen: false)
-              .getLocation(reload: true)
-              .then(
-            (_) {
-              print("Getting new bus stops");
-              Provider.of<BusServiceProvider>(context, listen: false)
-                  .getNearestStops(context, reload: true)
+  Widget reloadButton(BuildContext context) => Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Button(
+            color: Colors.grey,
+            text: "Refresh",
+            iconData: FontAwesomeIcons.redoAlt,
+            onTap: () async {
+              BotToast.showText(text: "Reloading ...");
+              // reload getting of location and bus stops nearby
+              print("Getting new location");
+              Provider.of<LocationServicesProvider>(context, listen: false)
+                  .getLocation(reload: true)
                   .then(
                 (_) {
-                  // rebuild home
-                  print("Rebuilding home");
-                  Provider.of<HomeRebuilderProvider>(context, listen: false).rebuild();
+                  print("Getting new bus stops");
+                  Provider.of<BusServiceProvider>(context, listen: false)
+                      .getNearestStops(context, reload: true)
+                      .then(
+                    (_) {
+                      // rebuild home
+                      print("Rebuilding home");
+                      Provider.of<HomeRebuilderProvider>(context, listen: false).rebuild();
 
-                  BotToast.showText(text: "Reloaded");
+                      BotToast.showText(text: "Reloaded");
+                    },
+                  );
                 },
               );
             },
-          );
-        },
+          ),
+        ],
       );
 }

@@ -28,19 +28,22 @@ class Button extends StatelessWidget {
         decoration: BoxDecoration(
           color: fill ? color : null,
           borderRadius: BorderRadius.circular(
-            Values.borderRadius * 0.5,
+            Values.borderRadius * 0.7,
           ),
-          border: Border.all(width: fill ? 0.0 : 1.0, color: color),
+          border: Border.all(width: fill ? 0.0 : 1.5, color: color.withOpacity(0.9)),
         ),
         child: Row(
           mainAxisAlignment:
               iconData == null ? MainAxisAlignment.spaceEvenly : MainAxisAlignment.spaceBetween,
           children: <Widget>[
             if (!(iconData == null))
-              Icon(
-                iconData,
-                color: fill ? Colors.white : color,
-                size: Theme.of(context).textTheme.button.fontSize + 5,
+              Padding(
+                padding: EdgeInsets.only(right: 8.0),
+                child: Icon(
+                  iconData,
+                  color: fill ? Colors.white : color,
+                  size: Theme.of(context).textTheme.button.fontSize + 5,
+                ),
               ),
             Text(
               text,
