@@ -35,17 +35,17 @@ class TabbedAppState extends State<TabbedApp> {
       body: Stack(
         children: <Widget>[
           Align(
-              alignment: Alignment.topCenter,
-              child:
-                  // use below to not save state between tab state
-                  _tabViews[_selectedIndex]
+            alignment: Alignment.topCenter,
+            child:
+                // use below to not save state between tab state
+                _tabViews[_selectedIndex],
 
-              // use below to save state between tab switch
-              //     IndexedStack(
-              //   index: _selectedIndex,
-              //   children: _tabViews,
-              // ),
-              ),
+            // use below to save state between tab switch
+            //     IndexedStack(
+            //   index: _selectedIndex,
+            //   children: _tabViews,
+            // ),
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: BottomNavigationBar(
