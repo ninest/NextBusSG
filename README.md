@@ -94,7 +94,7 @@ Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore
 
 ## Built setup
 
-Your system requires the Flutter SDK. Follow the steps here to [install](https://flutter.dev/docs/get-started/install) it on your system.
+Your system requires the Flutter SDK. Follow the steps here to [install](https://flutter.dev/docs/get-started/install) it on your system. Once Flutter is installed, follow these steps:
 
 1. Clone or fork this repository.
 2. In the `lib` folder, create `keys.dart` .
@@ -112,6 +112,8 @@ Once the key as been set up, the app can be tested with the following commands:
 ```
 flutter run
 ```
+
+Please check out the [**wiki**](https://github.com/themindstorm/NextBusSG/wiki) for additional information.
 
 ### Generating icons and splash screens
 
