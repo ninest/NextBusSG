@@ -4,7 +4,7 @@ import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:nextbussg/services/renameFavorites.dart';
+import 'package:nextbussg/services/rename_favorites.dart';
 import 'package:nextbussg/components/core/bottom_sheet_template.dart';
 import 'package:nextbussg/components/core/space.dart';
 import 'package:provider/provider.dart';

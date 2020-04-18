@@ -1,7 +1,7 @@
 import 'package:nextbussg/components/home/timings_not_available.dart';
 import 'package:nextbussg/components/core/mrt_stations.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
-import 'package:nextbussg/services/renameFavorites.dart';
+import 'package:nextbussg/services/rename_favorites.dart';
 import 'package:nextbussg/styles/tile_color.dart';
 import 'package:nextbussg/utils/route.dart';
 import 'package:flutter/material.dart';
