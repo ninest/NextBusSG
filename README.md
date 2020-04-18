@@ -5,23 +5,23 @@
 
 <p align="center"><i>An app to show everything bus related in Singapore, including <b>bus arrival times</b> and a <b>directory</b>, with <b>extra features</b>. Download on the <a href="https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg">PlayStore</a>.</i></p>
 
-<!-- [PlayStore](https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg) -->
+<a href='https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
 
 ## 🎆 Gallery (WIP)
 
-| UI | Description |
-| - | - |
-| ![onboard view](./readme-images/onboarding.png) | **Onboarding screen**, where the user is asked for the location permission |
-| ![main page](./readme-images/main-page.png) | **Main page**, where users see a list of bus stops near them (and favorites), and see their respective bus arrival timings |
-| ![favorites prompt](./readme-images/favorites-prompt.png) | Users are prompted to confirm |
-| ![favorites view](./readme-images/favorites.png) | **Favorites** that are close to the user are show on the main page |
-| ![search view](./readme-images/search.png) | **Search page** |
-| ![bus stop view](./readme-images/stop-view.png) | **Bus stop details** page |
-| ![bus service view](./reeadme-images/../readme-images/bus-service.png) | Bus service details page |
-| ![More page](./readme-images/more-page.png) | **More page**, where users can change settings and see some more features |
-| ![dark view](./readme-images/dark-showcase.png) | 🌙 **Dark theme** |
-| ![rename](./readme-images/rename.png) | Bus stops can be renamed (renamed bus stops in italics) |
-| ![quick actions](./readme-images/quick-actions.png) | **Quick actions!** These do not seem to be working on iOS at the moment: [#13634](https://github.com/flutter/flutter/issues/13634). |
+| UI                                                                     | Description                                                                                                                         |
+| ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| ![onboard view](./readme-images/onboarding.png)                        | **Onboarding screen**, where the user is asked for the location permission                                                          |
+| ![main page](./readme-images/main-page.png)                            | **Main page**, where users see a list of bus stops near them (and favorites), and see their respective bus arrival timings          |
+| ![favorites prompt](./readme-images/favorites-prompt.png)              | Users are prompted to confirm                                                                                                       |
+| ![favorites view](./readme-images/favorites.png)                       | **Favorites** that are close to the user are show on the main page                                                                  |
+| ![search view](./readme-images/search.png)                             | **Search page**                                                                                                                     |
+| ![bus stop view](./readme-images/stop-view.png)                        | **Bus stop details** page                                                                                                           |
+| ![bus service view](./reeadme-images/../readme-images/bus-service.png) | Bus service details page                                                                                                            |
+| ![More page](./readme-images/more-page.png)                            | **More page**, where users can change settings and see some more features                                                           |
+| ![dark view](./readme-images/dark-showcase.png)                        | 🌙 **Dark theme**                                                                                                                    |
+| ![rename](./readme-images/rename.png)                                  | Bus stops can be renamed (renamed bus stops in italics)                                                                             |
+| ![quick actions](./readme-images/quick-actions.png)                    | **Quick actions!** These do not seem to be working on iOS at the moment: [#13634](https://github.com/flutter/flutter/issues/13634). |
 
 [This](https://imgur.com/a/8QOCKBy) and [this](https://imgur.com/a/wXQWfeq) was what the design looked like at first.
 
