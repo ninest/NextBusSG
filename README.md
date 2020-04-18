@@ -161,6 +161,11 @@ flutter install <devce ID>
 
 ## Detailed images
 
+<details>
+
+<summary><b>Click to reveal detailed images of the app's different screens and explanations</b>. These images may be to tall for desktop screens.
+</summary>
+
 | UI | Description |
 | - | - |
 | ![onboard view](./readme-images/detailed/onboarding.png) | **Onboarding screen**, where the user is asked for the location permission |
@@ -174,6 +179,9 @@ flutter install <devce ID>
 | ![dark view](./readme-images/detailed/dark-showcase.png) | 🌙 **Dark theme** |
 | ![rename](./readme-images/detailed/rename.png) | Bus stops can be renamed (renamed bus stops in italics) |
 | ![quick actions](./readme-images/detailed/quick-actions.png) | **Quick actions!** These do not seem to be working on iOS at the moment: [#13634](https://github.com/flutter/flutter/issues/13634). |
+
+</details>
+
 
 [This](https://imgur.com/a/8QOCKBy) and [this](https://imgur.com/a/wXQWfeq) was what the design looked like at first.
 
