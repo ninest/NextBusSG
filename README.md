@@ -1,14 +1,7 @@
 <h1 align="center"> <img height='25' alt='icon' src='./icons/icon-android.png'/>  NextBus SG</h1>
-
 <p align="center">An app to show everything bus related in Singapore, including <b>bus arrival times</b> and a <b>directory</b>, with <b>extra features</b>.</p>
 
-![Made with Flutter](https://img.shields.io/badge/Made%20With-Flutter-blue?style=flat-square)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-![GitHub](https://img.shields.io/github/license/themindstorm/NextBusSg?style=flat-square)
-[![HitCount](http://hits.dwyl.com/themindstorm/NextBusSG.svg)](http://hits.dwyl.com/themindstorm/NextBusSG)
-
-
-
+![Made with Flutter](https://img.shields.io/badge/Made%20With-Flutter-blue?style=flat-square) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) ![GitHub](https://img.shields.io/github/license/themindstorm/NextBusSg?style=flat-square) [![HitCount](http://hits.dwyl.com/themindstorm/NextBusSG.svg)](http://hits.dwyl.com/themindstorm/NextBusSG) 
 <a href='https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img height="60" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
 
 ## 🎆 Gallery
