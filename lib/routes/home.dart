@@ -16,7 +16,6 @@ import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/utils/strings.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomePage extends StatelessWidget {
   @override

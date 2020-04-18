@@ -15,8 +15,6 @@ class PageTemplate extends StatelessWidget {
   Widget build(BuildContext context) {
     double statusBarHeight = MediaQuery.of(context).padding.top;
 
-    // TODO: fix overscroll if broken
-
     return SafeArea(
       top: false,
       bottom: false,

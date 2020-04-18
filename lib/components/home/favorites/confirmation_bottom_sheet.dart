@@ -71,7 +71,6 @@ class ConfirmationBottomSheets {
                   onTap: () {
                     favoritesProvider.addToFavorite(context, code, service);
                     closeBottomSheet(context);
-                    // TODO: show toast to show confirmation
                   },
                 ).alignment(Alignment.center).width(buttonWidth),
               ],
