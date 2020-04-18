@@ -15,6 +15,7 @@ class MorePage extends StatelessWidget {
       Column(children: [
         TitleText(title: Strings.moreTitle.toUpperCase()),
 
+        Spacing(height: Values.marginBelowTitle / 2),
         SettingsList(),
 
         // divider

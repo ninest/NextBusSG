@@ -23,7 +23,7 @@ class TitleText extends StatelessWidget {
         // icon does not have to be provided
         Icon(
           iconData,
-          size: Theme.of(context).textTheme.title.fontSize,
+          size: Theme.of(context).textTheme.title.fontSize / 1.2,
           color: Theme.of(context).textTheme.title.color,
         )
       ],
