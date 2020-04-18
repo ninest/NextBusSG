@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/styles/values.dart';
-import 'package:nextbussg/utils/strings.dart';
 
 class ErrorContainer extends StatelessWidget {
   final String text;
