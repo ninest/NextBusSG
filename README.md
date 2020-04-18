@@ -13,6 +13,14 @@
 Click [here](https://github.com/themindstorm/NextBusSG#detailed-images) to see a detailed explanation of each screen.
 
 ## 🚀 Features
+
+<details>
+<summary>
+
+**Click to reveal all features**
+
+</summary>
+
 - [x] Show the arrival times of buses at stops near the user
   - [x] Show a list of buses not currently in serivce
   - [x] Show if a bus stop is also an MRT station in the search page
@@ -44,11 +52,22 @@ Click [here](https://github.com/themindstorm/NextBusSG#detailed-images) to see a
   - [ ] Change font size (unplanned) (might not implement)
 - [ ] **THINK OF A MORE CREATIVE NAME.**
 
-### 🧨 For the future
+</details>
+
+
+<details>
+<summary>
+
+**🧨 Click to reveal features for the future**
+
+</summary>
+
 - [ ] Graph view for arrival times, rather than just showing numbers (planned, although implementation is difficult)
 - [ ] AR navigation
 - [ ] Tell users how to get to the nearest bus stop (unplanned)
 - [ ] Map view to show the nearest bus stops (unplanned) (might not implement)
+
+</details>
 
 ### [Wiki](https://github.com/themindstorm/NextBusSG/wiki)
 
