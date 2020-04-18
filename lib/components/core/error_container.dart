@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/strings.dart';
 
@@ -14,11 +15,13 @@ class ErrorContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(Values.borderRadius * 0.8),
         color: Theme.of(context).errorColor.withOpacity(Values.containerOpacity),
       ),
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.body1.copyWith(
-              color: Theme.of(context).errorColor,
-            ),
+      child: MarkdownBody(
+        data: text,
+        styleSheet: MarkdownStyleSheet(
+          p: Theme.of(context).textTheme.body1.copyWith(
+                color: Theme.of(context).errorColor,
+              ),
+        ),
       ),
     );
   }

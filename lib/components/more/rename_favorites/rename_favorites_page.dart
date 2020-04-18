@@ -33,18 +33,10 @@ class RenameFavoritesPage extends StatelessWidget {
                 Spacing(height: 20).sliver(),
 
                 if (snapshot.data.isEmpty) ...[
-                  // MarkdownBody(
-                  //   data: "**Currently no favorites**: ${Strings.noFavorites}",
-                  //   styleSheet: MarkdownStyleSheet(
-                  //       p: Theme.of(context).textTheme.body1.copyWith(
-                  //             color: Theme.of(context).errorColor,
-                  //             fontSize: Values.em * 1.5,
-                  //           )),
-                  // ).sliverToBoxAdapter(),
                   ErrorContainer(
                     text: "**Currently no favorites**: ${Strings.noFavorites}",
                   ).sliverToBoxAdapter(),
-                  Spacing(height: 10).sliver(),
+                  Spacing(height: 20).sliver(),
                 ],
 
                 for (var bs in snapshot.data)
