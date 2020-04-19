@@ -69,7 +69,7 @@ Click [here](https://github.com/themindstorm/NextBusSG#detailed-screenshots) to 
 
 ## 🛠 Data
 
-Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore-bus) for a detailed guide on how the data was scraped. The data is copyrighted by LTA.
+Check out [themindstorm/bus-sg](https://github.com/themindstorm/bus-sg) for a detailed guide on how the data was scraped. The data is copyrighted by LTA.
 
 ## 📦 Packages used
 
