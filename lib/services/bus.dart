@@ -14,7 +14,7 @@ import 'package:provider/provider.dart';
 
 class BusServiceProvider extends ChangeNotifier {
   
-  // this is there to save nearby bus stops in the state. That way, we only habe to go through all bus stops
+  // this is there to save nearby bus stops in the state. That way, we only have to go through all bus stops
   // and find those nearby once
   // This will be reset when the reload button is pressed
   List<BusStop> _busStopsNear = null;
