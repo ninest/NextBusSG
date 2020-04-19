@@ -166,7 +166,7 @@ flutter install <devce ID>
 
 <details>
 
-<summary><b>Click to reveal detailed images of the app's different screens and explanations</b>. These images may be to tall for desktop screens.
+<summary><b>Click to reveal detailed images of the app's different screens and explanations</b>. These images may be too tall for desktop screens.
 </summary>
 
 | UI | Description |
