@@ -11,7 +11,7 @@
 ![dark mode](./readme-images/gallery/2.png)
 ![other screens](./readme-images/gallery/3.png)
 
-Click [here](https://github.com/themindstorm/NextBusSG#detailed-images) to see a detailed explanation of each screen.
+Click [here](https://github.com/themindstorm/NextBusSG#detailed-screenshots) to see a detailed explanation of each screen.
 
 ## 🚀 Features
 
@@ -162,7 +162,7 @@ And to install the app on an Android device, copy the device ID and install the 
 flutter install <devce ID>
 ```
 
-## Detailed images
+## Detailed screenshots
 
 <details>
 
