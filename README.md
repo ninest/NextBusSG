@@ -92,6 +92,7 @@ Check out [themindstorm/singapore-bus](https://github.com/themindstorm/singapore
 
 - [Data](https://github.com/themindstorm/singapore-bus) collection start date: February 11, 2020
 - Project start date: February 13, 2020
+- This project was reviewed by [happyharis](https://github.com/happyharis) on April 18, 2020: [Video](https://www.youtube.com/watch?v=IoueVJmXvsc)
 
 ## Built setup
 
