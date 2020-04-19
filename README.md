@@ -90,9 +90,10 @@ Check out [themindstorm/bus-sg](https://github.com/themindstorm/bus-sg) for a de
 
 ## Other information
 
-- [Data](https://github.com/themindstorm/singapore-bus) collection start date: February 11, 2020
-- Project start date: February 13, 2020
+- [Data](https://github.com/themindstorm/singapore-bus) collection start date: **February 11, 2020**
+- Project start date: **February 13, 2020**
 - This project was reviewed by [happyharis](https://github.com/happyharis) on April 18, 2020: [Video](https://www.youtube.com/watch?v=IoueVJmXvsc)
+- NextBus SG gets its [own promotional website](https://nextbus.now.sh/), which is also open-source at [themindstorm/nextbus-website](https://github.com/themindstorm/nextbus-website): April 19, 2020
 
 ## Built setup
 
