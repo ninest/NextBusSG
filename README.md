@@ -180,7 +180,7 @@ flutter install <devce ID>
 ```
 
 ## 🎗 Support
-Like this app?
+Like this project?
 
 - ⭐️ Star the repository
 - 📩 Send a pull request to add new features
