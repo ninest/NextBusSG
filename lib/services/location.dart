@@ -2,13 +2,15 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:nextbussg/providers/location_perms.dart';
+import 'package:nextbussg/routes/permission.dart';
+import 'package:nextbussg/utils/route.dart';
 
 class LocationServicesProvider extends ChangeNotifier {
   // converting it to changeNotifier class so location only has to be retreived once
   Position _position = null;
 
   // reload is to force get a new location
-  Future<Position> getLocation({reload: false}) async {
+  Future<Position> getLocation(BuildContext context, {reload: false}) async {
     if (_position != null && !reload) {
       // Location already there so no need to get it again
       return _position;
@@ -22,7 +24,8 @@ class LocationServicesProvider extends ChangeNotifier {
         await LocationPermsProvider.requestPerm();
         BotToast.showText(
             text: "Please go to settings to enable location access.", contentColor: Colors.red);
-        return getLocation();
+        // return getLocation();
+        Routing.openReplacementRoute(context, PermissionRoute());
       }
     }
   }

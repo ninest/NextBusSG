@@ -117,7 +117,7 @@ class HomePage extends StatelessWidget {
               // reload getting of location and bus stops nearby
               print("Getting new location");
               Provider.of<LocationServicesProvider>(context, listen: false)
-                  .getLocation(reload: true)
+                  .getLocation(context, reload: true)
                   .then(
                 (_) {
                   print("Getting new bus stops");

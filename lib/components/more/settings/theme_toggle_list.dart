@@ -13,8 +13,8 @@ class ThemeToggleList extends StatelessWidget {
       text: "Choose theme",
       icon: FontAwesomeIcons.moon,
       children: <Widget>[
-        _option(context, "Light theme", ThemeEnum.light),
-        _option(context, "Dark theme", ThemeEnum.dark),
+        _option(context, "Light", ThemeEnum.light),
+        _option(context, "Dark", ThemeEnum.dark),
         // _option(context, "System", ThemeEnum.system),
       ],
     );

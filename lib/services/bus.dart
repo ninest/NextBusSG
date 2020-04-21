@@ -29,7 +29,7 @@ class BusServiceProvider extends ChangeNotifier {
       final LocationServicesProvider locationServicesProvider =
           Provider.of<LocationServicesProvider>(context, listen: false);
 
-      Position userPosition = await locationServicesProvider.getLocation();
+      Position userPosition = await locationServicesProvider.getLocation(context);
       Map data = await getAllStopsMap();
 
       List<BusStop> busStopsNear = [];

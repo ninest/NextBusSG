@@ -20,4 +20,8 @@ class LocationPermsProvider extends ChangeNotifier {
     ].request();
     return statuses[Permission.locationWhenInUse];
   }
+
+  static openSettings() {
+    openAppSettings();
+  }
 }

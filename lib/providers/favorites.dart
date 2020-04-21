@@ -87,7 +87,7 @@ class FavoritesProvider extends ChangeNotifier {
         final LocationServicesProvider locationServicesProvider =
             Provider.of<LocationServicesProvider>(context, listen: false);
 
-        Position currentPosition = await locationServicesProvider.getLocation();
+        Position currentPosition = await locationServicesProvider.getLocation(context);
         Position busStopPosition = busStop.position;
         double distance =
             await locationServicesProvider.distanceBetween(currentPosition, busStopPosition);

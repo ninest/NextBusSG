@@ -4,6 +4,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/onboarding/page_view_model_template.dart';
 import 'package:nextbussg/providers/location_perms.dart';
+import 'package:nextbussg/routes/permission.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:nextbussg/utils/route.dart';
 
@@ -28,7 +29,7 @@ class OnboardingView extends StatelessWidget {
   //   if (status == false) {
   //     text = "Location permission has not been given. $text";
   //   }
-    
+
   //   return pageViewModelTemplate(
   //     context,
   //     "Please enable location permission",
@@ -115,10 +116,11 @@ class OnboardingView extends StatelessWidget {
     );
   }
 
-  _finish(context) {
-    var settingsBox = Hive.box('settings');
-    // bool firstLaunch = settingsBox.get('first_launch', defaultValue: true);
-    settingsBox.put('first_launch', false);
-    Routing.openReplacementRoute(context, TabbedApp());
+  _finish(context) async {
+
+    final bool status = await LocationPermsProvider.getPermStatus();
+
+    if (status == true) Routing.openReplacementRoute(context, TabbedApp());
+    else Routing.openReplacementRoute(context, PermissionRoute());
   }
 }
