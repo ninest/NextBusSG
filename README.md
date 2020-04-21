@@ -88,12 +88,27 @@ Check out [themindstorm/bus-sg](https://github.com/themindstorm/bus-sg) for a de
 - flutter_native_splash
 - quick_actions
 
+
+## App philosophy
+
+In short, I first made this app only for myself because I wasn't happy with any app that already exists. All I needed was a simple, clutter-free interface to show bus timings of only the buses I'm actually taking. On rare occasions, I wounldn't know where the bus stop is. I'd just use Google Maps. I never found large maps on bus apps useful.
+
+<!-- <details>
+<summary>What makes NextBus SG different from the other apps?</summary>
+THe lack of required user interaction. If you've used most other bus timing apps in Singapore, you'll know that you often require a few taps to find the information you're looking for. In addition, the data you want is surrounded by other useless data. NextBus SG solves this problem through location-based favorites: when the app launches, you'll see bus timings for your favorites bus at your favorite stop only if you are nearby, thus reducing the amount of information you have to deal with.
+</details>
+
+<details>
+<summary>Why isn't there a map to view bus stops near by?</summary>
+Simply put, a map takes up valuable screen space and battery. Maps also aren't used by everyone. A map with showing the location of the nearest bus stops is quite useless to someone who uses those bus stops every day. We understand that the lack of a map may make it difficult for users to find a bus stop if they've never seen it before, and we're looking into ways to ease this.
+</details> -->
+
 ## Other information
 
 - [Data](https://github.com/themindstorm/singapore-bus) collection start date: **February 11, 2020**
 - Project start date: **February 13, 2020**
 - This project was reviewed by [happyharis](https://github.com/happyharis) on April 18, 2020: [Video](https://www.youtube.com/watch?v=IoueVJmXvsc)
-- NextBus SG gets its [own promotional website](https://nextbus.now.sh/), which is also open-source at [themindstorm/nextbus-website](https://github.com/themindstorm/nextbus-website): April 19, 2020
+- NextBus SG has its [own promotional website](https://nextbus.now.sh/), which is also open-source at [themindstorm/nextbus-website](https://github.com/themindstorm/nextbus-website): April 19, 2020
 
 ## Built setup
 
