@@ -179,6 +179,14 @@ And to install the app on an Android device, copy the device ID and install the 
 flutter install <devce ID>
 ```
 
+## 🎗 Support
+Like this app?
+
+- ⭐️ Star the repository
+- 📩 Send a pull request to add new features
+- 💌 Share this package with other developers
+- 📲 Download the mobile apps (scroll to the top for links)
+
 ## Detailed screenshots
 
 <details>
