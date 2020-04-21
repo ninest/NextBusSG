@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/onboarding/page_view_model_template.dart';
+import 'package:nextbussg/providers/location_perms.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:nextbussg/utils/route.dart';
 
@@ -16,6 +18,31 @@ class OnboardingView extends StatelessWidget {
       // footer: LocationAccessButton()
     );
   }
+
+  // requestLocation(BuildContext context) async {
+  //   String text =
+  //       "The location permission is required to find bus stops near by. Please allow for location when the app is in use.";
+
+  //   final bool status = await LocationPermsProvider.getPermStatus();
+
+  //   if (status == false) {
+  //     text = "Location permission has not been given. $text";
+  //   }
+    
+  //   return pageViewModelTemplate(
+  //     context,
+  //     "Please enable location permission",
+  //     text,
+  //     Colors.white,
+  //     footer: Button(
+  //       text: "Grant location access",
+  //       onTap: () {
+  //         LocationPermsProvider.requestPerm();
+  //       },
+  //     ),
+  //     image: Container(),
+  //   );
+  // }
 
   PageViewModel favorites1(BuildContext context) {
     return pageViewModelTemplate(
@@ -72,6 +99,7 @@ class OnboardingView extends StatelessWidget {
     return IntroductionScreen(
       pages: [
         tutorial(context),
+        // requestLocation(context),
         favorites1(context),
         search1(context),
         search2(context),

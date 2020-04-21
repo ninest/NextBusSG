@@ -22,10 +22,30 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>NextBus SG required location access.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>NextBus SG required location access.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>NextBus SG required location access.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>NextBus SG required location access.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Next Bus SG requires location access to show you which bus stops are nearby.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>NextBus SG required location access.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>NextBus SG required location access.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIStatusBarHidden</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -41,16 +61,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-
-  <key>NSLocationWhenInUseUsageDescription</key>
-  <string>Next Bus SG requires location access to show you which bus stops are nearby.</string>
-	<key>UIStatusBarHidden</key>
-	<true/>
-
-  <!-- <key>UIUserInterfaceStyle</key>
-  <string>Light</string>
-  <key>UIViewControllerBasedStatusBarAppearance</key>
-  <true/> -->
-
 </dict>
 </plist>

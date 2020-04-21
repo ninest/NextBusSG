@@ -7,32 +7,33 @@ PageViewModel pageViewModelTemplate(
   String bodyText,
   Color endColor, {
   image,
-  bool dark=false,
-  Widget footer
-}) =>
-    PageViewModel(
-      body: bodyText,
-      title: title,
-      decoration: PageDecoration(
-        titleTextStyle: Theme.of(context).textTheme.title.copyWith(
-              color: dark ? Colors.white : Colors.black,
-            ),
-        bodyTextStyle: Theme.of(context).textTheme.body1.copyWith(
-              color: dark ? Colors.white70 : Colors.black,
-              fontSize: 20,
-            ),
-        boxDecoration: BoxDecoration(
-          color: endColor,
-        ),
-        contentPadding: EdgeInsets.only(
-          // top: 100,
-          left: 18,
-          right: 18,
-        ),
+  bool dark = false,
+  Widget footer,
+}) {
+  return PageViewModel(
+    body: bodyText,
+    title: title,
+    decoration: PageDecoration(
+      titleTextStyle: Theme.of(context).textTheme.title.copyWith(
+            color: dark ? Colors.white : Colors.black,
+          ),
+      bodyTextStyle: Theme.of(context).textTheme.body1.copyWith(
+            color: dark ? Colors.white70 : Colors.black,
+            fontSize: 20,
+          ),
+      boxDecoration: BoxDecoration(
+        color: endColor,
       ),
-      image: SafeArea(
-        // minimum: EdgeInsets.only(top: 50),
-        child: image ?? null,
+      contentPadding: EdgeInsets.only(
+        // top: 100,
+        left: 18,
+        right: 18,
       ),
-      footer: footer,
-    );
+    ),
+    image: SafeArea(
+      // minimum: EdgeInsets.only(top: 50),
+      child: image ?? null,
+    ),
+    footer: footer,
+  );
+}
