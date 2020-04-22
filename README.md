@@ -94,6 +94,17 @@ Check out [themindstorm/bus-sg](https://github.com/themindstorm/bus-sg) for a de
 
 In short, I first made this app only for myself because I wasn't happy with any app that already exists. All I needed was a simple, clutter-free interface to show bus timings of only the buses I'm actually taking. On rare occasions, I wounldn't know where the bus stop is. I'd just use Google Maps. I never found large maps on bus apps useful.
 
+### No map
+The thing is, once you know where a bus stop is, you won't need to use the map again. If you already know where the stop is, the mpa on your scren takes more space. There are rare occasions when I don't know how to get to the bus stop, but that's why I have Google/Apple Maps.
+
+### Clutter free interface
+You need bus timings. I'm giving you bus timings. Period.
+
+### Context-aware favorites
+- You saved **Bus 14** at **Bedok Interchange** as a favorite.
+- You open the app near **Bedok Interchange**
+- We assume that you are taking **Bus 14**, so we put its timings at the top of the screen (refer to the images above)
+
 <!-- <details>
 <summary>What makes NextBus SG different from the other apps?</summary>
 THe lack of required user interaction. If you've used most other bus timing apps in Singapore, you'll know that you often require a few taps to find the information you're looking for. In addition, the data you want is surrounded by other useless data. NextBus SG solves this problem through location-based favorites: when the app launches, you'll see bus timings for your favorites bus at your favorite stop only if you are nearby, thus reducing the amount of information you have to deal with.
