@@ -3,7 +3,7 @@ import 'package:geolocator/geolocator.dart';
 
 class HomeRebuilderProvider extends ChangeNotifier {
   void rebuild() {
-    print("Rebuilding home");
+    // print("Rebuilding home");
     notifyListeners();
   }
 

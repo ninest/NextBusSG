@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:nextbussg/services/theme.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:nextbussg/utils/setStatusBarColor.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
 import 'dart:io';
 import 'package:nextbussg/styles/theme.dart';
@@ -19,19 +20,21 @@ class RouteApp extends StatelessWidget {
       // to change theme and put away onboarding screen
       valueListenable: Hive.box('settings').listenable(),
       builder: (context, box, widget) {
-        var theme = box.get('theme', defaultValue: ThemeEnum.light);
-        print('rebuilding home');
+        final theme = box.get('theme', defaultValue: ThemeEnum.light);
+
+        print("APP REBUILD");
 
         // check if this is the first time using the app
-        var settingsBox = Hive.box('settings');
+        final settingsBox = Hive.box('settings');
         bool firstLaunch = settingsBox.get('first_launch', defaultValue: true);
 
-        // set firstLaunch to false so that the onboarding view does not show
+        // show onBoarding view if first launch
         Widget home = firstLaunch ? OnboardingView() : TabbedApp();
 
         ThemeData darkTheme;
         ThemeData regTheme;
 
+        // only if following system theme, set the darkTheme to dark
         if (theme == ThemeEnum.system) {
           darkTheme = appDarkTheme;
           regTheme = appLightTheme;
@@ -43,17 +46,23 @@ class RouteApp extends StatelessWidget {
         return BotToastInit(
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Next Bus SG',
-            // darkTheme: theme == ThemeEnum.system ? appDarkTheme : appLightTheme,
-            // theme: theme == ThemeEnum.dark ? appDarkTheme : appLightTheme,
-
+            title: 'NextBus SG',
             darkTheme: darkTheme,
             theme: regTheme,
 
             // nice IOS rubber band scrolling
-            home: ScrollConfiguration(
-              child: _HomeAndStatusBar(home: home),
-              behavior: BounceScrollBehavior(),
+            // child: _HomeAndStatusBar(home: home),
+            home: Builder(
+              builder: (BuildContext context) {
+                // this should also reset when theme changed
+
+                // setStatusBarColor(context);
+
+                return ScrollConfiguration(
+                  child: _buildHome(home),
+                  behavior: BounceScrollBehavior(),
+                );
+              },
             ),
             navigatorObservers: [BotToastNavigatorObserver()],
           ),
@@ -61,42 +70,14 @@ class RouteApp extends StatelessWidget {
       },
     );
   }
-}
 
-class _HomeAndStatusBar extends StatelessWidget {
-  final Widget home;
-  _HomeAndStatusBar({@required this.home});
-
-  @override
-  Widget build(BuildContext context) {
-    // this should also reset when theme changed
+  Widget _buildHome(Widget home) {
+    print("building!!!!!!!!!!");
     return ValueListenableBuilder(
-      valueListenable: Hive.box('settings').listenable(),
       builder: (context, box, widget) {
-        final theme = ThemeService.getTheme(context);
-        if (Platform.isAndroid) {
-          if (theme == ThemeEnum.light) {
-            SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-              statusBarColor: Colors.white.withOpacity(0.5),
-              statusBarIconBrightness: Brightness.dark,
-            ));
-          } else {
-            SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-              statusBarColor: Colors.transparent.withOpacity(0.5),
-              statusBarIconBrightness: Brightness.light,
-            ));
-          }
-        } else if (Platform.isIOS) {
-          if (theme == ThemeEnum.light) {
-            FlutterStatusbarcolor.setStatusBarColor(Colors.white.withOpacity(0.5));
-            FlutterStatusbarcolor.setStatusBarWhiteForeground(false);
-          } else {
-            FlutterStatusbarcolor.setStatusBarColor(Color(0xcc111111));
-            FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
-          }
-        }
         return home;
       },
+      valueListenable: Hive.box('settings').listenable(),
     );
   }
 }

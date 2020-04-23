@@ -13,9 +13,9 @@ class OnboardingView extends StatelessWidget {
     return pageViewModelTemplate(
       context,
       "See bus arrival timings",
-      "Tap on any **bus stop** to see a list of bus services and timings.\n\nFor example, **Bus 9** will arrive in 6 minutes",
+      "Tap on any **bus stop** to see a list of bus services and timings",
       Colors.white,
-      image: Image.asset('assets/onboard/arrival-timings.png'),
+      imageUrl: 'assets/onboard/arrival-timings.png',
       // footer: LocationAccessButton()
     );
   }
@@ -23,10 +23,11 @@ class OnboardingView extends StatelessWidget {
   PageViewModel serviceTileTutorial(BuildContext context) {
     return pageViewModelTemplate(
       context,
-      "See how crowded buses are",
-      "For **Bus 9**,\n\n- The first bus is **not crowded**, and will arrive in 9 minutes,\n- The second bus is **crowded** and will arrive in 21 minutes, and\n- The third bus is **over crowded**, and will arrive in 29 minutes",
+      "See bus timings and crowd",
+      // "For **Bus 9**,\n\n- The first bus is **not crowded**, and will arrive in 9 minutes,\n- The second bus is **crowded** and will arrive in 21 minutes, and\n- The third bus is **over crowded**, and will arrive in 29 minutes",
+      "",
       Colors.white,
-      image: Image.asset('assets/onboard/service-tile.png'),
+      imageUrl: 'assets/onboard/service-tile.png',
     );
   }
 
@@ -36,7 +37,7 @@ class OnboardingView extends StatelessWidget {
       "Add bus services to your favorites ...",
       "Tap on a **bus service** to add or remove them to your favorites.",
       Colors.white,
-      image: Image.asset('assets/onboard/favorites.png'),
+      imageUrl: 'assets/onboard/favorites.png',
     );
   }
 
@@ -46,27 +47,17 @@ class OnboardingView extends StatelessWidget {
       "Search for bus stops ...",
       "and view information about them.",
       Colors.white,
-      image: Image.asset('assets/onboard/search.png'),
+      imageUrl: 'assets/onboard/search.png',
     );
   }
-
-  // PageViewModel search2(BuildContext context) {
-  //   return pageViewModelTemplate(
-  //     context,
-  //     "... View information about them",
-  //     "See information including a list of operating services, MRT stations nearby, and directions to the stop.",
-  //     Colors.white,
-  //     image: Image.asset('assets/onboard/5.png'),
-  //   );
-  // }
 
   PageViewModel more(BuildContext context) {
     return pageViewModelTemplate(
       context,
-      "More options ...",
-      "See an **MRT map**, use the **dark theme**, **rename** bus stops ...",
-      Colors.grey[900],
-      image: Image.asset('assets/onboard/more.png'),
+      "More ...",
+      "See the **MRT map**, use the **dark theme**, **rename** bus stops ...",
+      Color(0xFF111111),
+      imageUrl: 'assets/onboard/mrt.png',
       dark: true,
     );
   }

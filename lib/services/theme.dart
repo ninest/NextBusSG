@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:nextbussg/utils/setStatusBarColor.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
 
 class ThemeService {
@@ -35,8 +36,12 @@ class ThemeService {
     settingsBox.put('theme', theme);
   }
 
-  static setTheme(ThemeEnum themeEnum) {
+  static setTheme(BuildContext context, ThemeEnum themeEnum) {
     var settingsBox = Hive.box('settings');
     settingsBox.put('theme', themeEnum);
+
+    print("setting $themeEnum");
+    setStatusBarColor(context);
+    // get theme because if system, it needs to return light or dark
   }
 }

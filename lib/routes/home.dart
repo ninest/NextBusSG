@@ -24,7 +24,6 @@ class HomePage extends StatelessWidget {
     final HomeRebuilderProvider homeRebuilderProvider =
         Provider.of<HomeRebuilderProvider>(context, listen: true);
 
-    print("Home page build");
 
     // slide to refresh
     // RefreshController _refreshController = RefreshController(initialRefresh: false);

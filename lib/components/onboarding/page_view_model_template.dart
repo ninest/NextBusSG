@@ -14,7 +14,7 @@ PageViewModel pageViewModelTemplate(
   String title,
   String bodyText,
   Color endColor, {
-  image,
+  String imageUrl,
   bool dark = false,
   Widget footer,
 }) {
@@ -44,15 +44,15 @@ PageViewModel pageViewModelTemplate(
       ),
     ),
     image: SafeArea(
-      // minimum: EdgeInsets.only(top: 50),
-      child: Padding(
+          // minimum: EdgeInsets.only(top: 50),
+          child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: Values.marginBelowTitle,
             ),
-            child: image,
-          ) ??
-          null,
-    ),
+            child: Image.asset(imageUrl),
+          ),
+        ) ??
+        null,
     footer: footer,
   );
 }

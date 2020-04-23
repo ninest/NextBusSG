@@ -24,7 +24,7 @@ bottomSheetTemplate(BuildContext context, double height, List children) =>
           height: 100000,
 
           // margin to ensure bottom sheet is over tab bar
-          margin: EdgeInsets.only(bottom: 98.0),
+          margin: EdgeInsets.only(bottom: 78.0),
           child: Container(
             height: height,
             child: PageTemplate(

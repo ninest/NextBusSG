@@ -49,7 +49,7 @@ class _ThemeToggleListState extends State<ThemeToggleList> {
           ),
         ),
         onTap: () {
-          ThemeService.setTheme(themeEnum);
+          ThemeService.setTheme(context, themeEnum);
 
           // rebuild widget (not sure why this is requrired)
           setState(() {});
