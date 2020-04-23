@@ -77,12 +77,7 @@ flutter:
     - assets/services.json
     - assets/mrt/mrt-dark.png
     - assets/mrt/mrt-light.png
-    - assets/onboard/1.png
-    - assets/onboard/2.png
-    - assets/onboard/3.png
-    - assets/onboard/4.png
-    - assets/onboard/5.png
-    - assets/onboard/6.png
+    - assets/onboard/*
 
     - assets/location-icon.png
   #  - images/a_dot_burr.jpeg

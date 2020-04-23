@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+
+TextStyle bodyTextStlye(BuildContext context, bool dark) =>
+    Theme.of(context).textTheme.body1.copyWith(
+          color: dark ? Color(0xffaaaaaa) : Colors.black,
+          fontWeight: FontWeight.w400,
+        );
 
 PageViewModel pageViewModelTemplate(
   BuildContext context,
@@ -11,7 +18,12 @@ PageViewModel pageViewModelTemplate(
   Widget footer,
 }) {
   return PageViewModel(
-    body: bodyText,
+    bodyWidget: MarkdownBody(
+      data: bodyText,
+      styleSheet: MarkdownStyleSheet(
+        p: bodyTextStlye(context, dark),
+      ),
+    ),
     title: title,
     decoration: PageDecoration(
       titleTextStyle: Theme.of(context).textTheme.title.copyWith(
