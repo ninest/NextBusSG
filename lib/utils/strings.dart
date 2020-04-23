@@ -22,6 +22,9 @@ class Strings {
   // bus stops list
   static String get noStopsNearby =>
       "No bus stops nearby. Are you in Singapore?";
+  
+  // search
+  static String get noStopsFound => "No stops found. Please revise your query.";
 
   // location permissions
   static String get locationPermissionNotGiven =>

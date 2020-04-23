@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/fa_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nextbussg/providers/search.dart';
 import 'package:nextbussg/routes/home.dart';
 import 'package:nextbussg/routes/search.dart';
 import 'package:nextbussg/routes/more.dart';
+import 'package:provider/provider.dart';
 
 class TabbedApp extends StatefulWidget {
   @override
@@ -14,12 +16,12 @@ class TabbedAppState extends State<TabbedApp> {
   int _selectedIndex = 0;
   static List<Widget> _tabViews = <Widget>[HomePage(), SearchPage(), MorePage()];
 
-  static List<BottomNavigationBarItem> _tabs = [
+  static List<BottomNavigationBarItem> _tabs(BuildContext context) => [
     BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.compass), title: Text('Main')),
     BottomNavigationBarItem(
         icon: GestureDetector(
           child: FaIcon(FontAwesomeIcons.search),
-          onDoubleTap: () => _focusSearchBar(),
+          // onTap: () => _enteringSearchPage(context),
         ),
         title: Text('Search')),
     BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.slidersH), title: Text('More')),
@@ -53,7 +55,7 @@ class TabbedAppState extends State<TabbedApp> {
               showUnselectedLabels: false,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.9),
               elevation: 10.0,
-              items: _tabs,
+              items: _tabs(context),
               currentIndex: _selectedIndex,
               onTap: _onItemTapped,
               unselectedIconTheme: IconThemeData(size: 26),
@@ -65,7 +67,9 @@ class TabbedAppState extends State<TabbedApp> {
     );
   }
 
-  static void _focusSearchBar() {
-    // TODO
+  static void _enteringSearchPage(BuildContext context) {
+    // if no stops found is true from search provider, we need to set it to false
+    // final SearchProvider searchProvider = Provider.of<SearchProvider>(context, listen: false);
+    // searchProvider.noStopsFound = false;
   }
 }

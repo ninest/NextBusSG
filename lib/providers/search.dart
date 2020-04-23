@@ -10,6 +10,7 @@ class SearchProvider extends ChangeNotifier {
 
   bool _noStopsFound = false;
   bool getNoStopsFoundValue() => _noStopsFound;
+  set noStopsFound(bool value) => _noStopsFound = value;
 
   searchFor(context, String query) async {
     print("Query rec: $query");
@@ -54,6 +55,9 @@ class SearchProvider extends ChangeNotifier {
       } else {
         // no results for query
         BotToast.showText(text: "No results found.", contentColor: Colors.red);
+
+        _noStopsFound = true;
+        notifyListeners();
       }
     } else {
       // if empty, just display stops nearby
