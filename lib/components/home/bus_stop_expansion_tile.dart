@@ -17,12 +17,16 @@ class BusStopExpansionPanel extends StatefulWidget {
   final List services;
   final bool initialyExpanded;
   final List mrtStations;
+
+  // of this is false, tapping on the id won't open the stop overpage
+  final bool opensStopOverviewPage;
   BusStopExpansionPanel({
     this.name,
     this.code,
     this.services,
     this.initialyExpanded,
     this.mrtStations,
+    this.opensStopOverviewPage = true,
   });
 
   @override
@@ -168,11 +172,13 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
   }
 
   _openStopOverviewPage() {
-    Routing.openRoute(
-      context,
-      StopOverviewPage(
-        code: widget.code,
-      ),
-    );
+    // if we're already in the stop overview page, don't open it again
+    if (widget.opensStopOverviewPage)
+      Routing.openRoute(
+        context,
+        StopOverviewPage(
+          code: widget.code,
+        ),
+      );
   }
 }

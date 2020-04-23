@@ -20,6 +20,12 @@ class BusServiceTile extends StatelessWidget {
       "LSD": TransitColors.limited,
     };
 
+    // List<String> arrivalTimes = [];
+    // for (var nextBus in busArrival.nextBuses) {
+    //   final String time = nextBus.timeInMinutes ?? '-';
+    //   arrivalTimes.add(time);
+    // }
+
     return Container(
       child: InkWell(
         child: Padding(

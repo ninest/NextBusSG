@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:nextbussg/styles/values.dart';
 
 TextStyle bodyTextStlye(BuildContext context, bool dark) =>
     Theme.of(context).textTheme.body1.copyWith(
@@ -44,7 +45,13 @@ PageViewModel pageViewModelTemplate(
     ),
     image: SafeArea(
       // minimum: EdgeInsets.only(top: 50),
-      child: image ?? null,
+      child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: Values.marginBelowTitle,
+            ),
+            child: image,
+          ) ??
+          null,
     ),
     footer: footer,
   );

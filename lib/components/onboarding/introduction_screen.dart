@@ -24,8 +24,8 @@ class OnboardingView extends StatelessWidget {
     return pageViewModelTemplate(
       context,
       "See how crowded buses are",
-      "Bus 9",
-      Colors.red,
+      "For **Bus 9**,\n\n- The first bus is **not crowded**, and will arrive in 9 minutes,\n- The second bus is **crowded** and will arrive in 21 minutes, and\n- The third bus is **over crowded**, and will arrive in 29 minutes",
+      Colors.white,
       image: Image.asset('assets/onboard/service-tile.png'),
     );
   }

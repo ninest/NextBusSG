@@ -36,7 +36,9 @@ class NextBus {
       timeInMinutes = estimatedArrival.difference(now).inMinutes.toString();
 
       // Arrived indicator rather than showing arrival in 0 minutes
-      if (timeInMinutes == "0") timeInMinutes = "Arr";
+      if (timeInMinutes == "0") 
+        timeInMinutes = "Arr";
+      else timeInMinutes = '${timeInMinutes} m';
     } catch (e) {
       timeInMinutes = null;
     }

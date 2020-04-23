@@ -73,7 +73,12 @@ class StopOverviewPage extends StatelessWidget {
                     code: code,
                     services: services,
                     initialyExpanded: false,
+
+                    // don't show mrt stations even if there are a view, because they're shown above
                     mrtStations: [],
+
+                    // tapping on the ID should NOT OPEN a new version of the same page
+                    opensStopOverviewPage: false,
                   ),
 
                   Spacing(height: Values.marginBelowTitle * 2),
