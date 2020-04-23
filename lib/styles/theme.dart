@@ -82,6 +82,7 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
 }
 
 Color primaryColor = Colors.indigo;
+Color primaryColorDark = Colors.indigo[400];
 
 // so that there are no lines above/below expansiontile
 Color dividerColor = Colors.transparent;
@@ -118,9 +119,9 @@ ThemeData _buildLightTheme() {
 ThemeData _buildDarkTheme() {
   final ThemeData base = ThemeData.dark().copyWith(
     brightness: Brightness.dark,
-    primaryColor: primaryColor,
-    accentColor: primaryColor,
-    scaffoldBackgroundColor: Color(0xFF111111),
+    primaryColor: primaryColorDark,
+    accentColor: primaryColorDark,
+    scaffoldBackgroundColor: Color(0xFF121212),
     bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
     toggleableActiveColor: primaryColor,
     dividerColor: dividerColor,
