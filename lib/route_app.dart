@@ -22,8 +22,6 @@ class RouteApp extends StatelessWidget {
       builder: (context, box, widget) {
         final theme = box.get('theme', defaultValue: ThemeEnum.light);
 
-        print("APP REBUILD");
-
         // check if this is the first time using the app
         final settingsBox = Hive.box('settings');
         bool firstLaunch = settingsBox.get('first_launch', defaultValue: true);
@@ -50,16 +48,16 @@ class RouteApp extends StatelessWidget {
             darkTheme: darkTheme,
             theme: regTheme,
 
-            // nice IOS rubber band scrolling
-            // child: _HomeAndStatusBar(home: home),
+            // builder here to get context from MaterialApp
             home: Builder(
               builder: (BuildContext context) {
                 // this should also reset when theme changed
 
                 // setStatusBarColor(context);
 
+                // nice IOS rubber band scrolling
                 return ScrollConfiguration(
-                  child: _buildHome(home),
+                  child: _buildHome(context, home),
                   behavior: BounceScrollBehavior(),
                 );
               },
@@ -71,8 +69,12 @@ class RouteApp extends StatelessWidget {
     );
   }
 
-  Widget _buildHome(Widget home) {
-    print("building!!!!!!!!!!");
+  Widget _buildHome(BuildContext context, Widget home) {
+
+    // this is already being set from the setTheme function through the change theme button
+    // doing it here too so the status bar is the correct color on app launch
+    setStatusBarColor(context);
+
     return ValueListenableBuilder(
       builder: (context, box, widget) {
         return home;
