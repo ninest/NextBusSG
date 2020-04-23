@@ -6,7 +6,13 @@ import 'package:nextbussg/styles/tile_color.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
 
-class ThemeToggleList extends StatelessWidget {
+// had to convert this to stateful so it rebuilds itself
+class ThemeToggleList extends StatefulWidget {
+  @override
+  _ThemeToggleListState createState() => _ThemeToggleListState();
+}
+
+class _ThemeToggleListState extends State<ThemeToggleList> {
   @override
   Widget build(BuildContext context) {
     return TileButton(
@@ -15,7 +21,7 @@ class ThemeToggleList extends StatelessWidget {
       children: <Widget>[
         _option(context, "Light", ThemeEnum.light),
         _option(context, "Dark", ThemeEnum.dark),
-        // _option(context, "System", ThemeEnum.system),
+        _option(context, "System", ThemeEnum.system),
       ],
     );
   }
@@ -26,7 +32,7 @@ class ThemeToggleList extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Values.borderRadius / 2),
-            color: ThemeService.getTheme() == themeEnum
+            color: ThemeService.getThemeEnum() == themeEnum
                 ? Theme.of(context).primaryColor
                 : TileColors.busServiceTile(context),
           ),
@@ -35,8 +41,8 @@ class ThemeToggleList extends StatelessWidget {
             style: Theme.of(context).textTheme.body1.copyWith(
                   // change font weight depending on which theme is selected
                   fontWeight:
-                      ThemeService.getTheme() == themeEnum ? FontWeight.w700 : FontWeight.w400,
-                  color: ThemeService.getTheme() == themeEnum
+                      ThemeService.getThemeEnum() == themeEnum ? FontWeight.w700 : FontWeight.w400,
+                  color: ThemeService.getThemeEnum() == themeEnum
                       ? Colors.white70
                       : Theme.of(context).textTheme.body1.color,
                 ),
@@ -44,6 +50,9 @@ class ThemeToggleList extends StatelessWidget {
         ),
         onTap: () {
           ThemeService.setTheme(themeEnum);
+
+          // rebuild widget (not sure why this is requrired)
+          setState(() {});
         },
       );
 }

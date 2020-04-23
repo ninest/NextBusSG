@@ -1,9 +1,24 @@
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
 
 class ThemeService {
   // returns 'dark' or 'light
-  static ThemeEnum getTheme() {
+  static ThemeEnum getTheme(BuildContext context) {
+    var settingsBox = Hive.box('settings');
+    var theme = settingsBox.get('theme', defaultValue: ThemeEnum.light);
+
+    if (theme == ThemeEnum.system) {
+      if (MediaQuery.of(context).platformBrightness == Brightness.light)
+        return ThemeEnum.light;
+      else
+        return ThemeEnum.dark;
+    } else {
+      return theme;
+    }
+  }
+
+  static ThemeEnum getThemeEnum() {
     var settingsBox = Hive.box('settings');
     var theme = settingsBox.get('theme', defaultValue: ThemeEnum.light);
     return theme;

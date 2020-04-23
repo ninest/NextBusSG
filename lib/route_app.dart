@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:hive/hive.dart';
+import 'package:nextbussg/services/theme.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
@@ -19,6 +20,7 @@ class RouteApp extends StatelessWidget {
       valueListenable: Hive.box('settings').listenable(),
       builder: (context, box, widget) {
         var theme = box.get('theme', defaultValue: ThemeEnum.light);
+        print('rebuilding home');
 
         // check if this is the first time using the app
         var settingsBox = Hive.box('settings');
@@ -27,7 +29,51 @@ class RouteApp extends StatelessWidget {
         // set firstLaunch to false so that the onboarding view does not show
         Widget home = firstLaunch ? OnboardingView() : TabbedApp();
 
-        // change status bar color accordingly, fix for android
+        ThemeData darkTheme;
+        ThemeData regTheme;
+
+        if (theme == ThemeEnum.system) {
+          darkTheme = appDarkTheme;
+          regTheme = appLightTheme;
+          print('system theme');
+        } else {
+          regTheme = theme == ThemeEnum.light ? appLightTheme : appDarkTheme;
+        }
+
+        return BotToastInit(
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Next Bus SG',
+            // darkTheme: theme == ThemeEnum.system ? appDarkTheme : appLightTheme,
+            // theme: theme == ThemeEnum.dark ? appDarkTheme : appLightTheme,
+
+            darkTheme: darkTheme,
+            theme: regTheme,
+
+            // nice IOS rubber band scrolling
+            home: ScrollConfiguration(
+              child: _HomeAndStatusBar(home: home),
+              behavior: BounceScrollBehavior(),
+            ),
+            navigatorObservers: [BotToastNavigatorObserver()],
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _HomeAndStatusBar extends StatelessWidget {
+  final Widget home;
+  _HomeAndStatusBar({@required this.home});
+
+  @override
+  Widget build(BuildContext context) {
+    // this should also reset when theme changed
+    return ValueListenableBuilder(
+      valueListenable: Hive.box('settings').listenable(),
+      builder: (context, box, widget) {
+        final theme = ThemeService.getTheme(context);
         if (Platform.isAndroid) {
           if (theme == ThemeEnum.light) {
             SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -49,20 +95,7 @@ class RouteApp extends StatelessWidget {
             FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
           }
         }
-
-        return BotToastInit(
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Next Bus SG',
-            theme: theme == ThemeEnum.dark ? appDarkTheme : appLightTheme,
-            // nice IOS rubber band scrolling
-            home: ScrollConfiguration(
-              child: home,
-              behavior: BounceScrollBehavior(),
-            ),
-            navigatorObservers: [BotToastNavigatorObserver()],
-          ),
-        );
+        return home;
       },
     );
   }

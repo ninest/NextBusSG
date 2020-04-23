@@ -8,7 +8,7 @@ import 'package:photo_view/photo_view.dart';
 class MRTMapPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var theme = ThemeService.getTheme();
+    var theme = ThemeService.getTheme(context);
 
     return Scaffold(
       body: Stack(
