@@ -50,6 +50,9 @@ class BusServiceTile extends StatelessWidget {
                         nextBus.timeInMinutes ?? '-',
                         style: Theme.of(context).textTheme.display4.copyWith(
                               color: loadColors[nextBus.load],
+
+                              // bold text if it has arrived
+                              fontWeight: nextBus.timeInMinutes == "Arr" ? FontWeight.w900 : FontWeight.w400
                             ),
                       ),
                   ],
