@@ -11,10 +11,9 @@ class OnboardingView extends StatelessWidget {
     return pageViewModelTemplate(
       context,
       "See bus arrival timings",
-      "Tap on any **bus stop** to see a list of bus services and timings",
+      "Tap on any **bus stop** to see a list of bus services and timings.",
       Colors.white,
       imageUrl: 'assets/onboard/arrival-timings.png',
-      // footer: LocationAccessButton()
     );
   }
 

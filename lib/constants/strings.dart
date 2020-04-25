@@ -57,9 +57,12 @@ There are two ways:
   """;
 
   static List<String> get messages => [
-        "What do you call a group of pandas? A pandemic.",
-        "How do you react to a lockdown in Singapore? CB!",
+        // "What do you call a group of pandas? A pandemic.",
+        // "How do you react to a lockdown in Singapore? CB!",
         "Hope you're enjoying the app!",
-        "Out of the million bus apps, we're glad you chose this one."
+        "Out of the million bus apps, we're glad you chose this one.",
+        "This shouldn't take more than 2 seconds ...",
+        "Thanks for choosing NextBus SG!",
+        "At your service in 2 seconds ...",
       ];
 }
