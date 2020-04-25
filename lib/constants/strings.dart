@@ -36,6 +36,7 @@ class Strings {
   static String get afterEnablePermision =>
       'After enabling location permissions in the settings, tap the "Grant location access" button again.';
 
+  static String get faqTitle => "Frequently asked questions";
   static String get faqText => """
 # 1. How do I add or remove favorites?
 - **Double tap** or **Long press** on any bus service tile, 
