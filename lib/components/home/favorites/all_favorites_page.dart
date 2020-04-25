@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nextbussg/providers/favorites.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/components/core/page_template.dart';
-import 'package:nextbussg/utils/strings.dart';
+import 'package:nextbussg/constants/strings.dart';
 
 import 'favorites_list.dart';
 

@@ -7,7 +7,7 @@ import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/home/bus_stop_expansion_tile.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/services/bus.dart';
-import 'package:nextbussg/utils/strings.dart';
+import 'package:nextbussg/constants/strings.dart';
 import 'package:provider/provider.dart';
 
 class BusStopList extends StatelessWidget {

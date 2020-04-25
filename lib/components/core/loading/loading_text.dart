@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nextbussg/styles/tile_color.dart';
 import 'package:nextbussg/styles/values.dart';
-import 'package:nextbussg/utils/strings.dart';
+import 'package:nextbussg/constants/strings.dart';
 
 class LoadingText extends StatelessWidget {
   final String text;

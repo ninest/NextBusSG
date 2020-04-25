@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/utils/extensions.dart';
-import 'package:nextbussg/utils/strings.dart';
+import 'package:nextbussg/constants/strings.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';

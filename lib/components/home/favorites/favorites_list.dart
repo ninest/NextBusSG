@@ -5,7 +5,7 @@ import 'package:nextbussg/components/core/loading/loading_text.dart';
 import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/utils/route.dart';
-import 'package:nextbussg/utils/strings.dart';
+import 'package:nextbussg/constants/strings.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:provider/provider.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';

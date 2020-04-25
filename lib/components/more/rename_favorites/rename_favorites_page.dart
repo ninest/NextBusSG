@@ -7,7 +7,7 @@ import 'package:nextbussg/models/bus_stop.dart';
 import 'package:nextbussg/styles/tile_color.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/providers/favorites.dart';
-import 'package:nextbussg/utils/strings.dart';
+import 'package:nextbussg/constants/strings.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';

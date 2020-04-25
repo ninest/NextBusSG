@@ -14,7 +14,7 @@ import 'package:nextbussg/components/home/bus_stop_list.dart';
 import 'package:nextbussg/components/home/favorites/favorites_list.dart';
 import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
-import 'package:nextbussg/utils/strings.dart';
+import 'package:nextbussg/constants/strings.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {

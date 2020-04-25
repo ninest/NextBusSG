@@ -10,7 +10,7 @@ import 'package:nextbussg/components/search/text_box.dart';
 import 'package:nextbussg/components/search/results_list.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/components/core/page_template.dart';
-import 'package:nextbussg/utils/strings.dart';
+import 'package:nextbussg/constants/strings.dart';
 import 'package:provider/provider.dart';
 
 class SearchPage extends StatelessWidget {

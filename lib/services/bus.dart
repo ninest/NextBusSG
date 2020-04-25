@@ -9,7 +9,7 @@ import 'package:nextbussg/models/bus_arrival.dart';
 import 'package:nextbussg/models/bus_stop.dart';
 import 'package:nextbussg/services/location.dart';
 import 'package:http/http.dart' as http;
-import 'package:nextbussg/utils/distance.dart';
+import 'package:nextbussg/constants/distance.dart';
 import 'package:provider/provider.dart';
 
 class BusServiceProvider extends ChangeNotifier {

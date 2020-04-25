@@ -4,7 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:nextbussg/models/bus_stop.dart';
 import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/services/location.dart';
-import 'package:nextbussg/utils/distance.dart';
+import 'package:nextbussg/constants/distance.dart';
 import 'package:provider/provider.dart';
 
 
