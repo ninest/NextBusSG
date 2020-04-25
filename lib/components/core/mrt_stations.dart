@@ -23,8 +23,8 @@ class MRTStations extends StatelessWidget {
           String lineID = code.substring(0, 2);
 
           // getting the appropriate mrt line color
-          Color textColor = TransitColors.mrtLineColors[lineID];
-          Color backgroundCcolor = TransitColors.mrtLineColors[lineID].withOpacity(Values.containerOpacity);
+          Color textColor = TransitColors.mrtLineColors[lineID] ?? Colors.grey;
+          Color backgroundCcolor = (TransitColors.mrtLineColors[lineID] ?? Colors.grey).withOpacity(Values.containerOpacity);
 
 
           children.add(

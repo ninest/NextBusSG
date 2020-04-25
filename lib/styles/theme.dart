@@ -59,7 +59,7 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
         // textStyle:
         base.button.copyWith(
       color: primaryColor,
-      fontSize: 0.75 * em,
+      fontSize: 0.85 * em,
       fontWeight: FontWeight.w600,
       letterSpacing: 0.5,
       // ),

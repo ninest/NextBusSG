@@ -18,6 +18,12 @@ class TransitColors {
     'je': Colors.green[300],
     'te': Colors.brown,
 
-    // 'bp': Colors.gra
+    // smaller lines
+    'bp': Colors.grey,
+
+    // Don't know what this is
+    'pt': Colors.grey,
+    'st': Colors.grey,
+
   };
 }

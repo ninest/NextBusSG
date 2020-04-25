@@ -76,9 +76,12 @@ class ServicePage extends StatelessWidget {
 
   serviceRoute(context, Map route) {
     List<Widget> children = [
+      // spacing at top
+      Spacing(height: Values.marginBelowTitle),
+
       Text(
         route["name"].trim(),
-        style: Theme.of(context).textTheme.display1,
+        style: Theme.of(context).textTheme.display1.copyWith(fontSize: Values.em * 1.5),
       ),
 
       for (var busStop in route["stops"])
@@ -90,26 +93,25 @@ class ServicePage extends StatelessWidget {
         ),
 
       // spacing at end of route
-      Spacing(
-        height: Values.marginBelowTitle,
-      ),
+      Spacing(height: Values.marginBelowTitle),
     ];
     return Column(children: children).sliverToBoxAdapter();
   }
 
   Widget busStopButton(context, String code, String name, List mrtStations) {
     return Container(
-      margin: EdgeInsets.only(top: Values.marginBelowTitle),
+      margin: EdgeInsets.only(top: Values.marginBelowTitle / 2),
       child: InkWell(
           borderRadius: BorderRadius.circular(Values.borderRadius),
           child: Container(
             padding: EdgeInsets.symmetric(
               horizontal: Values.busStopTileHorizontalPadding,
-              vertical: Values.busStopTileVerticalPadding,
+              vertical: Values.busStopTileVerticalPadding / 2,
             ),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Values.borderRadius),
-                color: TileColors.busServiceTile(context)),
+              borderRadius: BorderRadius.circular(Values.borderRadius),
+              color: TileColors.busServiceTile(context),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -118,7 +120,7 @@ class ServicePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(name),
-                    MRTStations(stations: mrtStations),
+                    if (mrtStations.isNotEmpty) MRTStations(stations: mrtStations),
                   ],
                 ),
                 Text(
