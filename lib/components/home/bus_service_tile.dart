@@ -41,7 +41,7 @@ class BusServiceTile extends StatelessWidget {
                 ),
               ),
               Flexible(
-                flex: 3,
+                flex: 5,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
