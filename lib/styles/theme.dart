@@ -20,7 +20,7 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
     title: GoogleFonts.rubik(
       textStyle: base.title.copyWith(
         fontWeight: FontWeight.w700,
-        fontSize: 1.8 * em,
+        fontSize: 1.7 * em,
         letterSpacing: 0.7,
         // color for lighter white so that it's not too hard on the eyes
         color: dark ? Color(0xccFFFFFF) : Colors.black,
@@ -32,8 +32,7 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
       fontWeight: FontWeight.w700,
       color: dark ? Colors.white70 : Colors.black87,
       fontSize: em,
-    ),
-    // bus stop code
+    ), // bus stop code
     display2: base.display2.copyWith(
       color: dark ? Colors.white60 : Colors.black54,
       fontSize: 0.8 * em,
@@ -43,26 +42,24 @@ TextTheme _buildTextTheme(TextTheme base, Color primaryColor, {bool dark = false
     // bus numbers
     display3: base.display2.copyWith(
       color: dark ? Colors.white70 : Colors.black87,
-      fontSize: 0.95 * em,
+      fontSize: 0.9 * em,
       fontWeight: FontWeight.w600,
     ),
     // time in min
     display4: base.display3.copyWith(
       color: dark ? Colors.white70 : Colors.black87,
-      fontSize: 0.9 * em,
+      fontSize: 0.85 * em,
       fontWeight: FontWeight.w400,
     ),
 
     // buttons
-    button:
-        // GoogleFonts.rubik(
-        // textStyle:
-        base.button.copyWith(
-      color: primaryColor,
-      fontSize: 0.85 * em,
-      fontWeight: FontWeight.w600,
-      letterSpacing: 0.5,
-      // ),
+    button: GoogleFonts.rubik(
+      textStyle: base.button.copyWith(
+        color: primaryColor,
+        fontSize: 0.85 * em,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 0.5,
+      ),
     ),
 
     // bottom sheet text for confirmations?
