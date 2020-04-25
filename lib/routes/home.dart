@@ -36,14 +36,21 @@ class HomePage extends StatelessWidget {
       QuickActions quickActions = QuickActions();
       setupQA(context, quickActions);
     }
-
     return FutureBuilder(
       future: getHomeWidgets(context),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Scaffold(
-            body: PageTemplate(
-              children: snapshot.data,
+            body: RefreshIndicator(
+              onRefresh: () async {
+                // wait for the function to execite
+                await _refresh(context);
+                // then return
+                return;
+              },
+              child: PageTemplate(
+                children: snapshot.data,
+              ),
             ),
           );
         } else
@@ -119,30 +126,25 @@ class HomePage extends StatelessWidget {
             color: Colors.grey,
             text: "Refresh",
             iconData: FontAwesomeIcons.redoAlt,
-            onTap: () async {
-              BotToast.showText(text: "Reloading ...");
-              // reload getting of location and bus stops nearby
-              print("Getting new location");
-              Provider.of<LocationServicesProvider>(context, listen: false)
-                  .getLocation(context, reload: true)
-                  .then(
-                (_) {
-                  print("Getting new bus stops");
-                  Provider.of<BusServiceProvider>(context, listen: false)
-                      .getNearestStops(context, reload: true)
-                      .then(
-                    (_) {
-                      // rebuild home
-                      print("Rebuilding home");
-                      Provider.of<HomeRebuilderProvider>(context, listen: false).rebuild();
-
-                      BotToast.showText(text: "Reloaded");
-                    },
-                  );
-                },
-              );
-            },
+            onTap: () async {},
           ),
         ],
       );
+
+  Future _refresh(BuildContext context) async {
+    BotToast.showText(text: "Reloading ...");
+    // reload getting of location and bus stops nearby
+    // Getting new location
+    await Provider.of<LocationServicesProvider>(context, listen: false)
+        .getLocation(context, reload: true);
+
+    // getting new bus stops
+    await Provider.of<BusServiceProvider>(context, listen: false)
+        .getNearestStops(context, reload: true);
+
+    // rebuilding home
+    Provider.of<HomeRebuilderProvider>(context, listen: false).rebuild();
+
+    BotToast.showText(text: "Reloaded");
+  }
 }

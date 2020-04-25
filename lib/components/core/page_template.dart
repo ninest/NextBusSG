@@ -56,6 +56,8 @@ class PageTemplate extends StatelessWidget {
   }
 
   Widget scaffold() {
-    return Scaffold(body: this);
+    return Scaffold(
+      body: this,
+    );
   }
 }

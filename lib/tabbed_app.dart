@@ -17,15 +17,15 @@ class TabbedAppState extends State<TabbedApp> {
   static List<Widget> _tabViews = <Widget>[HomePage(), SearchPage(), MorePage()];
 
   static List<BottomNavigationBarItem> _tabs(BuildContext context) => [
-    BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.compass), title: Text('Main')),
-    BottomNavigationBarItem(
-        icon: GestureDetector(
-          child: FaIcon(FontAwesomeIcons.search),
-          // onTap: () => _enteringSearchPage(context),
-        ),
-        title: Text('Search')),
-    BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.slidersH), title: Text('More')),
-  ];
+        BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.compass), title: Text('Main')),
+        BottomNavigationBarItem(
+            icon: GestureDetector(
+              child: FaIcon(FontAwesomeIcons.search),
+              // onTap: () => _enteringSearchPage(context),
+            ),
+            title: Text('Search')),
+        BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.slidersH), title: Text('More')),
+      ];
 
   void _onItemTapped(int index) {
     setState(() => _selectedIndex = index);
@@ -38,12 +38,11 @@ class TabbedAppState extends State<TabbedApp> {
         children: <Widget>[
           Align(
             alignment: Alignment.topCenter,
-            child:
-                // use below to not save state between tab state
-                _tabViews[_selectedIndex],
+            // use below to not save state between tab state
+            child: _tabViews[_selectedIndex],
 
             // use below to save state between tab switch
-            //     IndexedStack(
+            // child: IndexedStack(
             //   index: _selectedIndex,
             //   children: _tabViews,
             // ),
