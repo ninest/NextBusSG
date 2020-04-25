@@ -16,7 +16,7 @@ class MRTMapPage extends StatelessWidget {
           Container(
             child: PhotoView(
               minScale: PhotoViewComputedScale.contained * 1.4,
-              maxScale: PhotoViewComputedScale.covered * 1.8,
+              maxScale: PhotoViewComputedScale.covered * 2.8,
               initialScale: PhotoViewComputedScale.covered * 0.35,
               enableRotation: true,
               backgroundDecoration: BoxDecoration(
@@ -33,7 +33,7 @@ class MRTMapPage extends StatelessWidget {
             // adding safeArea padding
             top: MediaQuery.of(context).padding.top + Values.pageHorizontalPadding,
             left: Values.pageHorizontalPadding,
-            child: AppBackButton(fullScreen: true),
+            child: AppBackButton(x: true),
           ),
         ],
       ),

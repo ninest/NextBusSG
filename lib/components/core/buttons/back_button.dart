@@ -6,12 +6,15 @@ class AppBackButton extends StatelessWidget {
   // true if the page is a cupertino full screen dialog (mrt page)
   // so the chvron points downwards, and text is "done" instead of "back"
   final bool fullScreen;
-  AppBackButton({this.fullScreen = false});
+  final bool x;
+  AppBackButton({this.fullScreen = false, this.x = false});
 
   @override
   Widget build(BuildContext context) {
-    final IconData icon = fullScreen ? FontAwesomeIcons.chevronDown : FontAwesomeIcons.chevronLeft;
-    final String text = fullScreen ? "done" : "back";
+    final IconData icon = x
+        ? FontAwesomeIcons.times
+        : (fullScreen ? FontAwesomeIcons.chevronDown : FontAwesomeIcons.chevronLeft);
+    final String text = x ? "" : (fullScreen ? "done" : "back");
 
     return Material(
       color: Colors.transparent,
@@ -28,13 +31,17 @@ class AppBackButton extends StatelessWidget {
           child: Wrap(
             crossAxisAlignment: WrapCrossAlignment.center,
             children: <Widget>[
-              Padding(padding: EdgeInsets.only(right: 10.0), child: Icon(icon, size: 15)),
-              Text(
-                text,
-                style: Theme.of(context).textTheme.body1.copyWith(
-                      fontSize: 16,
-                    ),
+              Padding(
+                // if has the x, not padding
+                padding: x ? EdgeInsets.all(0.0) : EdgeInsets.only(right: 10.0),
+                child: Icon(icon, size: 15),
               ),
+                Text(
+                  text,
+                  style: Theme.of(context).textTheme.body1.copyWith(
+                        fontSize: 16,
+                      ),
+                ),
             ],
           ),
         ),
