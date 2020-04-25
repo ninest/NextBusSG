@@ -54,7 +54,7 @@ class _RequestPermissionButton extends StatelessWidget {
           var settingsBox = Hive.box('settings');
           settingsBox.put('first_launch', false);
 
-          Routing.openReplacementRoute(context, TabbedApp());
+          Routing.openFullScreenDialog(context, TabbedApp());
         } else {
           print("Location permission NOT GIVEN");
 

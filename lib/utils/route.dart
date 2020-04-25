@@ -4,6 +4,7 @@ import 'package:nextbussg/utils/bounce_scroll.dart';
 
 class Routing {
   static void openRoute(BuildContext context, Widget page) {
+    print("Maintingn stte");
     Navigator.push(
       context,
       MaterialPageRoute(
