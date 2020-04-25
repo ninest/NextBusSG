@@ -139,8 +139,11 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
 
   Container _busStopCode(BuildContext context) {
     return Container(
+      // un comment below to see tap area
+      // color: Colors.red,
+
       // extra padding so the user has a bigger area to top
-      padding: EdgeInsets.only(top: 15.0, bottom: 15.0, left: 15.0),
+      padding: EdgeInsets.only(top: 17.0, bottom: 17.0, left: 17.0),
       // color: Colors.red,
       child: InkWell(
           child: Text(widget.code, style: Theme.of(context).textTheme.display2),
