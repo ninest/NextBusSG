@@ -65,20 +65,17 @@ class TimingsNotAvailable extends StatelessWidget {
     );
   }
 
-  showBottomSheet(BuildContext context) => bottomSheetTemplate(context, 185, [
-        SliverToBoxAdapter(
-          child: Column(
-            children: [
-              MarkdownBody(data: Strings.timingsNotAvailableInfo),
-              Spacing(height: 20),
-              Button(
-                iconData: FontAwesomeIcons.check,
-                text: "Okay",
-                color: Theme.of(context).primaryColor,
-                onTap: () => closeBottomSheet(context),
-              ).width(120).alignment(Alignment.bottomRight)
-            ],
-          ),
-        ),
-      ]);
+  showBottomSheet(BuildContext context) => bottomSheetTemplate(
+        context,
+        children: <Widget>[
+          MarkdownBody(data: Strings.timingsNotAvailableInfo),
+          Spacing(height: 20),
+          Button(
+            iconData: FontAwesomeIcons.check,
+            text: "Okay",
+            color: Theme.of(context).primaryColor,
+            onTap: () => closeBottomSheet(context),
+          ).width(120).alignment(Alignment.bottomRight)
+        ],
+      );
 }

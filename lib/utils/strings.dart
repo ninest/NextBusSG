@@ -15,9 +15,9 @@ class Strings {
 
   // confirmation bottom sheets
   static String  confirmAddToFavorites(service, code) =>
-      "Are you sure you want to **_ADD_** Bus **$service** from **$code** to your favorites?";
+      "Are you sure you want to **_ADD_** Bus **$service** from stop **$code** to your favorites?";
   static String  confirmRemoveFromFavorites(service, code) =>
-      "Are you sure you want to **_REMOVE_** Bus **$service** from **$code** from your favorites?";
+      "Are you sure you want to **_REMOVE_** Bus **$service** from stop **$code** from your favorites?";
 
   // bus stops list
   static String get noStopsNearby =>

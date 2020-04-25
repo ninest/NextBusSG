@@ -17,19 +17,16 @@ class RenameFavoritesBottomSheets {
         TextEditingController(text: currentName == null ? "" : currentName);
     return bottomSheetTemplate(
       context,
-      210,
-      [
-        MarkdownBody(
-                data:
-                    "You are renaming **$name** ($code). Enter your custom name: (leave blank to *reset* rename)")
-            .sliverToBoxAdapter(),
+      children: <Widget>[
+        MarkdownBody(data: "Enter new name for **$name** ($code). Leave the field blank to reset the name.\n\nEnter your custom name: "),
+        Spacing(height: 15),
         TextField(
           decoration: InputDecoration(
             hintText: name,
           ),
           controller: controller,
-        ).sliverToBoxAdapter(),
-        Spacing(height: 15).sliver(),
+        ),
+        Spacing(height: 15),
         Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,7 +56,8 @@ class RenameFavoritesBottomSheets {
               },
             ),
           ],
-        ).sliverToBoxAdapter()
+        ),
+        
       ],
     );
   }

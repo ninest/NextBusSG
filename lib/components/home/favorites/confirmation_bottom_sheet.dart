@@ -24,10 +24,10 @@ class ConfirmationBottomSheets {
     bool isAlreadyFavorite = FavoritesProvider.alreadyInFavorites(code, service);
 
     if (isAlreadyFavorite) {
-      print("Already in favorites, show conf to remove");
+      print("Already in favorites, show confirmation to remove");
       removeFromFavorites(context, code, service);
     } else {
-      print("Adding to favorites, show conf");
+      print("Adding to favorites, show confirmation");
       addToFavorites(context, code, service);
     }
   }
@@ -42,43 +42,40 @@ class ConfirmationBottomSheets {
     final FavoritesProvider favoritesProvider =
         Provider.of<FavoritesProvider>(context, listen: false);
 
-    bottomSheetTemplate(context, sheetHeight, [
-      SliverToBoxAdapter(
-        child: Column(
-          children: <Widget>[
-            MarkdownBody(
-              data: text,
-              styleSheet: MarkdownStyleSheet(
-                p: Theme.of(context).textTheme.body2,
-              ),
-            ),
-            Spacing(height: 25),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Button(
-                  text: "No",
-                  iconData: FontAwesomeIcons.times,
-                  color: Colors.red,
-                  onTap: () => closeBottomSheet(context),
-                ).alignment(Alignment.center).width(buttonWidth),
-                // .width(100),
-                Button(
-                  text: "Yes",
-                  iconData: FontAwesomeIcons.check,
-                  color: Colors.indigo,
-                  onTap: () {
-                    favoritesProvider.addToFavorite(context, code, service);
-                    closeBottomSheet(context);
-                  },
-                ).alignment(Alignment.center).width(buttonWidth),
-              ],
-            )
-          ],
+    bottomSheetTemplate(
+      context,
+      children: <Widget>[
+        MarkdownBody(
+          data: text,
+          styleSheet: MarkdownStyleSheet(
+            p: Theme.of(context).textTheme.body2,
+          ),
         ),
-      )
-    ]);
+        Spacing(height: 25),
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Button(
+              text: "No",
+              iconData: FontAwesomeIcons.times,
+              color: Colors.red,
+              onTap: () => closeBottomSheet(context),
+            ).alignment(Alignment.center).width(buttonWidth),
+            // .width(100),
+            Button(
+              text: "Yes",
+              iconData: FontAwesomeIcons.check,
+              color: Colors.indigo,
+              onTap: () {
+                favoritesProvider.addToFavorite(context, code, service);
+                closeBottomSheet(context);
+              },
+            ).alignment(Alignment.center).width(buttonWidth),
+          ],
+        )
+      ],
+    );
   }
 
   // maybe make one function for the template
