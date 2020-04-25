@@ -4,7 +4,7 @@ import 'package:quick_actions/quick_actions.dart';
 import 'package:nextbussg/components/home/favorites/all_favorites_page.dart';
 import 'package:nextbussg/components/more/mrt_map_page.dart';
 
-setup(context, QuickActions quickActions) {
+setupQA(context, QuickActions quickActions) {
   quickActions.initialize((String shortcutType) {
     switch (shortcutType) {
       case "mrt_map":

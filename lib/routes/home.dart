@@ -1,6 +1,9 @@
+import 'dart:io' show Platform;
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:quick_actions/quick_actions.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/core/line.dart';
 import 'package:nextbussg/components/core/loading/loading_text.dart';
@@ -15,7 +18,7 @@ import 'package:nextbussg/components/home/favorites/favorites_list.dart';
 import 'package:nextbussg/providers/favorites.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/constants/strings.dart';
-import 'package:provider/provider.dart';
+import 'package:nextbussg/utils/quick_actions.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -24,10 +27,15 @@ class HomePage extends StatelessWidget {
     final HomeRebuilderProvider homeRebuilderProvider =
         Provider.of<HomeRebuilderProvider>(context, listen: true);
 
-
     // slide to refresh
     // RefreshController _refreshController = RefreshController(initialRefresh: false);
     // TODO: implement pull to refresh
+
+    // Quick actions (android only)
+    if (Platform.isAndroid) {
+      QuickActions quickActions = QuickActions();
+      setupQA(context, quickActions);
+    }
 
     return FutureBuilder(
       future: getHomeWidgets(context),
