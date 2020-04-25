@@ -20,7 +20,7 @@ class _ThemeToggleListState extends State<ThemeToggleList> {
       icon: FontAwesomeIcons.moon,
       children: <Widget>[
         _option(context, "Light", ThemeEnum.light),
-        _option(context, "Dark", ThemeEnum.dark),
+        _option(context, "Night", ThemeEnum.dark),
         _option(context, "System", ThemeEnum.system),
       ],
     );
@@ -29,7 +29,8 @@ class _ThemeToggleListState extends State<ThemeToggleList> {
   Widget _option(BuildContext context, String text, ThemeEnum themeEnum) => InkWell(
         borderRadius: BorderRadius.circular(Values.borderRadius / 2),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: Values.marginBelowTitle, vertical: Values.marginBelowTitle / 1.5),
+          padding: EdgeInsets.symmetric(
+              horizontal: Values.marginBelowTitle, vertical: Values.marginBelowTitle / 1.5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Values.borderRadius / 2),
             color: ThemeService.getThemeEnum() == themeEnum
@@ -49,11 +50,9 @@ class _ThemeToggleListState extends State<ThemeToggleList> {
                 ),
           ),
         ),
-        onTap: () {
-          ThemeService.setTheme(context, themeEnum);
-
+        onTap: () =>
           // rebuild widget (not sure why this is requrired)
-          setState(() {});
-        },
+          setState(() => ThemeService.setTheme(context, themeEnum))
+        ,
       );
 }
