@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:hive/hive.dart';
-import 'package:nextbussg/services/theme.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:nextbussg/utils/setStatusBarColor.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
-import 'dart:io';
 import 'package:nextbussg/styles/theme.dart';
 import 'package:nextbussg/utils/bounce_scroll.dart';
 import 'package:nextbussg/components/onboarding/introduction_screen.dart';
-import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class RouteApp extends StatelessWidget {

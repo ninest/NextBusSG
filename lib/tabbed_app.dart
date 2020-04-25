@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/fa_icon.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nextbussg/providers/search.dart';
 import 'package:nextbussg/routes/home.dart';
 import 'package:nextbussg/routes/search.dart';
 import 'package:nextbussg/routes/more.dart';
-import 'package:provider/provider.dart';
 
 class TabbedApp extends StatefulWidget {
   @override

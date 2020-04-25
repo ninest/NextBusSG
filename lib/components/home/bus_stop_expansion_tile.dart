@@ -110,26 +110,10 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       child: Container(
         margin: EdgeInsets.only(top: Values.marginBelowTitle),
         child: ExpansionTile(
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              // if the stop HAS been renamed, display in italics
-              Text(name,
-                  style: hasBeenRenamed
-                      ? Theme.of(context).textTheme.display1.copyWith(
-                            fontStyle: FontStyle.italic,
-                          )
-                      : Theme.of(context).textTheme.display1),
-
-              if (widget.mrtStations.isNotEmpty)
-                MRTStations(stations: widget.mrtStations)
-            ],
-          ),
+          title: _busStopName(context, name, hasBeenRenamed),
           // the text below is replacing the default arrow in ExpansionPanel
           // when it's clicked, open bus stop
-          trailing: GestureDetector(
-              child: Text(widget.code, style: Theme.of(context).textTheme.display2),
-              onTap: () => _openStopOverviewPage()),
+          trailing: _busStopCode(context),
           // get bus timings only when panel has been opened
           onExpansionChanged: (bool value) {
             return value ? _getBusTimings(context) : null;
@@ -141,7 +125,6 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
             // show that some timings are not available
             // NOTE: it also could just be that timings are unailable,
             if (timingsNotAvailable.isNotEmpty)
-              // Text(timingsNotAvailable.toString())
               TimingsNotAvailable(services: timingsNotAvailable)
           ],
         ),
@@ -152,6 +135,35 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       ),
     );
     // margin(top: Values.marginBelowTitle)
+  }
+
+  Container _busStopCode(BuildContext context) {
+    return Container(
+      // extra padding so the user has a bigger area to top
+      padding: EdgeInsets.only(top: 15.0, bottom: 15.0, left: 15.0),
+      // color: Colors.red,
+      child: InkWell(
+          child: Text(widget.code, style: Theme.of(context).textTheme.display2),
+          onTap: () => _openStopOverviewPage()),
+    );
+  }
+
+  Column _busStopName(BuildContext context, String name, bool hasBeenRenamed) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        // if the stop HAS been renamed, display in italics
+        Text(name,
+            style: hasBeenRenamed
+                ? Theme.of(context).textTheme.display1.copyWith(
+                      fontStyle: FontStyle.italic,
+                    )
+                : Theme.of(context).textTheme.display1),
+
+        if (widget.mrtStations.isNotEmpty)
+          MRTStations(stations: widget.mrtStations)
+      ],
+    );
   }
 
   _getBusTimings(context) async {

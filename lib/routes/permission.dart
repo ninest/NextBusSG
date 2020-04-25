@@ -5,16 +5,13 @@ import 'package:hive/hive.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
-import 'package:nextbussg/providers/home_rebuilder.dart';
 import 'package:nextbussg/providers/location_perms.dart';
-import 'package:nextbussg/routes/home.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/tabbed_app.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/utils/route.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:provider/provider.dart';
 
 class PermissionRoute extends StatelessWidget {
   @override
