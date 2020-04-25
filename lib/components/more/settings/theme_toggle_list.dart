@@ -29,7 +29,7 @@ class _ThemeToggleListState extends State<ThemeToggleList> {
   Widget _option(BuildContext context, String text, ThemeEnum themeEnum) => InkWell(
         borderRadius: BorderRadius.circular(Values.borderRadius / 2),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          padding: EdgeInsets.symmetric(horizontal: Values.marginBelowTitle, vertical: Values.marginBelowTitle / 1.5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(Values.borderRadius / 2),
             color: ThemeService.getThemeEnum() == themeEnum
@@ -39,6 +39,7 @@ class _ThemeToggleListState extends State<ThemeToggleList> {
           child: Text(
             text,
             style: Theme.of(context).textTheme.body1.copyWith(
+                  fontSize: Values.em * 0.8,
                   // change font weight depending on which theme is selected
                   fontWeight:
                       ThemeService.getThemeEnum() == themeEnum ? FontWeight.w700 : FontWeight.w400,
