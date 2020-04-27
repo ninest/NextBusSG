@@ -7,6 +7,7 @@ import 'package:nextbussg/components/core/page_template.dart';
 import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/core/title_text.dart';
 import 'package:nextbussg/components/search/service_page/bus_stop_button.dart';
+import 'package:nextbussg/components/search/service_page/service_route.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
 import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/styles/tile_color.dart';
@@ -65,33 +66,18 @@ class ServicePage extends StatelessWidget {
             Spacing(
               height: Values.marginBelowTitle,
             ).sliver(),
+
+            // all the services
             if (snapshot.hasData)
-              for (var route in snapshot.data["routes"]) serviceRoute(context, route)
+
+              // looping through the routes
+              for (var route in snapshot.data["routes"]) 
+                ServiceRoute(route: route)
             else
               LoadingText(text: "Getting bus data ...").sliverToBoxAdapter()
           ],
         ).scaffold();
       },
     );
-  }
-
-  serviceRoute(context, Map route) {
-    List<Widget> children = [
-      // spacing at top
-      Spacing(height: Values.marginBelowTitle),
-
-      Text(
-        route["name"].trim(),
-        style: Theme.of(context).textTheme.display1.copyWith(fontSize: Values.em * 1.5),
-      ),
-
-      for (var busStop in route["stops"])
-        BusStopButton(
-            code: busStop["code"], name: busStop["name"], mrtStations: busStop["mrt_stations"]),
-
-      // spacing at end of route
-      Spacing(height: Values.marginBelowTitle),
-    ];
-    return Column(children: children).sliverToBoxAdapter();
   }
 }

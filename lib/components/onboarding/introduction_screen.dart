@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:nextbussg/components/onboarding/page_view_model_template.dart';
+import 'package:nextbussg/components/onboarding/text_styles.dart';
 import 'package:nextbussg/providers/location_perms.dart';
 import 'package:nextbussg/routes/permission.dart';
 import 'package:nextbussg/tabbed_app.dart';
@@ -21,7 +22,6 @@ class OnboardingView extends StatelessWidget {
     return pageViewModelTemplate(
       context,
       "See bus timings and crowd",
-      // "For **Bus 9**,\n\n- The first bus is **not crowded**, and will arrive in 9 minutes,\n- The second bus is **crowded** and will arrive in 21 minutes, and\n- The third bus is **over crowded**, and will arrive in 29 minutes",
       "",
       Colors.white,
       imageUrl: 'assets/onboard/service-tile.png',
@@ -59,14 +59,7 @@ class OnboardingView extends StatelessWidget {
     );
   }
 
-  TextStyle buttonTextStyle(context) => Theme.of(context).textTheme.body1.copyWith(
-        color: Colors.black87,
-        fontWeight: FontWeight.w700,
-      );
-  TextStyle doneButtonTextStyle(context) => Theme.of(context).textTheme.body1.copyWith(
-        color: Colors.white70,
-        fontWeight: FontWeight.w700,
-      );
+  
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +86,7 @@ class OnboardingView extends StatelessWidget {
     final bool status = await LocationPermsProvider.getPermStatus();
 
     if (status == true)
-      Routing.openReplacementRoute(context, TabbedApp());
+      Routing.openFullScreenDialog(context, TabbedApp());
     else
       Routing.openReplacementRoute(context, PermissionRoute());
   }

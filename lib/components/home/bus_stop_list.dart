@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:nextbussg/components/core/error_container.dart';
 import 'package:nextbussg/components/core/loading/loading_text.dart';
 import 'package:nextbussg/components/core/space.dart';
+import 'package:nextbussg/models/bus_stop.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:nextbussg/utils/extensions.dart';
 import 'package:nextbussg/components/home/bus_stop_expansion_tile.dart';
@@ -45,6 +47,7 @@ class BusStopList extends StatelessWidget {
                   code: busStop.code,
                   services: busStop.services,
                   initialyExpanded: false,
+                  position: busStop.position,
                   mrtStations: busStop.mrtStations,
                 )
             else

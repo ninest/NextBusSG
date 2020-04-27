@@ -21,7 +21,7 @@ class StopOverviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // here just to rebuil page on stop rename
+    // here just to rebuild page on stop rename
     final HomeRebuilderProvider homeRebuilderProvider =
         Provider.of<HomeRebuilderProvider>(context, listen: true);
 
@@ -98,7 +98,7 @@ class StopOverviewPage extends StatelessWidget {
                     text: "Directions to bus stop",
                     fill: true,
                     // iconData: FontAwesomeIcons.directions,
-                    onTap: () => _openMap(lon, lat),
+                    onTap: () => openMap(lon, lat),
                   )
                 ]).sliverToBoxAdapter()
               ],
@@ -112,21 +112,10 @@ class StopOverviewPage extends StatelessWidget {
   }
 
   _getStopData(context) async {
-    // String jsonString = await rootBundle.loadString('assets/bus_stops.json');
-    // Map stopData = json.decode(jsonString)[code];
     Map stopData =
         (await Provider.of<BusServiceProvider>(context, listen: false).getAllStopsMap())[code];
 
     // print(stopData);
     return stopData;
-  }
-
-  _openMap(lon, lat) {
-    String url;
-    if (Platform.isIOS)
-      url = 'https://maps.apple.com/?q=$lat,$lon';
-    else
-      url = 'https://www.google.com/maps?q=$lat,$lon';
-    openUrl(url);
   }
 }

@@ -1,5 +1,7 @@
+import 'package:geolocator/geolocator.dart';
 import 'package:nextbussg/components/home/timings_not_available.dart';
 import 'package:nextbussg/components/core/mrt_stations.dart';
+import 'package:nextbussg/components/more/rename_favorites/bottom_sheets.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
 import 'package:nextbussg/services/rename_favorites.dart';
 import 'package:nextbussg/styles/tile_color.dart';
@@ -9,6 +11,7 @@ import 'package:nextbussg/components/home/bus_service_tile.dart';
 import 'package:nextbussg/models/bus_arrival.dart';
 import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/styles/values.dart';
+import 'package:nextbussg/utils/url.dart';
 import 'package:provider/provider.dart';
 
 class BusStopExpansionPanel extends StatefulWidget {
@@ -17,15 +20,18 @@ class BusStopExpansionPanel extends StatefulWidget {
   final List services;
   final bool initialyExpanded;
   final List mrtStations;
+  final Position position;
 
   // of this is false, tapping on the id won't open the stop overpage
   final bool opensStopOverviewPage;
+
   BusStopExpansionPanel({
     this.name,
     this.code,
     this.services,
     this.initialyExpanded,
     this.mrtStations,
+    this.position,
     this.opensStopOverviewPage = true,
   });
 
@@ -96,58 +102,67 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       name = RenameFavoritesService.getName(widget.code);
     }
 
-    return ListTileTheme(
-      // setting padding value if mrt is there
-      // THESE VALUES ARE HARDOCDED because I don't know how to really change them
-      contentPadding: EdgeInsets.only(
-        left: Values.busStopTileHorizontalPadding,
-        right: Values.busStopTileHorizontalPadding,
-        // top: 0,
-        // bottom: 0
-        top: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
-        bottom: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
-      ),
-      child: Container(
-        margin: EdgeInsets.only(top: Values.marginBelowTitle),
-        child: ExpansionTile(
-          title: _busStopName(context, name, hasBeenRenamed),
-          // the text below is replacing the default arrow in ExpansionPanel
-          // when it's clicked, open bus stop
-          trailing: _busStopCode(context),
-          // get bus timings only when panel has been opened
-          onExpansionChanged: (bool value) {
-            return value ? _getBusTimings(context) : null;
-          },
-          initiallyExpanded: widget.initialyExpanded,
-          children: [
-            ...busServiceTileList,
-
-            // show that some timings are not available
-            // NOTE: it also could just be that timings are unailable,
-            if (timingsNotAvailable.isNotEmpty)
-              TimingsNotAvailable(services: timingsNotAvailable)
-          ],
+    return GestureDetector(
+      // if the position is available, long pressing the ID will open in map
+      onLongPress: widget.position != null
+          ? () => openMap(widget.position.longitude, widget.position.latitude)
+          : () => {},
+      onDoubleTap: () => RenameFavoritesBottomSheets.bs(context, widget.code, widget.name),
+      child: ListTileTheme(
+        // setting padding value if mrt is there
+        // THESE VALUES ARE HARDOCDED because I don't know how to really change them
+        contentPadding: EdgeInsets.only(
+          left: Values.busStopTileHorizontalPadding,
+          right: Values.busStopTileHorizontalPadding,
+          // top: 0,
+          // bottom: 0
+          top: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
+          bottom: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
         ),
-        decoration: BoxDecoration(
-          color: TileColors.busStopExpansionTile(context),
-          borderRadius: BorderRadius.circular(Values.borderRadius),
+        child: Container(
+          margin: EdgeInsets.only(top: Values.marginBelowTitle),
+          child: ExpansionTile(
+            title: _busStopName(context, name, hasBeenRenamed),
+            // the text below is replacing the default arrow in ExpansionPanel
+            // when it's clicked, open bus stop
+            trailing: _busStopCode(context),
+            // get bus timings only when panel has been opened
+            onExpansionChanged: (bool value) {
+              return value ? _getBusTimings(context) : null;
+            },
+            initiallyExpanded: widget.initialyExpanded,
+            children: [
+              ...busServiceTileList,
+
+              // show that some timings are not available
+              // NOTE: it also could just be that timings are unailable,
+              if (timingsNotAvailable.isNotEmpty)
+                TimingsNotAvailable(services: timingsNotAvailable)
+            ],
+          ),
+          decoration: BoxDecoration(
+            color: TileColors.busStopExpansionTile(context),
+            borderRadius: BorderRadius.circular(Values.borderRadius),
+          ),
         ),
       ),
     );
     // margin(top: Values.marginBelowTitle)
   }
 
-  Container _busStopCode(BuildContext context) {
-    return Container(
-      // un comment below to see tap area
-      // color: Colors.red,
+  InkWell _busStopCode(BuildContext context) {
+    return InkWell(
+      child: Container(
+        // un comment below to see tap area
+        // color: Colors.red,
+        // extra padding so the user has a bigger area to top
+        padding: EdgeInsets.only(top: 17.0, bottom: 17.0, left: 17.0),
+        child: Text(widget.code, style: Theme.of(context).textTheme.display2),
+      ),
 
-      // extra padding so the user has a bigger area to top
-      padding: EdgeInsets.only(top: 17.0, bottom: 17.0, left: 17.0),
-      // color: Colors.red,
-      child: InkWell(
-          child: Text(widget.code, style: Theme.of(context).textTheme.display2),
-          onTap: () => _openStopOverviewPage()),
+      // if we're already on the stop overview page, this should just epand the widget
+      // by setting to null, the inkwell has no effect, so tapping just expands the tile
+      onTap: widget.opensStopOverviewPage ? () => _openStopOverviewPage() : null,
     );
   }
 

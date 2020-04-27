@@ -64,6 +64,7 @@ class FavoritesBusStopList extends StatelessWidget {
                 code: busStop.code,
                 services: busStop.services,
                 mrtStations: busStop.mrtStations,
+                position: busStop.position,
 
                 // only show expanded tiles on the main page (SFV)
                 // this way, the user an immediately see timings for fav bus service without clicking anywhere
