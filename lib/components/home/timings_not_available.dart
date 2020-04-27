@@ -45,11 +45,11 @@ class TimingsNotAvailable extends StatelessWidget {
                         color: Theme.of(context).errorColor,
                       ),
                 ).padding(bottom: 5),
-                CustomIconButton(
-                  icon: FontAwesomeIcons.info,
-                  size: Theme.of(context).textTheme.body2.fontSize,
-                  color: Theme.of(context).errorColor,
-                )
+                // CustomIconButton(
+                //   icon: FontAwesomeIcons.info,
+                //   size: Theme.of(context).textTheme.body2.fontSize,
+                //   color: Theme.of(context).errorColor,
+                // )
               ],
             ),
             Text(

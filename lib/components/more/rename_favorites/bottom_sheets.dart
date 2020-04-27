@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nextbussg/components/core/buttons/button.dart';
 import 'package:nextbussg/providers/home_rebuilder.dart';
-import 'package:nextbussg/utils/extensions.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:nextbussg/services/rename_favorites.dart';
 import 'package:nextbussg/components/core/bottom_sheet_template.dart';

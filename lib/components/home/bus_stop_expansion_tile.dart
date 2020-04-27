@@ -102,48 +102,41 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       name = RenameFavoritesService.getName(widget.code);
     }
 
-    return GestureDetector(
-      // if the position is available, long pressing the ID will open in map
-      onLongPress: widget.position != null
-          ? () => openMap(widget.position.longitude, widget.position.latitude)
-          : () => {},
-      onDoubleTap: () => RenameFavoritesBottomSheets.bs(context, widget.code, widget.name),
-      child: ListTileTheme(
-        // setting padding value if mrt is there
-        // THESE VALUES ARE HARDOCDED because I don't know how to really change them
-        contentPadding: EdgeInsets.only(
-          left: Values.busStopTileHorizontalPadding,
-          right: Values.busStopTileHorizontalPadding,
-          // top: 0,
-          // bottom: 0
-          top: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
-          bottom: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
-        ),
-        child: Container(
-          margin: EdgeInsets.only(top: Values.marginBelowTitle),
-          child: ExpansionTile(
-            title: _busStopName(context, name, hasBeenRenamed),
-            // the text below is replacing the default arrow in ExpansionPanel
-            // when it's clicked, open bus stop
-            trailing: _busStopCode(context),
-            // get bus timings only when panel has been opened
-            onExpansionChanged: (bool value) {
-              return value ? _getBusTimings(context) : null;
-            },
-            initiallyExpanded: widget.initialyExpanded,
-            children: [
-              ...busServiceTileList,
+    return ListTileTheme(
+      // setting padding value if mrt is there
+      // THESE VALUES ARE HARDOCDED because I don't know how to really change them
+      contentPadding: EdgeInsets.only(
+        left: Values.busStopTileHorizontalPadding,
+        right: Values.busStopTileHorizontalPadding,
+        // top: 0,
+        // bottom: 0
+        top: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
+        bottom: widget.mrtStations.isNotEmpty ? Values.busStopTileVerticalPadding / 2 : 0,
+      ),
+      child: Container(
+        margin: EdgeInsets.only(top: Values.marginBelowTitle),
+        child: ExpansionTile(
+          title: _busStopName(context, name, hasBeenRenamed),
+          // the text below is replacing the default arrow in ExpansionPanel
+          // when it's clicked, open bus stop
+          trailing: _busStopCode(context),
+          // get bus timings only when panel has been opened
+          onExpansionChanged: (bool value) {
+            return value ? _getBusTimings(context) : null;
+          },
+          initiallyExpanded: widget.initialyExpanded,
+          children: [
+            ...busServiceTileList,
 
-              // show that some timings are not available
-              // NOTE: it also could just be that timings are unailable,
-              if (timingsNotAvailable.isNotEmpty)
-                TimingsNotAvailable(services: timingsNotAvailable)
-            ],
-          ),
-          decoration: BoxDecoration(
-            color: TileColors.busStopExpansionTile(context),
-            borderRadius: BorderRadius.circular(Values.borderRadius),
-          ),
+            // show that some timings are not available
+            // NOTE: it also could just be that timings are unailable,
+            if (timingsNotAvailable.isNotEmpty)
+              TimingsNotAvailable(services: timingsNotAvailable)
+          ],
+        ),
+        decoration: BoxDecoration(
+          color: TileColors.busStopExpansionTile(context),
+          borderRadius: BorderRadius.circular(Values.borderRadius),
         ),
       ),
     );
@@ -163,6 +156,11 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
       // if we're already on the stop overview page, this should just epand the widget
       // by setting to null, the inkwell has no effect, so tapping just expands the tile
       onTap: widget.opensStopOverviewPage ? () => _openStopOverviewPage() : null,
+      // if the position is available, long pressing the ID will open in map
+      onLongPress: widget.position != null
+          ? () => openMap(widget.position.longitude, widget.position.latitude)
+          : () => {},
+      onDoubleTap: () => RenameFavoritesBottomSheets.bs(context, widget.code, widget.name),
     );
   }
 
