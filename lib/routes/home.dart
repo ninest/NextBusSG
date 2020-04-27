@@ -83,9 +83,9 @@ class HomePage extends StatelessWidget {
       Spacing(height: 40).sliver(),
       nearMe,
       Spacing(height: 20).sliver(),
-      Line().sliverToBoxAdapter(),
-      Spacing(height: 20).sliver(),
-      reloadButton(context).sliverToBoxAdapter(),
+      // Line().sliverToBoxAdapter(),
+      // Spacing(height: 20).sliver(),
+      // reloadButton(context).sliverToBoxAdapter(),
     ];
 
     // if there are no favorites, swap the position of favorites and near me
@@ -104,9 +104,9 @@ class HomePage extends StatelessWidget {
         Spacing(height: 40).sliver(),
         simplifiedFavoritesView(favoritesNotShown: noFavorites),
         Spacing(height: 20).sliver(),
-        Line().sliverToBoxAdapter(),
-        Spacing(height: 20).sliver(),
-        reloadButton(context).sliverToBoxAdapter(),
+        // Line().sliverToBoxAdapter(),
+        // Spacing(height: 20).sliver(),
+        // reloadButton(context).sliverToBoxAdapter(),
       ];
     }
     return widgetOrder;
