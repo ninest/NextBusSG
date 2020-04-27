@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/search/service_page/bus_stop_button.dart';
 import 'package:nextbussg/styles/values.dart';
@@ -10,6 +11,9 @@ class ServiceRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    print(route['stops']);
+
     List<Widget> children = [
       // spacing at top
       Spacing(height: Values.marginBelowTitle),
@@ -21,7 +25,10 @@ class ServiceRoute extends StatelessWidget {
 
       for (var busStop in route["stops"])
         BusStopButton(
-            code: busStop["code"], name: busStop["name"], mrtStations: busStop["mrt_stations"]),
+          code: busStop["code"],
+          name: busStop["name"],
+          mrtStations: busStop["mrt_stations"],
+        ),
 
       // spacing at end of route
       Spacing(height: Values.marginBelowTitle),

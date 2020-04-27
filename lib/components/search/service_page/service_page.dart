@@ -40,11 +40,14 @@ class ServicePage extends StatelessWidget {
     for (var route in serviceData["routes"]) {
       List newStops = [];
       for (var stopNo in route["stops"]) {
-        newStops.add({
-          "code": stopNo,
-          "name": stopData[stopNo]["name"],
-          "mrt_stations": stopData[stopNo]["mrt_stations"],
-        });
+        print(stopData[stopNo]);
+        newStops.add(
+          {
+            "code": stopNo,
+            "name": stopData[stopNo]["name"],
+            "mrt_stations": stopData[stopNo]["mrt_stations"],
+          },
+        );
       }
 
       route["stops"] = newStops;
@@ -62,7 +65,8 @@ class ServicePage extends StatelessWidget {
           showBackButton: true,
           children: [
             TitleText(title: "Bus $service").sliverToBoxAdapter(),
-            if (snapshot.hasData) Text(serviceTypes[snapshot.data["type"]]).sliverToBoxAdapter(),
+            if (snapshot.hasData)
+              Text(serviceTypes[snapshot.data["type"]]).sliverToBoxAdapter(),
             Spacing(
               height: Values.marginBelowTitle,
             ).sliver(),
@@ -71,8 +75,7 @@ class ServicePage extends StatelessWidget {
             if (snapshot.hasData)
 
               // looping through the routes
-              for (var route in snapshot.data["routes"]) 
-                ServiceRoute(route: route)
+              for (var route in snapshot.data["routes"]) ServiceRoute(route: route)
             else
               LoadingText(text: "Getting bus data ...").sliverToBoxAdapter()
           ],
