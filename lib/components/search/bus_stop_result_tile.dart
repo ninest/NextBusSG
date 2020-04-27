@@ -29,36 +29,37 @@ class BusStopSearchResultTile extends StatelessWidget {
       margin: EdgeInsets.only(top: Values.marginBelowTitle),
       child: InkWell(
         child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Values.busStopTileHorizontalPadding,
-              vertical: Values.busStopTileVerticalPadding,
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // make sure not to get the overflow error
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.65,
-                      child: Text(
-                        name,
-                        style: Theme.of(context).textTheme.display1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+          padding: EdgeInsets.symmetric(
+            horizontal: Values.busStopTileHorizontalPadding,
+            vertical: Values.busStopTileVerticalPadding,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // make sure not to get the overflow error
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.65,
+                    child: Text(
+                      name,
+                      maxLines: 3,
+                      style: Theme.of(context).textTheme.display1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    if (mrtStations.isNotEmpty)
-                      MRTStations(stations: mrtStations)
-                  ],
-                ),
-                Text(code, style: Theme.of(context).textTheme.display2),
-              ],
-            )
-            // .gestures(
-            //   onTapDown: (details) => Routing.openRoute(context, StopOverviewPage(code: code)),
-            // ),
-            ),
+                  ),
+                  if (mrtStations.isNotEmpty)
+                    MRTStations(stations: mrtStations)
+                ],
+              ),
+              Expanded(
+                flex: 0,
+                child: Text(code, style: Theme.of(context).textTheme.display2),
+              ),
+            ],
+          ),
+        ),
         borderRadius: BorderRadius.circular(Values.borderRadius),
         onTap: () => Routing.openRoute(context, StopOverviewPage(code: code)),
       ),
