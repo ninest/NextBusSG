@@ -13,10 +13,11 @@ import 'package:nextbussg/constants/distance.dart';
 import 'package:provider/provider.dart';
 
 class BusServiceProvider extends ChangeNotifier {
+// class BusServiceProvider {
   
   // this is there to save nearby bus stops in the state. That way, we only have to go through all bus stops
   // and find those nearby once
-  // This will be reset when the reload button is pressed
+  // This will be reset when the refresh button is pressed
   List<BusStop> _busStopsNear = null;
 
   // reload is false by default; it's only true when we need to get new set of nearest bus stops
@@ -26,8 +27,7 @@ class BusServiceProvider extends ChangeNotifier {
       return _busStopsNear;
     } else {
       // this function should only execute ONCE to get bus stops near by
-      final LocationServicesProvider locationServicesProvider =
-          Provider.of<LocationServicesProvider>(context, listen: false);
+      final LocationServicesProvider locationServicesProvider = Provider.of<LocationServicesProvider>(context, listen: false);
 
       Position userPosition = await locationServicesProvider.getLocation(context);
       Map data = await getAllStopsMap();
@@ -38,8 +38,7 @@ class BusServiceProvider extends ChangeNotifier {
         BusStop busStop = BusStop.fromJson(data[stopCode]);
 
         // calculating distance (meters) between current position and bus stop coords
-        double distance =
-            await locationServicesProvider.distanceBetween(userPosition, busStop.position);
+        double distance = await locationServicesProvider.distanceBetween(userPosition, busStop.position);
 
         // add it if bus stop is within 500 meters
         if (distance < Distance.nearMe) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:nextbussg/utils/setStatusBarColor.dart';
+import 'package:nextbussg/utils/status_bar_color.dart';
 import 'package:nextbussg/utils/theme_enum.dart';
 
 class ThemeService {

@@ -6,11 +6,7 @@ class RenameFavoritesService {
   static rename(BuildContext context, String code, String newName) {
     var settingsBox = Hive.box('settings');
     var prevRenamedFavorites = settingsBox.get('renamed_favorites', defaultValue: {});
-    // first remove the previ
-    // prevRenamedFavorites.add({
-    //   'code': code,
-    //   'name': newName,
-    // });
+
     print(code);
     print(newName);
     print(prevRenamedFavorites);
@@ -28,9 +24,9 @@ class RenameFavoritesService {
       return null;
     } else {
       try {
-      var stop = renamedFavorites[code];
-      return stop;
-      } catch(e) {
+        var stop = renamedFavorites[code];
+        return stop;
+      } catch (e) {
         print("This does not exist as a renamed favorite");
         return null;
       }
