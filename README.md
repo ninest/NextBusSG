@@ -5,7 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/themindstorm/NextBusSg?style=flat-square)
 [![HitCount](http://hits.dwyl.com/themindstorm/NextBusSG.svg)](http://hits.dwyl.com/themindstorm/NextBusSG) 
 
-<a href='https://testflight.apple.com/join/nMWtVks4'><img height="55" alt='Get it on TestFlight' src='./readme-images/badges/testflight.png'/></a>
+<a href='https://apps.apple.com/my/app/nextbus-sg/id1509167028'><img height="55" alt='Get it on app store' src='./readme-images/badges/appstore.png'/></a>
 <a href='https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img height="55" alt='Get it on Google Play' src='./readme-images/badges/google_play.png'/></a>
 ## 🎆 Gallery
 ![light mode](./readme-images/gallery/1.png)
