@@ -3,6 +3,7 @@
 ![Made with Flutter](https://img.shields.io/badge/Made%20With-Flutter-blue?style=flat-square)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ![GitHub](https://img.shields.io/github/license/themindstorm/NextBusSg?style=flat-square)
+[![BMAC](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-orange.svg?style=flat-square)](https://www.buymeacoffee.com/themindstorm) 
 [![HitCount](http://hits.dwyl.com/themindstorm/NextBusSG.svg)](http://hits.dwyl.com/themindstorm/NextBusSG) 
 
 <a href='https://apps.apple.com/my/app/nextbus-sg/id1509167028'><img height="55" alt='Get it on app store' src='./readme-images/badges/appstore.png'/></a>

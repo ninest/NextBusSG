@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-
 
 class Spacing extends StatelessWidget {
   final double height;
@@ -16,6 +14,12 @@ class Spacing extends StatelessWidget {
   Widget sliver() {
     return SliverPadding(
       padding: EdgeInsets.only(bottom: height.toDouble()),
+    );
+  }
+
+  Widget side() {
+    return Padding(
+      padding: EdgeInsets.only(left: height.toDouble()),
     );
   }
 }

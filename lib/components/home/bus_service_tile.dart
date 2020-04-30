@@ -1,9 +1,11 @@
 import 'package:nextbussg/components/home/favorites/confirmation_bottom_sheet.dart';
+import 'package:nextbussg/components/search/service_page/service_page.dart';
 import 'package:nextbussg/styles/tile_color.dart';
 import 'package:nextbussg/styles/transit_colors.dart';
 import 'package:nextbussg/styles/values.dart';
 import 'package:flutter/material.dart';
 import 'package:nextbussg/models/bus_arrival.dart';
+import 'package:nextbussg/utils/route.dart';
 
 class BusServiceTile extends StatelessWidget {
   final String code;
@@ -20,12 +22,6 @@ class BusServiceTile extends StatelessWidget {
       "LSD": TransitColors.limited,
     };
 
-    // List<String> arrivalTimes = [];
-    // for (var nextBus in busArrival.nextBuses) {
-    //   final String time = nextBus.timeInMinutes ?? '-';
-    //   arrivalTimes.add(time);
-    // }
-
     return Container(
       child: InkWell(
         child: Padding(
@@ -35,9 +31,12 @@ class BusServiceTile extends StatelessWidget {
             children: <Widget>[
               Flexible(
                 flex: 2,
-                child: Text(
-                  service,
-                  style: Theme.of(context).textTheme.display3,
+                child: InkWell(
+                  onTap: () => Routing.openRoute(context, ServicePage(service: service)),
+                  child: Text(
+                    service,
+                    style: Theme.of(context).textTheme.display3,
+                  ),
                 ),
               ),
               Flexible(
@@ -49,11 +48,11 @@ class BusServiceTile extends StatelessWidget {
                       Text(
                         nextBus.timeInMinutes ?? '-',
                         style: Theme.of(context).textTheme.display4.copyWith(
-                              color: loadColors[nextBus.load],
+                            color: loadColors[nextBus.load],
 
-                              // bold text if it has arrived
-                              fontWeight: nextBus.timeInMinutes == "Arr" ? FontWeight.w900 : FontWeight.w400
-                            ),
+                            // bold text if it has arrived
+                            fontWeight:
+                                nextBus.timeInMinutes == "Arr" ? FontWeight.w900 : FontWeight.w400),
                       ),
                   ],
                 ),
@@ -78,6 +77,5 @@ class BusServiceTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(Values.borderRadius * 0.8),
       ),
     );
-
   }
 }

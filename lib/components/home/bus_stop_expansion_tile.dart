@@ -1,7 +1,7 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:nextbussg/components/core/space.dart';
 import 'package:nextbussg/components/home/timings_not_available.dart';
 import 'package:nextbussg/components/core/mrt_stations.dart';
-import 'package:nextbussg/components/more/rename_favorites/bottom_sheets.dart';
 import 'package:nextbussg/components/search/stop_page/stop_overview_page.dart';
 import 'package:nextbussg/services/rename_favorites.dart';
 import 'package:nextbussg/styles/tile_color.dart';
@@ -11,7 +11,6 @@ import 'package:nextbussg/components/home/bus_service_tile.dart';
 import 'package:nextbussg/models/bus_arrival.dart';
 import 'package:nextbussg/services/bus.dart';
 import 'package:nextbussg/styles/values.dart';
-import 'package:nextbussg/utils/url.dart';
 import 'package:provider/provider.dart';
 
 class BusStopExpansionPanel extends StatefulWidget {
@@ -119,7 +118,13 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
           title: _busStopName(context, name, hasBeenRenamed),
           // the text below is replacing the default arrow in ExpansionPanel
           // when it's clicked, open bus stop
-          trailing: _busStopCode(context),
+          // trailing:  _busStopCode(context),
+          trailing: Text(""),
+          // trailing: Icon(
+          //   FontAwesomeIcons.bus,
+          //   size: Theme.of(context).textTheme.display2.fontSize,
+          // ),
+
           // get bus timings only when panel has been opened
           onExpansionChanged: (bool value) {
             return value ? _getBusTimings(context) : null;
@@ -143,41 +148,55 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
     // margin(top: Values.marginBelowTitle)
   }
 
-  InkWell _busStopCode(BuildContext context) {
-    return InkWell(
-      child: Container(
-        // un comment below to see tap area
-        // color: Colors.red,
-        // extra padding so the user has a bigger area to top
-        padding: EdgeInsets.only(top: 17.0, bottom: 17.0, left: 17.0),
-        child: Text(widget.code, style: Theme.of(context).textTheme.display2),
-      ),
+  // InkWell _busStopCode(BuildContext context) {
+  //   return InkWell(
+  //     child: Container(
+  //       // un comment below to see tap area
+  //       // color: Colors.red,
+  //       // extra padding so the user has a bigger area to top
+  //       padding: EdgeInsets.only(top: 17.0, bottom: 17.0, left: 17.0),
+  //       child: Text(widget.code, style: Theme.of(context).textTheme.display2),
+  //     ),
 
-      // if we're already on the stop overview page, this should just epand the widget
-      // by setting to null, the inkwell has no effect, so tapping just expands the tile
-      onTap: widget.opensStopOverviewPage ? () => _openStopOverviewPage() : null,
-      // if the position is available, long pressing the ID will open in map
-      onLongPress: widget.position != null
-          ? () => openMap(widget.position.longitude, widget.position.latitude)
-          : () => {},
-      onDoubleTap: () => RenameFavoritesBottomSheets.bs(context, widget.code, widget.name),
-    );
-  }
+  //     // if we're already on the stop overview page, this should just epand the widget
+  //     // by setting to null, the inkwell has no effect, so tapping just expands the tile
+  //     onTap: widget.opensStopOverviewPage ? () => _openStopOverviewPage() : null,
+  //     // if the position is available, long pressing the ID will open in map
+  //     onLongPress: widget.position != null
+  //         ? () => openMap(widget.position.longitude, widget.position.latitude)
+  //         : () => {},
+  //     onDoubleTap: () => RenameFavoritesBottomSheets.bs(context, widget.code, widget.name),
+  //   );
+  // }
 
   Column _busStopName(BuildContext context, String name, bool hasBeenRenamed) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         // if the stop HAS been renamed, display in italics
-        Text(name,
-            style: hasBeenRenamed
-                ? Theme.of(context).textTheme.display1.copyWith(
-                      fontStyle: FontStyle.italic,
-                    )
-                : Theme.of(context).textTheme.display1),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              name,
+              style: hasBeenRenamed
+                  ? Theme.of(context).textTheme.display1.copyWith(
+                        fontStyle: FontStyle.italic,
+                      )
+                  : Theme.of(context).textTheme.display1,
+            ),
+            Spacing(height: Values.marginBelowTitle / 2).side(),
+            Text(widget.code, style: Theme.of(context).textTheme.display2),
+          ],
+        ),
 
-        if (widget.mrtStations.isNotEmpty)
-          MRTStations(stations: widget.mrtStations)
+        Wrap(
+          children: <Widget>[
+            // Text(widget.code),
+            if (widget.mrtStations.isNotEmpty)
+              MRTStations(stations: widget.mrtStations)
+          ],
+        ),
       ],
     );
   }

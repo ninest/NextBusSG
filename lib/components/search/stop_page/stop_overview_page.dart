@@ -61,28 +61,9 @@ class StopOverviewPage extends StatelessWidget {
                   StopServicesOverview(
                     services: services,
                   ),
-                  // // Text('mrt stations').sliverToBoxAdapter(),
-
-                  Spacing(height: Values.marginBelowTitle * 1.5),
-
-                  // // timings panel
-                  // Text("Bus arrival timings:"),
-                  BusStopExpansionPanel(
-                    name: name,
-                    code: code,
-                    services: services,
-                    initialyExpanded: false,
-
-                    // don't show mrt stations even if there are a view, because they're shown above
-                    mrtStations: [],
-
-                    // tapping on the ID should NOT OPEN a new version of the same page
-                    opensStopOverviewPage: false,
-                  ),
 
                   Spacing(height: Values.marginBelowTitle * 2),
-
-                  // // button to allow rename
+                  // button to allow rename
                   Button(
                     text: "Rename",
                     // iconData: FontAwesomeIcons.directions,
@@ -98,7 +79,24 @@ class StopOverviewPage extends StatelessWidget {
                     fill: true,
                     // iconData: FontAwesomeIcons.directions,
                     onTap: () => openMap(lon, lat),
-                  )
+                  ),
+
+                  Spacing(height: Values.marginBelowTitle * 1.5),
+
+                  // // timings panel
+                  // Text("Bus arrival timings:"),
+                  BusStopExpansionPanel(
+                    name: name,
+                    code: code,
+                    services: services,
+                    initialyExpanded: true,
+
+                    // don't show mrt stations even if there are a view, because they're shown above
+                    mrtStations: [],
+
+                    // tapping on the ID should NOT OPEN a new version of the same page
+                    opensStopOverviewPage: false,
+                  ),
                 ]).sliverToBoxAdapter()
               ],
             );

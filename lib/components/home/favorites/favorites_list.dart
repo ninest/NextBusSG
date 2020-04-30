@@ -101,6 +101,7 @@ class FavoritesBusStopList extends StatelessWidget {
           ));
 
         return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TitleText(
               title: title,
