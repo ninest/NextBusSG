@@ -31,6 +31,7 @@ Click [here](https://github.com/themindstorm/NextBusSG#detailed-screenshots) to 
 - [x] Ability to save buses at a particular stop as a favorite
   - [x] Confirm user's action of adding/removing from favorites using bottom sheets
     - [ ] Display a toast when a favorite has been added/removed to notfy the user of their actions
+    - [ ] Use slidable widget for adding and removing favorites
   - [x] Automatically show the arrival time of favorite buses at stops (if user is at stop)
   - [x] Add ability to view all favorites in a ~~popup~~ page
   - [x] Show message prompting user to add a favorite if there are no favorites
@@ -45,13 +46,11 @@ Click [here](https://github.com/themindstorm/NextBusSG#detailed-screenshots) to 
 - [x] Third page (settings/options page, should also show tutorial/FAQ on how to use the app)
 - [x] Request user location permission on app start
   - [x] Display button to open settings if location permissions denied
-- [ ] Add quick actions to go to favorites and MRT map (implemented, but not working on IOS: [#13634](https://github.com/flutter/flutter/issues/13634))
+- [x] Add quick actions to go to favorites and MRT map (implemented, but not working on IOS: [#13634](https://github.com/flutter/flutter/issues/13634))
 - [x] Theme customization
   - [x] Light/dark theme
-    - [ ] Change status bar text color depending on theme
-  - [ ] Accent color (unplanned) (~~might not implement~~) (only blue, green, and light blue)
-  - [ ] Change font size (unplanned) (might not implement)
-- [ ] **THINK OF A MORE CREATIVE NAME.**
+    - [x] Change status bar text color depending on theme
+- [ ] **THINK OF A MORE CREATIVE NAME.** How is BlackBus SG?
 
 </details>
 
@@ -231,7 +230,6 @@ Like this project?
 This app makes use of data and images (MRT map) from:
 
 - LTA (Land Transport Authority): https://www.mytransport.sg/content/mytransport/home/dataMall.html
-- LTG (Land Transport Guru): http://landtransportguru.net
 
 ## License
 
