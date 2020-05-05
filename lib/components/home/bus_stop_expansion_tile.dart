@@ -134,7 +134,6 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
             ...busServiceTileList,
 
             // show that some timings are not available
-            // NOTE: it also could just be that timings are unailable,
             if (timingsNotAvailable.isNotEmpty)
               TimingsNotAvailable(services: timingsNotAvailable)
           ],

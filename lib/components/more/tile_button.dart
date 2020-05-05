@@ -49,17 +49,20 @@ class TileButton extends StatelessWidget {
           // these seem to need more padding, not entirely sure why
           padding: EdgeInsets.all(Values.marginBelowTitle),
           decoration: BoxDecoration(
-              color: TileColors.busStopExpansionTile(context),
-              borderRadius: BorderRadius.circular(Values.borderRadius)),
+            color: TileColors.busStopExpansionTile(context),
+            borderRadius: BorderRadius.circular(Values.borderRadius),
+          ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               child,
               if (children != null) ...[
                 Spacing(
                   height: 15,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Wrap(
+                  spacing: Values.marginBelowTitle,
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: children,
                 )
                 // ...children,
