@@ -15,7 +15,7 @@ class TabbedAppState extends State<TabbedApp> {
   static List<Widget> _tabViews = <Widget>[HomePage(), SearchPage(), MorePage()];
 
   static List<BottomNavigationBarItem> _tabs(BuildContext context) => [
-        BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.compass), title: Text('Main')),
+        BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.locationArrow), title: Text('Main')),
         BottomNavigationBarItem(
             icon: GestureDetector(
               child: FaIcon(FontAwesomeIcons.search),

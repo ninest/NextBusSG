@@ -94,9 +94,6 @@ class BusServiceTile extends StatelessWidget {
             ServicePage(service: service),
           ),
 
-          // these actons can be something else
-          // onLongPress: () => ConfirmationBottomSheets.confirmAction(context, code, service),
-          // onDoubleTap: () => ConfirmationBottomSheets.confirmAction(context, code, service),
         ),
         margin: EdgeInsets.only(
           left: Values.pageHorizontalPadding,
