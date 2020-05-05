@@ -118,8 +118,8 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
           title: _busStopName(context, name, hasBeenRenamed),
           // the text below is replacing the default arrow in ExpansionPanel
           // when it's clicked, open bus stop
-          // trailing:  _busStopCode(context),
-          trailing: Text(""),
+          trailing:  _busStopCode(context),
+          // trailing: Text(""),
           // trailing: Icon(
           //   FontAwesomeIcons.bus,
           //   size: Theme.of(context).textTheme.display2.fontSize,
@@ -147,26 +147,26 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
     // margin(top: Values.marginBelowTitle)
   }
 
-  // InkWell _busStopCode(BuildContext context) {
-  //   return InkWell(
-  //     child: Container(
-  //       // un comment below to see tap area
-  //       // color: Colors.red,
-  //       // extra padding so the user has a bigger area to top
-  //       padding: EdgeInsets.only(top: 17.0, bottom: 17.0, left: 17.0),
-  //       child: Text(widget.code, style: Theme.of(context).textTheme.display2),
-  //     ),
+  InkWell _busStopCode(BuildContext context) {
+    return InkWell(
+      child: Container(
+        // un comment below to see tap area
+        // color: Colors.red,
+        // extra padding so the user has a bigger area to top
+        padding: EdgeInsets.only(top: 17.0, bottom: 17.0, left: 17.0),
+        child: Text(widget.code, style: Theme.of(context).textTheme.display2),
+      ),
 
-  //     // if we're already on the stop overview page, this should just epand the widget
-  //     // by setting to null, the inkwell has no effect, so tapping just expands the tile
-  //     onTap: widget.opensStopOverviewPage ? () => _openStopOverviewPage() : null,
-  //     // if the position is available, long pressing the ID will open in map
-  //     onLongPress: widget.position != null
-  //         ? () => openMap(widget.position.longitude, widget.position.latitude)
-  //         : () => {},
-  //     onDoubleTap: () => RenameFavoritesBottomSheets.bs(context, widget.code, widget.name),
-  //   );
-  // }
+      // if we're already on the stop overview page, this should just epand the widget
+      // by setting to null, the inkwell has no effect, so tapping just expands the tile
+      onTap: widget.opensStopOverviewPage ? () => _openStopOverviewPage() : null,
+      // if the position is available, long pressing the ID will open in map
+      // onLongPress: widget.position != null
+      //     ? () => openMap(widget.position.longitude, widget.position.latitude)
+      //     : () => {},
+      // onDoubleTap: () => RenameFavoritesBottomSheets.bs(context, widget.code, widget.name),
+    );
+  }
 
   Column _busStopName(BuildContext context, String name, bool hasBeenRenamed) {
     return Column(
@@ -185,7 +185,7 @@ class _BusStopExpansionPanelState extends State<BusStopExpansionPanel> {
                   : Theme.of(context).textTheme.display1,
             ),
             Spacing(height: Values.marginBelowTitle / 2).side(),
-            Text(widget.code, style: Theme.of(context).textTheme.display2),
+            // Text(widget.code, style: Theme.of(context).textTheme.display2),
           ],
         ),
 
