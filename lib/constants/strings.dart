@@ -7,7 +7,7 @@ class Strings {
 
   static String get timingsNotAvailableInfo =>
       "Either these buses are not currently in operation, or the API is under maintainance. Please contact the LTA for further information";
-  static String get noFavorites => "**Tap** on a bus number to add it to your favorites.";
+  static String get noFavorites => "**Slide** a bus tile to the left to add it your favorites.";
   static String get renameFavoritesPrompt =>
       "Tap any of the bus stop names below to change their display name:";
   static String get renameFavoritesPrompt2 =>

@@ -88,7 +88,11 @@ class BusServiceTile extends StatelessWidget {
             ),
           ),
           borderRadius: BorderRadius.circular(Values.borderRadius * 0.8),
-          onTap: () => ConfirmationBottomSheets.confirmAction(context, code, service),
+          // onTap: () => ConfirmationBottomSheets.confirmAction(context, code, service),
+          onTap: () => Routing.openRoute(
+            context,
+            ServicePage(service: service),
+          ),
 
           // these actons can be something else
           // onLongPress: () => ConfirmationBottomSheets.confirmAction(context, code, service),
