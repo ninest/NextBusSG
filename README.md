@@ -233,7 +233,7 @@ This app makes use of data and images (MRT map) from:
 
 ## License
 
-[GPL-3.0](https://github.com/themindstorm/NextBusSG/blob/master/LICENSE)
+[GPL-3.0](https://github.com/ninest/NextBusSG/blob/master/LICENSE)
 
 ## Legal attribution
 
