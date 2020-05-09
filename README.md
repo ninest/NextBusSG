@@ -231,6 +231,7 @@ This app makes use of data and images (MRT map) from:
 
 - LTA (Land Transport Authority): https://www.mytransport.sg/content/mytransport/home/dataMall.html
 
+
 ## License
 
 [GPL-3.0](https://github.com/ninest/NextBusSG/blob/master/LICENSE)
