@@ -2,9 +2,9 @@
 
 ![Made with Flutter](https://img.shields.io/badge/Made%20With-Flutter-blue?style=flat-square)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-![GitHub](https://img.shields.io/github/license/themindstorm/NextBusSg?style=flat-square)
+![GitHub](https://img.shields.io/github/license/ninest/NextBusSg?style=flat-square)
 [![BMAC](https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-orange.svg?style=flat-square)](https://www.buymeacoffee.com/ninest) 
-[![HitCount](http://hits.dwyl.com/themindstorm/NextBusSG.svg)](http://hits.dwyl.com/themindstorm/NextBusSG) 
+[![HitCount](http://hits.dwyl.com/ninest/NextBusSG.svg)](http://hits.dwyl.com/ninest/NextBusSG) 
 
 <a href='https://apps.apple.com/my/app/nextbus-sg/id1509167028'><img height="55" alt='Get it on app store' src='./readme-images/badges/appstore.png'/></a>
 <a href='https://play.google.com/store/apps/details?id=com.themindstorm.nextbussg&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img height="55" alt='Get it on Google Play' src='./readme-images/badges/google_play.png'/></a>
@@ -13,7 +13,7 @@
 ![dark mode](./readme-images/gallery/2.png)
 ![other screens](./readme-images/gallery/3.png)
 
-Click [here](https://github.com/themindstorm/NextBusSG#detailed-screenshots) to see a detailed explanation of each screen.
+Click [here](https://github.com/ninest/NextBusSG#detailed-screenshots) to see a detailed explanation of each screen.
 
 ## 🚀 Features
 
@@ -25,9 +25,9 @@ Click [here](https://github.com/themindstorm/NextBusSG#detailed-screenshots) to 
 - [x] Show the arrival times of buses at stops near the user
   - [x] Show a list of buses not currently in serivce
   - [x] Show if a bus stop is also an MRT station in the search page
-  - [x] Show which all bus stops around the user are also MRT stations (~~needs help~~) ([#2](https://github.com/themindstorm/NextBusSG/issues/2))
+  - [x] Show which all bus stops around the user are also MRT stations (~~needs help~~) ([#2](https://github.com/ninest/NextBusSG/issues/2))
   - [x] Show the load of buses (green for not crowded ... )
-  - [ ] Show timings for college buses (NUS, NTU, SUTD, ... ), although still need to collect data for these (check out [this](https://github.com/themindstorm/singapore-bus) repository for updates)
+  - [ ] Show timings for college buses (NUS, NTU, SUTD, ... ), although still need to collect data for these (check out [this](https://github.com/ninest/bus-sg) repository for updates)
 - [x] Ability to save buses at a particular stop as a favorite
   - [x] Confirm user's action of adding/removing from favorites using bottom sheets
     - [ ] Display a toast when a favorite has been added/removed to notfy the user of their actions
@@ -70,7 +70,7 @@ Click [here](https://github.com/themindstorm/NextBusSG#detailed-screenshots) to 
 
 ## 🛠 Data
 
-Check out [themindstorm/bus-sg](https://github.com/themindstorm/bus-sg) for a detailed guide on how the data was scraped. The data is copyrighted by LTA.
+Check out [ninest/bus-sg](https://github.com/ninest/bus-sg) for a detailed guide on how the data was scraped. The data is copyrighted by LTA.
 
 ## 📦 Packages used
 
@@ -117,10 +117,10 @@ Simply put, a map takes up valuable screen space and battery. Maps also aren't u
 
 ## Other information
 
-- [Data](https://github.com/themindstorm/singapore-bus) collection start date: **February 11, 2020**
+- [Data](https://github.com/ninest/bus-sg) collection start date: **February 11, 2020**
 - Project start date: **February 13, 2020**
 - This project was reviewed by [happyharis](https://github.com/happyharis) on April 18, 2020: [Video](https://www.youtube.com/watch?v=IoueVJmXvsc)
-- NextBus SG has its [own promotional website](https://nextbus.now.sh/), which is also open-source at [themindstorm/nextbus-website](https://github.com/themindstorm/nextbus-website): April 19, 2020
+- NextBus SG has its [own promotional website](https://nextbus.now.sh/), which is also open-source at [ninest/nextbus-website](https://github.com/ninest/nextbus-website): April 19, 2020
 
 ## Built setup
 
@@ -143,7 +143,7 @@ Once the key as been set up, the app can be tested with the following commands:
 flutter run
 ```
 
-Please check out the [**wiki**](https://github.com/themindstorm/NextBusSG/wiki) for additional information.
+Please check out the [**wiki**](https://github.com/ninest/NextBusSG/wiki) for additional information.
 
 ### Generating icons and splash screens
 
